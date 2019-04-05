@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/spriteColor.png-2eb3cfbc25a096c5e41c6c99677d88a7.stex"
+path="res://.import/Unbenannt.png-aa69646adec4df9ace9d25adf54652a5.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://spriteColor.png"
-dest_files=[ "res://.import/spriteColor.png-2eb3cfbc25a096c5e41c6c99677d88a7.stex" ]
+source_file="res://Sprites/Unbenannt.png"
+dest_files=[ "res://.import/Unbenannt.png-aa69646adec4df9ace9d25adf54652a5.stex" ]
 
 [params]
 
