@@ -1,8 +1,10 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://Tiles/2.png" type="Texture" id=1]
 [ext_resource path="res://Tiles/5.png" type="Texture" id=2]
 [ext_resource path="res://Tiles/18.png" type="Texture" id=3]
+[ext_resource path="res://Tiles/ruin_wall_03_rough.png" type="Texture" id=4]
+[ext_resource path="res://Tiles/ruin_wall_03_norm.png" type="Texture" id=5]
 
 [sub_resource type="RectangleShape2D" id=1]
 
@@ -23,14 +25,21 @@ position = Vector2( 128, 0 )
 scale = Vector2( 0.5, 0.5 )
 texture = ExtResource( 2 )
 
-[node name="StaticBody2D" type="StaticBody2D" parent="Sprite2"]
-scale = Vector2( 6.5, 6.5 )
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite2/StaticBody2D"]
-shape = SubResource( 1 )
-
 [node name="Sprite3" type="Sprite" parent="."]
 position = Vector2( 0, 128 )
 scale = Vector2( 0.5, 0.5 )
 texture = ExtResource( 3 )
+
+[node name="Sprite4" type="Sprite" parent="."]
+position = Vector2( 83.8337, 107.966 )
+scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 4 )
+normal_map = ExtResource( 5 )
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Sprite4"]
+scale = Vector2( 3.25, 3.25 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite4/StaticBody2D"]
+scale = Vector2( 0.5, 0.5 )
+shape = SubResource( 1 )
 

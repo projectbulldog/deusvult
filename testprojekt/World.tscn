@@ -1,28 +1,42 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://Scripts/Player.gd" type="Script" id=1]
 [ext_resource path="res://Sprites/icon.png" type="Texture" id=2]
 [ext_resource path="res://MainMap.res" type="TileSet" id=3]
-[ext_resource path="res://Shaders/Water.shader" type="Shader" id=4]
-[ext_resource path="res://Shaders/glass.shader" type="Shader" id=5]
-[ext_resource path="res://Sprites/spriteColor.png" type="Texture" id=6]
-[ext_resource path="res://Shaders/black_white.shader" type="Shader" id=7]
+[ext_resource path="res://background_tilesets.tres" type="TileSet" id=4]
+[ext_resource path="res://Shaders/Water.shader" type="Shader" id=5]
+[ext_resource path="res://Shaders/glass.shader" type="Shader" id=6]
+[ext_resource path="res://Sprites/spriteColor.png" type="Texture" id=7]
+[ext_resource path="res://Shaders/black_white.shader" type="Shader" id=8]
 
 [sub_resource type="CanvasItemMaterial" id=1]
 
 [sub_resource type="RectangleShape2D" id=2]
 extents = Vector2( 32, 32 )
 
+[sub_resource type="Shader" id=6]
+code = "shader_type canvas_item;
+render_mode unshaded;
+
+void fragment()
+{
+	COLOR = texture(TEXTURE, UV);
+	COLOR.rgb *= 0.4;
+}"
+
+[sub_resource type="ShaderMaterial" id=7]
+shader = SubResource( 6 )
+
 [sub_resource type="ShaderMaterial" id=3]
-shader = ExtResource( 4 )
-shader_param/tint = Color( 0.0666667, 0.376471, 0.858824, 1 )
+shader = ExtResource( 5 )
+shader_param/tint = Color( 0.0509804, 0.384314, 0.627451, 1 )
 
 [sub_resource type="ShaderMaterial" id=4]
-shader = ExtResource( 5 )
-shader_param/tint = Color( 0, 0, 0, 1 )
+shader = ExtResource( 6 )
+shader_param/tint = Color( 0.792157, 0, 0, 1 )
 
 [sub_resource type="ShaderMaterial" id=5]
-shader = ExtResource( 7 )
+shader = ExtResource( 8 )
 
 [node name="World" type="Node"]
 
@@ -59,25 +73,34 @@ shape = SubResource( 2 )
 z_index = -50
 z_as_relative = false
 tile_set = ExtResource( 3 )
+cell_size = Vector2( 128, 128 )
 cell_clip_uv = true
 format = 1
-tile_data = PoolIntArray( -131072, 4, 0, -131070, 4, 0, -131068, 4, 0, -131066, 4, 0, -131064, 4, 0, -131062, 4, 0, -131060, 4, 0, -131058, 4, 0, -131056, 4, 0, -131054, 4, 0, -131052, 4, 0, -131050, 4, 0, -131048, 4, 0, -65515, 4, 0, -65514, 4, 0, -65513, 4, 0, 65534, 3, 0, 0, 4, 0, 2, 4, 0, 4, 4, 0, 6, 4, 0, 8, 4, 0, 10, 4, 0, 12, 4, 0, 14, 4, 0, 16, 4, 0, 18, 4, 0, 19, 4, 0, 20, 4, 0, 21, 4, 0, 23, 4, 0, 24, 4, 0, 26, 3, 0, 65559, 4, 0, 65560, 4, 0, 196606, 3, 0, 131072, 4, 0, 131074, 4, 0, 131076, 4, 0, 131078, 4, 0, 131080, 4, 0, 131082, 4, 0, 131084, 4, 0, 131086, 4, 0, 131088, 4, 0, 131090, 4, 0, 131091, 4, 0, 131092, 4, 0, 131093, 4, 0, 131094, 4, 0, 131095, 4, 0, 131096, 4, 0, 131098, 3, 0, 196626, 4, 0, 196632, 4, 0, 327678, 3, 0, 262144, 4, 0, 262146, 4, 0, 262148, 4, 0, 262150, 4, 0, 262152, 4, 0, 262154, 4, 0, 262156, 4, 0, 262158, 4, 0, 262160, 4, 0, 262162, 4, 0, 262163, 4, 0, 262164, 4, 0, 262165, 4, 0, 262166, 4, 0, 262167, 4, 0, 262168, 4, 0, 262170, 3, 0, 327700, 2, 0, 393216, 2, 0, 393218, 2, 0, 393220, 2, 0, 393222, 2, 0, 393224, 2, 0, 393226, 2, 0, 393228, 2, 0, 393230, 2, 0, 393232, 2, 0, 393234, 2, 0, 393238, 2, 0, 393240, 2, 0, 458772, 3, 0, 524288, 3, 0, 524290, 3, 0, 524292, 3, 0, 524294, 3, 0, 524296, 3, 0, 524298, 3, 0, 524300, 3, 0, 524302, 3, 0, 524304, 3, 0, 524305, 3, 0, 524306, 3, 0, 524307, 3, 0, 524308, 3, 0, 524309, 3, 0, 524310, 3, 0, 524311, 3, 0, 524312, 3, 0 )
+tile_data = PoolIntArray( 0, 2, 0, 65536, 3, 0, 65542, 3, 0, 65543, 3, 0, 65544, 3, 0, 65545, 3, 0, 65546, 3, 0, 65547, 3, 0, 131072, 3, 0, 131083, 3, 0, 196608, 3, 0, 196619, 3, 0, 262144, 3, 0, 262145, 2, 0, 262146, 2, 0, 262147, 2, 0, 262148, 2, 0, 262149, 2, 0, 262150, 2, 0, 262151, 2, 0, 262152, 2, 0, 262153, 2, 0, 262154, 2, 0, 262155, 3, 0 )
+
+[node name="Background_Tilemap" type="TileMap" parent="."]
+material = SubResource( 7 )
+z_index = -7
+tile_set = ExtResource( 4 )
+cell_size = Vector2( 128, 128 )
+format = 1
+tile_data = PoolIntArray( 131078, 0, 0, 131079, 0, 0, 131080, 0, 0, 131081, 0, 0, 131082, 0, 0, 196614, 0, 0, 196615, 0, 0, 196616, 0, 0, 196617, 0, 0, 196618, 0, 0 )
 
 [node name="Sprite" type="Sprite" parent="."]
 material = SubResource( 3 )
-position = Vector2( 1336.26, 280.241 )
-scale = Vector2( 10.774, 6.57945 )
+position = Vector2( 534.11, 490.085 )
+scale = Vector2( 5.49823, 3.50097 )
 texture = ExtResource( 2 )
 
 [node name="Sprite2" type="Sprite" parent="."]
 material = SubResource( 4 )
-position = Vector2( 580, 360 )
+position = Vector2( 291.384, 133.285 )
 scale = Vector2( 1.6, 1.3 )
-texture = ExtResource( 6 )
+texture = ExtResource( 7 )
 
 [node name="Sprite3" type="Sprite" parent="."]
 material = SubResource( 5 )
-position = Vector2( 150, 360 )
-scale = Vector2( 3, 2.22119 )
-texture = ExtResource( 6 )
+position = Vector2( 199.732, 485.86 )
+scale = Vector2( 2.70179, 2.36163 )
+texture = ExtResource( 7 )
 
