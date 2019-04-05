@@ -55,8 +55,8 @@ tile_data = PoolIntArray( -131072, 4, 0, -131070, 4, 0, -131068, 4, 0, -131066, 
 
 [node name="Sprite" type="Sprite" parent="."]
 material = SubResource( 3 )
-position = Vector2( 1270, 370 )
-scale = Vector2( 5.67059, 3.62686 )
+position = Vector2( 1336.26, 280.241 )
+scale = Vector2( 10.774, 6.57945 )
 texture = ExtResource( 2 )
 
 [node name="Sprite2" type="Sprite" parent="."]
