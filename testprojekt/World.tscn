@@ -35,6 +35,16 @@ script = ExtResource( 1 )
 current = true
 smoothing_speed = 3.0
 
+[node name="Interface" type="CanvasLayer" parent="Player/Camera2D"]
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Player/Camera2D/Interface"]
+modulate = Color( 0, 0, 0, 1 )
+margin_left = 31.0049
+margin_top = 23.1459
+margin_right = 152.005
+margin_bottom = 39.1459
+text = "GUI TEST"
+
 [node name="Sprite" type="Sprite" parent="Player"]
 material = SubResource( 1 )
 z_as_relative = false
