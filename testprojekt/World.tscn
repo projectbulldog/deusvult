@@ -5,38 +5,42 @@
 [ext_resource path="res://Sprites/icon.png" type="Texture" id=3]
 [ext_resource path="res://StateManager.gd" type="Script" id=4]
 [ext_resource path="res://tileset.tres" type="TileSet" id=5]
-[ext_resource path="res://Shaders/Water.shader" type="Shader" id=6]
-[ext_resource path="res://Sprites/Unbenannt.png" type="Texture" id=7]
-[ext_resource path="res://Scripts/Enemy.gd" type="Script" id=8]
-[ext_resource path="res://Sprites/spriteColor.png" type="Texture" id=9]
+[ext_resource path="res://Sprites/Unbenannt.png" type="Texture" id=6]
+[ext_resource path="res://Scripts/Enemy.gd" type="Script" id=7]
+[ext_resource path="res://Sprites/spriteColor.png" type="Texture" id=8]
+[ext_resource path="res://default_env.tres" type="Environment" id=9]
 
-[sub_resource type="CanvasItemMaterial" id=1]
+[sub_resource type="StyleBoxFlat" id=1]
+bg_color = Color( 0.478431, 0.858824, 0.321569, 1 )
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
 
-[sub_resource type="RectangleShape2D" id=2]
+[sub_resource type="StyleBoxEmpty" id=2]
+
+[sub_resource type="RectangleShape2D" id=4]
 extents = Vector2( 32, 32 )
 
-[sub_resource type="ShaderMaterial" id=3]
-shader = ExtResource( 6 )
-shader_param/tint = Color( 0.0509804, 0.384314, 0.627451, 1 )
+[sub_resource type="CanvasItemMaterial" id=13]
+blend_mode = 1
 
-[sub_resource type="ShaderMaterial" id=4]
+[sub_resource type="Gradient" id=6]
+offsets = PoolRealArray( 0, 0.573298, 1 )
+colors = PoolColorArray( 0.853516, 0.667695, 0.227592, 1, 0.810701, 0.39164, 0.164438, 1, 0.699219, 0, 0, 1 )
 
-[sub_resource type="Gradient" id=5]
-offsets = PoolRealArray( 0, 0.180921, 1 )
-colors = PoolColorArray( 1, 1, 1, 1, 0.853516, 0.667695, 0.227592, 1, 0.699219, 0, 0, 1 )
+[sub_resource type="GradientTexture" id=7]
+gradient = SubResource( 6 )
 
-[sub_resource type="GradientTexture" id=6]
-gradient = SubResource( 5 )
+[sub_resource type="Curve" id=8]
+_data = [ Vector2( 0, 1 ), 0.0, 0.0, 0, 0, Vector2( 1, 0.2096 ), 0.0, 0.0, 0, 0 ]
 
-[sub_resource type="Curve" id=7]
-_data = [ Vector2( 0, 0.7904 ), 0.0, 0.0, 0, 0, Vector2( 1, 0.2096 ), 0.0, 0.0, 0, 0 ]
+[sub_resource type="CurveTexture" id=9]
+curve = SubResource( 8 )
 
-[sub_resource type="CurveTexture" id=8]
-curve = SubResource( 7 )
-
-[sub_resource type="ParticlesMaterial" id=9]
+[sub_resource type="ParticlesMaterial" id=10]
 emission_shape = 2
-emission_box_extents = Vector3( 5, 10, 1 )
+emission_box_extents = Vector3( 10, 15, 1 )
 flag_disable_z = true
 spread = 0.0
 gravity = Vector3( 0, 0, 0 )
@@ -48,12 +52,12 @@ linear_accel = 20.0
 radial_accel = 0.1
 angle = 45.0
 scale = 25.0
-scale_curve = SubResource( 8 )
-color_ramp = SubResource( 6 )
+scale_curve = SubResource( 9 )
+color_ramp = SubResource( 7 )
 
-[sub_resource type="RectangleShape2D" id=10]
+[sub_resource type="RectangleShape2D" id=11]
 
-[sub_resource type="CircleShape2D" id=11]
+[sub_resource type="CircleShape2D" id=12]
 radius = 300.0
 
 [node name="World" type="Node"]
@@ -74,22 +78,24 @@ smoothing_speed = 4.0
 script = ExtResource( 2 )
 
 [node name="ProgressBar" type="ProgressBar" parent="Player/Camera2D/Interface"]
-margin_left = 23.0001
-margin_top = 49.0001
-margin_right = 199.0
-margin_bottom = 63.0001
+margin_left = 16.0
+margin_top = 21.0
+margin_right = 413.0
+margin_bottom = 47.0
+custom_styles/fg = SubResource( 1 )
+custom_styles/bg = SubResource( 2 )
+custom_colors/font_color = Color( 0, 0, 0, 0 )
 
 [node name="Tween" type="Tween" parent="Player/Camera2D/Interface"]
 
 [node name="Sprite" type="Sprite" parent="Player"]
-material = SubResource( 1 )
 z_as_relative = false
 texture = ExtResource( 3 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]
 z_index = -1
 z_as_relative = false
-shape = SubResource( 2 )
+shape = SubResource( 4 )
 
 [node name="StateManager" type="Node" parent="Player"]
 script = ExtResource( 4 )
@@ -100,51 +106,48 @@ z_as_relative = false
 tile_set = ExtResource( 5 )
 cell_clip_uv = true
 format = 1
-tile_data = PoolIntArray( 327699, 0, 0, 327700, 0, 0, 327701, 0, 0, 327702, 0, 0, 458778, 0, 0, 458779, 0, 0, 458780, 0, 0, 458781, 0, 0, 589823, 0, 0, 524288, 0, 0, 524293, 0, 0, 524294, 0, 0, 524295, 0, 0, 524296, 0, 0, 524297, 0, 0, 524298, 0, 0, 524299, 0, 0, 524300, 0, 0, 524301, 0, 0, 524302, 0, 0, 524303, 0, 0, 524304, 0, 0, 524305, 0, 0, 524306, 0, 0, 589824, 1, 0, 589829, 1, 0, 589845, 0, 0, 589846, 0, 0, 589847, 0, 0, 589848, 0, 0, 655360, 1, 0, 655361, 1, 0, 655362, 1, 0, 655363, 1, 0, 655364, 1, 0, 655365, 1, 0 )
-
-[node name="Water_Example" type="Sprite" parent="."]
-material = SubResource( 3 )
-position = Vector2( 190, 575 )
-scale = Vector2( 4.0625, 2.03125 )
-texture = ExtResource( 3 )
+tile_data = PoolIntArray( 589822, 0, 0, 589823, 0, 0, 524288, 0, 0, 524289, 0, 0, 524290, 0, 0, 524291, 0, 0, 524292, 0, 0, 524293, 0, 0, 524294, 0, 0, 524295, 0, 0, 524296, 0, 0, 524297, 0, 0, 524298, 0, 0, 524299, 0, 0, 524300, 0, 0, 524301, 0, 0, 524302, 0, 0, 524303, 0, 0, 524304, 0, 0, 524305, 0, 0, 524306, 0, 0, 524307, 0, 0, 524308, 0, 0, 524309, 0, 0, 524310, 0, 0, 524311, 0, 0, 524312, 0, 0, 524313, 0, 0, 524314, 0, 0, 524315, 0, 0, 524316, 0, 0, 524317, 0, 0, 524318, 0, 0, 524319, 0, 0, 524320, 0, 0, 524321, 0, 0, 524322, 0, 0, 524323, 0, 0, 524324, 0, 0 )
 
 [node name="Fire_Example" type="Particles2D" parent="."]
-material = SubResource( 4 )
-position = Vector2( 1092.35, 501.774 )
+material = SubResource( 13 )
+position = Vector2( 1092.35, 489.774 )
 rotation = -1.5708
 z_index = -2
 z_as_relative = false
-amount = 100
-lifetime = 2.0
-process_material = SubResource( 9 )
+amount = 90
+lifetime = 2.5
+process_material = SubResource( 10 )
 
 [node name="Light2D" type="Light2D" parent="Fire_Example"]
-texture = ExtResource( 7 )
-texture_scale = 2.0
+visible = false
+texture = ExtResource( 6 )
+texture_scale = 4.0
 color = Color( 0.960784, 0.705882, 0.478431, 1 )
-energy = 1.2
-
-[node name="CanvasModulate" type="CanvasModulate" parent="."]
+energy = 0.8
+shadow_enabled = true
+shadow_color = Color( 0.917647, 0.6, 0.6, 0 )
 
 [node name="ENEMY" type="KinematicBody2D" parent="."]
-position = Vector2( 1007.35, 436.285 )
+editor/display_folded = true
+position = Vector2( 2172.96, 480.175 )
 scale = Vector2( 0.5, 0.5 )
-script = ExtResource( 8 )
+script = ExtResource( 7 )
 
 [node name="Sprite" type="Sprite" parent="ENEMY"]
-texture = ExtResource( 9 )
+texture = ExtResource( 8 )
 
 [node name="Enemy_Box" type="CollisionShape2D" parent="ENEMY"]
 scale = Vector2( 5, 5 )
-shape = SubResource( 10 )
+shape = SubResource( 11 )
 
 [node name="Area2D" type="Area2D" parent="ENEMY"]
 
 [node name="Detection_Box" type="CollisionShape2D" parent="ENEMY/Area2D"]
 scale = Vector2( 2, 2 )
-shape = SubResource( 11 )
+shape = SubResource( 12 )
 
-[node name="Navigation2D" type="Navigation2D" parent="."]
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = ExtResource( 9 )
 
 [connection signal="on_health_changed" from="Player/StateManager" to="Player/Camera2D/Interface" method="_on_StateManager_on_health_changed"]
 [connection signal="body_entered" from="ENEMY/Area2D" to="ENEMY" method="_on_Area2D_body_entered"]

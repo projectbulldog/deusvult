@@ -2,6 +2,7 @@ extends KinematicBody2D
 
 const GRAVITY = 981
 const WALK_SPEED = 400
+const JUMP_SPEED = -500
 
 var velocity = Vector2()
 
@@ -15,12 +16,11 @@ func _process(delta):
 		velocity.x = -WALK_SPEED
 	if Input.is_key_pressed(KEY_D):
 		velocity.x = WALK_SPEED
-	
 	if (Input.is_key_pressed(KEY_SPACE) && is_on_floor()):
-		velocity.y = -550
+		velocity.y = JUMP_SPEED
 	if (is_on_ceiling()):
 		velocity.y = delta * GRAVITY
-		
+
 	move_and_slide(velocity, Vector2(0, -1))
 	velocity.x = 0
 	
