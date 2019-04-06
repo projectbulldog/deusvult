@@ -54,6 +54,3 @@ func _on_Area2D_body_exited(body):
 	if(body.get_name() == "Player"):
 		self.modulate = Color(1, 1, 1)
 		target = null
-
-func _on_Timer_timeout():
-	print("HIER")

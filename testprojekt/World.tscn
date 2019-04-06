@@ -79,6 +79,8 @@ margin_top = 49.0001
 margin_right = 199.0
 margin_bottom = 63.0001
 
+[node name="Tween" type="Tween" parent="Player/Camera2D/Interface"]
+
 [node name="Sprite" type="Sprite" parent="Player"]
 material = SubResource( 1 )
 z_as_relative = false

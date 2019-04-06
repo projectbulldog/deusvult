@@ -15,6 +15,7 @@ func _process(delta):
 		velocity.x = -WALK_SPEED
 	if Input.is_key_pressed(KEY_D):
 		velocity.x = WALK_SPEED
+	
 	if (Input.is_key_pressed(KEY_SPACE) && is_on_floor()):
 		velocity.y = -550
 	if (is_on_ceiling()):
@@ -30,3 +31,28 @@ func attack():
 func takeDamage(damage):
 	$StateManager.take_Damage(damage)
 	pass
+	
+
+# das wär en prototyp , für en dash
+#var dash_timer
+#var can_dash = true
+#
+#func _ready():
+#	dash_timer = Timer.new()
+#	dash_timer.wait_time = 5.0
+#	dash_timer.one_shot = true
+#	self.add_child(dash_timer)
+#	dash_timer.connect("timeout", self, "cooldown_reset")
+
+#func cooldown_reset():
+#	can_dash = true
+
+
+#if can_dash && Input.is_key_pressed(KEY_E):
+#		self.translate(Vector2(550, 0))
+#		can_dash = false
+#		dash_timer.start()
+#	if can_dash && Input.is_key_pressed(KEY_Q):
+#		self.translate(Vector2(-550, 0))
+#		can_dash = false
+#		dash_timer.start()
