@@ -22,7 +22,7 @@ config/icon="res://Sprites/icon.png"
 [display]
 
 window/vsync/use_vsync=false
-window/stretch/aspect="keep"
+window/stretch/aspect="expand"
 
 [rendering]
 
