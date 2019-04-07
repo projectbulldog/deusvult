@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=2]
+[gd_scene load_steps=26 format=2]
 
 [ext_resource path="res://Scripts/Player.gd" type="Script" id=1]
 [ext_resource path="res://Scripts/Interface.gd" type="Script" id=2]
@@ -14,7 +14,6 @@
 [ext_resource path="res://Sprites/Background/Stars Small_2.png" type="Texture" id=12]
 [ext_resource path="res://Sprites/Background/Stars-Big_1_1_PC.png" type="Texture" id=13]
 [ext_resource path="res://Sprites/Background/Stars-Big_1_2_PC.png" type="Texture" id=14]
-[ext_resource path="res://Shaders/Fog.shader" type="Shader" id=15]
 
 [sub_resource type="StyleBoxFlat" id=1]
 bg_color = Color( 0.478431, 0.858824, 0.321569, 1 )
@@ -66,25 +65,11 @@ color_ramp = SubResource( 6 )
 [sub_resource type="CircleShape2D" id=11]
 radius = 400.0
 
-[sub_resource type="ShaderMaterial" id=15]
-shader = ExtResource( 15 )
-
-[sub_resource type="OpenSimplexNoise" id=13]
-seed = 5
-octaves = 6
-period = 171.2
-persistence = 0.581
-
-[sub_resource type="NoiseTexture" id=12]
-width = 1920
-height = 1080
-seamless = true
-noise = SubResource( 13 )
-
 [node name="World" type="Node"]
 
 [node name="Player" type="KinematicBody2D" parent="."]
-position = Vector2( 367.819, 461.397 )
+editor/display_folded = true
+position = Vector2( 355.512, 468.429 )
 z_index = 4
 z_as_relative = false
 script = ExtResource( 1 )
@@ -137,7 +122,6 @@ format = 1
 tile_data = PoolIntArray( 589822, 0, 0, 589823, 0, 0, 524288, 0, 0, 524289, 0, 0, 524290, 0, 0, 524291, 0, 0, 524292, 0, 0, 524293, 0, 0, 524294, 0, 0, 524295, 0, 0, 524296, 0, 0, 524297, 0, 0, 524298, 0, 0, 524299, 0, 0, 524300, 0, 0, 524301, 0, 0, 524302, 0, 0, 524303, 0, 0, 524304, 0, 0, 524305, 0, 0, 524306, 0, 0, 524307, 0, 0, 524308, 0, 0, 524309, 0, 0, 524310, 0, 0, 524311, 0, 0, 524312, 0, 0, 524313, 0, 0, 524314, 0, 0, 524315, 0, 0, 524316, 0, 0, 524317, 0, 0, 524318, 0, 0, 524319, 0, 0, 524320, 0, 0, 524321, 0, 0, 524322, 0, 0, 524323, 0, 0, 524324, 0, 0, 524325, 0, 0, 524326, 0, 0, 524327, 0, 0, 524328, 0, 0, 524329, 0, 0, 524330, 0, 0, 524331, 0, 0, 524332, 0, 0, 524333, 0, 0, 524334, 0, 0, 524335, 0, 0, 524336, 0, 0, 524337, 0, 0, 524338, 0, 0, 524339, 0, 0, 524340, 0, 0, 524341, 0, 0, 524342, 0, 0, 524343, 0, 0, 524344, 0, 0, 524345, 0, 0, 524346, 0, 0, 524347, 0, 0, 524348, 0, 0, 524349, 0, 0, 524350, 0, 0, 524351, 0, 0, 524352, 0, 0, 524353, 0, 0, 524354, 0, 0, 524355, 0, 0, 524356, 0, 0, 524357, 0, 0, 524358, 0, 0, 524359, 0, 0, 524360, 0, 0, 524361, 0, 0, 524362, 0, 0, 524363, 0, 0, 524364, 0, 0, 524365, 0, 0, 524366, 0, 0, 524367, 0, 0, 524368, 0, 0, 524369, 0, 0, 524370, 0, 0, 524371, 0, 0, 524372, 0, 0, 524373, 0, 0, 524374, 0, 0, 524375, 0, 0, 524376, 0, 0 )
 
 [node name="Fire_Example" type="Particles2D" parent="."]
-editor/display_folded = true
 material = SubResource( 4 )
 position = Vector2( 1092.35, 489.774 )
 rotation = -1.5708
@@ -151,7 +135,7 @@ process_material = SubResource( 9 )
 texture = ExtResource( 6 )
 texture_scale = 4.0
 color = Color( 0.960784, 0.705882, 0.478431, 1 )
-energy = 0.8
+energy = 0.5
 shadow_color = Color( 0.917647, 0.6, 0.6, 0 )
 
 [node name="ENEMY" type="KinematicBody2D" parent="."]
@@ -182,7 +166,7 @@ environment = ExtResource( 9 )
 offset = Vector2( 500, 550 )
 scale = Vector2( 1.5, 1.5 )
 transform = Transform2D( 1.5, 0, 0, 1.5, 500, 550 )
-scroll_base_scale = Vector2( 0.05, 0.2 )
+scroll_base_scale = Vector2( 0.05, 0.001 )
 
 [node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
 motion_scale = Vector2( 0.6, 1 )
@@ -193,6 +177,7 @@ texture = ExtResource( 10 )
 region_rect = Rect2( 1920, 1080, 1920, 1080 )
 
 [node name="ParallaxLayer2" type="ParallaxLayer" parent="ParallaxBackground"]
+editor/display_folded = true
 motion_scale = Vector2( 0.8, 1 )
 motion_mirroring = Vector2( 4096, 0 )
 
@@ -203,6 +188,7 @@ texture = ExtResource( 11 )
 texture = ExtResource( 12 )
 
 [node name="ParallaxLayer3" type="ParallaxLayer" parent="ParallaxBackground"]
+editor/display_folded = true
 motion_mirroring = Vector2( 4096, 0 )
 
 [node name="Sprite4" type="Sprite" parent="ParallaxBackground/ParallaxLayer3"]
@@ -210,13 +196,6 @@ texture = ExtResource( 13 )
 
 [node name="Sprite" type="Sprite" parent="ParallaxBackground/ParallaxLayer3"]
 texture = ExtResource( 14 )
-
-[node name="Sprite2" type="Sprite" parent="."]
-material = SubResource( 15 )
-position = Vector2( 2081.33, 159.303 )
-scale = Vector2( 1.09457, 1.38374 )
-z_index = -20
-texture = SubResource( 12 )
 
 [connection signal="on_health_changed" from="Player/StateManager" to="Player/Camera2D/Interface" method="_on_StateManager_on_health_changed"]
 [connection signal="body_entered" from="ENEMY/Area2D" to="ENEMY" method="_on_Area2D_body_entered"]
