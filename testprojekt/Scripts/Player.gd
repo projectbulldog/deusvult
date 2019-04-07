@@ -21,6 +21,11 @@ func _process(delta):
 	if (is_on_ceiling()):
 		velocity.y = delta * GRAVITY
 
+	if(is_on_wall()):
+		velocity.y = 0;
+		if(Input.is_key_pressed(KEY_SPACE)):
+			velocity.y = JUMP_SPEED
+		
 	move_and_slide(velocity, Vector2(0, -1))
 	velocity.x = 0
 	
