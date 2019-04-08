@@ -5,6 +5,8 @@ const WALK_SPEED = 400
 const JUMP_SPEED = -500
 
 var velocity = Vector2()
+enum DIRECTION { RIGHT, LEFT}
+var direction = DIRECTION.RIGHT
 
 func _process(delta):
 	if(is_on_floor()):
@@ -14,8 +16,15 @@ func _process(delta):
 	
 	if Input.is_key_pressed(KEY_A):
 		velocity.x = -WALK_SPEED
+		if direction == DIRECTION.RIGHT:
+			self.scale.x *= -1
+			direction = DIRECTION.LEFT
+
 	if Input.is_key_pressed(KEY_D):
 		velocity.x = WALK_SPEED
+		if direction == DIRECTION.LEFT:
+			self.scale.x *= -1
+			direction = DIRECTION.RIGHT
 	if (Input.is_key_pressed(KEY_SPACE) && is_on_floor()):
 		velocity.y = JUMP_SPEED
 	if (is_on_ceiling()):
