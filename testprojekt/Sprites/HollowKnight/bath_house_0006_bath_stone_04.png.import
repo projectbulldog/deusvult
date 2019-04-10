@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/dirt.png-fdf2698639689f8224cb04f715a46c6b.stex"
+path="res://.import/bath_house_0006_bath_stone_04.png-0f34951c6d5114d25bd5b388947539fb.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Tiles/dirt.png"
-dest_files=[ "res://.import/dirt.png-fdf2698639689f8224cb04f715a46c6b.stex" ]
+source_file="res://Sprites/HollowKnight/bath_house_0006_bath_stone_04.png"
+dest_files=[ "res://.import/bath_house_0006_bath_stone_04.png-0f34951c6d5114d25bd5b388947539fb.stex" ]
 
 [params]
 

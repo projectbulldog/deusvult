@@ -1,8 +1,8 @@
 extends KinematicBody2D
 
-const GRAVITY = 981
+const GRAVITY = 1200
 const WALK_SPEED = 400
-const JUMP_SPEED = -500
+const JUMP_SPEED = -900
 
 var velocity = Vector2()
 enum DIRECTION { RIGHT, LEFT}
@@ -29,11 +29,6 @@ func _process(delta):
 		velocity.y = JUMP_SPEED
 	if (is_on_ceiling()):
 		velocity.y = delta * GRAVITY
-
-	if(is_on_wall()):
-		velocity.y = 0;
-		if(Input.is_key_pressed(KEY_SPACE)):
-			velocity.y = JUMP_SPEED
 		
 	move_and_slide(velocity, Vector2(0, -1))
 	velocity.x = 0
