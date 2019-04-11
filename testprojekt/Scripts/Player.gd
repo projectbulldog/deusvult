@@ -1,8 +1,10 @@
 extends KinematicBody2D
 
-const GRAVITY = 1500
-const SPEED = 500
-const JUMP_SPEED = -700
+const GRAVITY = 2500
+const SPEED = 550
+const JUMP_SPEED = -4000
+const MAXJUMP_SPEED = -5000
+const MINJUMP_SPEED = -500
 
 var motion = Vector2()
 
@@ -61,7 +63,9 @@ func _physics_process(delta):
 
 	# JUMPING
 	if Input.is_key_pressed(KEY_SPACE) && jumpTime < 0.3 && canJump:
-		motion.y = JUMP_SPEED
+		motion.y = min(0, motion.y)
+		motion.y = max(motion.y + (JUMP_SPEED * delta), MAXJUMP_SPEED)
+		motion.y = min(motion.y, MINJUMP_SPEED)
 		jumpTime += delta
 	elif !Input.is_key_pressed(KEY_SPACE) && jumpTime > 0:
 		canJump = false

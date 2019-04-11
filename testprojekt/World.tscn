@@ -1,48 +1,39 @@
-[gd_scene load_steps=27 format=2]
+[gd_scene load_steps=30 format=2]
 
 [ext_resource path="res://default_env.tres" type="Environment" id=1]
-[ext_resource path="res://Sprites/HollowKnight/ash_grass_01_blizzard0001.png" type="Texture" id=2]
-[ext_resource path="res://Sprites/HollowKnight/bath_house_0006_bath_stone_04.png" type="Texture" id=3]
-[ext_resource path="res://Sprites/HollowKnight/dash_cloak_corpse0003.png" type="Texture" id=4]
-[ext_resource path="res://Sprites/Background/Nebula Aqua-Pink.png" type="Texture" id=5]
-[ext_resource path="res://Scripts/Player.gd" type="Script" id=6]
-[ext_resource path="res://Scripts/Interface.gd" type="Script" id=7]
-[ext_resource path="res://Sprites/charaktesr-skizze.png" type="Texture" id=8]
-[ext_resource path="res://Scripts/StateManager.gd" type="Script" id=9]
-[ext_resource path="res://Sprites/light.png" type="Texture" id=10]
-[ext_resource path="res://Tiles/tileset.tres" type="TileSet" id=11]
-[ext_resource path="res://ruin_add_wall.png" type="Texture" id=12]
-[ext_resource path="res://Sprites/HollowKnight/Lumafly_Lantern0000.png" type="Texture" id=13]
-[ext_resource path="res://Sprites/HollowKnight/lantern_glow_000.png" type="Texture" id=14]
-[ext_resource path="res://Sprites/HollowKnight/butterfly.png" type="Texture" id=15]
-[ext_resource path="res://Sprites/Unbenannt.png" type="Texture" id=16]
-[ext_resource path="res://ruin_lamp_01.png" type="Texture" id=17]
+[ext_resource path="res://Scripts/Player.gd" type="Script" id=2]
+[ext_resource path="res://Scripts/Interface.gd" type="Script" id=3]
+[ext_resource path="res://Sprites/charaktesr-skizze.png" type="Texture" id=4]
+[ext_resource path="res://Scripts/StateManager.gd" type="Script" id=5]
+[ext_resource path="res://Sprites/light.png" type="Texture" id=6]
+[ext_resource path="res://Tiles/tileset.tres" type="TileSet" id=7]
+[ext_resource path="res://ruin_add_wall.png" type="Texture" id=8]
+[ext_resource path="res://Sprites/HollowKnight/Lumafly_Lantern0000.png" type="Texture" id=9]
+[ext_resource path="res://Sprites/HollowKnight/lantern_glow_000.png" type="Texture" id=10]
+[ext_resource path="res://Sprites/HollowKnight/butterfly.png" type="Texture" id=11]
+[ext_resource path="res://Sprites/Unbenannt.png" type="Texture" id=12]
+[ext_resource path="res://ruin_lamp_01.png" type="Texture" id=13]
+[ext_resource path="res://Shaders/Fog.shader" type="Shader" id=14]
+[ext_resource path="res://Sprites/HollowKnight/ash_grass_01_blizzard0001.png" type="Texture" id=15]
+[ext_resource path="res://Sprites/HollowKnight/bath_house_0006_bath_stone_04.png" type="Texture" id=16]
+[ext_resource path="res://Sprites/HollowKnight/dash_cloak_corpse0003.png" type="Texture" id=17]
+[ext_resource path="res://Sprites/Background/Nebula Aqua-Pink.png" type="Texture" id=18]
 
-[sub_resource type="StyleBoxFlat" id=2]
+[sub_resource type="StyleBoxFlat" id=1]
 bg_color = Color( 0.478431, 0.858824, 0.321569, 1 )
 corner_radius_top_left = 5
 corner_radius_top_right = 5
 corner_radius_bottom_right = 5
 corner_radius_bottom_left = 5
 
-[sub_resource type="StyleBoxEmpty" id=3]
+[sub_resource type="StyleBoxEmpty" id=2]
 
-[sub_resource type="Shader" id=4]
-code = "shader_type canvas_item;
-render_mode unshaded;
+[sub_resource type="CanvasItemMaterial" id=13]
 
-void light()
-{
-	LIGHT = LIGHT;
-}"
-
-[sub_resource type="ShaderMaterial" id=5]
-shader = SubResource( 4 )
-
-[sub_resource type="RectangleShape2D" id=6]
+[sub_resource type="RectangleShape2D" id=5]
 extents = Vector2( 10, 18.97 )
 
-[sub_resource type="ParticlesMaterial" id=7]
+[sub_resource type="ParticlesMaterial" id=6]
 flag_disable_z = true
 spread = 50.0
 gravity = Vector3( 0, 0, 0 )
@@ -52,10 +43,10 @@ orbit_velocity = 0.0
 orbit_velocity_random = 0.0
 scale = 10.0
 
-[sub_resource type="CanvasItemMaterial" id=8]
+[sub_resource type="CanvasItemMaterial" id=7]
 blend_mode = 1
 
-[sub_resource type="Animation" id=9]
+[sub_resource type="Animation" id=8]
 length = 1.1
 loop = true
 tracks/0/type = "value"
@@ -83,61 +74,40 @@ tracks/1/keys = {
 "values": [ Vector2( 0, 0 ), Vector2( 13.06, -23.76 ) ]
 }
 
-[sub_resource type="CanvasItemMaterial" id=1]
+[sub_resource type="CanvasItemMaterial" id=9]
 blend_mode = 1
+
+[sub_resource type="ShaderMaterial" id=12]
+shader = ExtResource( 14 )
+
+[sub_resource type="OpenSimplexNoise" id=10]
+seed = 3
+octaves = 6
+period = 200.0
+persistence = 0.3
+lacunarity = 2.9
+
+[sub_resource type="NoiseTexture" id=11]
+width = 1920
+height = 1080
+seamless = true
+noise = SubResource( 10 )
 
 [node name="World" type="Node"]
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = ExtResource( 1 )
 
-[node name="Background_1" type="ParallaxBackground" parent="."]
-
-[node name="ParallaxLayer" type="ParallaxLayer" parent="Background_1"]
-light_mask = 3
-position = Vector2( 1216, 2688 )
-z_index = 1
-motion_scale = Vector2( 0.98, 1 )
-
-[node name="ash_grass_01_blizzard0001" type="Sprite" parent="Background_1/ParallaxLayer"]
-editor/display_folded = true
-light_mask = 3
-position = Vector2( -192, 416 )
-z_index = 1
-texture = ExtResource( 2 )
-
-[node name="bath_house_0006_bath_stone_04" type="Sprite" parent="Background_1/ParallaxLayer"]
-light_mask = 3
-position = Vector2( 32, 480 )
-texture = ExtResource( 3 )
-
-[node name="dash_cloak_corpse0003" type="Sprite" parent="Background_1/ParallaxLayer"]
-light_mask = 3
-position = Vector2( 160.893, 450.79 )
-texture = ExtResource( 4 )
-
-[node name="CanvasModulate" type="CanvasModulate" parent="Background_1"]
-color = Color( 0.435294, 0.435294, 0.435294, 1 )
-
-[node name="ParallaxLayer2" type="ParallaxLayer" parent="Background_1"]
-light_mask = 3
-z_index = -1
-
-[node name="Nebula Aqua-Pink" type="Sprite" parent="Background_1/ParallaxLayer2"]
-light_mask = 3
-position = Vector2( 1795.51, 2818.26 )
-z_index = -5
-texture = ExtResource( 5 )
-
 [node name="Node2D" type="Node2D" parent="."]
 z_index = 2
 
 [node name="Player" type="KinematicBody2D" parent="Node2D"]
+editor/display_folded = true
 position = Vector2( 1120, 3136 )
 scale = Vector2( 0.4, 0.4 )
 z_index = 1
 z_as_relative = false
-script = ExtResource( 6 )
+script = ExtResource( 2 )
 
 [node name="Camera2D" type="Camera2D" parent="Node2D/Player"]
 editor/display_folded = true
@@ -153,37 +123,37 @@ drag_margin_right = 0.0
 drag_margin_bottom = 0.0
 
 [node name="Interface" type="CanvasLayer" parent="Node2D/Player/Camera2D"]
-script = ExtResource( 7 )
+script = ExtResource( 3 )
 
 [node name="ProgressBar" type="ProgressBar" parent="Node2D/Player/Camera2D/Interface"]
 margin_left = 16.0
 margin_top = 21.0
 margin_right = 413.0
 margin_bottom = 47.0
-custom_styles/fg = SubResource( 2 )
-custom_styles/bg = SubResource( 3 )
+custom_styles/fg = SubResource( 1 )
+custom_styles/bg = SubResource( 2 )
 custom_colors/font_color = Color( 0, 0, 0, 0 )
 
 [node name="Tween" type="Tween" parent="Node2D/Player/Camera2D/Interface"]
 
 [node name="Sprite" type="Sprite" parent="Node2D/Player"]
-material = SubResource( 5 )
+material = SubResource( 13 )
 z_as_relative = false
-texture = ExtResource( 8 )
+texture = ExtResource( 4 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Node2D/Player"]
 scale = Vector2( 6.12, 8.28 )
 z_index = -1
 z_as_relative = false
-shape = SubResource( 6 )
+shape = SubResource( 5 )
 
 [node name="StateManager" type="Node" parent="Node2D/Player"]
-script = ExtResource( 9 )
+script = ExtResource( 5 )
 
 [node name="Light2D" type="Light2D" parent="Node2D/Player"]
-texture = ExtResource( 10 )
+texture = ExtResource( 6 )
 texture_scale = 1.88
-energy = 0.8
+energy = 0.6
 range_z_max = 1
 range_layer_min = -50
 range_layer_max = 10
@@ -197,60 +167,62 @@ amount = 20
 lifetime = 0.3
 one_shot = true
 explosiveness = 0.82
-process_material = SubResource( 7 )
+process_material = SubResource( 6 )
 
 [node name="ArtBox" type="TileMap" parent="Node2D"]
+editor/display_folded = true
 light_mask = 3
 position = Vector2( 1216, 2688 )
 z_index = 1
 z_as_relative = false
-tile_set = ExtResource( 11 )
+tile_set = ExtResource( 7 )
 format = 1
 tile_data = PoolIntArray( -196573, 1, 0, 131093, 1, 0, 131101, 1, 0, 458761, 2, 0, 458765, 2, 0, 458769, 2, 0, 589817, 2, 0, 589821, 2, 0, 524289, 2, 0, 524293, 2, 0 )
 
 [node name="ruin_add_wall" type="Sprite" parent="Node2D/ArtBox"]
 light_mask = 3
 position = Vector2( -359.812, 393.474 )
-texture = ExtResource( 12 )
+texture = ExtResource( 8 )
 
 [node name="ruin_add_wall2" type="Sprite" parent="Node2D/ArtBox"]
 light_mask = 3
 position = Vector2( -358.736, 153.244 )
-texture = ExtResource( 12 )
+texture = ExtResource( 8 )
 
 [node name="ruin_add_wall3" type="Sprite" parent="Node2D/ArtBox"]
 light_mask = 3
 position = Vector2( -351.164, -81.9792 )
-texture = ExtResource( 12 )
+texture = ExtResource( 8 )
 
 [node name="ruin_add_wall4" type="Sprite" parent="Node2D/ArtBox"]
 light_mask = 3
 position = Vector2( -352, -256 )
 scale = Vector2( 1, 0.766759 )
-texture = ExtResource( 12 )
+texture = ExtResource( 8 )
 
 [node name="BlackBox" type="TileMap" parent="Node2D"]
 z_index = -2
-tile_set = ExtResource( 11 )
+tile_set = ExtResource( 7 )
 format = 1
-tile_data = PoolIntArray( 2031662, 0, 0, 2031663, 0, 0, 2031664, 0, 0, 2031665, 0, 0, 2031666, 0, 0, 2031667, 0, 0, 2097195, 0, 0, 2097196, 0, 0, 2097197, 0, 0, 2097198, 0, 0, 2097199, 0, 0, 2162728, 0, 0, 2162729, 0, 0, 2162730, 0, 0, 2162731, 0, 0, 2162732, 0, 0, 2228262, 0, 0, 2228263, 0, 0, 2228264, 0, 0, 2293796, 0, 0, 2293797, 0, 0, 2293798, 0, 0, 2293799, 0, 0, 2359304, 3, 0, 2359305, 3, 0, 2359306, 3, 0, 2359307, 3, 0, 2359308, 3, 0, 2359309, 0, 0, 2359328, 0, 0, 2359329, 0, 0, 2359330, 0, 0, 2359331, 0, 0, 2359332, 0, 0, 2359333, 0, 0, 2424840, 3, 0, 2424841, 3, 0, 2424842, 3, 0, 2424843, 3, 0, 2424844, 3, 0, 2424845, 0, 0, 2424846, 0, 0, 2424847, 0, 0, 2424848, 0, 0, 2424849, 0, 0, 2424850, 0, 0, 2424851, 0, 0, 2424852, 0, 0, 2424853, 0, 0, 2424854, 0, 0, 2424855, 0, 0, 2424856, 0, 0, 2424857, 0, 0, 2424858, 0, 0, 2424859, 0, 0, 2424860, 0, 0, 2424861, 0, 0, 2424862, 0, 0, 2424863, 0, 0, 2424864, 0, 0, 2490376, 3, 0, 2490377, 3, 0, 2490378, 3, 0, 2490379, 3, 0, 2490380, 3, 0, 2490381, 0, 0, 2555912, 3, 0, 2555913, 3, 0, 2555914, 3, 0, 2555915, 3, 0, 2555916, 3, 0, 2555917, 0, 0, 2621448, 3, 0, 2621449, 3, 0, 2621450, 3, 0, 2621451, 3, 0, 2621452, 3, 0, 2621453, 0, 0, 2686984, 3, 0, 2686985, 3, 0, 2686986, 3, 0, 2686987, 3, 0, 2686988, 3, 0, 2686989, 0, 0, 2752520, 3, 0, 2752521, 3, 0, 2752522, 3, 0, 2752523, 3, 0, 2752524, 3, 0, 2752525, 0, 0, 2818056, 3, 0, 2818057, 3, 0, 2818058, 3, 0, 2818059, 3, 0, 2818060, 3, 0, 2818061, 0, 0, 2883592, 3, 0, 2883593, 3, 0, 2883594, 3, 0, 2883595, 3, 0, 2883596, 3, 0, 2883597, 0, 0, 2949128, 3, 0, 2949129, 3, 0, 2949130, 3, 0, 2949131, 3, 0, 2949132, 3, 0, 2949133, 0, 0, 3014664, 3, 0, 3014665, 3, 0, 3014666, 3, 0, 3014667, 3, 0, 3014668, 3, 0, 3014669, 0, 0, 3080200, 3, 0, 3080201, 3, 0, 3080202, 3, 0, 3080203, 3, 0, 3080204, 3, 0, 3080205, 0, 0, 3145736, 3, 0, 3145737, 3, 0, 3145738, 3, 0, 3145739, 3, 0, 3145740, 3, 0, 3145741, 0, 0, 3211272, 3, 0, 3211273, 3, 0, 3211274, 3, 0, 3211275, 3, 0, 3211276, 3, 0, 3211277, 0, 0, 3276808, 3, 0, 3276809, 3, 0, 3276810, 3, 0, 3276811, 3, 0, 3276812, 3, 0, 3276813, 0, 0, 3276828, 3, 0, 3276829, 3, 0, 3276830, 3, 0, 3276831, 3, 0, 3276832, 3, 0, 3276833, 3, 0, 3276834, 3, 0, 3276835, 3, 0, 3276836, 3, 0, 3276837, 3, 0, 3276838, 3, 0, 3276839, 3, 0, 3342344, 3, 0, 3342345, 3, 0, 3342346, 3, 0, 3342347, 3, 0, 3342348, 3, 0, 3342349, 3, 0, 3342350, 3, 0, 3342351, 3, 0, 3342352, 3, 0, 3342353, 3, 0, 3342354, 3, 0, 3342355, 3, 0, 3342356, 3, 0, 3342357, 3, 0, 3342358, 3, 0, 3342359, 3, 0, 3342360, 3, 0, 3342361, 3, 0, 3342362, 3, 0, 3342363, 3, 0, 3342364, 3, 0, 3342365, 3, 0, 3342366, 3, 0, 3342367, 3, 0, 3342368, 3, 0, 3342369, 3, 0, 3342370, 3, 0, 3342371, 3, 0, 3342372, 3, 0, 3342373, 3, 0, 3342374, 3, 0, 3342375, 3, 0, 3407880, 3, 0, 3407881, 3, 0, 3407882, 3, 0, 3407883, 3, 0, 3407884, 3, 0, 3407885, 3, 0, 3407886, 3, 0, 3407887, 3, 0, 3407888, 3, 0, 3407889, 3, 0, 3407890, 3, 0, 3407891, 3, 0, 3407892, 3, 0, 3407893, 3, 0, 3407894, 3, 0, 3407895, 3, 0, 3407896, 3, 0, 3407897, 3, 0, 3407898, 3, 0, 3407899, 3, 0, 3407900, 3, 0, 3407901, 3, 0, 3407902, 3, 0, 3407903, 3, 0, 3407904, 3, 0, 3407905, 3, 0, 3407906, 3, 0, 3407907, 3, 0, 3407908, 3, 0, 3407909, 3, 0, 3407910, 3, 0, 3407911, 3, 0, 3473416, 3, 0, 3473417, 3, 0, 3473418, 3, 0, 3473419, 3, 0, 3473420, 3, 0, 3473421, 3, 0, 3473422, 3, 0, 3473423, 3, 0, 3473424, 3, 0, 3473425, 3, 0, 3473426, 3, 0, 3473427, 3, 0, 3473428, 3, 0, 3473429, 3, 0, 3473430, 3, 0, 3473431, 3, 0, 3473432, 3, 0, 3473433, 3, 0, 3473434, 3, 0, 3473435, 3, 0, 3473436, 3, 0, 3473437, 3, 0, 3473438, 3, 0, 3473439, 3, 0, 3473440, 3, 0, 3473441, 3, 0, 3473442, 3, 0, 3473443, 3, 0, 3473444, 3, 0, 3473445, 3, 0, 3473446, 3, 0, 3473447, 3, 0, 3538952, 3, 0, 3538953, 3, 0, 3538954, 3, 0, 3538955, 3, 0, 3538956, 3, 0, 3538957, 3, 0, 3538958, 3, 0, 3538959, 3, 0, 3538960, 3, 0, 3538961, 3, 0, 3538962, 3, 0, 3538963, 3, 0, 3538964, 3, 0, 3538965, 3, 0, 3538966, 3, 0, 3538967, 3, 0, 3538968, 3, 0, 3538969, 3, 0, 3538970, 3, 0, 3538971, 3, 0, 3538972, 3, 0, 3538973, 3, 0, 3538974, 3, 0, 3538975, 3, 0, 3538976, 3, 0, 3538977, 3, 0, 3538978, 3, 0, 3538979, 3, 0, 3538980, 3, 0, 3538981, 3, 0, 3538982, 3, 0, 3538983, 3, 0 )
+tile_data = PoolIntArray( 2031662, 0, 0, 2031663, 0, 0, 2031664, 0, 0, 2031665, 0, 0, 2031666, 0, 0, 2031667, 0, 0, 2097195, 0, 0, 2097196, 0, 0, 2097197, 0, 0, 2097198, 0, 0, 2097199, 0, 0, 2162728, 0, 0, 2162729, 0, 0, 2162730, 0, 0, 2162731, 0, 0, 2162732, 0, 0, 2228262, 0, 0, 2228263, 0, 0, 2228264, 0, 0, 2293796, 0, 0, 2293797, 0, 0, 2293798, 0, 0, 2293799, 0, 0, 2359307, 3, 0, 2359308, 0, 0, 2359309, 0, 0, 2359328, 0, 0, 2359329, 0, 0, 2359330, 0, 0, 2359331, 0, 0, 2359332, 0, 0, 2359333, 0, 0, 2424843, 3, 0, 2424844, 0, 0, 2424845, 0, 0, 2424846, 0, 0, 2424847, 0, 0, 2424848, 0, 0, 2424849, 0, 0, 2424850, 0, 0, 2424851, 0, 0, 2424852, 0, 0, 2424853, 0, 0, 2424854, 0, 0, 2424855, 0, 0, 2424856, 0, 0, 2424857, 0, 0, 2424858, 0, 0, 2424859, 0, 0, 2424860, 0, 0, 2424861, 0, 0, 2424862, 0, 0, 2424863, 0, 0, 2424864, 0, 0, 2490379, 3, 0, 2490380, 0, 0, 2490381, 0, 0, 2555915, 3, 0, 2555916, 0, 0, 2555917, 0, 0, 2621451, 3, 0, 2621452, 0, 0, 2621453, 0, 0, 2686987, 3, 0, 2686988, 0, 0, 2686989, 0, 0, 2752523, 3, 0, 2752524, 0, 0, 2752525, 0, 0, 2818059, 3, 0, 2818060, 0, 0, 2818061, 0, 0, 2883595, 3, 0, 2883596, 0, 0, 2883597, 0, 0, 2949131, 3, 0, 2949132, 0, 0, 2949133, 0, 0, 3014667, 3, 0, 3014668, 0, 0, 3014669, 0, 0, 3080203, 3, 0, 3080204, 0, 0, 3080205, 0, 0, 3145739, 3, 0, 3145740, 0, 0, 3145741, 0, 0, 3211275, 3, 0, 3211276, 0, 0, 3211277, 0, 0, 3276811, 3, 0, 3276812, 3, 0, 3276813, 0, 0, 3276828, 0, 0, 3276829, 0, 0, 3276830, 0, 0, 3276831, 0, 0, 3276832, 0, 0, 3276833, 0, 0, 3276834, 0, 0, 3276835, 0, 0, 3276836, 0, 0, 3276837, 0, 0, 3276838, 0, 0, 3276839, 0, 0, 3342347, 3, 0, 3342348, 0, 0, 3342349, 0, 0, 3342350, 0, 0, 3342351, 0, 0, 3342352, 0, 0, 3342353, 0, 0, 3342354, 0, 0, 3342355, 0, 0, 3342356, 0, 0, 3342357, 0, 0, 3342358, 0, 0, 3342359, 0, 0, 3342360, 0, 0, 3342361, 0, 0, 3342362, 0, 0, 3342363, 0, 0, 3342364, 0, 0, 3342365, 3, 0, 3342366, 3, 0, 3342367, 3, 0, 3342368, 3, 0, 3342369, 3, 0, 3342370, 3, 0, 3342371, 3, 0, 3342372, 3, 0, 3342373, 3, 0, 3342374, 3, 0, 3342375, 3, 0, 3407883, 3, 0, 3407884, 3, 0, 3407885, 3, 0, 3407886, 3, 0, 3407887, 3, 0, 3407888, 3, 0, 3407889, 3, 0, 3407890, 3, 0, 3407891, 3, 0, 3407892, 3, 0, 3407893, 3, 0, 3407894, 3, 0, 3407895, 3, 0, 3407896, 3, 0, 3407897, 3, 0, 3407898, 3, 0, 3407899, 3, 0, 3407900, 3, 0, 3407901, 3, 0, 3407902, 3, 0, 3407903, 3, 0, 3407904, 3, 0, 3407905, 3, 0, 3407906, 3, 0, 3407907, 3, 0, 3407908, 3, 0, 3407909, 3, 0, 3407910, 3, 0, 3407911, 3, 0 )
 
 [node name="Lumafly_Lantern0001" type="Sprite" parent="Node2D"]
 editor/display_folded = true
-material = SubResource( 8 )
+material = SubResource( 7 )
 position = Vector2( 2912, 2368 )
-texture = ExtResource( 13 )
+texture = ExtResource( 9 )
 
 [node name="Light2D" type="Light2D" parent="Node2D/Lumafly_Lantern0001"]
-texture = ExtResource( 14 )
+texture = ExtResource( 10 )
 texture_scale = 14.77
 
 [node name="CanvasModulate" type="CanvasModulate" parent="Node2D"]
-color = Color( 0.364706, 0.364706, 0.364706, 1 )
+color = Color( 0.384314, 0.384314, 0.384314, 1 )
 
 [node name="Sprite" type="Sprite" parent="Node2D"]
+editor/display_folded = true
 position = Vector2( 2942.54, 2809.22 )
-texture = ExtResource( 15 )
+texture = ExtResource( 11 )
 offset = Vector2( 0.50543, -0.919527 )
 vframes = 3
 hframes = 4
@@ -258,7 +230,7 @@ frame = 4
 
 [node name="Light2D" type="Light2D" parent="Node2D/Sprite"]
 light_mask = 3
-texture = ExtResource( 16 )
+texture = ExtResource( 12 )
 texture_scale = 2.0
 color = Color( 0.478431, 0.913725, 1, 1 )
 range_layer_min = -2
@@ -266,22 +238,23 @@ range_layer_min = -2
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Node2D/Sprite"]
 autoplay = "Fly"
 playback_speed = 1.9
-anims/Fly = SubResource( 9 )
+anims/Fly = SubResource( 8 )
 
 [node name="ruin_lamp_01" type="Sprite" parent="Node2D"]
+editor/display_folded = true
 position = Vector2( 1717.6, 3050.74 )
 z_index = -3
-texture = ExtResource( 17 )
+texture = ExtResource( 13 )
 
 [node name="Sprite" type="Sprite" parent="Node2D/ruin_lamp_01"]
 self_modulate = Color( 1, 0.905882, 0.67451, 1 )
-material = SubResource( 1 )
+material = SubResource( 9 )
 position = Vector2( -69.2333, -42.3545 )
 scale = Vector2( 0.5, 0.5 )
-texture = ExtResource( 16 )
+texture = ExtResource( 12 )
 
 [node name="Light2D" type="Light2D" parent="Node2D/ruin_lamp_01/Sprite"]
-texture = ExtResource( 16 )
+texture = ExtResource( 12 )
 texture_scale = 12.0
 color = Color( 1, 0.905882, 0.67451, 1 )
 mode = 2
@@ -290,19 +263,54 @@ range_item_cull_mask = 3
 
 [node name="Sprite2" type="Sprite" parent="Node2D/ruin_lamp_01"]
 self_modulate = Color( 1, 0.905882, 0.67451, 1 )
-material = SubResource( 1 )
+material = SubResource( 9 )
 position = Vector2( 66.6805, -39.3608 )
 scale = Vector2( 0.5, 0.5 )
-texture = ExtResource( 16 )
+texture = ExtResource( 12 )
 
 [node name="Light2D" type="Light2D" parent="Node2D/ruin_lamp_01/Sprite2"]
-texture = ExtResource( 16 )
+texture = ExtResource( 12 )
 texture_scale = 12.0
 color = Color( 1, 0.905882, 0.67451, 1 )
 mode = 2
 range_layer_min = -1
 range_item_cull_mask = 3
 
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
+[node name="Sprite2" type="Sprite" parent="Node2D"]
+light_mask = 3
+material = SubResource( 12 )
+position = Vector2( 1986.89, 2727.12 )
+scale = Vector2( 2.96377, 2.22002 )
+z_index = 2
+texture = SubResource( 11 )
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
+
+[node name="ash_grass_01_blizzard0001" type="Sprite" parent="ParallaxBackground/ParallaxLayer"]
+editor/display_folded = true
+light_mask = 3
+position = Vector2( 1024, 3104 )
+z_index = 1
+texture = ExtResource( 15 )
+
+[node name="bath_house_0006_bath_stone_04" type="Sprite" parent="ParallaxBackground/ParallaxLayer"]
+light_mask = 3
+position = Vector2( 1248, 3168 )
+texture = ExtResource( 16 )
+
+[node name="dash_cloak_corpse0003" type="Sprite" parent="ParallaxBackground/ParallaxLayer"]
+light_mask = 3
+position = Vector2( 1376.89, 3138.79 )
+texture = ExtResource( 17 )
+
+[node name="Nebula Aqua-Pink" type="Sprite" parent="ParallaxBackground/ParallaxLayer"]
+position = Vector2( 2018.42, 2841.38 )
+z_index = -1
+texture = ExtResource( 18 )
+
+[node name="CanvasModulate" type="CanvasModulate" parent="ParallaxBackground"]
+color = Color( 0.27451, 0.27451, 0.27451, 1 )
 
 [connection signal="on_health_changed" from="Node2D/Player/StateManager" to="Node2D/Player/Camera2D/Interface" method="_on_StateManager_on_health_changed"]
