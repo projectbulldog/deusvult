@@ -11,6 +11,7 @@ glow_levels/1 = true
 glow_levels/2 = true
 glow_levels/4 = true
 glow_levels/5 = false
-glow_strength = 0.6
+glow_intensity = 0.2
+glow_strength = 0.5
 glow_blend_mode = 1
 

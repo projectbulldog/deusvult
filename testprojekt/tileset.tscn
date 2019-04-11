@@ -4,7 +4,8 @@
 [ext_resource path="res://Sprites/HollowKnight/dream_plat_large0004.png" type="Texture" id=2]
 [ext_resource path="res://Sprites/HollowKnight/deep_crumble_floor.png" type="Texture" id=3]
 
-[sub_resource type="RectangleShape2D" id=3]
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 10.5165, 12.471 )
 
 [node name="Node" type="Node"]
 
@@ -17,7 +18,7 @@ texture = ExtResource( 1 )
 scale = Vector2( 3.2, 3.2 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="black/KinematicBody2D"]
-shape = SubResource( 3 )
+shape = SubResource( 1 )
 
 [node name="Sprite" type="Sprite" parent="."]
 position = Vector2( 104.335, 194.449 )
@@ -28,7 +29,8 @@ position = Vector2( 0, -38.55 )
 scale = Vector2( 8.61, 3.2 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite/KinematicBody2D2"]
-shape = SubResource( 3 )
+position = Vector2( 0.0660648, 3.3185 )
+shape = SubResource( 1 )
 
 [node name="Sprite2" type="Sprite" parent="."]
 position = Vector2( 423.907, 198.317 )
@@ -39,5 +41,6 @@ position = Vector2( 0, -38.55 )
 scale = Vector2( 13.81, 3.2 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite2/KinematicBody2D2"]
-shape = SubResource( 3 )
+position = Vector2( 0, 3.52923 )
+shape = SubResource( 1 )
 
