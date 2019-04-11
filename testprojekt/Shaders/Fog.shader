@@ -17,5 +17,7 @@ void fragment()
 	vec2 distort_sum = (distort1 + distort2) * 0.5;
 	
 	vec4 noise =  texture(TEXTURE, UV + distort_sum);
-	COLOR = noise * 0.3;
+	noise.rgb *= 0.1;
+	COLOR = texture(SCREEN_TEXTURE, SCREEN_UV);
+	COLOR = mix(COLOR, noise, 0.8) * 0.5;
 }
