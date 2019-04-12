@@ -1,9 +1,9 @@
 extends KinematicBody2D
 
-const GRAVITY = 2500
+const GRAVITY = 3500
 const SPEED = 550
-const JUMP_SPEED = -4000
-const MAXJUMP_SPEED = -5000
+const JUMP_SPEED = -5000
+const MAXJUMP_SPEED = -90000
 const MINJUMP_SPEED = -500
 
 var motion = Vector2()
@@ -62,17 +62,24 @@ func _physics_process(delta):
 		self.position.x += direction * 400
 
 	# JUMPING
-	if Input.is_key_pressed(KEY_SPACE) && jumpTime < 0.3 && canJump:
+	
+	if Input.is_key_pressed(KEY_SPACE) && jumpTime < 0.3 && canJump && !is_on_ceiling():
 		motion.y = min(0, motion.y)
 		motion.y = max(motion.y + (JUMP_SPEED * delta), MAXJUMP_SPEED)
 		motion.y = min(motion.y, MINJUMP_SPEED)
 		jumpTime += delta
 	elif !Input.is_key_pressed(KEY_SPACE) && jumpTime > 0:
 		canJump = false
+	if !is_on_floor() && jumpTime == 0:
+		canJump = false
 	
 	if is_on_floor():
 		jumpTime = 0
 		canJump = true
+	if is_on_ceiling():
+		canJump = false
+		motion.y = delta * GRAVITY
+		
 	
 	motion = move_and_slide(motion, Vector2(0, -1))
 
@@ -82,3 +89,4 @@ func attack():
 	
 func takeDamage(damage):
 	$StateManager.take_Damage(damage)
+	

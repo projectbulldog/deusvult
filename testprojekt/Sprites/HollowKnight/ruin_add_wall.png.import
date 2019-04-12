@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/ruin_add_wall.png-a3d2597c5c1183a54483221012ac25ea.stex"
+path="res://.import/ruin_add_wall.png-295d259036369706e1c773ee61cd02ae.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://ruin_add_wall.png"
-dest_files=[ "res://.import/ruin_add_wall.png-a3d2597c5c1183a54483221012ac25ea.stex" ]
+source_file="res://Sprites/HollowKnight/ruin_add_wall.png"
+dest_files=[ "res://.import/ruin_add_wall.png-295d259036369706e1c773ee61cd02ae.stex" ]
 
 [params]
 

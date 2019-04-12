@@ -1,8 +1,19 @@
-[gd_resource type="TileSet" load_steps=5 format=2]
+[gd_resource type="TileSet" load_steps=13 format=2]
 
 [ext_resource path="res://Tiles/Unbenannt.png" type="Texture" id=1]
 [ext_resource path="res://Sprites/HollowKnight/dream_plat_large0004.png" type="Texture" id=2]
-[ext_resource path="res://Sprites/HollowKnight/deep_crumble_floor.png" type="Texture" id=3]
+[ext_resource path="res://Sprites/HollowKnight/ash_grass_01_blizzard0001.png" type="Texture" id=3]
+[ext_resource path="res://Sprites/HollowKnight/bath_house_0006_bath_stone_04.png" type="Texture" id=4]
+[ext_resource path="res://Sprites/HollowKnight/dash_cloak_corpse0003.png" type="Texture" id=5]
+[ext_resource path="res://Sprites/Background/Nebula Aqua-Pink.png" type="Texture" id=6]
+[ext_resource path="res://Sprites/HollowKnight/hive_charm_spikes_0003_1.png" type="Texture" id=7]
+[ext_resource path="res://Sprites/HollowKnight/deep_crumble_floor.png" type="Texture" id=8]
+[ext_resource path="res://Sprites/HollowKnight/ruin_add_wall.png" type="Texture" id=9]
+[ext_resource path="res://Sprites/HollowKnight/Lumafly_Lantern0000.png" type="Texture" id=10]
+[ext_resource path="res://Sprites/HollowKnight/ruin_lamp_01.png" type="Texture" id=11]
+
+
+
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 10.5165, 12.471 )
@@ -41,7 +52,7 @@ extents = Vector2( 10.5165, 12.471 )
 } ]
 1/z_index = 0
 2/name = "Sprite2"
-2/texture = ExtResource( 3 )
+2/texture = ExtResource( 8 )
 2/tex_offset = Vector2( 0, 0 )
 2/modulate = Color( 1, 1, 1, 1 )
 2/region = Rect2( 0, 0, 281, 145 )
@@ -66,4 +77,120 @@ extents = Vector2( 10.5165, 12.471 )
 3/navigation_offset = Vector2( 32, 32 )
 3/shapes = [  ]
 3/z_index = 0
+4/name = "ruin_add_wall"
+4/texture = ExtResource( 9 )
+4/tex_offset = Vector2( 0, 0 )
+4/modulate = Color( 1, 1, 1, 1 )
+4/region = Rect2( 0, 0, 108, 247 )
+4/tile_mode = 0
+4/occluder_offset = Vector2( 54, 123.5 )
+4/navigation_offset = Vector2( 54, 123.5 )
+4/shapes = [  ]
+4/z_index = 0
+5/name = "ruin_add_wall2"
+5/texture = ExtResource( 9 )
+5/tex_offset = Vector2( 0, 0 )
+5/modulate = Color( 1, 1, 1, 1 )
+5/region = Rect2( 0, 0, 108, 247 )
+5/tile_mode = 0
+5/occluder_offset = Vector2( 54, 123.5 )
+5/navigation_offset = Vector2( 54, 123.5 )
+5/shapes = [  ]
+5/z_index = 0
+6/name = "ruin_add_wall3"
+6/texture = ExtResource( 9 )
+6/tex_offset = Vector2( 0, 0 )
+6/modulate = Color( 1, 1, 1, 1 )
+6/region = Rect2( 0, 0, 108, 247 )
+6/tile_mode = 0
+6/occluder_offset = Vector2( 54, 123.5 )
+6/navigation_offset = Vector2( 54, 123.5 )
+6/shapes = [  ]
+6/z_index = 0
+7/name = "ruin_add_wall4"
+7/texture = ExtResource( 9 )
+7/tex_offset = Vector2( 0, 0 )
+7/modulate = Color( 1, 1, 1, 1 )
+7/region = Rect2( 0, 0, 108, 247 )
+7/tile_mode = 0
+7/occluder_offset = Vector2( 54, 123.5 )
+7/navigation_offset = Vector2( 54, 123.5 )
+7/shapes = [  ]
+7/z_index = 0
+8/name = "Lumafly_Lantern0001"
+8/texture = ExtResource( 10 )
+8/tex_offset = Vector2( 0, 0 )
+8/modulate = Color( 1, 1, 1, 1 )
+8/region = Rect2( 0, 0, 122, 134 )
+8/tile_mode = 0
+8/occluder_offset = Vector2( 61, 67 )
+8/navigation_offset = Vector2( 61, 67 )
+8/shapes = [  ]
+8/z_index = 0
+9/name = "ruin_lamp_01"
+9/texture = ExtResource( 11 )
+9/tex_offset = Vector2( 0, 0 )
+9/modulate = Color( 1, 1, 1, 1 )
+9/region = Rect2( 0, 0, 206, 310 )
+9/tile_mode = 0
+9/occluder_offset = Vector2( 103, 155 )
+9/navigation_offset = Vector2( 103, 155 )
+9/shapes = [  ]
+9/z_index = -3
+10/name = "ash_grass_01_blizzard0001"
+10/texture = ExtResource( 3 )
+10/tex_offset = Vector2( 0, 0 )
+10/modulate = Color( 1, 1, 1, 1 )
+10/region = Rect2( 0, 0, 147, 222 )
+10/tile_mode = 0
+10/occluder_offset = Vector2( 73.5, 111 )
+10/navigation_offset = Vector2( 73.5, 111 )
+10/shapes = [  ]
+10/z_index = 1
+11/name = "bath_house_0006_bath_stone_04"
+11/texture = ExtResource( 4 )
+11/tex_offset = Vector2( 0, 0 )
+11/modulate = Color( 1, 1, 1, 1 )
+11/region = Rect2( 0, 0, 183, 90 )
+11/tile_mode = 0
+11/occluder_offset = Vector2( 91.5, 45 )
+11/navigation_offset = Vector2( 91.5, 45 )
+11/shapes = [  ]
+11/z_index = 0
+12/name = "dash_cloak_corpse0003"
+12/texture = ExtResource( 5 )
+12/tex_offset = Vector2( 0, 0 )
+12/modulate = Color( 1, 1, 1, 1 )
+12/region = Rect2( 0, 0, 256, 135 )
+12/tile_mode = 0
+12/occluder_offset = Vector2( 128, 67.5 )
+12/navigation_offset = Vector2( 128, 67.5 )
+12/shapes = [  ]
+12/z_index = 0
+13/name = "Nebula Aqua-Pink"
+13/texture = ExtResource( 6 )
+13/tex_offset = Vector2( 0, 0 )
+13/modulate = Color( 1, 1, 1, 1 )
+13/region = Rect2( 0, 0, 4096, 4096 )
+13/tile_mode = 0
+13/occluder_offset = Vector2( 2048, 2048 )
+13/navigation_offset = Vector2( 2048, 2048 )
+13/shapes = [  ]
+13/z_index = -1
+14/name = "Sprite3"
+14/texture = ExtResource( 7 )
+14/tex_offset = Vector2( 0, 0 )
+14/modulate = Color( 1, 1, 1, 1 )
+14/region = Rect2( 0, 0, 134, 153 )
+14/tile_mode = 0
+14/occluder_offset = Vector2( 67, 76.5 )
+14/navigation_offset = Vector2( 67, 76.5 )
+14/shapes = [ {
+"autotile_coord": Vector2( 0, 0 ),
+"one_way": false,
+"one_way_margin": 1.0,
+"shape": SubResource( 1 ),
+"shape_transform": Transform2D( 6.17, 0, 0, 5.18, 63.44, 78.074 )
+} ]
+14/z_index = 0
 
