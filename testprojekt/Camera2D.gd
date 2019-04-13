@@ -1,19 +1,30 @@
 extends Camera2D
 
-export var shake_power = 4
+export var shake_power = 10
 export var shake_time = 0.2
 var isShake = false
 var curPos
 var elapsedtime = 0
+
+var lookDown = false
 
 func _ready():
     randomize()
     curPos = offset
 
 func _process(delta):
-    if isShake:
-        shake(delta)
+	if isShake:
+		shake(delta)
 		
+	if Input.is_action_pressed("ui_down"):
+		lookDown = true
+	if lookDown && !Input.is_action_pressed("ui_down"):
+		lookDown = false
+	
+	if lookDown:
+		self.offset.y += lerp(self.offset.y, curPos.y + 500, 10) * delta
+	elif self.offset.y != curPos.y:
+		self.offset.y += lerp(self.offset.y, curPos.y, 10) * delta
 func start_shake():
 	isShake = true
 
@@ -25,4 +36,4 @@ func shake(delta):
 	else:
 		isShake = false
 		elapsedtime = 0
-		offset = curPos 
+		offset = curPos

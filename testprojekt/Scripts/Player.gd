@@ -26,9 +26,21 @@ func _ready():
 	dashCooldownTimer.wait_time = dashCooldown
 	self.add_child(dashCooldownTimer)
 	dashCooldownTimer.connect("timeout", self, "on_dashCooldownTimer_timeout")
-
+	set_camera_limits()
+	
 func on_dashCooldownTimer_timeout():
 	canDash = true
+	
+func set_camera_limits():
+	var blackBoxTileMap = get_parent().find_node("BlackBox")
+	var map_limits = blackBoxTileMap.get_used_rect()
+	var map_cellsize = blackBoxTileMap.cell_size
+	print(map_limits)
+	print(map_cellsize)
+	$Camera2D.limit_left = map_limits.position.x * map_cellsize.x
+	$Camera2D.limit_right = map_limits.end.x * map_cellsize.x
+	$Camera2D.limit_top = map_limits.position.y * map_cellsize.y
+	$Camera2D.limit_bottom = map_limits.end.y * map_cellsize.y
 
 func _process(delta):
 	# GRAVITY
@@ -50,7 +62,7 @@ func _process(delta):
 		motion.x = -SPEED
 	else:
 		motion.x = 0
-	
+		
 	# DASH
 	if Input.is_action_pressed("dash") && canDash:
 		canDash = false
