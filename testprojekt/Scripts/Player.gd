@@ -30,18 +30,18 @@ func _ready():
 func on_dashCooldownTimer_timeout():
 	canDash = true
 
-func _physics_process(delta):
+func _process(delta):
 	# GRAVITY
 	motion.y += delta * GRAVITY
 		
 	# LEFT / RIGHT MOVEMENT
-	if Input.is_key_pressed(KEY_D):
+	if Input.is_action_pressed("ui_right"):
 		if direction == DIRECTION.LEFT:
 			self.scale.x *= -1
 			direction = DIRECTION.RIGHT
 
 		motion.x = SPEED
-	elif Input.is_key_pressed(KEY_A):
+	elif Input.is_action_pressed("ui_left"):
 		if direction == DIRECTION.RIGHT:
 			self.scale.x *= -1
 			direction = DIRECTION.LEFT
@@ -51,7 +51,7 @@ func _physics_process(delta):
 		motion.x = 0
 	
 	# DASH
-	if Input.is_key_pressed(KEY_E) && canDash:
+	if Input.is_action_pressed("dash") && canDash:
 		canDash = false
 		dashCooldownTimer.start()
 		$Particles2D.set_as_toplevel(true)
@@ -60,15 +60,15 @@ func _physics_process(delta):
 		material.initial_velocity = dashParticleSpeed * direction
 		$Particles2D.emitting = true
 		self.position.x += direction * 400
+		self.position.y -= delta * GRAVITY
 
 	# JUMPING
-	
-	if Input.is_key_pressed(KEY_SPACE) && jumpTime < 0.3 && canJump && !is_on_ceiling():
+	if Input.is_action_pressed("jump") && jumpTime < 0.3 && canJump && !is_on_ceiling():
 		motion.y = min(0, motion.y)
 		motion.y = max(motion.y + (JUMP_SPEED * delta), MAXJUMP_SPEED)
 		motion.y = min(motion.y, MINJUMP_SPEED)
 		jumpTime += delta
-	elif !Input.is_key_pressed(KEY_SPACE) && jumpTime > 0:
+	elif !Input.is_action_pressed("jump") && jumpTime > 0:
 		canJump = false
 	if !is_on_floor() && jumpTime == 0:
 		canJump = false
@@ -79,10 +79,9 @@ func _physics_process(delta):
 	if is_on_ceiling():
 		canJump = false
 		motion.y = delta * GRAVITY
-		
 	
 	motion = move_and_slide(motion, Vector2(0, -1))
-
+	$Camera2D.align()
 func attack():
 	# todo
 	pass
