@@ -32,8 +32,9 @@ func on_dashCooldownTimer_timeout():
 
 func _process(delta):
 	# GRAVITY
+	var lastMotionY = motion.y
 	motion.y += delta * GRAVITY
-		
+	
 	# LEFT / RIGHT MOVEMENT
 	if Input.is_action_pressed("ui_right"):
 		if direction == DIRECTION.LEFT:
@@ -82,6 +83,10 @@ func _process(delta):
 	
 	motion = move_and_slide(motion, Vector2(0, -1))
 	$Camera2D.align()
+	
+	if(lastMotionY - motion.y) > 2500:
+		$Camera2D.start_shake()
+
 func attack():
 	# todo
 	pass
