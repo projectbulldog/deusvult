@@ -15,7 +15,11 @@ var jumpTime = 0
 var canJump = true
 
 var canDash = true
-var dashCooldown = 3.0
+var isDashing = false
+var dashTimeLength = 0
+var maxDashTime = 0.15
+
+var dashCooldown = 2.0
 var dashCooldownTimer
 
 var dashParticleSpeed = -500
@@ -35,8 +39,6 @@ func set_camera_limits():
 	var blackBoxTileMap = get_parent().find_node("BlackBox")
 	var map_limits = blackBoxTileMap.get_used_rect()
 	var map_cellsize = blackBoxTileMap.cell_size
-	print(map_limits)
-	print(map_cellsize)
 	$Camera2D.limit_left = map_limits.position.x * map_cellsize.x
 	$Camera2D.limit_right = map_limits.end.x * map_cellsize.x
 	$Camera2D.limit_top = map_limits.position.y * map_cellsize.y
@@ -66,15 +68,22 @@ func _process(delta):
 	# DASH
 	if Input.is_action_pressed("dash") && canDash:
 		canDash = false
+		isDashing = true
 		dashCooldownTimer.start()
 		$Particles2D.set_as_toplevel(true)
 		$Particles2D.position = self.position
 		var material : ParticlesMaterial = $Particles2D.process_material
 		material.initial_velocity = dashParticleSpeed * direction
 		$Particles2D.emitting = true
-		self.position.x += direction * 400
-		self.position.y -= delta * GRAVITY
-
+	
+	if isDashing && dashTimeLength <= maxDashTime:
+		motion.y = 0
+		motion.x = direction * SPEED * 5.0
+		dashTimeLength += delta
+	if isDashing && dashTimeLength > maxDashTime:
+		isDashing = false
+		dashTimeLength = 0
+	
 	# JUMPING
 	if Input.is_action_pressed("jump") && jumpTime < 0.3 && canJump && !is_on_ceiling():
 		motion.y = min(0, motion.y)
