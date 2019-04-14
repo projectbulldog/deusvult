@@ -16,9 +16,9 @@ func _process(delta):
 	if isShake:
 		shake(delta)
 		
-	if Input.is_action_pressed("ui_down"):
+	if Input.is_action_pressed("lookDown"):
 		lookDown = true
-	if lookDown && !Input.is_action_pressed("ui_down"):
+	if lookDown && !Input.is_action_pressed("lookDown"):
 		lookDown = false
 	
 	if lookDown:

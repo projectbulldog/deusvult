@@ -70,10 +70,6 @@ func _process(delta):
 		canDash = false
 		isDashing = true
 		dashCooldownTimer.start()
-		$Particles2D.set_as_toplevel(true)
-		$Particles2D.position = self.position
-		var material : ParticlesMaterial = $Particles2D.process_material
-		material.initial_velocity = dashParticleSpeed * direction
 		$Particles2D.emitting = true
 	
 	if isDashing && dashTimeLength <= maxDashTime:
