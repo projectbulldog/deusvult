@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/discovery.wav-475fa3facebd2678f07322510a6d1e1f.sample"
+
+[deps]
+
+source_file="res://discovery.wav"
+dest_files=[ "res://.import/discovery.wav-475fa3facebd2678f07322510a6d1e1f.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=true
+edit/normalize=true
+edit/loop=false
+compress/mode=0

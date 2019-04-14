@@ -3,8 +3,9 @@ extends KinematicBody2D
 const GRAVITY = 3500
 const SPEED = 550
 const JUMP_SPEED = -5000
-const MAXJUMP_SPEED = -90000
+const MAXJUMP_SPEED = -10000
 const MINJUMP_SPEED = -500
+const MAXJUMPMOTION = -900
 
 var motion = Vector2()
 
@@ -82,9 +83,11 @@ func _process(delta):
 	
 	# JUMPING
 	if Input.is_action_pressed("jump") && jumpTime < 0.3 && canJump && !is_on_ceiling():
-		motion.y = min(0, motion.y)
 		motion.y = max(motion.y + (JUMP_SPEED * delta), MAXJUMP_SPEED)
 		motion.y = min(motion.y, MINJUMP_SPEED)
+		motion.y = max(motion.y, MAXJUMPMOTION)
+		
+		print(motion.y)
 		jumpTime += delta
 	elif !Input.is_action_pressed("jump") && jumpTime > 0:
 		canJump = false
