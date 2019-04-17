@@ -25,6 +25,7 @@ func _process(delta):
 		self.offset.y += lerp(self.offset.y, curPos.y + 500, 10) * delta
 	elif self.offset.y != curPos.y:
 		self.offset.y += lerp(self.offset.y, curPos.y, 10) * delta
+
 func start_shake():
 	isShake = true
 
