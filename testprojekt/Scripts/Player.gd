@@ -22,8 +22,6 @@ var maxDashTime = 0.15
 var dashCooldown = 2.0
 var dashCooldownTimer
 
-var dashParticleSpeed = -500
-
 func _ready():
 	dashCooldownTimer = Timer.new()
 	dashCooldownTimer.one_shot = true

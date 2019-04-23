@@ -5,7 +5,7 @@
 [ext_resource path="res://Camera2D.gd" type="Script" id=3]
 [ext_resource path="res://Scripts/Interface.gd" type="Script" id=4]
 [ext_resource path="res://Sounds/Christopher Larkin - Hollow Knight (Original Soundtrack) - 03 Crossroads.wav" type="AudioStream" id=5]
-[ext_resource path="res://Sprites/charaktesr-skizze.png" type="Texture" id=6]
+[ext_resource path="res://charakter.png" type="Texture" id=6]
 [ext_resource path="res://Scripts/StateManager.gd" type="Script" id=7]
 [ext_resource path="res://Sprites/light.png" type="Texture" id=8]
 [ext_resource path="res://dash_effect_020002.png" type="Texture" id=9]
@@ -169,7 +169,7 @@ z_index = 2
 "Player",
 "Damageable",
 ]]
-position = Vector2( 7206.4, 3520 )
+position = Vector2( 2816, 3360 )
 scale = Vector2( 0.4, 0.4 )
 z_index = 1
 z_as_relative = false
@@ -211,6 +211,7 @@ autoplay = true
 
 [node name="Sprite" type="Sprite" parent="Node2D/Player"]
 material = SubResource( 3 )
+scale = Vector2( 0.3, 0.3 )
 z_as_relative = false
 texture = ExtResource( 6 )
 
