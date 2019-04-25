@@ -25,8 +25,9 @@ settings/fps/force_fps=144
 
 [display]
 
+window/size/width=1920
+window/size/height=1080
 window/vsync/use_vsync=false
-window/stretch/aspect="expand"
 
 [input]
 
