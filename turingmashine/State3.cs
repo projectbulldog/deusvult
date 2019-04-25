@@ -1,0 +1,40 @@
+using Godot;
+using System;
+
+public class State3  : State
+{
+    public override StateReturn Calculate(TuringMachine turingMachine)
+    {
+        var tapes = turingMachine.ReadTapes();
+        var result = new StateReturn();
+        if(tapes[0] == 'I' && tapes[1] == 'I' && tapes[2] == '_')
+      {
+          result.newState = 3;
+          result.tape3Character = 'I';
+          result.tape2Direction = DirectionEnum.Left;
+          result.tape3Direction = DirectionEnum.Right;
+      }
+      else if(tapes[0] == 'I' && tapes[1] == '_' && tapes[2] == '_')
+        {
+          result.newState = 4;
+          result.tape1Character = '_';
+          result.tape1Direction = DirectionEnum.Left;
+          result.tape2Direction = DirectionEnum.Right;
+        }
+        else if(tapes[0] == '_' && tapes[1] == '_' && tapes[2] == '_')
+        {
+          result.newState = 3;
+            this.SelfModulate = Color.ColorN("green");
+            result.isAccepted = true;
+            result.isFinished = true;
+        }
+        else if(tapes[0] == '_' && tapes[1] == 'I' && tapes[2] == '_')
+        {
+          result.newState = 3;
+            this.SelfModulate = Color.ColorN("green");
+            result.isAccepted = true;
+            result.isFinished = true;
+        }
+        return result;
+    }
+}

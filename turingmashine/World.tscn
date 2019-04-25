@@ -1,10 +1,14 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://TuringMashine.gd" type="Script" id=1]
 [ext_resource path="res://sprite.png" type="Texture" id=2]
 [ext_resource path="res://State0.cs" type="Script" id=3]
-[ext_resource path="res://Camera2D.gd" type="Script" id=4]
-[ext_resource path="res://Tape.cs" type="Script" id=5]
+[ext_resource path="res://State1.cs" type="Script" id=4]
+[ext_resource path="res://State2.cs" type="Script" id=5]
+[ext_resource path="res://State3.cs" type="Script" id=6]
+[ext_resource path="res://Sate4.cs" type="Script" id=7]
+[ext_resource path="res://Camera2D.gd" type="Script" id=8]
+[ext_resource path="res://Tape.cs" type="Script" id=9]
 
 [node name="World" type="Node2D"]
 
@@ -12,14 +16,35 @@
 script = ExtResource( 1 )
 
 [node name="state0" type="Sprite" parent="TuringMashine"]
-position = Vector2( 122.55, 343.901 )
+position = Vector2( 72.1993, 328.796 )
 texture = ExtResource( 2 )
 script = ExtResource( 3 )
 
+[node name="state1" type="Sprite" parent="TuringMashine"]
+position = Vector2( 192.178, 325.669 )
+texture = ExtResource( 2 )
+script = ExtResource( 4 )
+
+[node name="state2" type="Sprite" parent="TuringMashine"]
+position = Vector2( 308.594, 330.326 )
+texture = ExtResource( 2 )
+script = ExtResource( 5 )
+
+[node name="state3" type="Sprite" parent="TuringMashine"]
+position = Vector2( 408.167, 333.673 )
+texture = ExtResource( 2 )
+script = ExtResource( 6 )
+
+[node name="state4" type="Sprite" parent="TuringMashine"]
+position = Vector2( 523.065, 317.241 )
+texture = ExtResource( 2 )
+script = ExtResource( 7 )
+
 [node name="Camera2D" type="Camera2D" parent="TuringMashine"]
+editor/display_folded = true
 anchor_mode = 0
 current = true
-script = ExtResource( 4 )
+script = ExtResource( 8 )
 
 [node name="UI" type="Control" parent="TuringMashine/Camera2D"]
 margin_right = 1024.0
@@ -79,20 +104,20 @@ margin_left = 100.0
 margin_top = 80.0
 margin_right = 200.0
 margin_bottom = 97.8942
-script = ExtResource( 5 )
+script = ExtResource( 9 )
 
 [node name="tape2" type="RichTextLabel" parent="TuringMashine/Camera2D/UI"]
 margin_left = 100.0
 margin_top = 120.0
 margin_right = 200.0
 margin_bottom = 137.0
-script = ExtResource( 5 )
+script = ExtResource( 9 )
 
 [node name="tape3" type="RichTextLabel" parent="TuringMashine/Camera2D/UI"]
 margin_left = 100.0
 margin_top = 160.0
 margin_right = 200.0
 margin_bottom = 177.0
-script = ExtResource( 5 )
+script = ExtResource( 9 )
 
 [connection signal="draw" from="TuringMashine/Camera2D" to="TuringMashine/Camera2D" method="_on_Camera2D_draw"]

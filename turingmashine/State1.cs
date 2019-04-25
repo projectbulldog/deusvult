@@ -3,19 +3,28 @@ using System;
 
 public class State1 : State
 {
-    // Declare member variables here. Examples:
-    // private int a = 2;
-    // private string b = "text";
-
-    // Called when the node enters the scene tree for the first time.
-    public override void _Ready()
+    public override StateReturn Calculate(TuringMachine turingMachine)
     {
-        
+        var tapes = turingMachine.ReadTapes();
+        var result = new StateReturn();
+        if(tapes[0] == 'I' && tapes[1] == '_' && tapes[2] == '_')
+        {
+            result.newState = 1;
+            result.tape1Direction = DirectionEnum.Right;
+            result.tape2Character = 'I';
+            result.tape2Direction = DirectionEnum.Right;
+        }
+        else if(tapes[0] == '_' && tapes[1] == '_' && tapes[2] == '_')
+        {
+            result.newState = 2;
+            result.tape1Direction = DirectionEnum.Left;
+            result.tape2Direction = DirectionEnum.Left;
+        }
+        else
+        {
+            result.isFinished = true;
+            result.newState = 1;
+        }
+        return result;
     }
-
-//  // Called every frame. 'delta' is the elapsed time since the previous frame.
-//  public override void _Process(float delta)
-//  {
-//      
-//  }
 }
