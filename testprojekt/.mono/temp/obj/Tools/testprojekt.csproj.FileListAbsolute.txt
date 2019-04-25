@@ -1,0 +1,6 @@
+D:\godot\testprojekt\.mono\temp\bin\Tools\testprojekt.dll
+D:\godot\testprojekt\.mono\temp\bin\Tools\testprojekt.pdb
+D:\godot\testprojekt\.mono\temp\obj\Tools\testprojekt.csprojAssemblyReference.cache
+D:\godot\testprojekt\.mono\temp\obj\Tools\testprojekt.csproj.CoreCompileInputs.cache
+D:\godot\testprojekt\.mono\temp\obj\Tools\testprojekt.dll
+D:\godot\testprojekt\.mono\temp\obj\Tools\testprojekt.pdb
