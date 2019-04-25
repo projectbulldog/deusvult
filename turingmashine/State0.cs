@@ -3,7 +3,7 @@ using System;
 
 public class State0 : State
 {
-    public override void _Ready()
+    public override void Enter()
     {
         
     }

@@ -1,0 +1,6 @@
+D:\godot\turingmashine\.mono\temp\obj\Tools\turingmachine.csprojAssemblyReference.cache
+D:\godot\turingmashine\.mono\temp\obj\Tools\turingmachine.csproj.CoreCompileInputs.cache
+D:\godot\turingmashine\.mono\temp\bin\Tools\turingmachine.dll
+D:\godot\turingmashine\.mono\temp\bin\Tools\turingmachine.pdb
+D:\godot\turingmashine\.mono\temp\obj\Tools\turingmachine.dll
+D:\godot\turingmashine\.mono\temp\obj\Tools\turingmachine.pdb

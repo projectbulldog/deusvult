@@ -26,14 +26,11 @@ func start_calculate():
 	$Camera2D/UI/tape2.text = ""
 	$Camera2D/UI/tape3.text = ""
 	
-	text_input = $Camera2D/UI/Control/TextEdit.text
-	var textArray = text_input.split("*")
+			
+	var turingMachine = preload("res://TuringMachine.cs").new()
 	
-	for i in range(0, textArray.size()):
-		for j in range(0, textArray[i]):
-			$Camera2D/UI/tape1.text += "I"
-		if(i < textArray.size()-1):
-			$Camera2D/UI/tape1.text += "*"
+	var states = [$state0]
+	turingMachine.Start($Camera2D/UI/Control/TextEdit.text, $Camera2D/UI/tape1, $Camera2D/UI/tape2, $Camera2D/UI/tape3, states)
 	
 	
 	

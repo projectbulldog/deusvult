@@ -1,9 +1,9 @@
 using Godot;
 using System;
 
-public class State : Node2D
+public abstract class State : Sprite
 {
-    public override void _Ready()
+    public virtual void Enter()
     {
         
     }
