@@ -33,7 +33,8 @@ func start_calculate():
 	$state3.self_modulate = ColorN("white")
 	$state4.self_modulate = ColorN("white")
 	var states = [$state0, $state1, $state2, $state3, $state4]
-	turingMachine.Start($Camera2D/UI/Control/TextEdit.text, $Camera2D/UI/tape1, $Camera2D/UI/tape2, $Camera2D/UI/tape3, states)
+	var interval : float = $Camera2D/UI/TextEdit.text
+	turingMachine.Start(interval, $Camera2D/UI/Control/TextEdit.text, $Camera2D/UI/tape1, $Camera2D/UI/tape2, $Camera2D/UI/tape3, states)
 	
 	
 	

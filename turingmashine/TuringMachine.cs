@@ -11,7 +11,7 @@ public class TuringMachine : Node2D
 
     private State[] states;
 
-    public void Start(string input, Tape tape1, Tape tape2, Tape tape3, object[] allStates)
+    public void Start(float timerInterval, string input, Tape tape1, Tape tape2, Tape tape3, object[] allStates)
     {
         var children = this.GetParent().GetChildren();
         foreach(var child in children)
@@ -37,7 +37,7 @@ public class TuringMachine : Node2D
         this.tape2.Text = "";
         this.tape3.Text = "";
         var timer = new Timer();
-        timer.WaitTime = 0.2f;
+        timer.WaitTime = timerInterval;
         timer.Connect("timeout", this, "NextStep");
 
         var splittedNumbers = input.Split('*');
