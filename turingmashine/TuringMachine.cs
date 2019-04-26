@@ -48,9 +48,6 @@ public class TuringMachine : Node2D
         this.tape1.CurrentReaderPosition = 15;
         this.tape2.CurrentReaderPosition = 15;
         this.tape3.CurrentReaderPosition = 15;
-        this.tape1.Text += "_______________";
-        this.tape2.Text += "_______________";
-        this.tape3.Text += "_______________";
         
         this.tape1.UpdateTextPosition();
         this.tape2.UpdateTextPosition();
@@ -78,19 +75,25 @@ public class TuringMachine : Node2D
     public void NextStep()
     {
         var result = this.currentState.Calculate(this);
-        if(result.isFinished)
-        {
-            timer.Stop();
-            var calculateButton = this.GetParent().GetNode<Button>(new NodePath("Camera2D/UI/Control/CalculateAll"));
-            calculateButton.Text = "Berechnen";
-            this.currentState.SelfModulate = Color.ColorN("green");
-            return;
-        }
         if(this.currentState != states[result.newState])
         {
             this.currentState.LeaveState();
             this.currentState = this.states[result.newState];
             this.currentState.EnterState();
+        }
+        if(result.isFinished)
+        {
+            timer.Stop();
+            var calculateButton = this.GetParent().GetNode<Button>(new NodePath("Camera2D/UI/Control/CalculateAll"));
+            calculateButton.Text = "Berechnen";
+            if(this.currentState.IsAccepted)
+            {
+                this.currentState.SelfModulate = Color.ColorN("green");
+               var particles= this.GetParent().GetNode<Particles2D>(new NodePath("Success"));
+               particles.Position = this.currentState.Position;
+               particles.Emitting = true;
+            }
+            return;
         }
 
         if(result.tape1Character != '\0')   this.tape1.ReplaceCurrentCharacter(result.tape1Character);
@@ -109,5 +112,10 @@ public class TuringMachine : Node2D
         tapeCharacters[1] = this.tape2.ReadCurrentPosition();
         tapeCharacters[2] = this.tape3.ReadCurrentPosition();
         return tapeCharacters;
+    }
+
+    public void ChangeWaitTimer(float newInterval)
+    {
+        this.timer.WaitTime = newInterval;
     }
 }
