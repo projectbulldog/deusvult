@@ -25,6 +25,12 @@ public class State2 : State
             result.tape1Direction = DirectionEnum.Left;
             result.tape1Character = '_';
         }
+        else if(tapes[0] == '*' && tapes[1] == '_' && tapes[2] == '_')
+        {
+            result.newState = 3;
+            result.tape1Direction = DirectionEnum.Left;
+            result.tape1Character = '_';
+        }
         else
         {
             result.isFinished = true;

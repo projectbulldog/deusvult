@@ -1,8 +1,13 @@
 using Godot;
 using System;
 
-public class Sate4: State
+public class State4: State
 {
+    public State4()
+    {
+        this.isAccepted = true;
+    }
+
     public override StateReturn Calculate(TuringMachine turingMachine)
     {
         var tapes = turingMachine.ReadTapes();
@@ -20,14 +25,12 @@ public class Sate4: State
         else if(tapes[0] == '_' && tapes[1] == '_' && tapes[2] == '_')
         {
           result.newState = 4;
-            this.SelfModulate = Color.ColorN("green");
             result.isAccepted = true;
             result.isFinished = true;
         }
         else if(tapes[0] == '_' && tapes[1] == 'I' && tapes[2] == '_')
         {
           result.newState = 4;
-            this.SelfModulate = Color.ColorN("green");
             result.isAccepted = true;
             result.isFinished = true;
         }

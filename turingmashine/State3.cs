@@ -3,6 +3,11 @@ using System;
 
 public class State3  : State
 {
+    public State3()
+    {
+        this.isAccepted = true;
+    }
+    
     public override StateReturn Calculate(TuringMachine turingMachine)
     {
         var tapes = turingMachine.ReadTapes();
@@ -24,14 +29,12 @@ public class State3  : State
         else if(tapes[0] == '_' && tapes[1] == '_' && tapes[2] == '_')
         {
           result.newState = 3;
-            this.SelfModulate = Color.ColorN("green");
             result.isAccepted = true;
             result.isFinished = true;
         }
         else if(tapes[0] == '_' && tapes[1] == 'I' && tapes[2] == '_')
         {
           result.newState = 3;
-            this.SelfModulate = Color.ColorN("green");
             result.isAccepted = true;
             result.isFinished = true;
         }

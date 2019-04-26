@@ -11,21 +11,20 @@ public class TuringMachine : Node2D
 
     private State[] states;
 
-    public void Start(float timerInterval, string input, Tape tape1, Tape tape2, Tape tape3, object[] allStates)
+    private Timer timer;
+
+    public TuringMachine()
     {
-        var children = this.GetParent().GetChildren();
-        foreach(var child in children)
-        {
-            if(child != this && child.GetType() == typeof(TuringMachine))
-            {
-               var underChilds = ((TuringMachine)child).GetChildren();
-               foreach(var v in underChilds)
-               {
-                   ((Timer)v).RemoveAndSkip();
-               }
-               ((TuringMachine)child).RemoveAndSkip();
-            }
-        }
+        this.timer = new Timer();
+        timer.WaitTime = 0.2f;
+        timer.Connect("timeout", this, "NextStep");
+        this.AddChild(timer);
+    }
+
+    public void Reset(float timerInterval, string input, Tape tape1, Tape tape2, Tape tape3, object[] allStates)
+    {
+        timer.Stop();
+        timer.WaitTime = timerInterval;
         this.tape1 = tape1;
         this.tape2 = tape2;
         this.tape3 = tape3;
@@ -36,9 +35,6 @@ public class TuringMachine : Node2D
         this.tape1.Text = "";
         this.tape2.Text = "";
         this.tape3.Text = "";
-        var timer = new Timer();
-        timer.WaitTime = timerInterval;
-        timer.Connect("timeout", this, "NextStep");
 
         var splittedNumbers = input.Split('*');
         for(int j = 0; j < splittedNumbers.Length; j++)
@@ -61,19 +57,35 @@ public class TuringMachine : Node2D
             this.states[i] = (State)allStates[i];
         }
         this.currentState = states[0];
-        this.AddChild(timer);
-        timer.Start();
         this.currentState.EnterState();
+    }
+
+    public void AutoStart()
+    {
+        timer.Start();
+    }
+
+    public void AutoStop()
+    {
+        timer.Stop();
     }
 
     public void NextStep()
     {
         var result = this.currentState.Calculate(this);
+        if(result.isFinished)
+        {
+            timer.Stop();
+            var calculateButton = this.GetParent().GetNode<Button>(new NodePath("Camera2D/UI/Control/CalculateAll"));
+            calculateButton.Text = "Berechnen";
+            this.currentState.SelfModulate = Color.ColorN("green");
+            return;
+        }
         if(this.currentState != states[result.newState])
         {
             this.currentState.LeaveState();
-        this.currentState = this.states[result.newState];
-        this.currentState.EnterState();
+            this.currentState = this.states[result.newState];
+            this.currentState.EnterState();
         }
 
         if(result.tape1Character != '\0')   this.tape1.ReplaceCurrentCharacter(result.tape1Character);
