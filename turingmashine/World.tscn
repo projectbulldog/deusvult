@@ -128,7 +128,7 @@ script = ExtResource( 9 )
 margin_left = 100.0
 margin_top = 160.0
 margin_right = 600.0
-margin_bottom = 177.0
+margin_bottom = 241.0
 script = ExtResource( 9 )
 
 [node name="TextEdit" type="LineEdit" parent="TuringMashine/Camera2D/UI"]

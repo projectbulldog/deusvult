@@ -28,13 +28,10 @@ public class TuringMachine : Node2D
         this.tape1 = tape1;
         this.tape2 = tape2;
         this.tape3 = tape3;
-        this.tape1.CurrentRaderPosition = 0;
-        this.tape2.CurrentRaderPosition = 0;
-        this.tape3.CurrentRaderPosition = 0;
 
-        this.tape1.Text = "";
-        this.tape2.Text = "";
-        this.tape3.Text = "";
+        this.tape1.Text = "_______________";
+        this.tape2.Text = "_______________";
+        this.tape3.Text = "_______________";
 
         var splittedNumbers = input.Split('*');
         for(int j = 0; j < splittedNumbers.Length; j++)
@@ -46,6 +43,14 @@ public class TuringMachine : Node2D
             }
             if(j < splittedNumbers.Length - 1)  this.tape1.Text += "*";
         }
+        
+        
+        this.tape1.CurrentReaderPosition = 15;
+        this.tape2.CurrentReaderPosition = 15;
+        this.tape3.CurrentReaderPosition = 15;
+        this.tape1.Text += "_______________";
+        this.tape2.Text += "_______________";
+        this.tape3.Text += "_______________";
         
         this.tape1.UpdateTextPosition();
         this.tape2.UpdateTextPosition();
@@ -92,9 +97,9 @@ public class TuringMachine : Node2D
         if(result.tape2Character != '\0')   this.tape2.ReplaceCurrentCharacter(result.tape2Character);
         if(result.tape3Character != '\0')   this.tape3.ReplaceCurrentCharacter(result.tape3Character);
 
-        this.tape1.CurrentRaderPosition += (int)result.tape1Direction;
-        this.tape2.CurrentRaderPosition += (int)result.tape2Direction;
-        this.tape3.CurrentRaderPosition += (int)result.tape3Direction;
+        this.tape1.CurrentReaderPosition += (int)result.tape1Direction;
+        this.tape2.CurrentReaderPosition += (int)result.tape2Direction;
+        this.tape3.CurrentReaderPosition += (int)result.tape3Direction;
     }
 
     public char[] ReadTapes()
