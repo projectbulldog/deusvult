@@ -36,7 +36,7 @@ func _on_Read_pressed():
 	$state3.self_modulate = ColorN("white")
 	$state4.self_modulate = ColorN("white")
 	var states = [$state0, $state1, $state2, $state3, $state4]
-	var interval : float = 2 * pow(10, $Camera2D/UI/HSlider.value)
+	var interval : float = 2 * pow(10, -$Camera2D/UI/HSlider.value)
 	turingMachine.Reset(interval, $Camera2D/UI/Control/TextEdit.text, $Camera2D/UI/tape1, $Camera2D/UI/tape2, $Camera2D/UI/tape3, states)
 
 
@@ -46,4 +46,4 @@ func _on_TextEdit_text_changed(new_text):
 
 
 func _on_HSlider_value_changed(value):
-	turingMachine.ChangeWaitTimer(2 * pow(10, value))
+	turingMachine.ChangeWaitTimer(2 * pow(10, -value))

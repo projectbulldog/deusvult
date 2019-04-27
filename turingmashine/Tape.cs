@@ -23,6 +23,14 @@ public class Tape : RichTextLabel
 
     public void UpdateTextPosition()
     {
+        if(this.CurrentReaderPosition < 15)
+        {
+            while(this.CurrentReaderPosition < 15)
+            {
+                this.Text = this.Text.Insert(0, "_");
+                this.CurrentReaderPosition++;
+            }
+        }
         var neededUnderlinesAfter = this.CurrentReaderPosition + 15 - this.Text.Length;
         for(int i = 0; i <= neededUnderlinesAfter; i++)
         {

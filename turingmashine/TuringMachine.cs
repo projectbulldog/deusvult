@@ -28,10 +28,9 @@ public class TuringMachine : Node2D
         this.tape1 = tape1;
         this.tape2 = tape2;
         this.tape3 = tape3;
-
-        this.tape1.Text = "_______________";
-        this.tape2.Text = "_______________";
-        this.tape3.Text = "_______________";
+        this.tape1.Text = "";
+        this.tape2.Text = "";
+        this.tape3.Text = "";
 
         var splittedNumbers = input.Split('*');
         for(int j = 0; j < splittedNumbers.Length; j++)
@@ -44,11 +43,9 @@ public class TuringMachine : Node2D
             if(j < splittedNumbers.Length - 1)  this.tape1.Text += "*";
         }
         
-        
-        this.tape1.CurrentReaderPosition = 15;
-        this.tape2.CurrentReaderPosition = 15;
-        this.tape3.CurrentReaderPosition = 15;
-        
+        this.tape1.CurrentReaderPosition = 0;
+        this.tape2.CurrentReaderPosition = 0;
+        this.tape3.CurrentReaderPosition = 0;
         this.tape1.UpdateTextPosition();
         this.tape2.UpdateTextPosition();
         this.tape3.UpdateTextPosition();
