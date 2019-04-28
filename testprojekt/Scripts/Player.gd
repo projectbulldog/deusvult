@@ -1,7 +1,7 @@
 extends KinematicBody2D
 
 const GRAVITY = 3500
-const SPEED = 500
+const SPEED = 600
 const JUMP_SPEED = -5000
 const MAXJUMP_SPEED = -10000
 const MAXJUMPMOTION = -1100
