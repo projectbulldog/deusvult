@@ -19,6 +19,10 @@ config/name="turingmachine"
 run/main_scene="res://World.tscn"
 config/icon="res://icon.png"
 
+[debug]
+
+settings/fps/force_fps=60
+
 [rendering]
 
 environment/default_clear_color=Color( 0, 0, 0, 1 )
