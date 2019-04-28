@@ -40,16 +40,16 @@ public class TuringMachine : Node2D
         this.tape3.Text = "";
 
         var splittedNumbers = input.Split('*');
-        for(int j = 0; j < splittedNumbers.Length; j++)
+        for (int j = 0; j < splittedNumbers.Length; j++)
         {
             int number = splittedNumbers[j] != null ? int.Parse(splittedNumbers[j]) : 0;
-            for(int i = 0; i < (int)number; i++)
+            for (int i = 0; i < (int)number; i++)
             {
                 this.tape1.Text += "I";
             }
-            if(j < splittedNumbers.Length - 1)  this.tape1.Text += "*";
+            if (j < splittedNumbers.Length - 1) this.tape1.Text += "*";
         }
-        
+
         this.tape1.CurrentReaderPosition = 0;
         this.tape2.CurrentReaderPosition = 0;
         this.tape3.CurrentReaderPosition = 0;
@@ -58,7 +58,7 @@ public class TuringMachine : Node2D
         this.tape3.UpdateTextPosition();
 
         this.states = new State[allStates.Length];
-        for(int i = 0; i < allStates.Length; i++)
+        for (int i = 0; i < allStates.Length; i++)
         {
             this.states[i] = (State)allStates[i];
         }
@@ -81,30 +81,30 @@ public class TuringMachine : Node2D
         var result = this.currentState.Calculate(this);
         this.steps++;
         this.countLabel.Text = steps.ToString();
-        if(this.currentState != states[result.newState])
+        if (this.currentState != states[result.newState])
         {
             this.currentState.LeaveState();
             this.currentState = this.states[result.newState];
             this.currentState.EnterState();
         }
-        if(result.isFinished)
+        if (result.isFinished)
         {
             timer.Stop();
             var calculateButton = this.GetParent().GetNode<Button>(new NodePath("Camera2D/UI/Control/CalculateAll"));
             calculateButton.Text = "Berechnen";
-            if(this.currentState.IsAccepted)
+            if (this.currentState.IsAccepted)
             {
                 this.currentState.SelfModulate = Color.ColorN("green");
-               var particles= this.GetParent().GetNode<Particles2D>(new NodePath("Success"));
-               particles.Position = this.currentState.Position;
-               particles.Emitting = true;
+                var particles = this.GetParent().GetNode<Particles2D>(new NodePath("Success"));
+                particles.Position = this.currentState.Position;
+                particles.Emitting = true;
             }
             return;
         }
 
-        if(result.tape1Character != '\0')   this.tape1.ReplaceCurrentCharacter(result.tape1Character);
-        if(result.tape2Character != '\0')   this.tape2.ReplaceCurrentCharacter(result.tape2Character);
-        if(result.tape3Character != '\0')   this.tape3.ReplaceCurrentCharacter(result.tape3Character);
+        if (result.tape1Character != '\0') this.tape1.ReplaceCurrentCharacter(result.tape1Character);
+        if (result.tape2Character != '\0') this.tape2.ReplaceCurrentCharacter(result.tape2Character);
+        if (result.tape3Character != '\0') this.tape3.ReplaceCurrentCharacter(result.tape3Character);
 
         this.tape1.CurrentReaderPosition += (int)result.tape1Direction;
         this.tape2.CurrentReaderPosition += (int)result.tape2Direction;

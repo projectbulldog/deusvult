@@ -5,16 +5,18 @@ public class Tape : RichTextLabel
 {
     private int currentReaderPosition;
 
-    public int CurrentReaderPosition {
-        get
+    public int CurrentReaderPosition
     {
-        return this.currentReaderPosition;
+        get
+        {
+            return this.currentReaderPosition;
+        }
+        set
+        {
+            this.currentReaderPosition = value;
+            this.UpdateTextPosition();
+        }
     }
-    set{
-        this.currentReaderPosition = value;
-        this.UpdateTextPosition();
-    } 
-     }
 
     public override void _Ready()
     {
@@ -23,34 +25,34 @@ public class Tape : RichTextLabel
 
     public void UpdateTextPosition()
     {
-        if(this.CurrentReaderPosition < 15)
+        if (this.CurrentReaderPosition < 15)
         {
-            while(this.CurrentReaderPosition < 15)
+            while (this.CurrentReaderPosition < 15)
             {
                 this.Text = this.Text.Insert(0, "_");
                 this.CurrentReaderPosition++;
             }
         }
         var neededUnderlinesAfter = this.CurrentReaderPosition + 15 - this.Text.Length;
-        for(int i = 0; i <= neededUnderlinesAfter; i++)
+        for (int i = 0; i <= neededUnderlinesAfter; i++)
         {
             this.Text += "_";
         }
-        if(this.currentReaderPosition < 0)
+        if (this.currentReaderPosition < 0)
         {
             this.Text = this.Text.Insert(0, "_");
             this.currentReaderPosition = 0;
         }
-            var character = this.Text[this.CurrentReaderPosition];
-            this.Text = this.Text.Remove(this.CurrentReaderPosition, 1);
-            this.BbcodeText = this.Text;
-            this.BbcodeText = this.BbcodeText.Insert(this.CurrentReaderPosition, $"[color=#FF0000]{character}[/color]");
-        
+        var character = this.Text[this.CurrentReaderPosition];
+        this.Text = this.Text.Remove(this.CurrentReaderPosition, 1);
+        this.BbcodeText = this.Text;
+        this.BbcodeText = this.BbcodeText.Insert(this.CurrentReaderPosition, $"[color=#FF0000]{character}[/color]");
+
     }
-    
+
     public char ReadCurrentPosition()
     {
-        if(this.Text.Length > this.currentReaderPosition)
+        if (this.Text.Length > this.currentReaderPosition)
         {
             return this.Text[this.currentReaderPosition];
         }

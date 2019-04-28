@@ -1,12 +1,12 @@
-[gd_scene load_steps=19 format=2]
+[gd_scene load_steps=21 format=2]
 
 [ext_resource path="res://src/TuringMashine.gd" type="Script" id=1]
 [ext_resource path="res://particle.png" type="Texture" id=2]
-[ext_resource path="res://State_Unaccepted.png" type="Texture" id=3]
+[ext_resource path="res://Asset 2.png" type="Texture" id=3]
 [ext_resource path="res://src/State0.cs" type="Script" id=4]
 [ext_resource path="res://src/State1.cs" type="Script" id=5]
 [ext_resource path="res://src/State2.cs" type="Script" id=6]
-[ext_resource path="res://State_Accepted.png" type="Texture" id=7]
+[ext_resource path="res://Asset 1.png" type="Texture" id=7]
 [ext_resource path="res://src/State3.cs" type="Script" id=8]
 [ext_resource path="res://src/State4.cs" type="Script" id=9]
 [ext_resource path="res://Camera2D.gd" type="Script" id=10]
@@ -40,12 +40,67 @@ orbit_velocity_random = 0.0
 scale_curve = SubResource( 5 )
 color_ramp = SubResource( 3 )
 
+[sub_resource type="Animation" id=9]
+resource_name = "Sucess"
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:rotation_degrees")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5, 1 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ 0.0, -45.0, 0.0 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.5, 1 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0.7, 0.7 ), Vector2( 1, 1 ), Vector2( 0.7, 0.7 ) ]
+}
+
+[sub_resource type="Animation" id=8]
+resource_name = "Sucess"
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:rotation_degrees")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5, 1 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ 0.0, -45.0, 0.0 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.5, 1 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0.7, 0.7 ), Vector2( 1, 1 ), Vector2( 0.7, 0.7 ) ]
+}
+
 [sub_resource type="Environment" id=7]
 background_mode = 4
 glow_enabled = true
-glow_intensity = 0.4
-glow_strength = 1.4
+glow_intensity = 0.6
+glow_strength = 1.5
 glow_blend_mode = 0
+glow_hdr_threshold = 0.8
 glow_bicubic_upscale = true
 
 [node name="World" type="Node2D"]
@@ -66,6 +121,7 @@ texture = ExtResource( 2 )
 [node name="state0" type="Sprite" parent="TuringMashine"]
 editor/display_folded = true
 position = Vector2( 80, 394 )
+scale = Vector2( 0.7, 0.7 )
 texture = ExtResource( 3 )
 script = ExtResource( 4 )
 
@@ -74,11 +130,13 @@ margin_left = -10.6148
 margin_top = -6.63425
 margin_right = 29.3852
 margin_bottom = 7.36575
+rect_scale = Vector2( 1.5, 1.5 )
 text = "q0"
 
 [node name="state1" type="Sprite" parent="TuringMashine"]
 editor/display_folded = true
 position = Vector2( 180, 394 )
+scale = Vector2( 0.7, 0.7 )
 texture = ExtResource( 3 )
 script = ExtResource( 5 )
 
@@ -87,11 +145,13 @@ margin_left = -10.0
 margin_top = -6.63425
 margin_right = 31.5524
 margin_bottom = 7.36575
+rect_scale = Vector2( 1.5, 1.5 )
 text = "q1"
 
 [node name="state2" type="Sprite" parent="TuringMashine"]
 editor/display_folded = true
 position = Vector2( 280, 394 )
+scale = Vector2( 0.7, 0.7 )
 texture = ExtResource( 3 )
 script = ExtResource( 6 )
 
@@ -100,11 +160,12 @@ margin_left = -10.0
 margin_top = -6.0
 margin_right = 33.7196
 margin_bottom = 6.03891
+rect_scale = Vector2( 1.5, 1.5 )
 text = "q2"
 
 [node name="state3" type="Sprite" parent="TuringMashine"]
-editor/display_folded = true
 position = Vector2( 380, 394 )
+scale = Vector2( 0.7, 0.7 )
 texture = ExtResource( 7 )
 script = ExtResource( 8 )
 
@@ -113,11 +174,15 @@ margin_left = -10.0
 margin_top = -6.0
 margin_right = 31.9063
 margin_bottom = 6.03891
+rect_scale = Vector2( 1.5, 1.5 )
 text = "q3"
 
+[node name="SucessAnimation" type="AnimationPlayer" parent="TuringMashine/state3"]
+anims/Sucess = SubResource( 9 )
+
 [node name="state4" type="Sprite" parent="TuringMashine"]
-editor/display_folded = true
 position = Vector2( 480, 394 )
+scale = Vector2( 0.7, 0.7 )
 texture = ExtResource( 7 )
 script = ExtResource( 9 )
 
@@ -126,10 +191,13 @@ margin_left = -10.0
 margin_top = -6.0
 margin_right = 32.0832
 margin_bottom = 8.02914
+rect_scale = Vector2( 1.5, 1.5 )
 text = "q4"
 
+[node name="SucessAnimation" type="AnimationPlayer" parent="TuringMashine/state4"]
+anims/Sucess = SubResource( 8 )
+
 [node name="Camera2D" type="Camera2D" parent="TuringMashine"]
-editor/display_folded = true
 anchor_mode = 0
 current = true
 script = ExtResource( 10 )
@@ -141,6 +209,7 @@ size_flags_horizontal = 2
 size_flags_vertical = 2
 
 [node name="Control" type="Control" parent="TuringMashine/Camera2D/UI"]
+editor/display_folded = true
 anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
@@ -180,6 +249,7 @@ margin_right = 100.0
 text = "Schritt"
 
 [node name="Control_Count" type="Control" parent="TuringMashine/Camera2D/UI"]
+editor/display_folded = true
 anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0

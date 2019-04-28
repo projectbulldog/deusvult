@@ -7,14 +7,14 @@ public class State1 : State
     {
         var tapes = turingMachine.ReadTapes();
         var result = new StateReturn();
-        if(tapes[0] == 'I' && tapes[1] == '_' && tapes[2] == '_')
+        if (tapes[0] == 'I' && tapes[1] == '_' && tapes[2] == '_')
         {
             result.newState = 1;
             result.tape1Direction = Direction.Right;
             result.tape2Character = 'I';
             result.tape2Direction = Direction.Right;
         }
-        else if(tapes[0] == '_' && tapes[1] == '_' && tapes[2] == '_')
+        else if (tapes[0] == '_' && tapes[1] == '_' && tapes[2] == '_')
         {
             result.newState = 2;
             result.tape1Direction = Direction.Left;

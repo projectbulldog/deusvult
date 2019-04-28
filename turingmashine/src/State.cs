@@ -5,11 +5,11 @@ public abstract class State : Sprite
 {
     protected bool isAccepted = false;
 
-    public bool IsAccepted{get{return this.isAccepted;}}
+    public bool IsAccepted => this.isAccepted;
 
     public virtual void EnterState()
     {
-            this.SelfModulate = Color.ColorN("orange");
+        this.SelfModulate = Color.ColorN("orange");
     }
 
     public abstract StateReturn Calculate(TuringMachine turingMachine);
