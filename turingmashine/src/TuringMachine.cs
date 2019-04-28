@@ -98,6 +98,9 @@ public class TuringMachine : Node2D
                 var particles = this.GetParent().GetNode<Particles2D>(new NodePath("Success"));
                 particles.Position = this.currentState.Position;
                 particles.Emitting = true;
+
+                var animation = this.currentState.GetNode<AnimationPlayer>(new NodePath("AnimationPlayer"));
+                animation.Play("Sucess");
             }
             return;
         }
