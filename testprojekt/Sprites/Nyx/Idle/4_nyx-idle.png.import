@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/charakter2.png-a50f85ef6ae92aa150d91ff36ebf56d0.stex"
+path="res://.import/4_nyx-idle.png-b5e4b140ba267206f671bd69fb2c02e4.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://charakter2.png"
-dest_files=[ "res://.import/charakter2.png-a50f85ef6ae92aa150d91ff36ebf56d0.stex" ]
+source_file="res://Sprites/Nyx/Idle/4_nyx-idle.png"
+dest_files=[ "res://.import/4_nyx-idle.png-b5e4b140ba267206f671bd69fb2c02e4.stex" ]
 
 [params]
 

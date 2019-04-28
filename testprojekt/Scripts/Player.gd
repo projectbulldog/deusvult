@@ -52,23 +52,24 @@ func _process(delta):
 		if direction == DIRECTION.LEFT:
 			self.scale.x *= -1
 			direction = DIRECTION.RIGHT
-
 		motion.x = SPEED
+		$Sprite/AnimationTree.playback.travel("Walk")
 	elif Input.is_action_pressed("ui_left"):
 		if direction == DIRECTION.RIGHT:
 			self.scale.x *= -1
 			direction = DIRECTION.LEFT
-
 		motion.x = -SPEED
+		$Sprite/AnimationTree.playback.travel("Walk")
 	else:
 		motion.x = 0
+		$Sprite/AnimationTree.playback.travel("Idle")
 		
 	# DASH
 	if Input.is_action_pressed("dash") && canDash:
 		canDash = false
 		isDashing = true
 		dashCooldownTimer.start()
-		$Particles2D.emitting = true
+		$DashParticles.emitting = true
 	
 	if isDashing && dashTimeLength <= maxDashTime:
 		motion.y = 0
