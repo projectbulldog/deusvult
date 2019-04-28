@@ -3,17 +3,17 @@ using System;
 
 public class StateReturn
 {
-    public char tape1Character { get; set; }
-    public char tape2Character { get; set; }
-    public char tape3Character { get; set; }
+    public char Tape1Character { get; set; }
+    public char Tape2Character { get; set; }
+    public char Tape3Character { get; set; }
 
-    public Direction tape1Direction { get; set; }
-    public Direction tape2Direction { get; set; }
-    public Direction tape3Direction { get; set; }
+    public Direction Tape1Direction { get; set; }
+    public Direction Tape2Direction { get; set; }
+    public Direction Tape3Direction { get; set; }
 
-    public int newState { get; set; }
+    public int NewState { get; set; }
 
-    public bool isAccepted { get; set; }
+    public bool IsAccepted { get; set; }
 
-    public bool isFinished { get; set; }
+    public bool IsFinished { get; set; }
 }

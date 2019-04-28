@@ -9,21 +9,21 @@ public class State1 : State
         var result = new StateReturn();
         if (tapes[0] == 'I' && tapes[1] == '_' && tapes[2] == '_')
         {
-            result.newState = 1;
-            result.tape1Direction = Direction.Right;
-            result.tape2Character = 'I';
-            result.tape2Direction = Direction.Right;
+            result.NewState = 1;
+            result.Tape1Direction = Direction.Right;
+            result.Tape2Character = 'I';
+            result.Tape2Direction = Direction.Right;
         }
         else if (tapes[0] == '_' && tapes[1] == '_' && tapes[2] == '_')
         {
-            result.newState = 2;
-            result.tape1Direction = Direction.Left;
-            result.tape2Direction = Direction.Left;
+            result.NewState = 2;
+            result.Tape1Direction = Direction.Left;
+            result.Tape2Direction = Direction.Left;
         }
         else
         {
-            result.isFinished = true;
-            result.newState = 1;
+            result.IsFinished = true;
+            result.NewState = 1;
         }
         return result;
     }

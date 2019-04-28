@@ -27,7 +27,7 @@ public class Tape : RichTextLabel
     {
         if (this.CurrentReaderPosition < 15)
         {
-            while (this.CurrentReaderPosition < 15)
+            while (this.CurrentReaderPosition <= 15)
             {
                 this.Text = this.Text.Insert(0, "_");
                 this.CurrentReaderPosition++;

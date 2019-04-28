@@ -9,17 +9,17 @@ public class State0 : State
         var result = new StateReturn();
         if (tapes[0] == 'I' && tapes[1] == '_' && tapes[2] == '_')
         {
-            result.newState = 0;
-            result.tape1Direction = Direction.Right;
+            result.NewState = 0;
+            result.Tape1Direction = Direction.Right;
         }
         else if (tapes[0] == '*' && tapes[1] == '_' && tapes[2] == '_')
         {
-            result.newState = 1;
-            result.tape1Direction = Direction.Right;
+            result.NewState = 1;
+            result.Tape1Direction = Direction.Right;
         }
         else
         {
-            result.isFinished = true;
+            result.IsFinished = true;
         }
 
         return result;

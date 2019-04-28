@@ -14,25 +14,25 @@ public class State4 : State
         var result = new StateReturn();
         if (tapes[0] == 'I' && tapes[1] == 'I' && tapes[2] == '_')
         {
-            result.newState = 4;
-            result.tape2Direction = Direction.Right;
+            result.NewState = 4;
+            result.Tape2Direction = Direction.Right;
         }
         else if (tapes[0] == 'I' && tapes[1] == '_' && tapes[2] == '_')
         {
-            result.newState = 3;
-            result.tape2Direction = Direction.Left;
+            result.NewState = 3;
+            result.Tape2Direction = Direction.Left;
         }
         else if (tapes[0] == '_' && tapes[1] == '_' && tapes[2] == '_')
         {
-            result.newState = 4;
-            result.isAccepted = true;
-            result.isFinished = true;
+            result.NewState = 4;
+            result.IsAccepted = true;
+            result.IsFinished = true;
         }
         else if (tapes[0] == '_' && tapes[1] == 'I' && tapes[2] == '_')
         {
-            result.newState = 4;
-            result.isAccepted = true;
-            result.isFinished = true;
+            result.NewState = 4;
+            result.IsAccepted = true;
+            result.IsFinished = true;
         }
         return result;
     }
