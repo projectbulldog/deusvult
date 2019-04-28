@@ -1,0 +1,5 @@
+F:\godot\turingmashine\.mono\temp\bin\Debug\turingmachine.dll
+F:\godot\turingmashine\.mono\temp\bin\Debug\turingmachine.pdb
+F:\godot\turingmashine\.mono\temp\obj\Debug\turingmachine.csprojResolveAssemblyReference.cache
+F:\godot\turingmashine\.mono\temp\obj\Debug\turingmachine.dll
+F:\godot\turingmashine\.mono\temp\obj\Debug\turingmachine.pdb
