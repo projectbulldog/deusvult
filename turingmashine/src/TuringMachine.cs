@@ -13,6 +13,10 @@ public class TuringMachine : Node2D
 
     private Timer timer;
 
+    private int steps = 0;
+
+    private Label countLabel;
+
     public TuringMachine()
     {
         this.timer = new Timer();
@@ -21,10 +25,13 @@ public class TuringMachine : Node2D
         this.AddChild(timer);
     }
 
-    public void Reset(float timerInterval, string input, Tape tape1, Tape tape2, Tape tape3, object[] allStates)
+    public void Reset(float timerInterval, string input, Tape tape1, Tape tape2, Tape tape3, Label countLabel, object[] allStates)
     {
         timer.Stop();
         timer.WaitTime = timerInterval;
+        this.countLabel = countLabel;
+        steps = 0;
+        this.countLabel.Text = steps.ToString();
         this.tape1 = tape1;
         this.tape2 = tape2;
         this.tape3 = tape3;
@@ -72,6 +79,8 @@ public class TuringMachine : Node2D
     public void NextStep()
     {
         var result = this.currentState.Calculate(this);
+        this.steps++;
+        this.countLabel.Text = steps.ToString();
         if(this.currentState != states[result.newState])
         {
             this.currentState.LeaveState();

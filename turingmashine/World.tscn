@@ -1,16 +1,16 @@
 [gd_scene load_steps=19 format=2]
 
-[ext_resource path="res://TuringMashine.gd" type="Script" id=1]
+[ext_resource path="res://src/TuringMashine.gd" type="Script" id=1]
 [ext_resource path="res://particle.png" type="Texture" id=2]
 [ext_resource path="res://State_Unaccepted.png" type="Texture" id=3]
-[ext_resource path="res://State0.cs" type="Script" id=4]
-[ext_resource path="res://State1.cs" type="Script" id=5]
-[ext_resource path="res://State2.cs" type="Script" id=6]
+[ext_resource path="res://src/State0.cs" type="Script" id=4]
+[ext_resource path="res://src/State1.cs" type="Script" id=5]
+[ext_resource path="res://src/State2.cs" type="Script" id=6]
 [ext_resource path="res://State_Accepted.png" type="Texture" id=7]
-[ext_resource path="res://State3.cs" type="Script" id=8]
-[ext_resource path="res://State4.cs" type="Script" id=9]
+[ext_resource path="res://src/State3.cs" type="Script" id=8]
+[ext_resource path="res://src/State4.cs" type="Script" id=9]
 [ext_resource path="res://Camera2D.gd" type="Script" id=10]
-[ext_resource path="res://Tape.cs" type="Script" id=11]
+[ext_resource path="res://src/Tape.cs" type="Script" id=11]
 
 [sub_resource type="CanvasItemMaterial" id=1]
 blend_mode = 1
@@ -29,11 +29,11 @@ curve = SubResource( 4 )
 
 [sub_resource type="ParticlesMaterial" id=6]
 emission_shape = 1
-emission_sphere_radius = 1.0
+emission_sphere_radius = 5.0
 flag_disable_z = true
 spread = 180.0
 gravity = Vector3( 0, 0, 0 )
-initial_velocity = 20.0
+initial_velocity = 30.0
 angular_velocity = 100.0
 orbit_velocity = 0.0
 orbit_velocity_random = 0.0
@@ -45,7 +45,7 @@ background_mode = 4
 glow_enabled = true
 glow_intensity = 0.4
 glow_strength = 1.4
-glow_blend_mode = 1
+glow_blend_mode = 0
 glow_bicubic_upscale = true
 
 [node name="World" type="Node2D"]
@@ -58,13 +58,14 @@ material = SubResource( 1 )
 position = Vector2( 242.356, 331.444 )
 z_index = 1
 emitting = false
-lifetime = 1.8
+lifetime = 0.5
 one_shot = true
 process_material = SubResource( 6 )
 texture = ExtResource( 2 )
 
 [node name="state0" type="Sprite" parent="TuringMashine"]
-position = Vector2( 80, 330 )
+editor/display_folded = true
+position = Vector2( 80, 394 )
 texture = ExtResource( 3 )
 script = ExtResource( 4 )
 
@@ -76,7 +77,8 @@ margin_bottom = 7.36575
 text = "q0"
 
 [node name="state1" type="Sprite" parent="TuringMashine"]
-position = Vector2( 180, 330 )
+editor/display_folded = true
+position = Vector2( 180, 394 )
 texture = ExtResource( 3 )
 script = ExtResource( 5 )
 
@@ -88,7 +90,8 @@ margin_bottom = 7.36575
 text = "q1"
 
 [node name="state2" type="Sprite" parent="TuringMashine"]
-position = Vector2( 280, 330 )
+editor/display_folded = true
+position = Vector2( 280, 394 )
 texture = ExtResource( 3 )
 script = ExtResource( 6 )
 
@@ -100,7 +103,8 @@ margin_bottom = 6.03891
 text = "q2"
 
 [node name="state3" type="Sprite" parent="TuringMashine"]
-position = Vector2( 380, 330 )
+editor/display_folded = true
+position = Vector2( 380, 394 )
 texture = ExtResource( 7 )
 script = ExtResource( 8 )
 
@@ -112,7 +116,8 @@ margin_bottom = 6.03891
 text = "q3"
 
 [node name="state4" type="Sprite" parent="TuringMashine"]
-position = Vector2( 480, 330 )
+editor/display_folded = true
+position = Vector2( 480, 394 )
 texture = ExtResource( 7 )
 script = ExtResource( 9 )
 
@@ -124,6 +129,7 @@ margin_bottom = 8.02914
 text = "q4"
 
 [node name="Camera2D" type="Camera2D" parent="TuringMashine"]
+editor/display_folded = true
 anchor_mode = 0
 current = true
 script = ExtResource( 10 )
@@ -139,10 +145,23 @@ anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = -400.0
-margin_top = -111.0
+margin_left = -258.0
+margin_top = -88.0
 margin_right = -20.0
 margin_bottom = -20.0
+
+[node name="TextEdit" type="LineEdit" parent="TuringMashine/Camera2D/UI/Control"]
+margin_right = 100.0
+margin_bottom = 27.0
+text = "2*4"
+max_length = 7
+
+[node name="Read" type="Button" parent="TuringMashine/Camera2D/UI/Control"]
+anchor_left = 1.0
+anchor_right = 1.0
+margin_left = -100.0
+margin_bottom = 27.0
+text = "Einlesen"
 
 [node name="CalculateAll" type="Button" parent="TuringMashine/Camera2D/UI/Control"]
 anchor_left = 1.0
@@ -150,68 +169,86 @@ anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = -100.0
-margin_top = -20.0
+margin_top = -27.0
 text = "Berechnen"
-
-[node name="TextEdit" type="LineEdit" parent="TuringMashine/Camera2D/UI/Control"]
-margin_right = 232.0
-margin_bottom = 40.0
-text = "3*2"
 
 [node name="Step" type="Button" parent="TuringMashine/Camera2D/UI/Control"]
 anchor_top = 1.0
 anchor_bottom = 1.0
-margin_top = -20.0
+margin_top = -27.0
 margin_right = 100.0
 text = "Schritt"
 
-[node name="Read" type="Button" parent="TuringMashine/Camera2D/UI/Control"]
+[node name="Control_Count" type="Control" parent="TuringMashine/Camera2D/UI"]
 anchor_left = 1.0
+anchor_top = 1.0
 anchor_right = 1.0
-margin_left = -100.0
-margin_bottom = 20.0
-text = "Einlesen"
+anchor_bottom = 1.0
+margin_left = -214.0
+margin_top = -126.0
+margin_right = -64.0002
+margin_bottom = -99.0
+
+[node name="Label_Count" type="Label" parent="TuringMashine/Camera2D/UI/Control_Count"]
+anchor_top = 0.5
+anchor_bottom = 0.5
+margin_top = -7.0
+margin_right = 85.0
+margin_bottom = 7.0
+text = "Anz. Schritte:"
+
+[node name="Count" type="Label" parent="TuringMashine/Camera2D/UI/Control_Count"]
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+margin_left = -40.0
+margin_top = -7.0
+margin_bottom = 7.0
+text = "0"
 
 [node name="label_tape1" type="Label" parent="TuringMashine/Camera2D/UI"]
 margin_left = 40.0
-margin_top = 80.0
-margin_right = 76.5077
-margin_bottom = 97.8942
+margin_top = 97.0
+margin_right = 84.0
+margin_bottom = 114.894
 text = "Band 1"
 
 [node name="label_tape2" type="Label" parent="TuringMashine/Camera2D/UI"]
 margin_left = 40.0
-margin_top = 120.0
+margin_top = 137.0
 margin_right = 84.0
-margin_bottom = 148.394
+margin_bottom = 165.394
 text = "Band 2"
 
 [node name="label_tape3" type="Label" parent="TuringMashine/Camera2D/UI"]
 margin_left = 40.0
-margin_top = 160.0
+margin_top = 177.0
 margin_right = 84.0
-margin_bottom = 174.0
+margin_bottom = 191.0
 text = "Band 3"
 
 [node name="tape1" type="RichTextLabel" parent="TuringMashine/Camera2D/UI"]
 margin_left = 100.0
-margin_top = 80.0
+margin_top = 97.0
 margin_right = 800.0
-margin_bottom = 97.894
+margin_bottom = 114.894
+scroll_active = false
 script = ExtResource( 11 )
 
 [node name="tape2" type="RichTextLabel" parent="TuringMashine/Camera2D/UI"]
 margin_left = 100.0
-margin_top = 120.0
+margin_top = 137.0
 margin_right = 900.0
-margin_bottom = 137.0
+margin_bottom = 154.0
+scroll_active = false
 script = ExtResource( 11 )
 
 [node name="tape3" type="RichTextLabel" parent="TuringMashine/Camera2D/UI"]
 margin_left = 100.0
-margin_top = 160.0
+margin_top = 177.0
 margin_right = 900.0
-margin_bottom = 241.0
+margin_bottom = 258.0
 script = ExtResource( 11 )
 
 [node name="HSlider" type="HSlider" parent="TuringMashine/Camera2D/UI"]
@@ -224,26 +261,17 @@ step = 0.5
 value = 1.0
 ticks_on_borders = true
 
-[node name="TextEdit" type="LineEdit" parent="TuringMashine/Camera2D/UI"]
-visible = false
-margin_left = 120.0
-margin_top = 22.0
-margin_right = 58.0
-margin_bottom = 40.0
-text = "0.2"
-
 [node name="Label" type="Label" parent="TuringMashine/Camera2D/UI"]
 margin_left = 40.0
 margin_top = 27.0
-margin_right = 68.0
-margin_bottom = 14.0
+margin_right = 121.0
+margin_bottom = 41.0
 text = "Schnelligkeit"
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource( 7 )
 
 [connection signal="draw" from="TuringMashine/Camera2D" to="TuringMashine/Camera2D" method="_on_Camera2D_draw"]
-[connection signal="pressed" from="TuringMashine/Camera2D/UI/Control/Step" to="TuringMashine" method="_on_Step_pressed"]
 [connection signal="pressed" from="TuringMashine/Camera2D/UI/Control/Read" to="TuringMashine" method="_on_Read_pressed"]
+[connection signal="pressed" from="TuringMashine/Camera2D/UI/Control/Step" to="TuringMashine" method="_on_Step_pressed"]
 [connection signal="value_changed" from="TuringMashine/Camera2D/UI/HSlider" to="TuringMashine" method="_on_HSlider_value_changed"]
-[connection signal="text_changed" from="TuringMashine/Camera2D/UI/TextEdit" to="TuringMashine" method="_on_TextEdit_text_changed"]

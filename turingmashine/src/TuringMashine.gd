@@ -5,7 +5,7 @@ var turingMachine
 
 func _ready():
 	$Camera2D/UI/Control/CalculateAll.connect("pressed", self, "_calculate_pressed")
-	turingMachine = preload("res://TuringMachine.cs").new()
+	turingMachine = preload("TuringMachine.cs").new()
 	self.add_child(turingMachine)
 
 func _process(delta):
@@ -37,13 +37,10 @@ func _on_Read_pressed():
 	$state4.self_modulate = ColorN("white")
 	var states = [$state0, $state1, $state2, $state3, $state4]
 	var interval : float = 2 * pow(10, -$Camera2D/UI/HSlider.value)
-	turingMachine.Reset(interval, $Camera2D/UI/Control/TextEdit.text, $Camera2D/UI/tape1, $Camera2D/UI/tape2, $Camera2D/UI/tape3, states)
-
-
+	turingMachine.Reset(interval, $Camera2D/UI/Control/TextEdit.text, $Camera2D/UI/tape1, $Camera2D/UI/tape2, $Camera2D/UI/tape3, $Camera2D/UI/Control_Count/Count, states)
 
 func _on_TextEdit_text_changed(new_text):
 	turingMachine.ChangeWaitTimer(new_text)
-
 
 func _on_HSlider_value_changed(value):
 	turingMachine.ChangeWaitTimer(2 * pow(10, -value))

@@ -10,12 +10,12 @@ public class State0 : State
         if(tapes[0] == 'I' && tapes[1] == '_' && tapes[2] == '_')
         {
             result.newState = 0;
-            result.tape1Direction = DirectionEnum.Right;
+            result.tape1Direction = Direction.Right;
         }
         else if(tapes[0] == '*' && tapes[1] == '_' && tapes[2] == '_')
         {
             result.newState = 1;
-            result.tape1Direction = DirectionEnum.Right;
+            result.tape1Direction = Direction.Right;
         }
         else
         {

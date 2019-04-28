@@ -1,40 +1,36 @@
 using Godot;
 using System;
 
-public class State3  : State
+public class State4: State
 {
-    public State3()
+    public State4()
     {
         this.isAccepted = true;
     }
-    
+
     public override StateReturn Calculate(TuringMachine turingMachine)
     {
         var tapes = turingMachine.ReadTapes();
         var result = new StateReturn();
         if(tapes[0] == 'I' && tapes[1] == 'I' && tapes[2] == '_')
       {
-          result.newState = 3;
-          result.tape3Character = 'I';
-          result.tape2Direction = DirectionEnum.Left;
-          result.tape3Direction = DirectionEnum.Right;
+          result.newState = 4;
+          result.tape2Direction = Direction.Right;
       }
       else if(tapes[0] == 'I' && tapes[1] == '_' && tapes[2] == '_')
         {
-          result.newState = 4;
-          result.tape1Character = '_';
-          result.tape1Direction = DirectionEnum.Left;
-          result.tape2Direction = DirectionEnum.Right;
+          result.newState = 3;
+          result.tape2Direction = Direction.Left;
         }
         else if(tapes[0] == '_' && tapes[1] == '_' && tapes[2] == '_')
         {
-          result.newState = 3;
+          result.newState = 4;
             result.isAccepted = true;
             result.isFinished = true;
         }
         else if(tapes[0] == '_' && tapes[1] == 'I' && tapes[2] == '_')
         {
-          result.newState = 3;
+          result.newState = 4;
             result.isAccepted = true;
             result.isFinished = true;
         }

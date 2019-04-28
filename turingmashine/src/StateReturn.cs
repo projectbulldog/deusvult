@@ -7,9 +7,9 @@ public class StateReturn
     public char tape2Character{get;set;}
     public char tape3Character{get;set;}
 
-    public DirectionEnum tape1Direction {get;set;}
-    public DirectionEnum tape2Direction {get;set;}
-    public DirectionEnum tape3Direction {get;set;}
+    public Direction tape1Direction {get;set;}
+    public Direction tape2Direction {get;set;}
+    public Direction tape3Direction {get;set;}
 
     public int newState{get;set;}
 

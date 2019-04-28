@@ -4,3 +4,8 @@ D:\godot\turingmashine\.mono\temp\bin\Tools\turingmachine.dll
 D:\godot\turingmashine\.mono\temp\bin\Tools\turingmachine.pdb
 D:\godot\turingmashine\.mono\temp\obj\Tools\turingmachine.dll
 D:\godot\turingmashine\.mono\temp\obj\Tools\turingmachine.pdb
+F:\godot\turingmashine\.mono\temp\bin\Tools\turingmachine.dll
+F:\godot\turingmashine\.mono\temp\bin\Tools\turingmachine.pdb
+F:\godot\turingmashine\.mono\temp\obj\Tools\turingmachine.csprojResolveAssemblyReference.cache
+F:\godot\turingmashine\.mono\temp\obj\Tools\turingmachine.dll
+F:\godot\turingmashine\.mono\temp\obj\Tools\turingmachine.pdb
