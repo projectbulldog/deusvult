@@ -25,19 +25,23 @@ public class TuringMachine : Node2D
         this.AddChild(timer);
     }
 
-    public void Reset(float timerInterval, string input, Tape tape1, Tape tape2, Tape tape3, Label countLabel, object[] allStates)
+    public void Init(Tape tape1, Tape tape2, Tape tape3)
+    {
+        this.tape1 = tape1;
+        this.tape2 = tape2;
+        this.tape3 = tape3;
+    }
+
+    public void Reset(float timerInterval, string input, Label countLabel, object[] allStates)
     {
         timer.Stop();
         timer.WaitTime = timerInterval;
         this.countLabel = countLabel;
         steps = 0;
         this.countLabel.Text = steps.ToString();
-        this.tape1 = tape1;
-        this.tape2 = tape2;
-        this.tape3 = tape3;
-        this.tape1.Text = "";
-        this.tape2.Text = "";
-        this.tape3.Text = "";
+        this.tape1.Reset();
+        this.tape2.Reset();
+        this.tape3.Reset();
 
         var splittedNumbers = input.Split('*');
         for (int j = 0; j < splittedNumbers.Length; j++)
@@ -95,10 +99,6 @@ public class TuringMachine : Node2D
             if (this.currentState.IsAccepted)
             {
                 this.currentState.SelfModulate = Color.ColorN("green");
-                var particles = this.GetParent().GetNode<Particles2D>(new NodePath("Success"));
-                particles.Position = this.currentState.Position;
-                particles.Emitting = true;
-
                 var animation = this.currentState.GetNode<AnimationPlayer>(new NodePath("AnimationPlayer"));
                 animation.Play("Sucess");
             }

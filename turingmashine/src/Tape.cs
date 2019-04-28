@@ -68,4 +68,10 @@ public class Tape : RichTextLabel
         this.Text = this.Text.Insert(this.CurrentReaderPosition, character.ToString());
         this.UpdateTextPosition();
     }
+
+    public void Reset()
+    {
+        this.Text = "";
+        this.BbcodeText = "";
+    }
 }
