@@ -7,10 +7,11 @@ public class TuringMachine : Node2D
     private Tape tape1;
     private Tape tape2;
     private Tape tape3;
+    
+    private State[] states;
 
     private State currentState;
 
-    private State[] states;
 
     private Timer timer;
 
@@ -68,9 +69,7 @@ public class TuringMachine : Node2D
         this.tape1.CurrentReaderPosition = 0;
         this.tape2.CurrentReaderPosition = 0;
         this.tape3.CurrentReaderPosition = 0;
-        this.tape1.UpdateTextPosition();
-        this.tape2.UpdateTextPosition();
-        this.tape3.UpdateTextPosition();
+
         this.currentState = this.states[0];
         this.currentState.EnterState();
     }
@@ -96,6 +95,7 @@ public class TuringMachine : Node2D
             this.currentState = this.states[result.NewState];
             this.currentState.EnterState();
         }
+
         if (result.IsFinished)
         {
             this.timer.Stop();
