@@ -53,16 +53,16 @@ func _process(delta):
 			self.scale.x *= -1
 			direction = DIRECTION.RIGHT
 		motion.x = SPEED
-		$Sprite/AnimationTree.playback.travel("Walk")
+		travelTo("Walk")
 	elif Input.is_action_pressed("ui_left"):
 		if direction == DIRECTION.RIGHT:
 			self.scale.x *= -1
 			direction = DIRECTION.LEFT
 		motion.x = -SPEED
-		$Sprite/AnimationTree.playback.travel("Walk")
+		travelTo("Walk")
 	else:
 		motion.x = 0
-		$Sprite/AnimationTree.playback.travel("Idle")
+		travelTo("Idle")
 		
 	# DASH
 	if Input.is_action_pressed("dash") && canDash:
@@ -85,6 +85,7 @@ func _process(delta):
 		motion.y = min(motion.y, 0)
 		motion.y = max(motion.y, MAXJUMPMOTION)
 		jumpTime += delta
+		travelTo("Jump")
 	elif !Input.is_action_pressed("jump") && jumpTime > 0:
 		canJump = false
 	if !is_on_floor() && jumpTime == 0:
@@ -109,4 +110,8 @@ func attack():
 	
 func takeDamage(damage):
 	$StateManager.take_Damage(damage)
+	
+func travelTo(animation):
+		if(is_on_floor()):
+			$Sprite/AnimationTree.playback.travel(animation)
 	

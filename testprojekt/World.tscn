@@ -1,4 +1,4 @@
-[gd_scene load_steps=48 format=2]
+[gd_scene load_steps=55 format=2]
 
 [ext_resource path="res://default_env.tres" type="Environment" id=1]
 [ext_resource path="res://Scripts/Player.gd" type="Script" id=2]
@@ -9,25 +9,26 @@
 [ext_resource path="res://Scripts/StateManager.gd" type="Script" id=7]
 [ext_resource path="res://Sprites/light.png" type="Texture" id=8]
 [ext_resource path="res://dash_effect_020002.png" type="Texture" id=9]
-[ext_resource path="res://Sprites/Nyx/Idle/1_nyx-idle.png" type="Texture" id=10]
-[ext_resource path="res://Sprites/Nyx/Idle/2_nyx-idle.png" type="Texture" id=11]
-[ext_resource path="res://Sprites/Nyx/Idle/3_nyx-idle.png" type="Texture" id=12]
-[ext_resource path="res://Sprites/Nyx/Idle/4_nyx-idle.png" type="Texture" id=13]
-[ext_resource path="res://charakter2.png" type="Texture" id=14]
-[ext_resource path="res://Sprites/Nyx/Walk/1_nyx-walk.png" type="Texture" id=15]
-[ext_resource path="res://Sprites/Nyx/Walk/2_nyx-walk.png" type="Texture" id=16]
-[ext_resource path="res://Sprites/Nyx/Walk/3_nyx-walk.png" type="Texture" id=17]
-[ext_resource path="res://Sprites/Nyx/Walk/4_nyx-walk.png" type="Texture" id=18]
-[ext_resource path="res://Sprites/Nyx/Walk/5_nyx-walk.png" type="Texture" id=19]
-[ext_resource path="res://Sprites/Nyx/Walk/6_nyx-walk.png" type="Texture" id=20]
-[ext_resource path="res://Sprites/Nyx/Walk/7_nyx-walk.png" type="Texture" id=21]
-[ext_resource path="res://Sprites/Nyx/Walk/8_nyx-walk.png" type="Texture" id=22]
-[ext_resource path="res://AnimationTree.gd" type="Script" id=23]
-[ext_resource path="res://Sprites/HollowKnight/butterfly.png" type="Texture" id=24]
-[ext_resource path="res://Sprite2.gd" type="Script" id=25]
-[ext_resource path="res://Sprites/Unbenannt.png" type="Texture" id=26]
-[ext_resource path="res://Tiles/tileset_blackbox.tres" type="TileSet" id=27]
-[ext_resource path="res://charakter.png" type="Texture" id=28]
+[ext_resource path="res://charakter2.png" type="Texture" id=10]
+[ext_resource path="res://Sprites/Nyx/Idle/1_nyx-idle.png" type="Texture" id=11]
+[ext_resource path="res://Sprites/Nyx/Idle/2_nyx-idle.png" type="Texture" id=12]
+[ext_resource path="res://Sprites/Nyx/Idle/3_nyx-idle.png" type="Texture" id=13]
+[ext_resource path="res://Sprites/Nyx/Idle/4_nyx-idle.png" type="Texture" id=14]
+[ext_resource path="res://Sprites/Nyx/Walk/7_nyx-walk.png" type="Texture" id=15]
+[ext_resource path="res://charakter.png" type="Texture" id=16]
+[ext_resource path="res://Jump.wav" type="AudioStream" id=17]
+[ext_resource path="res://Sprites/Nyx/Walk/1_nyx-walk.png" type="Texture" id=18]
+[ext_resource path="res://Sprites/Nyx/Walk/2_nyx-walk.png" type="Texture" id=19]
+[ext_resource path="res://Sprites/Nyx/Walk/3_nyx-walk.png" type="Texture" id=20]
+[ext_resource path="res://Sprites/Nyx/Walk/4_nyx-walk.png" type="Texture" id=21]
+[ext_resource path="res://Sprites/Nyx/Walk/5_nyx-walk.png" type="Texture" id=22]
+[ext_resource path="res://Sprites/Nyx/Walk/6_nyx-walk.png" type="Texture" id=23]
+[ext_resource path="res://Sprites/Nyx/Walk/8_nyx-walk.png" type="Texture" id=24]
+[ext_resource path="res://AnimationTree.gd" type="Script" id=25]
+[ext_resource path="res://Sprites/HollowKnight/butterfly.png" type="Texture" id=26]
+[ext_resource path="res://Sprite2.gd" type="Script" id=27]
+[ext_resource path="res://Sprites/Unbenannt.png" type="Texture" id=28]
+[ext_resource path="res://Tiles/tileset_blackbox.tres" type="TileSet" id=29]
 
 [sub_resource type="StyleBoxFlat" id=1]
 bg_color = Color( 0.478431, 0.858824, 0.321569, 1 )
@@ -60,15 +61,15 @@ color_ramp = SubResource( 5 )
 
 [sub_resource type="SpriteFrames" id=7]
 animations = [ {
-"frames": [ ExtResource( 10 ), ExtResource( 11 ), ExtResource( 12 ), ExtResource( 13 ) ],
-"loop": true,
-"name": "Idle",
-"speed": 8.0
-}, {
-"frames": [ ExtResource( 14 ) ],
+"frames": [ ExtResource( 10 ) ],
 "loop": true,
 "name": "Walk",
 "speed": 5.0
+}, {
+"frames": [ ExtResource( 11 ), ExtResource( 12 ), ExtResource( 13 ), ExtResource( 14 ) ],
+"loop": true,
+"name": "Idle",
+"speed": 8.0
 } ]
 
 [sub_resource type="Animation" id=8]
@@ -85,7 +86,36 @@ tracks/0/keys = {
 "times": PoolRealArray( 0, 0.2, 0.4, 0.6 ),
 "transitions": PoolRealArray( 1, 1, 1, 1 ),
 "update": 1,
-"values": [ ExtResource( 10 ), ExtResource( 11 ), ExtResource( 12 ), ExtResource( 13 ) ]
+"values": [ ExtResource( 11 ), ExtResource( 12 ), ExtResource( 13 ), ExtResource( 14 ) ]
+}
+
+[sub_resource type="Animation" id=20]
+resource_name = "Jump"
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ ExtResource( 16 ) ]
+}
+tracks/1/type = "audio"
+tracks/1/path = NodePath("../Camera2D/AudioStreamPlayer2D2")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"clips": [ {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource( 17 )
+} ],
+"times": PoolRealArray( 0 )
 }
 
 [sub_resource type="Animation" id=9]
@@ -102,7 +132,7 @@ tracks/0/keys = {
 "times": PoolRealArray( 0.001, 0.002, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7 ),
 "transitions": PoolRealArray( 5.85634, 1, 0.732044, 1, 12.5533, 0.999998, 0.999999, 1, 1.68179 ),
 "update": 1,
-"values": [ ExtResource( 15 ), ExtResource( 15 ), ExtResource( 16 ), ExtResource( 17 ), ExtResource( 18 ), ExtResource( 19 ), ExtResource( 20 ), ExtResource( 21 ), ExtResource( 22 ) ]
+"values": [ ExtResource( 18 ), ExtResource( 18 ), ExtResource( 19 ), ExtResource( 20 ), ExtResource( 21 ), ExtResource( 22 ), ExtResource( 23 ), ExtResource( 15 ), ExtResource( 24 ) ]
 }
 tracks/1/type = "audio"
 tracks/1/path = NodePath("../Camera2D/AudioStreamPlayer2D2")
@@ -126,6 +156,9 @@ tracks/1/keys = {
 [sub_resource type="AnimationNodeAnimation" id=10]
 animation = "Idle"
 
+[sub_resource type="AnimationNodeAnimation" id=21]
+animation = "Jump"
+
 [sub_resource type="AnimationNodeAnimation" id=11]
 animation = "Walk"
 
@@ -133,12 +166,23 @@ animation = "Walk"
 
 [sub_resource type="AnimationNodeStateMachineTransition" id=13]
 
+[sub_resource type="AnimationNodeStateMachineTransition" id=22]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=23]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=24]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=25]
+
 [sub_resource type="AnimationNodeStateMachine" id=14]
 states/Idle/node = SubResource( 10 )
 states/Idle/position = Vector2( 249, 78 )
+states/Jump/node = SubResource( 21 )
+states/Jump/position = Vector2( 392, 219 )
 states/Walk/node = SubResource( 11 )
 states/Walk/position = Vector2( 543, 78 )
-transitions = [ "Idle", "Walk", SubResource( 12 ), "Walk", "Idle", SubResource( 13 ) ]
+transitions = [ "Idle", "Walk", SubResource( 12 ), "Walk", "Idle", SubResource( 13 ), "Idle", "Jump", SubResource( 22 ), "Jump", "Walk", SubResource( 23 ), "Walk", "Jump", SubResource( 24 ), "Jump", "Idle", SubResource( 25 ) ]
+graph_offset = Vector2( -4, 49 )
 
 [sub_resource type="AnimationNodeStateMachinePlayback" id=15]
 
@@ -263,8 +307,8 @@ environment = ExtResource( 1 )
 z_index = 2
 
 [node name="Player" type="KinematicBody2D" parent="Node2D" groups=[
-"Player",
 "Damageable",
+"Player",
 ]]
 position = Vector2( 2816, 3360 )
 scale = Vector2( 0.6, 0.6 )
@@ -343,15 +387,15 @@ visible = false
 scale = Vector2( 0.26, 0.26 )
 frames = SubResource( 7 )
 animation = "Idle"
-frame = 2
 playing = true
 
 [node name="Sprite" type="Sprite" parent="Node2D/Player"]
 scale = Vector2( 0.26, 0.26 )
-texture = ExtResource( 10 )
+texture = ExtResource( 15 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Node2D/Player/Sprite"]
 anims/Idle = SubResource( 8 )
+anims/Jump = SubResource( 20 )
 anims/Walk = SubResource( 9 )
 
 [node name="AnimationTree" type="AnimationTree" parent="Node2D/Player/Sprite"]
@@ -359,7 +403,7 @@ tree_root = SubResource( 14 )
 anim_player = NodePath("../AnimationPlayer")
 active = true
 parameters/playback = SubResource( 15 )
-script = ExtResource( 23 )
+script = ExtResource( 25 )
 
 [node name="CanvasModulate" type="CanvasModulate" parent="Node2D"]
 visible = false
@@ -368,15 +412,15 @@ color = Color( 0.501961, 0.501961, 0.501961, 1 )
 [node name="Sprite" type="Sprite" parent="Node2D"]
 editor/display_folded = true
 position = Vector2( 1888, 3168 )
-texture = ExtResource( 24 )
+texture = ExtResource( 26 )
 offset = Vector2( 0.50543, -0.919527 )
 vframes = 3
 hframes = 4
-script = ExtResource( 25 )
+script = ExtResource( 27 )
 
 [node name="Light2D" type="Light2D" parent="Node2D/Sprite"]
 light_mask = 3
-texture = ExtResource( 26 )
+texture = ExtResource( 28 )
 texture_scale = 2.0
 color = Color( 0.478431, 0.913725, 1, 1 )
 range_layer_min = -2
@@ -389,15 +433,15 @@ anims/Fly = SubResource( 16 )
 [node name="Sprite2" type="Sprite" parent="Node2D"]
 editor/display_folded = true
 position = Vector2( 950.5, 2108.39 )
-texture = ExtResource( 24 )
+texture = ExtResource( 26 )
 offset = Vector2( 0.50543, -0.919527 )
 vframes = 3
 hframes = 4
-script = ExtResource( 25 )
+script = ExtResource( 27 )
 
 [node name="Light2D" type="Light2D" parent="Node2D/Sprite2"]
 light_mask = 3
-texture = ExtResource( 26 )
+texture = ExtResource( 28 )
 texture_scale = 2.0
 color = Color( 0.478431, 0.913725, 1, 1 )
 range_layer_min = -2
@@ -410,15 +454,15 @@ anims/Fly = SubResource( 17 )
 [node name="Sprite3" type="Sprite" parent="Node2D"]
 editor/display_folded = true
 position = Vector2( 1824, 2592 )
-texture = ExtResource( 24 )
+texture = ExtResource( 26 )
 offset = Vector2( 0.50543, -0.919527 )
 vframes = 3
 hframes = 4
-script = ExtResource( 25 )
+script = ExtResource( 27 )
 
 [node name="Light2D" type="Light2D" parent="Node2D/Sprite3"]
 light_mask = 3
-texture = ExtResource( 26 )
+texture = ExtResource( 28 )
 texture_scale = 2.0
 color = Color( 0.478431, 0.913725, 1, 1 )
 range_layer_min = -2
@@ -431,15 +475,15 @@ anims/Fly = SubResource( 18 )
 [node name="Sprite4" type="Sprite" parent="Node2D"]
 editor/display_folded = true
 position = Vector2( 1824, 2592 )
-texture = ExtResource( 24 )
+texture = ExtResource( 26 )
 offset = Vector2( 0.50543, -0.919527 )
 vframes = 3
 hframes = 4
-script = ExtResource( 25 )
+script = ExtResource( 27 )
 
 [node name="Light2D" type="Light2D" parent="Node2D/Sprite4"]
 light_mask = 3
-texture = ExtResource( 26 )
+texture = ExtResource( 28 )
 texture_scale = 2.0
 color = Color( 0.478431, 0.913725, 1, 1 )
 range_layer_min = -2
@@ -450,16 +494,16 @@ playback_speed = 1.9
 anims/Fly = SubResource( 19 )
 
 [node name="BlackBox" type="TileMap" parent="Node2D"]
-tile_set = ExtResource( 27 )
+tile_set = ExtResource( 29 )
 format = 1
-tile_data = PoolIntArray( 65528, 7, 0, 0, 7, 0, 189, 7, 0, 196666, 7, 0, 196674, 7, 0, 196682, 7, 0, 196690, 7, 0, 196698, 7, 0, 196706, 7, 0, 196714, 7, 0, 196722, 7, 0, 196729, 7, 0, 524288, 7, 0, 524338, 7, 0, 720954, 7, 0, 720962, 7, 0, 721017, 7, 0, 1048576, 7, 0, 1048626, 7, 0, 1048674, 7, 0, 1114205, 5, 0, 1245242, 7, 0, 1245278, 0, 0, 1245305, 7, 0, 1441878, 5, 0, 1441880, 5, 0, 1572864, 7, 0, 1572914, 7, 0, 1572950, 0, 0, 1572951, 0, 0, 1572952, 0, 0, 1572962, 7, 0, 1573050, 7, 0, 1638487, 0, 0, 1638488, 0, 0, 1703986, 7, 0, 1704017, 5, 0, 1769593, 7, 0, 1835089, 0, 0, 1900620, 5, 0, 2097152, 7, 0, 2097222, 5, 0, 2097224, 5, 0, 2097250, 7, 0, 2097313, 7, 0, 2097321, 7, 0, 2097322, 7, 0, 2097330, 7, 0, 2097338, 7, 0, 2228274, 7, 0, 2228295, 0, 0, 2228296, 0, 0, 2228377, 7, 0, 2293831, 0, 0, 2293881, 7, 0, 2359367, 0, 0, 2424909, 5, 0, 2424911, 5, 0, 2424977, 7, 0, 2490505, 7, 0, 2555982, 0, 0, 2555983, 0, 0, 2556094, 6, 0, 2621440, 7, 0, 2621528, 5, 0, 2621538, 7, 0, 2621611, 7, 0, 2621619, 7, 0, 2621626, 7, 0, 2621630, 6, 0, 2687097, 7, 0, 2687105, 7, 0, 2752562, 7, 0, 2752600, 0, 0, 2752601, 0, 0, 3014736, 5, 0, 3014738, 5, 0, 3080266, 0, 0, 3080267, 0, 0, 3145728, 7, 0, 3145826, 7, 0, 3145908, 7, 0, 3145914, 7, 0, 3276870, 0, 0, 3276871, 0, 0, 3342512, 5, 0, 3342514, 5, 0, 3408044, 0, 0, 3408045, 0, 0, 3408046, 0, 0, 3408047, 0, 0, 3408048, 0, 0, 3473474, 0, 0, 3473475, 0, 0, 3539046, 7, 0, 3604632, 0, 0, 3604633, 0, 0, 3604634, 0, 0, 3670016, 7, 0, 3670024, 7, 0, 3670032, 7, 0, 3670040, 7, 0, 3670048, 7, 0, 3670056, 7, 0, 3670064, 7, 0, 3670072, 7, 0, 3670106, 7, 0, 3670114, 7, 0, 3670169, 0, 0, 3801198, 7, 0, 3801210, 6, 0, 3801219, 6, 0, 3801230, 6, 0, 3801250, 6, 0, 3866688, 7, 0, 4063328, 7, 0, 4063336, 7, 0, 4063344, 7, 0, 4063352, 7, 0, 4063353, 7, 0, 4063361, 7, 0, 4063369, 7, 0, 4063377, 7, 0, 4063385, 7, 0, 4063393, 7, 0, 4063401, 7, 0, 4063409, 7, 0, 4063417, 7, 0, 4063425, 7, 0, 4194376, 7, 0, 4194384, 7, 0, 4194392, 7, 0, 11338001, 7, 0, 11338002, 7, 0, 11599857, 7, 0 )
+tile_data = PoolIntArray( 65528, 7, 0, 0, 7, 0, 189, 7, 0, 196666, 7, 0, 196674, 7, 0, 196682, 7, 0, 196690, 7, 0, 196698, 7, 0, 196706, 7, 0, 196714, 7, 0, 196722, 7, 0, 196729, 7, 0, 524288, 7, 0, 524338, 7, 0, 720954, 7, 0, 720962, 7, 0, 721017, 7, 0, 1048576, 7, 0, 1048626, 7, 0, 1048674, 7, 0, 1114205, 5, 0, 1245242, 7, 0, 1245278, 0, 0, 1245305, 7, 0, 1441878, 5, 0, 1441880, 5, 0, 1572864, 7, 0, 1572914, 7, 0, 1572950, 0, 0, 1572951, 0, 0, 1572952, 0, 0, 1572962, 7, 0, 1573050, 7, 0, 1638487, 0, 0, 1638488, 0, 0, 1703986, 7, 0, 1704017, 5, 0, 1769593, 7, 0, 1835089, 0, 0, 1900620, 5, 0, 2097152, 7, 0, 2097222, 5, 0, 2097224, 5, 0, 2097250, 7, 0, 2097313, 7, 0, 2097321, 7, 0, 2097322, 7, 0, 2097330, 7, 0, 2097338, 7, 0, 2228274, 7, 0, 2228295, 0, 0, 2228296, 0, 0, 2228377, 7, 0, 2293831, 0, 0, 2293881, 7, 0, 2359367, 0, 0, 2424909, 5, 0, 2424911, 5, 0, 2424977, 7, 0, 2490505, 7, 0, 2555982, 0, 0, 2555983, 0, 0, 2556094, 6, 0, 2621440, 7, 0, 2621528, 5, 0, 2621538, 7, 0, 2621611, 7, 0, 2621619, 7, 0, 2621626, 7, 0, 2621630, 6, 0, 2687097, 7, 0, 2687105, 7, 0, 2752562, 7, 0, 2752600, 0, 0, 2752601, 0, 0, 3014738, 5, 0, 3014740, 0, 0, 3014741, 0, 0, 3080266, 0, 0, 3080267, 0, 0, 3080268, 0, 0, 3080276, 0, 0, 3080277, 0, 0, 3145728, 7, 0, 3145826, 7, 0, 3145908, 7, 0, 3145914, 7, 0, 3342512, 5, 0, 3342514, 5, 0, 3408044, 0, 0, 3408045, 0, 0, 3408046, 0, 0, 3408047, 0, 0, 3408048, 0, 0, 3473474, 0, 0, 3473475, 0, 0, 3473476, 0, 0, 3539046, 7, 0, 3604632, 0, 0, 3604633, 0, 0, 3604634, 0, 0, 3670016, 7, 0, 3670024, 7, 0, 3670032, 7, 0, 3670040, 7, 0, 3670048, 7, 0, 3670056, 7, 0, 3670064, 7, 0, 3670072, 7, 0, 3670106, 7, 0, 3670114, 7, 0, 3670169, 0, 0, 3801198, 7, 0, 3801210, 6, 0, 3801219, 6, 0, 3801230, 6, 0, 3801250, 6, 0, 3866688, 7, 0, 4063328, 7, 0, 4063336, 7, 0, 4063344, 7, 0, 4063352, 7, 0, 4063353, 7, 0, 4063361, 7, 0, 4063369, 7, 0, 4063377, 7, 0, 4063385, 7, 0, 4063393, 7, 0, 4063401, 7, 0, 4063409, 7, 0, 4063417, 7, 0, 4063425, 7, 0, 4194376, 7, 0, 4194384, 7, 0, 4194392, 7, 0, 11338001, 7, 0, 11338002, 7, 0, 11599857, 7, 0 )
 
 [node name="charakter" type="Sprite" parent="."]
 position = Vector2( 2368, 1856 )
-texture = ExtResource( 28 )
+texture = ExtResource( 16 )
 
 [node name="charakter2" type="Sprite" parent="."]
 position = Vector2( 1952, 1856 )
-texture = ExtResource( 14 )
+texture = ExtResource( 10 )
 
 [connection signal="on_health_changed" from="Node2D/Player/StateManager" to="Node2D/Player/Camera2D/Interface" method="_on_StateManager_on_health_changed"]
