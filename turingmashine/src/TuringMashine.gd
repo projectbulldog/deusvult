@@ -6,7 +6,8 @@ var turingMachine
 func _ready():
 	$Camera2D/UI/Control/CalculateAll.connect("pressed", self, "_calculate_pressed")
 	turingMachine = preload("TuringMachine.cs").new()
-	turingMachine.Init($Camera2D/UI/tape1, $Camera2D/UI/tape2, $Camera2D/UI/tape3, $Camera2D/UI/Control_Count/Count, $Camera2D/UI/Control_Result/Result)
+	var states = [$state0, $state1, $state2, $state3, $state4]
+	turingMachine.Init($Camera2D/UI/tape1, $Camera2D/UI/tape2, $Camera2D/UI/tape3, $Camera2D/UI/Control_Count/Count, $Camera2D/UI/Control_Result/Result, states)
 	self.add_child(turingMachine)
 	
 	$Camera2D/UI/Control/CalculateAll.disabled = true
@@ -43,14 +44,8 @@ func _on_Read_pressed():
 	$Camera2D/UI/Control/CalculateAll.disabled = false
 	$Camera2D/UI/Control/Step.disabled = false
 	$Camera2D/UI/Control/CalculateAll.text = "Berechnen"
-	$state0.self_modulate = ColorN("white")
-	$state1.self_modulate = ColorN("white")
-	$state2.self_modulate = ColorN("white")
-	$state3.self_modulate = ColorN("white")
-	$state4.self_modulate = ColorN("white")
-	var states = [$state0, $state1, $state2, $state3, $state4]
 	var interval : float = getWaitTime($Camera2D/UI/HSlider.value)
-	turingMachine.Reset(interval, input, states)
+	turingMachine.Reset(interval, input)
 
 func _on_TextEdit_text_changed(new_text):
 	turingMachine.ChangeWaitTimer(new_text)

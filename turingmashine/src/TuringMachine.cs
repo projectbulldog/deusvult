@@ -27,16 +27,22 @@ public class TuringMachine : Node2D
         this.AddChild(timer);
     }
 
-    public void Init(Tape tape1, Tape tape2, Tape tape3, Label countLabel, Label resultLabel)
+    public void Init(Tape tape1, Tape tape2, Tape tape3, Label countLabel, Label resultLabel, object[] allStates)
     {
         this.tape1 = tape1;
         this.tape2 = tape2;
         this.tape3 = tape3;
         this.countLabel = countLabel;
         this.resultLabel = resultLabel;
+
+        this.states = new State[allStates.Length];
+        for (int i = 0; i < allStates.Length; i++)
+        {
+            this.states[i] = (State)allStates[i];
+        }
     }
 
-    public void Reset(float timerInterval, string input, object[] allStates)
+    public void Reset(float timerInterval, string input)
     {
         timer.Stop();
         timer.WaitTime = timerInterval;
@@ -46,6 +52,7 @@ public class TuringMachine : Node2D
         this.tape1.Reset();
         this.tape2.Reset();
         this.tape3.Reset();
+        this.states.ToList().ForEach(s => s.LeaveState());
 
         var splittedNumbers = input.Split('*');
         for (int j = 0; j < splittedNumbers.Length; j++)
@@ -64,29 +71,23 @@ public class TuringMachine : Node2D
         this.tape1.UpdateTextPosition();
         this.tape2.UpdateTextPosition();
         this.tape3.UpdateTextPosition();
-
-        this.states = new State[allStates.Length];
-        for (int i = 0; i < allStates.Length; i++)
-        {
-            this.states[i] = (State)allStates[i];
-        }
-        this.currentState = states[0];
+        this.currentState = this.states[0];
         this.currentState.EnterState();
     }
 
     public void AutoStart()
     {
-        timer.Start();
+        this.timer.Start();
     }
 
     public void AutoStop()
     {
-        timer.Stop();
+        this.timer.Stop();
     }
 
     public void NextStep()
     {
-        var result = this.currentState.Calculate(this);
+        var result = this.currentState.Calculate(this.tape1.Read(), this.tape2.Read(), this.tape3.Read());
         this.steps++;
         this.countLabel.Text = steps.ToString();
         if (this.currentState != states[result.NewState])
@@ -97,7 +98,7 @@ public class TuringMachine : Node2D
         }
         if (result.IsFinished)
         {
-            timer.Stop();
+            this.timer.Stop();
             var calculateButton = this.GetParent().GetNode<Button>(new NodePath("Camera2D/UI/Control/CalculateAll"));
             calculateButton.Text = "Berechnen";
             if (this.currentState.IsAccepted)
@@ -112,22 +113,13 @@ public class TuringMachine : Node2D
             return;
         }
 
-        if (result.Tape1Character != '\0') this.tape1.ReplaceCurrentCharacter(result.Tape1Character);
-        if (result.Tape2Character != '\0') this.tape2.ReplaceCurrentCharacter(result.Tape2Character);
-        if (result.Tape3Character != '\0') this.tape3.ReplaceCurrentCharacter(result.Tape3Character);
+        this.tape1.Write(result.Tape1Character);
+        this.tape2.Write(result.Tape2Character);
+        this.tape3.Write(result.Tape3Character);
 
         this.tape1.CurrentReaderPosition += (int)result.Tape1Direction;
         this.tape2.CurrentReaderPosition += (int)result.Tape2Direction;
         this.tape3.CurrentReaderPosition += (int)result.Tape3Direction;
-    }
-
-    public char[] ReadTapes()
-    {
-        char[] tapeCharacters = new char[3];
-        tapeCharacters[0] = this.tape1.ReadCurrentPosition();
-        tapeCharacters[1] = this.tape2.ReadCurrentPosition();
-        tapeCharacters[2] = this.tape3.ReadCurrentPosition();
-        return tapeCharacters;
     }
 
     public void ChangeWaitTimer(float newInterval)

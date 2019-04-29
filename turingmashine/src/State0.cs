@@ -3,16 +3,15 @@ using System;
 
 public class State0 : State
 {
-    public override StateReturn Calculate(TuringMachine turingMachine)
+    public override StateReturn Calculate(char tape1, char tape2, char tape3)
     {
-        var tapes = turingMachine.ReadTapes();
-        var result = new StateReturn();
-        if (tapes[0] == 'I' && tapes[1] == '_' && tapes[2] == '_')
+        var result = this.CreateStateReturn(tape1, tape2, tape3);
+        if (tape1 == 'I' && tape2 == '_' && tape3 == '_')
         {
             result.NewState = 0;
             result.Tape1Direction = Direction.Right;
         }
-        else if (tapes[0] == '*' && tapes[1] == '_' && tapes[2] == '_')
+        else if (tape1 == '*' && tape2 == '_' && tape3 == '_')
         {
             result.NewState = 1;
             result.Tape1Direction = Direction.Right;

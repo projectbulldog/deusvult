@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=17 format=2]
 
 [ext_resource path="res://src/TuringMashine.gd" type="Script" id=1]
 [ext_resource path="res://shader/shaderMaterial.tres" type="Material" id=2]
@@ -9,7 +9,7 @@
 [ext_resource path="res://sprites/state_accepted.png" type="Texture" id=7]
 [ext_resource path="res://src/State3.cs" type="Script" id=8]
 [ext_resource path="res://src/State4.cs" type="Script" id=9]
-[ext_resource path="res://Camera2D.gd" type="Script" id=10]
+[ext_resource path="res://src/Camera2D.gd" type="Script" id=10]
 [ext_resource path="res://src/Tape.cs" type="Script" id=11]
 
 [sub_resource type="Animation" id=1]
@@ -39,13 +39,22 @@ tracks/1/keys = {
 "values": [ Vector2( 0.7, 0.7 ), Vector2( 1, 1 ), Vector2( 0.7, 0.7 ) ]
 }
 
-[sub_resource type="Environment" id=2]
+[sub_resource type="CanvasItemMaterial" id=2]
+light_mode = 1
+
+[sub_resource type="CanvasItemMaterial" id=3]
+light_mode = 1
+
+[sub_resource type="CanvasItemMaterial" id=4]
+light_mode = 1
+
+[sub_resource type="Environment" id=5]
 background_mode = 4
 glow_enabled = true
 glow_levels/2 = true
 glow_intensity = 0.5
 glow_strength = 0.7
-glow_blend_mode = 0
+glow_blend_mode = 1
 glow_bicubic_upscale = true
 
 [node name="World" type="Node2D"]
@@ -137,11 +146,13 @@ rect_scale = Vector2( 1.5, 1.5 )
 text = "q4"
 
 [node name="Camera2D" type="Camera2D" parent="TuringMashine"]
+editor/display_folded = true
 anchor_mode = 0
 current = true
 script = ExtResource( 10 )
 
 [node name="UI" type="Control" parent="TuringMashine/Camera2D"]
+editor/display_folded = true
 margin_right = 1024.0
 margin_bottom = 600.0
 size_flags_horizontal = 2
@@ -265,6 +276,8 @@ margin_bottom = 191.0
 text = "Band 3"
 
 [node name="tape1" type="RichTextLabel" parent="TuringMashine/Camera2D/UI"]
+light_mask = 0
+material = SubResource( 2 )
 margin_left = 100.0
 margin_top = 97.0
 margin_right = 800.0
@@ -273,6 +286,8 @@ scroll_active = false
 script = ExtResource( 11 )
 
 [node name="tape2" type="RichTextLabel" parent="TuringMashine/Camera2D/UI"]
+light_mask = 0
+material = SubResource( 3 )
 margin_left = 100.0
 margin_top = 137.0
 margin_right = 900.0
@@ -281,6 +296,8 @@ scroll_active = false
 script = ExtResource( 11 )
 
 [node name="tape3" type="RichTextLabel" parent="TuringMashine/Camera2D/UI"]
+light_mask = 0
+material = SubResource( 4 )
 margin_left = 100.0
 margin_top = 177.0
 margin_right = 900.0
@@ -305,9 +322,11 @@ margin_bottom = 41.0
 text = "Schnelligkeit"
 
 [node name="Popup" type="AcceptDialog" parent="TuringMashine/Camera2D/UI"]
-visible = true
-margin_right = 40.0
-margin_bottom = 40.0
+editor/display_folded = true
+margin_left = -394.247
+margin_top = 33.2497
+margin_right = -84.2469
+margin_bottom = 91.2497
 window_title = ""
 
 [node name="Label2" type="Label" parent="TuringMashine/Camera2D/UI/Popup"]
@@ -318,7 +337,7 @@ margin_bottom = 22.0
 text = "Ungültiges Format: Zülässig ist nur 'Zahl*Zahl'"
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
-environment = SubResource( 2 )
+environment = SubResource( 5 )
 
 [connection signal="draw" from="TuringMashine/Camera2D" to="TuringMashine/Camera2D" method="_on_Camera2D_draw"]
 [connection signal="pressed" from="TuringMashine/Camera2D/UI/Control/Read" to="TuringMashine" method="_on_Read_pressed"]

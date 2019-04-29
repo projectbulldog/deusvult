@@ -12,7 +12,17 @@ public abstract class State : Sprite
         this.SelfModulate = Color.ColorN("orange");
     }
 
-    public abstract StateReturn Calculate(TuringMachine turingMachine);
+    public abstract StateReturn Calculate(char tape1, char tape2, char tape3);
+
+    protected StateReturn CreateStateReturn(char tape1, char tape2, char tape3)
+    {
+        var result = new StateReturn();
+        result.Tape1Character = tape1;
+        result.Tape2Character = tape2;
+        result.Tape3Character = tape3;
+
+        return result;
+    }
 
     public virtual void LeaveState()
     {

@@ -8,34 +8,32 @@ public class State3 : State
         this.isAccepted = true;
     }
 
-    public override StateReturn Calculate(TuringMachine turingMachine)
+    public override StateReturn Calculate(char tape1, char tape2, char tape3)
     {
-        var tapes = turingMachine.ReadTapes();
-        var result = new StateReturn();
-        if (tapes[0] == 'I' && tapes[1] == 'I' && tapes[2] == '_')
+        var result = this.CreateStateReturn(tape1, tape2, tape3);
+        if (tape1 == 'I' && tape2 == 'I' && tape3 == '_')
         {
             result.NewState = 3;
             result.Tape3Character = 'I';
             result.Tape2Direction = Direction.Left;
             result.Tape3Direction = Direction.Right;
         }
-        else if (tapes[0] == 'I' && tapes[1] == '_' && tapes[2] == '_')
+        else if (tape1 == 'I' && tape2 == '_' && tape3 == '_')
         {
             result.NewState = 4;
-            result.Tape1Character = '_';
             result.Tape1Direction = Direction.Left;
             result.Tape2Direction = Direction.Right;
         }
-        else if (tapes[0] == '_' && tapes[1] == '_' && tapes[2] == '_')
+        else if (tape1 == '_' && tape2 == '_' && tape3 == '_')
         {
             result.NewState = 3;
-            result.IsAccepted = true;
+            result.IsAccepted = isAccepted;
             result.IsFinished = true;
         }
-        else if (tapes[0] == '_' && tapes[1] == 'I' && tapes[2] == '_')
+        else if (tape1 == '_' && tape2 == 'I' && tape3 == '_')
         {
             result.NewState = 3;
-            result.IsAccepted = true;
+            result.IsAccepted = isAccepted;
             result.IsFinished = true;
         }
         return result;

@@ -50,7 +50,7 @@ public class Tape : RichTextLabel
 
     }
 
-    public char ReadCurrentPosition()
+    public char Read()
     {
         if (this.Text.Length > this.currentReaderPosition)
         {
@@ -62,7 +62,7 @@ public class Tape : RichTextLabel
         }
     }
 
-    public void ReplaceCurrentCharacter(char character)
+    public void Write(char character)
     {
         this.Text = this.Text.Remove(this.CurrentReaderPosition, 1);
         this.Text = this.Text.Insert(this.CurrentReaderPosition, character.ToString());
