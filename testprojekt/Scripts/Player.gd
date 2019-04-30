@@ -100,10 +100,12 @@ func _process(delta):
 	if(lastMotionY - motion.y) > 2500:
 		$Camera2D.start_shake()
 	
-	if(!is_on_floor()):
+	if(isDashing):
+		travelTo("Idle")
+	elif(!is_on_floor()):
 		if(motion.y > 0):
 			travelTo("JumpDown")
-		else:
+		elif(motion.y < 0):
 			travelTo("Jump")
 	else:
 		if(motion.x != 0):
