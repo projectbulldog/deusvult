@@ -12,6 +12,11 @@ public abstract class State : Sprite
         this.SelfModulate = Color.ColorN("orange");
     }
 
+    public virtual void LeaveState()
+    {
+        this.SelfModulate = Color.ColorN("white");
+    }
+
     public abstract StateReturn Calculate(char tape1, char tape2, char tape3);
 
     protected StateReturn CreateStateReturn(char tape1, char tape2, char tape3)
@@ -22,10 +27,5 @@ public abstract class State : Sprite
         result.Tape3Character = tape3;
 
         return result;
-    }
-
-    public virtual void LeaveState()
-    {
-        this.SelfModulate = Color.ColorN("white");
     }
 }
