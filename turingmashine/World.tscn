@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://src/TuringMashine.gd" type="Script" id=1]
 [ext_resource path="res://shader/shaderMaterial.tres" type="Material" id=2]
@@ -38,15 +38,6 @@ tracks/1/keys = {
 "update": 0,
 "values": [ Vector2( 0.7, 0.7 ), Vector2( 1, 1 ), Vector2( 0.7, 0.7 ) ]
 }
-
-[sub_resource type="CanvasItemMaterial" id=2]
-light_mode = 1
-
-[sub_resource type="CanvasItemMaterial" id=3]
-light_mode = 1
-
-[sub_resource type="CanvasItemMaterial" id=4]
-light_mode = 1
 
 [sub_resource type="Environment" id=5]
 background_mode = 4
@@ -146,13 +137,11 @@ rect_scale = Vector2( 1.5, 1.5 )
 text = "q4"
 
 [node name="Camera2D" type="Camera2D" parent="TuringMashine"]
-editor/display_folded = true
 anchor_mode = 0
 current = true
 script = ExtResource( 10 )
 
 [node name="UI" type="Control" parent="TuringMashine/Camera2D"]
-editor/display_folded = true
 margin_right = 1024.0
 margin_bottom = 600.0
 size_flags_horizontal = 2
@@ -277,7 +266,6 @@ text = "Band 3"
 
 [node name="tape1" type="RichTextLabel" parent="TuringMashine/Camera2D/UI"]
 light_mask = 0
-material = SubResource( 2 )
 margin_left = 100.0
 margin_top = 97.0
 margin_right = 800.0
@@ -287,7 +275,6 @@ script = ExtResource( 11 )
 
 [node name="tape2" type="RichTextLabel" parent="TuringMashine/Camera2D/UI"]
 light_mask = 0
-material = SubResource( 3 )
 margin_left = 100.0
 margin_top = 137.0
 margin_right = 900.0
@@ -297,11 +284,10 @@ script = ExtResource( 11 )
 
 [node name="tape3" type="RichTextLabel" parent="TuringMashine/Camera2D/UI"]
 light_mask = 0
-material = SubResource( 4 )
 margin_left = 100.0
 margin_top = 177.0
 margin_right = 900.0
-margin_bottom = 258.0
+margin_bottom = 207.0
 script = ExtResource( 11 )
 
 [node name="HSlider" type="HSlider" parent="TuringMashine/Camera2D/UI"]
