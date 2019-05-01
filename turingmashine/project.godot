@@ -25,10 +25,10 @@ settings/fps/force_fps=60
 
 [display]
 
+window/size/resizable=false
 window/vsync/use_vsync=false
 
 [rendering]
 
-threads/thread_model=2
 environment/default_clear_color=Color( 0, 0, 0, 1 )
 environment/default_environment="res://default_env.tres"
