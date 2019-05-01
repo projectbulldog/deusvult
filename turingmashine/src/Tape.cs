@@ -33,6 +33,7 @@ public class Tape : RichTextLabel
                 this.CurrentReaderPosition++;
             }
         }
+
         var neededUnderlinesAfter = this.CurrentReaderPosition + 15 - this.Text.Length;
         for (int i = 0; i <= neededUnderlinesAfter; i++)
         {
@@ -52,7 +53,7 @@ public class Tape : RichTextLabel
 
     public char Read()
     {
-        return this.Text.Length > this.currentReaderPosition? this.Text[this.currentReaderPosition] : '_';
+        return this.Text.Length > this.currentReaderPosition ? this.Text[this.currentReaderPosition] : '_';
     }
 
     public void Write(char character)
