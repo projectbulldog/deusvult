@@ -52,14 +52,7 @@ public class Tape : RichTextLabel
 
     public char Read()
     {
-        if (this.Text.Length > this.currentReaderPosition)
-        {
-            return this.Text[this.currentReaderPosition];
-        }
-        else
-        {
-            return '_';
-        }
+        return this.Text.Length > this.currentReaderPosition? this.Text[this.currentReaderPosition] : '_';
     }
 
     public void Write(char character)
