@@ -39,7 +39,7 @@ tracks/1/keys = {
 "values": [ Vector2( 0.7, 0.7 ), Vector2( 1, 1 ), Vector2( 0.7, 0.7 ) ]
 }
 
-[sub_resource type="Environment" id=5]
+[sub_resource type="Environment" id=2]
 background_mode = 4
 glow_enabled = true
 glow_levels/2 = true
@@ -137,11 +137,13 @@ rect_scale = Vector2( 1.5, 1.5 )
 text = "q4"
 
 [node name="Camera2D" type="Camera2D" parent="TuringMashine"]
+editor/display_folded = true
 anchor_mode = 0
 current = true
 script = ExtResource( 10 )
 
 [node name="UI" type="Control" parent="TuringMashine/Camera2D"]
+editor/display_folded = true
 margin_right = 1024.0
 margin_bottom = 600.0
 size_flags_horizontal = 2
@@ -168,6 +170,7 @@ anchor_left = 1.0
 anchor_right = 1.0
 margin_left = -100.0
 margin_bottom = 27.0
+mouse_default_cursor_shape = 2
 text = "Einlesen"
 
 [node name="CalculateAll" type="Button" parent="TuringMashine/Camera2D/UI/Control"]
@@ -177,6 +180,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = -100.0
 margin_top = -27.0
+mouse_default_cursor_shape = 2
 text = "Berechnen"
 
 [node name="Step" type="Button" parent="TuringMashine/Camera2D/UI/Control"]
@@ -184,6 +188,7 @@ anchor_top = 1.0
 anchor_bottom = 1.0
 margin_top = -27.0
 margin_right = 100.0
+mouse_default_cursor_shape = 2
 text = "Schritt"
 
 [node name="Control_Count" type="Control" parent="TuringMashine/Camera2D/UI"]
@@ -323,7 +328,7 @@ margin_bottom = 22.0
 text = "Ungültiges Format: Zülässig ist nur 'Zahl*Zahl'"
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
-environment = SubResource( 5 )
+environment = SubResource( 2 )
 
 [connection signal="draw" from="TuringMashine/Camera2D" to="TuringMashine/Camera2D" method="_on_Camera2D_draw"]
 [connection signal="pressed" from="TuringMashine/Camera2D/UI/Control/Read" to="TuringMashine" method="_on_Read_pressed"]

@@ -60,6 +60,7 @@
     <Compile Include="src\StateReturn.cs" />
     <Compile Include="src\TuringMachine.cs" />
     <Compile Include="src\Tape.cs" />
+    <Compile Include="src\Alphabet.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
 </Project>

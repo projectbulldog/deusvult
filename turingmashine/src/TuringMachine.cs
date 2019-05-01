@@ -55,15 +55,15 @@ public class TuringMachine : Node2D
         this.tape3.Reset();
         this.states.ToList().ForEach(s => s.LeaveState());
 
-        var splittedNumbers = input.Split('*');
+        var splittedNumbers = input.Split(Alphabet.OPERATION);
         for (int j = 0; j < splittedNumbers.Length; j++)
         {
             int number = splittedNumbers[j] != null ? int.Parse(splittedNumbers[j]) : 0;
             for (int i = 0; i < (int)number; i++)
             {
-                this.tape1.Text += "I";
+                this.tape1.Text += Alphabet.NUMBER;
             }
-            if (j < splittedNumbers.Length - 1) this.tape1.Text += "*";
+            if (j < splittedNumbers.Length - 1) this.tape1.Text += Alphabet.OPERATION;
         }
 
         this.tape1.CurrentReaderPosition = 0;
@@ -105,7 +105,7 @@ public class TuringMachine : Node2D
             {
                 this.currentState.SelfModulate = Color.ColorN("green");
                 var tapeContent = this.tape3.Text;
-                this.resultLabel.Text = tapeContent.Count(c => c == 'I').ToString();
+                this.resultLabel.Text = tapeContent.Count(c => c == Alphabet.NUMBER).ToString();
             }
             var animation = this.GetParent().GetNode<AnimationPlayer>(new NodePath("AnimationPlayer"));
             animation.RootNode = this.currentState.GetPath();
