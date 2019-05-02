@@ -1,4 +1,4 @@
-extends Sprite
+extends Area2D
 
 var direction = Vector2(0, 0)
 
@@ -22,3 +22,6 @@ func defineTarget():
 func random():
     randomize()
     return randf()*601 - 300.0
+
+func takeDamage():
+	self.remove_and_skip()

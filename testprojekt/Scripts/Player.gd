@@ -101,8 +101,12 @@ func _process(delta):
 		canJump = false
 		motion.y = delta * GRAVITY
 	
-	motion = move_and_slide(motion, Vector2(0, -1))
+	
+	if is_on_floor() && isAttacking:
+		motion.x *= 0.6
 	$Camera2D.align()
+	
+	motion = move_and_slide(motion, Vector2(0, -1))
 	
 	if(lastMotionY - motion.y) > 2500:
 		$Camera2D.start_shake()
@@ -137,10 +141,19 @@ func _process(delta):
 				travelTo("Idle")
 
 func attack():
+	$Sprite/_0008_dream_nail/Area2D.connect("body_entered", self, "on_body_entered_attack")
 	var bodies = $Sprite/_0008_dream_nail/Area2D.get_overlapping_bodies()
 	for body in bodies:
-		if(body.is_in_group("Enemy")):
+		if(body.is_in_group("Damageable")):
 			body.takeDamage()
+	var areas = $Sprite/_0008_dream_nail/Area2D.get_overlapping_areas()
+	for area in areas:
+		if(area.is_in_group("Damageable")):
+			area.takeDamage()
+
+func on_body_entered_attack(body):
+	if(body.is_in_group("Damageable")):
+		body.takeDamage()
 	
 func takeDamage(damage):
 	$StateManager.take_Damage(damage)
@@ -150,3 +163,5 @@ func travelTo(animation):
 
 func attackFinished():
 	isAttacking = false
+	$Sprite/_0008_dream_nail/Area2D.disconnect("body_entered", self, "on_body_entered_attack")
+
