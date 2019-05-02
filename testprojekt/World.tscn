@@ -325,8 +325,8 @@ environment = ExtResource( 1 )
 z_index = 2
 
 [node name="Player" type="KinematicBody2D" parent="Node2D" groups=[
-"Player",
 "Damageable",
+"Player",
 ]]
 position = Vector2( 2304, 3488 )
 scale = Vector2( 0.6, 0.6 )
@@ -337,6 +337,7 @@ script = ExtResource( 2 )
 [node name="Camera2D" type="Camera2D" parent="Node2D/Player"]
 position = Vector2( 11, 85 )
 offset = Vector2( 0, -200 )
+rotating = true
 current = true
 drag_margin_v_enabled = false
 smoothing_enabled = true

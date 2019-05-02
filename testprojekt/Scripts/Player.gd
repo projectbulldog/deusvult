@@ -47,6 +47,9 @@ func _process(delta):
 	var lastMotionY = motion.y
 	motion.y += delta * GRAVITY
 	
+	if Input.is_key_pressed(KEY_Q):
+		$Camera2D.start_shake()
+	
 	# LEFT / RIGHT MOVEMENT
 	if Input.is_action_pressed("ui_right"):
 		if direction == DIRECTION.LEFT:
