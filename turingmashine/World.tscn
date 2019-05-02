@@ -145,7 +145,6 @@ current = true
 script = ExtResource( 10 )
 
 [node name="UI" type="Control" parent="TuringMashine/Camera2D"]
-editor/display_folded = true
 margin_right = 1024.0
 margin_bottom = 600.0
 size_flags_horizontal = 2
