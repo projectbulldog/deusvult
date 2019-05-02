@@ -1,4 +1,4 @@
-[gd_scene load_steps=74 format=2]
+[gd_scene load_steps=78 format=2]
 
 [ext_resource path="res://default_env.tres" type="Environment" id=1]
 [ext_resource path="res://Scripts/Player.gd" type="Script" id=2]
@@ -29,6 +29,8 @@
 [ext_resource path="res://Sprite2.gd" type="Script" id=27]
 [ext_resource path="res://Sprites/Unbenannt.png" type="Texture" id=28]
 [ext_resource path="res://Tiles/tileset_blackbox.tres" type="TileSet" id=29]
+[ext_resource path="res://Enemy.gd" type="Script" id=30]
+[ext_resource path="res://charakter.png" type="Texture" id=31]
 
 [sub_resource type="StyleBoxFlat" id=1]
 bg_color = Color( 0.478431, 0.858824, 0.321569, 1 )
@@ -40,8 +42,9 @@ corner_radius_bottom_left = 5
 [sub_resource type="StyleBoxEmpty" id=2]
 
 [sub_resource type="RectangleShape2D" id=3]
+extents = Vector2( 11.04, 10 )
 
-[sub_resource type="Animation" id=7]
+[sub_resource type="Animation" id=4]
 resource_name = "Attack"
 length = 0.2
 tracks/0/type = "value"
@@ -106,8 +109,22 @@ tracks/4/keys = {
 "update": 0,
 "values": [ 0.0 ]
 }
+tracks/5/type = "method"
+tracks/5/path = NodePath("..")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "attack"
+} ]
+}
 
-[sub_resource type="Animation" id=8]
+[sub_resource type="Animation" id=5]
 resource_name = "Attack_Up"
 length = 0.2
 tracks/0/type = "value"
@@ -173,7 +190,7 @@ tracks/4/keys = {
 "values": [ -90.0 ]
 }
 
-[sub_resource type="Animation" id=9]
+[sub_resource type="Animation" id=6]
 length = 0.8
 loop = true
 tracks/0/type = "value"
@@ -189,7 +206,7 @@ tracks/0/keys = {
 "values": [ ExtResource( 10 ), ExtResource( 8 ), ExtResource( 11 ), ExtResource( 12 ) ]
 }
 
-[sub_resource type="Animation" id=10]
+[sub_resource type="Animation" id=7]
 tracks/0/type = "value"
 tracks/0/path = NodePath(".:texture")
 tracks/0/interp = 1
@@ -203,7 +220,7 @@ tracks/0/keys = {
 "values": [ ExtResource( 13 ) ]
 }
 
-[sub_resource type="Animation" id=11]
+[sub_resource type="Animation" id=8]
 tracks/0/type = "value"
 tracks/0/path = NodePath(".:texture")
 tracks/0/interp = 1
@@ -217,7 +234,7 @@ tracks/0/keys = {
 "values": [ ExtResource( 14 ) ]
 }
 
-[sub_resource type="Animation" id=12]
+[sub_resource type="Animation" id=9]
 length = 0.8
 loop = true
 tracks/0/type = "value"
@@ -251,23 +268,29 @@ tracks/1/keys = {
 "times": PoolRealArray( 0.1, 0.5 )
 }
 
-[sub_resource type="AnimationNodeAnimation" id=13]
+[sub_resource type="AnimationNodeAnimation" id=10]
 animation = "Attack"
 
-[sub_resource type="AnimationNodeAnimation" id=14]
+[sub_resource type="AnimationNodeAnimation" id=11]
 animation = "Attack_Up"
 
-[sub_resource type="AnimationNodeAnimation" id=15]
+[sub_resource type="AnimationNodeAnimation" id=12]
 animation = "Idle"
 
-[sub_resource type="AnimationNodeAnimation" id=16]
+[sub_resource type="AnimationNodeAnimation" id=13]
 animation = "Jump"
 
-[sub_resource type="AnimationNodeAnimation" id=17]
+[sub_resource type="AnimationNodeAnimation" id=14]
 animation = "JumpDown"
 
-[sub_resource type="AnimationNodeAnimation" id=18]
+[sub_resource type="AnimationNodeAnimation" id=15]
 animation = "Walk"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=16]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=17]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=18]
 
 [sub_resource type="AnimationNodeStateMachineTransition" id=19]
 
@@ -303,38 +326,35 @@ animation = "Walk"
 
 [sub_resource type="AnimationNodeStateMachineTransition" id=35]
 
-[sub_resource type="AnimationNodeStateMachineTransition" id=36]
-
-[sub_resource type="AnimationNodeStateMachineTransition" id=37]
-
-[sub_resource type="AnimationNodeStateMachineTransition" id=38]
-
-[sub_resource type="AnimationNodeStateMachine" id=39]
-states/Attack/node = SubResource( 13 )
+[sub_resource type="AnimationNodeStateMachine" id=36]
+states/Attack/node = SubResource( 10 )
 states/Attack/position = Vector2( 854.934, 132.869 )
-states/Attack_Up/node = SubResource( 14 )
+states/Attack_Up/node = SubResource( 11 )
 states/Attack_Up/position = Vector2( 844.934, 189.869 )
-states/Idle/node = SubResource( 15 )
+states/Idle/node = SubResource( 12 )
 states/Idle/position = Vector2( 206, 33 )
-states/Jump/node = SubResource( 16 )
+states/Jump/node = SubResource( 13 )
 states/Jump/position = Vector2( 206, 248 )
-states/JumpDown/node = SubResource( 17 )
+states/JumpDown/node = SubResource( 14 )
 states/JumpDown/position = Vector2( 705.934, 248 )
-states/Walk/node = SubResource( 18 )
+states/Walk/node = SubResource( 15 )
 states/Walk/position = Vector2( 705.934, 33 )
-transitions = [ "Idle", "Walk", SubResource( 19 ), "Walk", "Idle", SubResource( 20 ), "Idle", "Jump", SubResource( 21 ), "Jump", "Walk", SubResource( 22 ), "Walk", "Jump", SubResource( 23 ), "Jump", "Idle", SubResource( 24 ), "JumpDown", "Walk", SubResource( 25 ), "Walk", "JumpDown", SubResource( 26 ), "JumpDown", "Jump", SubResource( 27 ), "Jump", "JumpDown", SubResource( 28 ), "JumpDown", "Idle", SubResource( 29 ), "Idle", "JumpDown", SubResource( 30 ), "Walk", "Attack", SubResource( 31 ), "Idle", "Attack", SubResource( 32 ), "Attack", "Idle", SubResource( 33 ), "Attack", "Walk", SubResource( 34 ), "Idle", "Attack_Up", SubResource( 35 ), "Attack_Up", "Walk", SubResource( 36 ), "Walk", "Attack_Up", SubResource( 37 ), "Attack_Up", "Idle", SubResource( 38 ) ]
+transitions = [ "Idle", "Walk", SubResource( 16 ), "Walk", "Idle", SubResource( 17 ), "Idle", "Jump", SubResource( 18 ), "Jump", "Walk", SubResource( 19 ), "Walk", "Jump", SubResource( 20 ), "Jump", "Idle", SubResource( 21 ), "JumpDown", "Walk", SubResource( 22 ), "Walk", "JumpDown", SubResource( 23 ), "JumpDown", "Jump", SubResource( 24 ), "Jump", "JumpDown", SubResource( 25 ), "JumpDown", "Idle", SubResource( 26 ), "Idle", "JumpDown", SubResource( 27 ), "Walk", "Attack", SubResource( 28 ), "Idle", "Attack", SubResource( 29 ), "Attack", "Idle", SubResource( 30 ), "Attack", "Walk", SubResource( 31 ), "Idle", "Attack_Up", SubResource( 32 ), "Attack_Up", "Walk", SubResource( 33 ), "Walk", "Attack_Up", SubResource( 34 ), "Attack_Up", "Idle", SubResource( 35 ) ]
 graph_offset = Vector2( -292.066, -18.131 )
 
-[sub_resource type="AnimationNodeStateMachinePlayback" id=40]
+[sub_resource type="AnimationNodeStateMachinePlayback" id=37]
 
-[sub_resource type="Gradient" id=4]
+[sub_resource type="CircleShape2D" id=46]
+radius = 595.0
+
+[sub_resource type="Gradient" id=38]
 offsets = PoolRealArray( 0, 0.361257, 1 )
 colors = PoolColorArray( 1, 1, 1, 1, 0.960938, 0.435425, 0.435425, 1, 0.71875, 0, 0, 1 )
 
-[sub_resource type="GradientTexture" id=5]
-gradient = SubResource( 4 )
+[sub_resource type="GradientTexture" id=39]
+gradient = SubResource( 38 )
 
-[sub_resource type="ParticlesMaterial" id=6]
+[sub_resource type="ParticlesMaterial" id=40]
 flag_disable_z = true
 spread = 10.0
 gravity = Vector3( 0, 0, 0 )
@@ -343,7 +363,7 @@ angular_velocity = -1.0
 orbit_velocity = 0.0
 orbit_velocity_random = 0.0
 scale = 10.0
-color_ramp = SubResource( 5 )
+color_ramp = SubResource( 39 )
 
 [sub_resource type="Animation" id=41]
 length = 1.1
@@ -457,6 +477,9 @@ tracks/1/keys = {
 "values": [ Vector2( 0, 0 ), Vector2( 13.06, -23.76 ) ]
 }
 
+[sub_resource type="RectangleShape2D" id=45]
+extents = Vector2( 23.61, 78.07 )
+
 [node name="World" type="Node"]
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
@@ -471,12 +494,11 @@ z_index = 2
 ]]
 position = Vector2( 2304, 3488 )
 scale = Vector2( 0.6, 0.6 )
-z_index = 1
+z_index = 10
 z_as_relative = false
 script = ExtResource( 2 )
 
 [node name="Camera2D" type="Camera2D" parent="Node2D/Player"]
-editor/display_folded = true
 position = Vector2( 11, 85 )
 offset = Vector2( 0, -200 )
 current = true
@@ -505,7 +527,6 @@ custom_colors/font_color = Color( 0, 0, 0, 0 )
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer" parent="Node2D/Player/Camera2D"]
 stream = ExtResource( 5 )
-volume_db = -30.0
 autoplay = true
 
 [node name="AudioStreamPlayer2D2" type="AudioStreamPlayer2D" parent="Node2D/Player/Camera2D"]
@@ -527,18 +548,18 @@ scale = Vector2( 0.26, 0.26 )
 texture = ExtResource( 8 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Node2D/Player/Sprite"]
-anims/Attack = SubResource( 7 )
-anims/Attack_Up = SubResource( 8 )
-anims/Idle = SubResource( 9 )
-anims/Jump = SubResource( 10 )
-anims/JumpDown = SubResource( 11 )
-anims/Walk = SubResource( 12 )
+anims/Attack = SubResource( 4 )
+anims/Attack_Up = SubResource( 5 )
+anims/Idle = SubResource( 6 )
+anims/Jump = SubResource( 7 )
+anims/JumpDown = SubResource( 8 )
+anims/Walk = SubResource( 9 )
 
 [node name="AnimationTree" type="AnimationTree" parent="Node2D/Player/Sprite"]
-tree_root = SubResource( 39 )
+tree_root = SubResource( 36 )
 anim_player = NodePath("../AnimationPlayer")
 active = true
-parameters/playback = SubResource( 40 )
+parameters/playback = SubResource( 37 )
 script = ExtResource( 23 )
 
 [node name="_0008_dream_nail" type="Sprite" parent="Node2D/Player/Sprite"]
@@ -546,6 +567,15 @@ visible = false
 position = Vector2( 820.512, -19.6523 )
 scale = Vector2( 2.26, 2.06 )
 texture = ExtResource( 24 )
+
+[node name="Area2D" type="Area2D" parent="Node2D/Player/Sprite/_0008_dream_nail"]
+position = Vector2( -0.000976563, 9.54004 )
+scale = Vector2( 0.442478, 0.485437 )
+collision_layer = 3
+collision_mask = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Node2D/Player/Sprite/_0008_dream_nail/Area2D"]
+shape = SubResource( 46 )
 
 [node name="DashParticles" type="Particles2D" parent="Node2D/Player/Sprite"]
 position = Vector2( -307.692, -19.6523 )
@@ -555,7 +585,7 @@ emitting = false
 amount = 20
 lifetime = 0.1
 one_shot = true
-process_material = SubResource( 6 )
+process_material = SubResource( 40 )
 texture = ExtResource( 25 )
 
 [node name="CanvasModulate" type="CanvasModulate" parent="Node2D"]
@@ -649,7 +679,29 @@ anims/Fly = SubResource( 44 )
 [node name="BlackBox" type="TileMap" parent="Node2D"]
 z_index = -10
 tile_set = ExtResource( 29 )
+collision_layer = 3
+collision_mask = 3
 format = 1
 tile_data = PoolIntArray( 65528, 7, 0, 0, 7, 0, 189, 7, 0, 196666, 7, 0, 196674, 7, 0, 196682, 7, 0, 196690, 7, 0, 196698, 7, 0, 196706, 7, 0, 196714, 7, 0, 196722, 7, 0, 196729, 7, 0, 524288, 7, 0, 524338, 7, 0, 720954, 7, 0, 720962, 7, 0, 721017, 7, 0, 1048576, 7, 0, 1048626, 7, 0, 1048670, 5, 0, 1048672, 5, 0, 1048674, 7, 0, 1179742, 5, 0, 1179744, 5, 0, 1245242, 7, 0, 1245305, 7, 0, 1441878, 5, 0, 1441880, 5, 0, 1572864, 7, 0, 1572914, 7, 0, 1572950, 0, 0, 1572951, 0, 0, 1572952, 0, 0, 1572962, 7, 0, 1573050, 7, 0, 1638487, 0, 0, 1638488, 0, 0, 1703986, 7, 0, 1769550, 5, 0, 1769593, 7, 0, 2097152, 7, 0, 2097222, 5, 0, 2097224, 5, 0, 2097250, 7, 0, 2097313, 7, 0, 2097321, 7, 0, 2097322, 7, 0, 2097330, 7, 0, 2097338, 7, 0, 2228274, 7, 0, 2228295, 0, 0, 2228296, 0, 0, 2228377, 7, 0, 2293831, 0, 0, 2293881, 7, 0, 2359367, 0, 0, 2424909, 5, 0, 2424911, 5, 0, 2424977, 7, 0, 2490505, 7, 0, 2555982, 0, 0, 2555983, 0, 0, 2556094, 6, 0, 2621440, 7, 0, 2621528, 5, 0, 2621538, 7, 0, 2621611, 7, 0, 2621619, 7, 0, 2621626, 7, 0, 2621630, 6, 0, 2687097, 7, 0, 2687105, 7, 0, 2752562, 7, 0, 2752600, 0, 0, 2752601, 0, 0, 3014738, 5, 0, 3014740, 0, 0, 3014741, 0, 0, 3080266, 0, 0, 3080267, 0, 0, 3080268, 0, 0, 3080276, 0, 0, 3080277, 0, 0, 3145728, 7, 0, 3145826, 7, 0, 3145908, 7, 0, 3145914, 7, 0, 3145922, 7, 0, 3342512, 5, 0, 3342514, 5, 0, 3408044, 0, 0, 3408045, 0, 0, 3408046, 0, 0, 3408047, 0, 0, 3408048, 0, 0, 3473474, 0, 0, 3473475, 0, 0, 3473476, 0, 0, 3539046, 7, 0, 3604632, 0, 0, 3604633, 0, 0, 3604634, 0, 0, 3670016, 7, 0, 3670024, 7, 0, 3670032, 7, 0, 3670040, 7, 0, 3670048, 7, 0, 3670056, 7, 0, 3670064, 7, 0, 3670072, 7, 0, 3670106, 7, 0, 3670114, 7, 0, 3670169, 0, 0, 3801198, 7, 0, 3801210, 6, 0, 3801219, 6, 0, 3801230, 6, 0, 3801250, 6, 0, 3866688, 7, 0, 4063328, 7, 0, 4063336, 7, 0, 4063344, 7, 0, 4063352, 7, 0, 4063353, 7, 0, 4063361, 7, 0, 4063369, 7, 0, 4063377, 7, 0, 4063385, 7, 0, 4063393, 7, 0, 4063401, 7, 0, 4063409, 7, 0, 4063417, 7, 0, 4063425, 7, 0, 4194376, 7, 0, 4194384, 7, 0, 4194392, 7, 0, 11338001, 7, 0, 11338002, 7, 0, 11599857, 7, 0 )
 
+[node name="Enemy" type="KinematicBody2D" parent="Node2D" groups=[
+"Enemy",
+]]
+position = Vector2( 2880, 3456 )
+collision_layer = 2
+collision_mask = 2
+script = ExtResource( 30 )
+
+[node name="Timer" type="Timer" parent="Node2D/Enemy"]
+wait_time = 0.5
+one_shot = true
+
+[node name="Sprite" type="Sprite" parent="Node2D/Enemy"]
+scale = Vector2( 0.15, 0.15 )
+texture = ExtResource( 31 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Node2D/Enemy"]
+shape = SubResource( 45 )
+
 [connection signal="on_health_changed" from="Node2D/Player/StateManager" to="Node2D/Player/Camera2D/Interface" method="_on_StateManager_on_health_changed"]
+[connection signal="timeout" from="Node2D/Enemy/Timer" to="Node2D/Enemy" method="_on_Timer_timeout"]

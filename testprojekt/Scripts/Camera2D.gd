@@ -1,7 +1,7 @@
 extends Camera2D
 
 export var shake_power = 10
-export var shake_time = 0.2
+export var shake_time = 0.3
 var isShake = false
 var curPos
 var elapsedtime = 0
@@ -39,4 +39,5 @@ func shake(delta):
 		isShake = false
 		elapsedtime = 0
 		offset = curPos
+		self.rotation = 0
 		self.rotating = false

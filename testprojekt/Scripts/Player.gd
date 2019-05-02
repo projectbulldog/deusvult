@@ -1,7 +1,7 @@
 extends KinematicBody2D
 
 const GRAVITY = 3500
-const SPEED = 600
+const SPEED = 800
 const JUMP_SPEED = -5000
 const MAXJUMP_SPEED = -10000
 const MAXJUMPMOTION = -1100
@@ -54,14 +54,13 @@ func _process(delta):
 	
 	if Input.is_key_pressed(KEY_Q):
 		$Camera2D.start_shake()
-	
 	# LEFT / RIGHT MOVEMENT
-	if Input.is_action_pressed("ui_right"):
+	if Input.is_action_pressed("ui_right") && (!isAttacking || direction == DIRECTION.RIGHT):
 		if direction == DIRECTION.LEFT:
 			$Sprite.scale.x *= -1
 			direction = DIRECTION.RIGHT
 		motion.x = SPEED
-	elif Input.is_action_pressed("ui_left"):
+	elif Input.is_action_pressed("ui_left") && (!isAttacking || direction == DIRECTION.LEFT):
 		if direction == DIRECTION.RIGHT:
 			$Sprite.scale.x *= -1
 			direction = DIRECTION.LEFT
@@ -138,8 +137,10 @@ func _process(delta):
 				travelTo("Idle")
 
 func attack():
-	# todo
-	pass
+	var bodies = $Sprite/_0008_dream_nail/Area2D.get_overlapping_bodies()
+	for body in bodies:
+		if(body.is_in_group("Enemy")):
+			body.takeDamage()
 	
 func takeDamage(damage):
 	$StateManager.take_Damage(damage)
