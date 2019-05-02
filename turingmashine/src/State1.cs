@@ -23,6 +23,7 @@ public class State1 : State
         {
             result.IsFinished = true;
             result.NewState = 1;
+            result.IsAccepted = this.isAccepted;
         }
         return result;
     }

@@ -2,7 +2,6 @@
 
 [ext_resource path="res://shader/glow.shader" type="Shader" id=1]
 
-
 [resource]
 shader = ExtResource( 1 )
 
