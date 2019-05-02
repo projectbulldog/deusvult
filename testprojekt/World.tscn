@@ -337,7 +337,6 @@ script = ExtResource( 2 )
 [node name="Camera2D" type="Camera2D" parent="Node2D/Player"]
 position = Vector2( 11, 85 )
 offset = Vector2( 0, -200 )
-rotating = true
 current = true
 drag_margin_v_enabled = false
 smoothing_enabled = true

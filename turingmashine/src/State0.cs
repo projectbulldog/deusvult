@@ -19,6 +19,7 @@ public class State0 : State
         else
         {
             result.IsFinished = true;
+            result.IsAccepted = this.isAccepted;
         }
 
         return result;

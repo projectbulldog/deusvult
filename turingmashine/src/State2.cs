@@ -18,12 +18,6 @@ public class State2 : State
             result.Tape1Direction = Direction.Left;
             result.Tape1Character = Alphabet.EMPTY;
         }
-        else if (tape1 == Alphabet.OPERATION && tape2 == Alphabet.NUMBER && tape3 == Alphabet.EMPTY)
-        {
-            result.NewState = 3;
-            result.Tape1Direction = Direction.Left;
-            result.Tape1Character = Alphabet.EMPTY;
-        }
         else if (tape1 == Alphabet.OPERATION && tape2 == Alphabet.EMPTY && tape3 == Alphabet.EMPTY)
         {
             result.NewState = 3;
@@ -34,6 +28,7 @@ public class State2 : State
         {
             result.IsFinished = true;
             result.NewState = 2;
+            result.IsAccepted = this.isAccepted;
         }
         return result;
     }
