@@ -28,14 +28,15 @@ func _process(delta):
 
 func start_shake():
 	isShake = true
+	self.rotating = true
 
 func shake(delta):
 	if elapsedtime<shake_time:
 		offset += Vector2(randf() -0.5, randf() - 0.5) * shake_power
-		self.rotation_degrees += randf()-0.5
+		self.rotation_degrees += (randf()-0.5)
 		elapsedtime += delta
 	else:
 		isShake = false
 		elapsedtime = 0
 		offset = curPos
-		self.rotation = 0
+		self.rotating = false

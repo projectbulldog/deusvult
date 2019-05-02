@@ -7,24 +7,24 @@
 [ext_resource path="res://Sounds/Christopher Larkin - Hollow Knight (Original Soundtrack) - 03 Crossroads.wav" type="AudioStream" id=5]
 [ext_resource path="res://Footstep.wav" type="AudioStream" id=6]
 [ext_resource path="res://Scripts/StateManager.gd" type="Script" id=7]
-[ext_resource path="res://dash_effect_020002.png" type="Texture" id=8]
-[ext_resource path="res://Sprites/Nyx/Idle/2_nyx-idle.png" type="Texture" id=9]
-[ext_resource path="res://charakter2.png" type="Texture" id=10]
-[ext_resource path="res://Sprites/Nyx/Idle/1_nyx-idle.png" type="Texture" id=11]
-[ext_resource path="res://Sprites/Nyx/Idle/3_nyx-idle.png" type="Texture" id=12]
-[ext_resource path="res://Sprites/Nyx/Idle/4_nyx-idle.png" type="Texture" id=13]
-[ext_resource path="res://Sprites/Nyx/Jump/nyx-up-jump.png" type="Texture" id=14]
-[ext_resource path="res://Sprites/Nyx/Jump/nyx-down-jump.png" type="Texture" id=15]
-[ext_resource path="res://Sprites/Nyx/Walk/1_nyx-walk.png" type="Texture" id=16]
-[ext_resource path="res://Sprites/Nyx/Walk/2_nyx-walk.png" type="Texture" id=17]
-[ext_resource path="res://Sprites/Nyx/Walk/3_nyx-walk.png" type="Texture" id=18]
-[ext_resource path="res://Sprites/Nyx/Walk/4_nyx-walk.png" type="Texture" id=19]
-[ext_resource path="res://Sprites/Nyx/Walk/5_nyx-walk.png" type="Texture" id=20]
-[ext_resource path="res://Sprites/Nyx/Walk/6_nyx-walk.png" type="Texture" id=21]
-[ext_resource path="res://Sprites/Nyx/Walk/7_nyx-walk.png" type="Texture" id=22]
-[ext_resource path="res://Sprites/Nyx/Walk/8_nyx-walk.png" type="Texture" id=23]
-[ext_resource path="res://Scripts/AnimationTree.gd" type="Script" id=24]
-[ext_resource path="res://_0008_dream_nail.png" type="Texture" id=25]
+[ext_resource path="res://Sprites/Nyx/Idle/2_nyx-idle.png" type="Texture" id=8]
+[ext_resource path="res://charakter2.png" type="Texture" id=9]
+[ext_resource path="res://Sprites/Nyx/Idle/1_nyx-idle.png" type="Texture" id=10]
+[ext_resource path="res://Sprites/Nyx/Idle/3_nyx-idle.png" type="Texture" id=11]
+[ext_resource path="res://Sprites/Nyx/Idle/4_nyx-idle.png" type="Texture" id=12]
+[ext_resource path="res://Sprites/Nyx/Jump/nyx-up-jump.png" type="Texture" id=13]
+[ext_resource path="res://Sprites/Nyx/Jump/nyx-down-jump.png" type="Texture" id=14]
+[ext_resource path="res://Sprites/Nyx/Walk/1_nyx-walk.png" type="Texture" id=15]
+[ext_resource path="res://Sprites/Nyx/Walk/2_nyx-walk.png" type="Texture" id=16]
+[ext_resource path="res://Sprites/Nyx/Walk/3_nyx-walk.png" type="Texture" id=17]
+[ext_resource path="res://Sprites/Nyx/Walk/4_nyx-walk.png" type="Texture" id=18]
+[ext_resource path="res://Sprites/Nyx/Walk/5_nyx-walk.png" type="Texture" id=19]
+[ext_resource path="res://Sprites/Nyx/Walk/6_nyx-walk.png" type="Texture" id=20]
+[ext_resource path="res://Sprites/Nyx/Walk/7_nyx-walk.png" type="Texture" id=21]
+[ext_resource path="res://Sprites/Nyx/Walk/8_nyx-walk.png" type="Texture" id=22]
+[ext_resource path="res://Scripts/AnimationTree.gd" type="Script" id=23]
+[ext_resource path="res://_0008_dream_nail.png" type="Texture" id=24]
+[ext_resource path="res://dash_effect_020002.png" type="Texture" id=25]
 [ext_resource path="res://Sprites/HollowKnight/butterfly.png" type="Texture" id=26]
 [ext_resource path="res://Sprite2.gd" type="Script" id=27]
 [ext_resource path="res://Sprites/Unbenannt.png" type="Texture" id=28]
@@ -41,24 +41,6 @@ corner_radius_bottom_left = 5
 
 [sub_resource type="RectangleShape2D" id=3]
 
-[sub_resource type="Gradient" id=4]
-offsets = PoolRealArray( 0, 0.361257, 1 )
-colors = PoolColorArray( 1, 1, 1, 1, 0.960938, 0.435425, 0.435425, 1, 0.71875, 0, 0, 1 )
-
-[sub_resource type="GradientTexture" id=5]
-gradient = SubResource( 4 )
-
-[sub_resource type="ParticlesMaterial" id=6]
-flag_disable_z = true
-spread = 10.0
-gravity = Vector3( 0, 0, 0 )
-initial_velocity = -50000.0
-angular_velocity = -1.0
-orbit_velocity = 0.0
-orbit_velocity_random = 0.0
-scale = 10.0
-color_ramp = SubResource( 5 )
-
 [sub_resource type="Animation" id=7]
 resource_name = "Attack"
 length = 0.2
@@ -72,7 +54,7 @@ tracks/0/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 1,
-"values": [ ExtResource( 10 ) ]
+"values": [ ExtResource( 9 ) ]
 }
 tracks/1/type = "method"
 tracks/1/path = NodePath("..")
@@ -138,7 +120,7 @@ tracks/0/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 1,
-"values": [ ExtResource( 10 ) ]
+"values": [ ExtResource( 9 ) ]
 }
 tracks/1/type = "method"
 tracks/1/path = NodePath("..")
@@ -204,7 +186,7 @@ tracks/0/keys = {
 "times": PoolRealArray( 0, 0.2, 0.4, 0.6 ),
 "transitions": PoolRealArray( 1, 1, 1, 1 ),
 "update": 1,
-"values": [ ExtResource( 11 ), ExtResource( 9 ), ExtResource( 12 ), ExtResource( 13 ) ]
+"values": [ ExtResource( 10 ), ExtResource( 8 ), ExtResource( 11 ), ExtResource( 12 ) ]
 }
 
 [sub_resource type="Animation" id=10]
@@ -218,7 +200,7 @@ tracks/0/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 1,
-"values": [ ExtResource( 14 ) ]
+"values": [ ExtResource( 13 ) ]
 }
 
 [sub_resource type="Animation" id=11]
@@ -232,7 +214,7 @@ tracks/0/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 1,
-"values": [ ExtResource( 15 ) ]
+"values": [ ExtResource( 14 ) ]
 }
 
 [sub_resource type="Animation" id=12]
@@ -248,7 +230,7 @@ tracks/0/keys = {
 "times": PoolRealArray( 0.001, 0.002, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7 ),
 "transitions": PoolRealArray( 5.85634, 1, 0.732044, 1, 12.5533, 0.999998, 0.999999, 1, 1.68179 ),
 "update": 1,
-"values": [ ExtResource( 16 ), ExtResource( 16 ), ExtResource( 17 ), ExtResource( 18 ), ExtResource( 19 ), ExtResource( 20 ), ExtResource( 21 ), ExtResource( 22 ), ExtResource( 23 ) ]
+"values": [ ExtResource( 15 ), ExtResource( 15 ), ExtResource( 16 ), ExtResource( 17 ), ExtResource( 18 ), ExtResource( 19 ), ExtResource( 20 ), ExtResource( 21 ), ExtResource( 22 ) ]
 }
 tracks/1/type = "audio"
 tracks/1/path = NodePath("../Camera2D/AudioStreamPlayer2D2")
@@ -344,6 +326,24 @@ transitions = [ "Idle", "Walk", SubResource( 19 ), "Walk", "Idle", SubResource( 
 graph_offset = Vector2( -292.066, -18.131 )
 
 [sub_resource type="AnimationNodeStateMachinePlayback" id=40]
+
+[sub_resource type="Gradient" id=4]
+offsets = PoolRealArray( 0, 0.361257, 1 )
+colors = PoolColorArray( 1, 1, 1, 1, 0.960938, 0.435425, 0.435425, 1, 0.71875, 0, 0, 1 )
+
+[sub_resource type="GradientTexture" id=5]
+gradient = SubResource( 4 )
+
+[sub_resource type="ParticlesMaterial" id=6]
+flag_disable_z = true
+spread = 10.0
+gravity = Vector3( 0, 0, 0 )
+initial_velocity = -50000.0
+angular_velocity = -1.0
+orbit_velocity = 0.0
+orbit_velocity_random = 0.0
+scale = 10.0
+color_ramp = SubResource( 5 )
 
 [sub_resource type="Animation" id=41]
 length = 1.1
@@ -466,8 +466,8 @@ environment = ExtResource( 1 )
 z_index = 2
 
 [node name="Player" type="KinematicBody2D" parent="Node2D" groups=[
-"Player",
 "Damageable",
+"Player",
 ]]
 position = Vector2( 2304, 3488 )
 scale = Vector2( 0.6, 0.6 )
@@ -476,6 +476,7 @@ z_as_relative = false
 script = ExtResource( 2 )
 
 [node name="Camera2D" type="Camera2D" parent="Node2D/Player"]
+editor/display_folded = true
 position = Vector2( 11, 85 )
 offset = Vector2( 0, -200 )
 current = true
@@ -511,30 +512,19 @@ autoplay = true
 stream = ExtResource( 6 )
 attenuation = 0.5
 
+[node name="StateManager" type="Node" parent="Node2D/Player"]
+script = ExtResource( 7 )
+
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Node2D/Player"]
-position = Vector2( 6.46, 0 )
+position = Vector2( 6.45996, 0 )
 scale = Vector2( 3.87, 14.2 )
 z_index = -1
 z_as_relative = false
 shape = SubResource( 3 )
 
-[node name="StateManager" type="Node" parent="Node2D/Player"]
-script = ExtResource( 7 )
-
-[node name="DashParticles" type="Particles2D" parent="Node2D/Player"]
-position = Vector2( -80, -5.10938 )
-scale = Vector2( 0.1, 0.1 )
-z_index = 20
-emitting = false
-amount = 20
-lifetime = 0.1
-one_shot = true
-process_material = SubResource( 6 )
-texture = ExtResource( 8 )
-
 [node name="Sprite" type="Sprite" parent="Node2D/Player"]
 scale = Vector2( 0.26, 0.26 )
-texture = ExtResource( 9 )
+texture = ExtResource( 8 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Node2D/Player/Sprite"]
 anims/Attack = SubResource( 7 )
@@ -549,12 +539,23 @@ tree_root = SubResource( 39 )
 anim_player = NodePath("../AnimationPlayer")
 active = true
 parameters/playback = SubResource( 40 )
-script = ExtResource( 24 )
+script = ExtResource( 23 )
 
 [node name="_0008_dream_nail" type="Sprite" parent="Node2D/Player/Sprite"]
 visible = false
 position = Vector2( 820.512, -19.6523 )
 scale = Vector2( 2.26, 2.06 )
+texture = ExtResource( 24 )
+
+[node name="DashParticles" type="Particles2D" parent="Node2D/Player/Sprite"]
+position = Vector2( -307.692, -19.6523 )
+scale = Vector2( 0.384615, 0.384615 )
+z_index = 20
+emitting = false
+amount = 20
+lifetime = 0.1
+one_shot = true
+process_material = SubResource( 6 )
 texture = ExtResource( 25 )
 
 [node name="CanvasModulate" type="CanvasModulate" parent="Node2D"]

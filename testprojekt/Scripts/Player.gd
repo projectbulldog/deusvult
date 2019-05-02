@@ -58,12 +58,12 @@ func _process(delta):
 	# LEFT / RIGHT MOVEMENT
 	if Input.is_action_pressed("ui_right"):
 		if direction == DIRECTION.LEFT:
-			self.scale.x *= -1
+			$Sprite.scale.x *= -1
 			direction = DIRECTION.RIGHT
 		motion.x = SPEED
 	elif Input.is_action_pressed("ui_left"):
 		if direction == DIRECTION.RIGHT:
-			self.scale.x *= -1
+			$Sprite.scale.x *= -1
 			direction = DIRECTION.LEFT
 		motion.x = -SPEED
 	else:
@@ -74,7 +74,7 @@ func _process(delta):
 		canDash = false
 		isDashing = true
 		dashCooldownTimer.start()
-		$DashParticles.emitting = true
+		$Sprite/DashParticles.emitting = true
 	
 	if isDashing && dashTimeLength <= maxDashTime:
 		motion.y = 0
