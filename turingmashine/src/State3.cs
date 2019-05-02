@@ -24,17 +24,11 @@ public class State3 : State
             result.Tape1Direction = Direction.Left;
             result.Tape2Direction = Direction.Right;
         }
-        else if (tape1 == Alphabet.EMPTY && tape2 == Alphabet.EMPTY && tape3 == Alphabet.EMPTY)
+        else
         {
-            result.NewState = 3;
-            result.IsAccepted = isAccepted;
+            result.IsAccepted = this.isAccepted;
             result.IsFinished = true;
-        }
-        else if (tape1 == Alphabet.EMPTY && tape2 == Alphabet.NUMBER && tape3 == Alphabet.EMPTY)
-        {
             result.NewState = 3;
-            result.IsAccepted = isAccepted;
-            result.IsFinished = true;
         }
         return result;
     }
