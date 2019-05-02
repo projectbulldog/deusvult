@@ -24,7 +24,7 @@ var dashCooldownTimer
 
 var isAttacking = false
 var isAttackCooldown = false
-var attackCooldown = 0.35
+var attackCooldown = 0.3
 var attackCooldownTimer = 0.0
 
 func _ready():
@@ -70,7 +70,7 @@ func _process(delta):
 		motion.x = 0
 		
 	# DASH
-	if Input.is_action_pressed("dash") && canDash:
+	if Input.is_action_just_pressed("dash") && canDash:
 		canDash = false
 		isDashing = true
 		dashCooldownTimer.start()
@@ -116,13 +116,16 @@ func _process(delta):
 		isAttackCooldown = false
 	
 #	Attack
-	if Input.is_action_pressed("attack") && !isAttacking && !isAttackCooldown:
+	if Input.is_action_just_pressed("attack") && !isAttacking && !isAttackCooldown:
 		isAttacking = true
 		isAttackCooldown = true
 
-	if isAttacking && $Sprite/AnimationTree.playback.get_current_node() != "Attack":
-		travelTo("Attack")
-	elif($Sprite/AnimationTree.playback.get_current_node() != "Attack") || !isAttacking:
+	if isAttacking && !("Attack" in $Sprite/AnimationTree.playback.get_current_node()):
+		if Input.is_action_pressed("ui_up") && Input.get_action_strength("ui_up") > 0.8:
+			travelTo("Attack_Up")
+		else:
+			travelTo("Attack")
+	elif( !("Attack" in $Sprite/AnimationTree.playback.get_current_node())) || !isAttacking:
 		if(!is_on_floor()):
 			if(motion.y > 0):
 				travelTo("JumpDown")
