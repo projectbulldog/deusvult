@@ -22,6 +22,11 @@ var maxDashTime = 0.15
 var dashCooldown = 2.0
 var dashCooldownTimer
 
+var isAttacking = false
+var isAttackCooldown = false
+var attackCooldown = 0.35
+var attackCooldownTimer = 0.0
+
 func _ready():
 	dashCooldownTimer = Timer.new()
 	dashCooldownTimer.one_shot = true
@@ -100,18 +105,31 @@ func _process(delta):
 	if(lastMotionY - motion.y) > 2500:
 		$Camera2D.start_shake()
 	
-	if(isDashing):
-		travelTo("Idle")
-	elif(!is_on_floor()):
-		if(motion.y > 0):
-			travelTo("JumpDown")
-		elif(motion.y < 0):
-			travelTo("Jump")
-	else:
-		if(motion.x != 0):
-			travelTo("Walk")
+	if(isAttackCooldown):
+		attackCooldownTimer += delta
+	
+	if isAttackCooldown && attackCooldownTimer >= attackCooldown:
+		attackCooldownTimer = 0
+		isAttackCooldown = false
+	
+#	Attack
+	if Input.is_action_pressed("attack") && !isAttacking && !isAttackCooldown:
+		isAttacking = true
+		isAttackCooldown = true
+
+	if isAttacking && $Sprite/AnimationTree.playback.get_current_node() != "Attack":
+		travelTo("Attack")
+	elif($Sprite/AnimationTree.playback.get_current_node() != "Attack") || !isAttacking:
+		if(!is_on_floor()):
+			if(motion.y > 0):
+				travelTo("JumpDown")
+			elif(motion.y < 0):
+				travelTo("Jump")
 		else:
-			travelTo("Idle")
+			if(motion.x != 0):
+				travelTo("Walk")
+			else:
+				travelTo("Idle")
 
 func attack():
 	# todo
@@ -122,4 +140,6 @@ func takeDamage(damage):
 	
 func travelTo(animation):
 	$Sprite/AnimationTree.playback.travel(animation)
-	
+
+func attackFinished():
+	isAttacking = false
