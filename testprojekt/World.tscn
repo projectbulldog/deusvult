@@ -7,9 +7,9 @@
 [ext_resource path="res://Sounds/Christopher Larkin - Hollow Knight (Original Soundtrack) - 03 Crossroads.wav" type="AudioStream" id=5]
 [ext_resource path="res://Footstep.wav" type="AudioStream" id=6]
 [ext_resource path="res://Scripts/StateManager.gd" type="Script" id=7]
-[ext_resource path="res://Sprites/Nyx/Idle/2_nyx-idle.png" type="Texture" id=8]
-[ext_resource path="res://charakter2.png" type="Texture" id=9]
-[ext_resource path="res://Sprites/Nyx/Idle/1_nyx-idle.png" type="Texture" id=10]
+[ext_resource path="res://charakter2.png" type="Texture" id=8]
+[ext_resource path="res://Sprites/Nyx/Idle/1_nyx-idle.png" type="Texture" id=9]
+[ext_resource path="res://Sprites/Nyx/Idle/2_nyx-idle.png" type="Texture" id=10]
 [ext_resource path="res://Sprites/Nyx/Idle/3_nyx-idle.png" type="Texture" id=11]
 [ext_resource path="res://Sprites/Nyx/Idle/4_nyx-idle.png" type="Texture" id=12]
 [ext_resource path="res://Sprites/Nyx/Jump/nyx-up-jump.png" type="Texture" id=13]
@@ -59,7 +59,7 @@ tracks/0/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 1,
-"values": [ ExtResource( 9 ) ]
+"values": [ ExtResource( 8 ) ]
 }
 tracks/1/type = "method"
 tracks/1/path = NodePath("..")
@@ -79,7 +79,7 @@ tracks/1/keys = {
 } ]
 }
 tracks/2/type = "value"
-tracks/2/path = NodePath("_0008_dream_nail:visible")
+tracks/2/path = NodePath("Slash:visible")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/imported = false
@@ -91,7 +91,7 @@ tracks/2/keys = {
 "values": [ true, false ]
 }
 tracks/3/type = "value"
-tracks/3/path = NodePath("_0008_dream_nail:position")
+tracks/3/path = NodePath("Slash:position")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/imported = false
@@ -103,7 +103,7 @@ tracks/3/keys = {
 "values": [ Vector2( 820.512, -19.6523 ) ]
 }
 tracks/4/type = "value"
-tracks/4/path = NodePath("_0008_dream_nail:rotation_degrees")
+tracks/4/path = NodePath("Slash:rotation_degrees")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/imported = false
@@ -128,7 +128,7 @@ tracks/0/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 1,
-"values": [ ExtResource( 9 ) ]
+"values": [ ExtResource( 8 ) ]
 }
 tracks/1/type = "method"
 tracks/1/path = NodePath("..")
@@ -148,7 +148,7 @@ tracks/1/keys = {
 } ]
 }
 tracks/2/type = "value"
-tracks/2/path = NodePath("_0008_dream_nail:visible")
+tracks/2/path = NodePath("Slash:visible")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/imported = false
@@ -160,7 +160,7 @@ tracks/2/keys = {
 "values": [ true, false ]
 }
 tracks/3/type = "value"
-tracks/3/path = NodePath("_0008_dream_nail:position")
+tracks/3/path = NodePath("Slash:position")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/imported = false
@@ -169,10 +169,10 @@ tracks/3/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 0,
-"values": [ Vector2( 24.8477, -1230.77 ) ]
+"values": [ Vector2( 24.848, -1137.49 ) ]
 }
 tracks/4/type = "value"
-tracks/4/path = NodePath("_0008_dream_nail:rotation_degrees")
+tracks/4/path = NodePath("Slash:rotation_degrees")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/imported = false
@@ -197,7 +197,7 @@ tracks/0/keys = {
 "times": PoolRealArray( 0, 0.2, 0.4, 0.6 ),
 "transitions": PoolRealArray( 1, 1, 1, 1 ),
 "update": 1,
-"values": [ ExtResource( 10 ), ExtResource( 8 ), ExtResource( 11 ), ExtResource( 12 ) ]
+"values": [ ExtResource( 9 ), ExtResource( 10 ), ExtResource( 11 ), ExtResource( 12 ) ]
 }
 
 [sub_resource type="Animation" id=7]
@@ -334,7 +334,7 @@ states/JumpDown/position = Vector2( 705.934, 248 )
 states/Walk/node = SubResource( 15 )
 states/Walk/position = Vector2( 705.934, 33 )
 transitions = [ "Idle", "Walk", SubResource( 16 ), "Walk", "Idle", SubResource( 17 ), "Idle", "Jump", SubResource( 18 ), "Jump", "Walk", SubResource( 19 ), "Walk", "Jump", SubResource( 20 ), "Jump", "Idle", SubResource( 21 ), "JumpDown", "Walk", SubResource( 22 ), "Walk", "JumpDown", SubResource( 23 ), "JumpDown", "Jump", SubResource( 24 ), "Jump", "JumpDown", SubResource( 25 ), "JumpDown", "Idle", SubResource( 26 ), "Idle", "JumpDown", SubResource( 27 ), "Walk", "Attack", SubResource( 28 ), "Idle", "Attack", SubResource( 29 ), "Attack", "Idle", SubResource( 30 ), "Attack", "Walk", SubResource( 31 ), "Idle", "Attack_Up", SubResource( 32 ), "Attack_Up", "Walk", SubResource( 33 ), "Walk", "Attack_Up", SubResource( 34 ), "Attack_Up", "Idle", SubResource( 35 ) ]
-graph_offset = Vector2( -292.066, -18.131 )
+graph_offset = Vector2( -95.066, 53.869 )
 
 [sub_resource type="AnimationNodeStateMachinePlayback" id=37]
 
@@ -443,6 +443,7 @@ z_as_relative = false
 script = ExtResource( 2 )
 
 [node name="Camera2D" type="Camera2D" parent="Node2D/Player"]
+editor/display_folded = true
 position = Vector2( 11, 85 )
 offset = Vector2( 0, -200 )
 current = true
@@ -506,18 +507,20 @@ active = true
 parameters/playback = SubResource( 37 )
 script = ExtResource( 23 )
 
-[node name="_0008_dream_nail" type="Sprite" parent="Node2D/Player/Sprite"]
+[node name="Slash" type="Sprite" parent="Node2D/Player/Sprite"]
 visible = false
-position = Vector2( 820.512, -19.6523 )
+position = Vector2( 24.848, -1137.49 )
+rotation = -1.5708
 scale = Vector2( 2.26, 2.06 )
+z_index = 1
 texture = ExtResource( 24 )
 
-[node name="Area2D" type="Area2D" parent="Node2D/Player/Sprite/_0008_dream_nail"]
+[node name="Area2D" type="Area2D" parent="Node2D/Player/Sprite/Slash"]
 position = Vector2( -0.000976563, 9.54004 )
 collision_layer = 31
 collision_mask = 31
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Node2D/Player/Sprite/_0008_dream_nail/Area2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Node2D/Player/Sprite/Slash/Area2D"]
 position = Vector2( 0.0913086, 0 )
 rotation = 1.5708
 shape = SubResource( 38 )
@@ -600,14 +603,15 @@ shape = SubResource( 43 )
 [node name="BlackBox" type="TileMap" parent="Node2D"]
 z_index = -10
 tile_set = ExtResource( 29 )
-collision_layer = 3
-collision_mask = 3
+collision_layer = 35
+collision_mask = 35
 format = 1
 tile_data = PoolIntArray( 65528, 7, 0, 0, 7, 0, 189, 7, 0, 196666, 7, 0, 196674, 7, 0, 196682, 7, 0, 196690, 7, 0, 196698, 7, 0, 196706, 7, 0, 196714, 7, 0, 196722, 7, 0, 196729, 7, 0, 524288, 7, 0, 524338, 7, 0, 720954, 7, 0, 720962, 7, 0, 721017, 7, 0, 1048576, 7, 0, 1048626, 7, 0, 1048670, 5, 0, 1048672, 5, 0, 1048674, 7, 0, 1179742, 5, 0, 1179744, 5, 0, 1245242, 7, 0, 1245305, 7, 0, 1441878, 5, 0, 1441880, 5, 0, 1572864, 7, 0, 1572914, 7, 0, 1572950, 0, 0, 1572951, 0, 0, 1572952, 0, 0, 1572962, 7, 0, 1573050, 7, 0, 1638487, 0, 0, 1638488, 0, 0, 1703986, 7, 0, 1769550, 5, 0, 1769593, 7, 0, 2097152, 7, 0, 2097222, 5, 0, 2097224, 5, 0, 2097250, 7, 0, 2097313, 7, 0, 2097321, 7, 0, 2097322, 7, 0, 2097330, 7, 0, 2097338, 7, 0, 2228274, 7, 0, 2228295, 0, 0, 2228296, 0, 0, 2228377, 7, 0, 2293831, 0, 0, 2293881, 7, 0, 2359367, 0, 0, 2424909, 5, 0, 2424911, 5, 0, 2424977, 7, 0, 2490505, 7, 0, 2555982, 0, 0, 2555983, 0, 0, 2556094, 6, 0, 2621440, 7, 0, 2621528, 5, 0, 2621538, 7, 0, 2621611, 7, 0, 2621619, 7, 0, 2621626, 7, 0, 2621630, 6, 0, 2687097, 7, 0, 2687105, 7, 0, 2752562, 7, 0, 2752600, 0, 0, 2752601, 0, 0, 3014738, 5, 0, 3014740, 0, 0, 3014741, 0, 0, 3080266, 0, 0, 3080267, 0, 0, 3080268, 0, 0, 3080276, 0, 0, 3080277, 0, 0, 3145728, 7, 0, 3145826, 7, 0, 3145908, 7, 0, 3145914, 7, 0, 3145922, 7, 0, 3342512, 5, 0, 3342514, 5, 0, 3408044, 0, 0, 3408045, 0, 0, 3408046, 0, 0, 3408047, 0, 0, 3408048, 0, 0, 3473474, 0, 0, 3473475, 0, 0, 3473476, 0, 0, 3539046, 7, 0, 3604632, 0, 0, 3604633, 0, 0, 3604634, 0, 0, 3670016, 7, 0, 3670024, 7, 0, 3670032, 7, 0, 3670040, 7, 0, 3670048, 7, 0, 3670056, 7, 0, 3670064, 7, 0, 3670072, 7, 0, 3670106, 7, 0, 3670114, 7, 0, 3670169, 0, 0, 3801198, 7, 0, 3801210, 6, 0, 3801219, 6, 0, 3801230, 6, 0, 3801250, 6, 0, 3866688, 7, 0, 4063328, 7, 0, 4063336, 7, 0, 4063344, 7, 0, 4063352, 7, 0, 4063353, 7, 0, 4063361, 7, 0, 4063369, 7, 0, 4063377, 7, 0, 4063385, 7, 0, 4063393, 7, 0, 4063401, 7, 0, 4063409, 7, 0, 4063417, 7, 0, 4063425, 7, 0, 4194376, 7, 0, 4194384, 7, 0, 4194392, 7, 0, 11338001, 7, 0, 11338002, 7, 0, 11599857, 7, 0 )
 
 [node name="Area2D" type="Area2D" parent="Node2D" groups=[
 "Damageable",
 ]]
+editor/display_folded = true
 position = Vector2( 3136, 3484.93 )
 collision_layer = 4
 collision_mask = 4
@@ -639,6 +643,17 @@ texture = ExtResource( 33 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Node2D/Enemy"]
 shape = SubResource( 46 )
+
+[node name="RayCastGround" type="RayCast2D" parent="Node2D/Enemy"]
+position = Vector2( 26.5056, 40.5786 )
+cast_to = Vector2( 0, 45.19 )
+collision_mask = 32
+
+[node name="RayCastWall" type="RayCast2D" parent="Node2D/Enemy"]
+position = Vector2( 26.5056, 40.5786 )
+rotation = -1.5708
+cast_to = Vector2( 0, 10 )
+collision_mask = 32
 
 [connection signal="on_health_changed" from="Node2D/Player/StateManager" to="Node2D/Player/Camera2D/Interface" method="_on_StateManager_on_health_changed"]
 [connection signal="timeout" from="Node2D/Enemy/Timer" to="Node2D/Enemy" method="_on_Timer_timeout"]
