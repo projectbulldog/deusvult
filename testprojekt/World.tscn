@@ -388,10 +388,10 @@ tracks/1/keys = {
 "values": [ Vector2( 0, 0 ), Vector2( 13.06, -23.76 ) ]
 }
 
-[sub_resource type="CircleShape2D" id=48]
+[sub_resource type="CircleShape2D" id=43]
 radius = 40.0
 
-[sub_resource type="Animation" id=49]
+[sub_resource type="Animation" id=44]
 length = 1.1
 loop = true
 tracks/0/type = "value"
@@ -419,7 +419,7 @@ tracks/1/keys = {
 "values": [ Vector2( 0, 0 ), Vector2( 13.06, -23.76 ) ]
 }
 
-[sub_resource type="RectangleShape2D" id=47]
+[sub_resource type="RectangleShape2D" id=45]
 extents = Vector2( 54.17, 111.08 )
 
 [sub_resource type="RectangleShape2D" id=46]
@@ -565,7 +565,7 @@ playback_speed = 1.9
 anims/Fly = SubResource( 42 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Node2D/Butterfly"]
-shape = SubResource( 48 )
+shape = SubResource( 43 )
 
 [node name="Butterfly2" type="Area2D" parent="Node2D" groups=[
 "Damageable",
@@ -592,10 +592,10 @@ range_layer_min = -2
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Node2D/Butterfly2/Sprite"]
 autoplay = "Fly"
 playback_speed = 1.9
-anims/Fly = SubResource( 49 )
+anims/Fly = SubResource( 44 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Node2D/Butterfly2"]
-shape = SubResource( 48 )
+shape = SubResource( 43 )
 
 [node name="BlackBox" type="TileMap" parent="Node2D"]
 z_index = -10
@@ -615,7 +615,7 @@ script = ExtResource( 30 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Node2D/Area2D"]
 position = Vector2( -7.82, 0 )
-shape = SubResource( 47 )
+shape = SubResource( 45 )
 
 [node name="ash_grass_01_blizzard0001" type="Sprite" parent="Node2D/Area2D"]
 position = Vector2( 0, -0.000244141 )

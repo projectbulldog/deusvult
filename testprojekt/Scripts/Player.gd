@@ -39,6 +39,7 @@ func on_dashCooldownTimer_timeout():
 	canDash = true
 	
 func set_camera_limits():
+#	Camera darf maximal bis zu den Ecken der Blackbox gehen (topleft, topright, bottomleft, bottom right)
 	var blackBoxTileMap = get_parent().find_node("BlackBox")
 	var map_limits = blackBoxTileMap.get_used_rect()
 	var map_cellsize = blackBoxTileMap.cell_size
@@ -52,8 +53,10 @@ func _process(delta):
 	var lastMotionY = motion.y
 	motion.y += delta * GRAVITY
 	
+#	Test CameraShake
 	if Input.is_key_pressed(KEY_Q):
 		$Camera2D.start_shake()
+
 	# LEFT / RIGHT MOVEMENT
 	if Input.is_action_pressed("ui_right") && (!isAttacking || direction == DIRECTION.RIGHT):
 		if direction == DIRECTION.LEFT:
@@ -101,13 +104,17 @@ func _process(delta):
 		canJump = false
 		motion.y = delta * GRAVITY
 	
-	
+#	Wenn Angriff, dann Movement verlangsamen (Nur am Boden)
 	if is_on_floor() && isAttacking:
 		motion.x *= 0.6
+	
+#	Das benötigt es, sonst ist die Kamera hackelig, da sie nicht gleichzeitig geupdated wird.
 	$Camera2D.align()
 	
+#	Hauptbewegung
 	motion = move_and_slide(motion, Vector2(0, -1))
 	
+#	Camera Shake, wenn gewisse höhe erreicht wird
 	if(lastMotionY - motion.y) > 2500:
 		$Camera2D.start_shake()
 	
@@ -122,7 +129,8 @@ func _process(delta):
 	if Input.is_action_just_pressed("attack") && !isAttacking && !isAttackCooldown:
 		isAttacking = true
 		isAttackCooldown = true
-
+		
+#	Entscheidung, welche Animation gespielt werden soll.
 	if isAttacking && !("Attack" in $Sprite/AnimationTree.playback.get_current_node()):
 		if Input.is_action_pressed("ui_up") && Input.get_action_strength("ui_up") > 0.8:
 			travelTo("Attack_Up")
@@ -141,6 +149,7 @@ func _process(delta):
 				travelTo("Idle")
 
 func attack():
+#	Alle überlappenden Elemente durchgehen und wenn sie Damageable sind, ihnen Schaden zufügen
 	$Sprite/_0008_dream_nail/Area2D.connect("body_entered", self, "on_body_entered_attack")
 	var bodies = $Sprite/_0008_dream_nail/Area2D.get_overlapping_bodies()
 	for body in bodies:
@@ -152,6 +161,7 @@ func attack():
 			area.takeDamage()
 
 func on_body_entered_attack(body):
+#	Animation geht ein paar milisekunden -> In dieser Zeit neue Bodies auch Schaden zufügen
 	if(body.is_in_group("Damageable")):
 		body.takeDamage()
 	
@@ -162,6 +172,7 @@ func travelTo(animation):
 	$Sprite/AnimationTree.playback.travel(animation)
 
 func attackFinished():
+#	Nach Animation soll nicht mehr jeder Neue Body Schaden bekommen
 	isAttacking = false
 	$Sprite/_0008_dream_nail/Area2D.disconnect("body_entered", self, "on_body_entered_attack")
 
