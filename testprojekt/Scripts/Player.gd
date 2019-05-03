@@ -174,5 +174,6 @@ func travelTo(animation):
 func attackFinished():
 #	Nach Animation soll nicht mehr jeder Neue Body Schaden bekommen
 	isAttacking = false
-	$Sprite/_0008_dream_nail/Area2D.disconnect("body_entered", self, "on_body_entered_attack")
+	if $Sprite/_0008_dream_nail/Area2D.is_connected("body_entered", self, "on_body_entered_attack"):
+		$Sprite/_0008_dream_nail/Area2D.disconnect("body_entered", self, "on_body_entered_attack")
 
