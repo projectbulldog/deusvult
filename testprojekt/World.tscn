@@ -432,6 +432,7 @@ z_index = 2
 [node name="Player" type="KinematicBody2D" parent="Node2D" groups=[
 "Player",
 ]]
+editor/display_folded = true
 position = Vector2( 2304, 3488 )
 scale = Vector2( 0.6, 0.6 )
 z_index = 10
