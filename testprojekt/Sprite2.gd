@@ -7,7 +7,7 @@ var target = Vector2(0, 0)
 func _ready():
 	defineTarget()
 	
-func _process(delta):
+func _physics_process(delta):
 	if (target-self.position).length() < 1:
 		defineTarget()
 	

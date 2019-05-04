@@ -1,7 +1,7 @@
 extends KinematicBody2D
 
 const GRAVITY = 3500
-const SPEED = 250
+const SPEED = 150
 var direction = 1;
 
 var motion = Vector2()
@@ -9,7 +9,7 @@ var motion = Vector2()
 enum MODE { IDLE, AGGRO }
 var mode = MODE.IDLE
 
-func _process(delta):
+func _physics_process(delta):
 	# GRAVITY
 	motion.y += delta * GRAVITY
 	

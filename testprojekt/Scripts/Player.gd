@@ -48,7 +48,7 @@ func set_camera_limits():
 	$Camera2D.limit_top = map_limits.position.y * map_cellsize.y
 	$Camera2D.limit_bottom = map_limits.end.y * map_cellsize.y
 
-func _process(delta):
+func _physics_process(delta):
 	# GRAVITY
 	var lastMotionY = motion.y
 	motion.y += delta * GRAVITY
@@ -129,7 +129,8 @@ func _process(delta):
 	if Input.is_action_just_pressed("attack") && !isAttacking && !isAttackCooldown:
 		isAttacking = true
 		isAttackCooldown = true
-		
+
+func _process(delta):
 #	Entscheidung, welche Animation gespielt werden soll.
 	if isAttacking && !("Attack" in $Sprite/AnimationTree.playback.get_current_node()):
 		if Input.is_action_pressed("ui_up") && Input.get_action_strength("ui_up") > 0.8:

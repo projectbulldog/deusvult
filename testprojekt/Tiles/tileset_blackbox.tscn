@@ -6,14 +6,12 @@
 [ext_resource path="res://Tiles/Black_512.png" type="Texture" id=4]
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 10.5165, 12.471 )
 
 [sub_resource type="RectangleShape2D" id=2]
 
 [node name="Node" type="Node"]
 
 [node name="black" type="Sprite" parent="."]
-editor/display_folded = true
 self_modulate = Color( 0, 0, 0, 1 )
 position = Vector2( 102.123, 0 )
 texture = ExtResource( 1 )
@@ -22,11 +20,9 @@ texture = ExtResource( 1 )
 scale = Vector2( 3.2, 3.2 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="black/KinematicBody2D"]
-scale = Vector2( 0.95, 0.8 )
 shape = SubResource( 1 )
 
 [node name="black_128" type="Sprite" parent="."]
-editor/display_folded = true
 texture = ExtResource( 2 )
 
 [node name="StaticBody2D" type="StaticBody2D" parent="black_128"]
@@ -36,7 +32,6 @@ scale = Vector2( 6.4, 6.4 )
 shape = SubResource( 2 )
 
 [node name="black_256" type="Sprite" parent="."]
-editor/display_folded = true
 position = Vector2( -241.292, -4.78992 )
 texture = ExtResource( 3 )
 
@@ -51,9 +46,9 @@ position = Vector2( -640, -128 )
 texture = ExtResource( 4 )
 
 [node name="StaticBody2D" type="StaticBody2D" parent="black_512"]
+scale = Vector2( 25.6, 25.6 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="black_512/StaticBody2D"]
-scale = Vector2( 25.6, 25.6 )
 shape = SubResource( 2 )
 
 [node name="black_noCollision" type="Sprite" parent="."]

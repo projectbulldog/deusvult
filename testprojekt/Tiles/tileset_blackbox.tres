@@ -6,7 +6,6 @@
 [ext_resource path="res://Tiles/Black_512.png" type="Texture" id=4]
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 10.5165, 12.471 )
 
 [sub_resource type="RectangleShape2D" id=2]
 
@@ -24,7 +23,7 @@ extents = Vector2( 10.5165, 12.471 )
 "one_way": false,
 "one_way_margin": 1.0,
 "shape": SubResource( 1 ),
-"shape_transform": Transform2D( 3.04, 0, 0, 2.56, 32, 32 )
+"shape_transform": Transform2D( 3.2, 0, 0, 3.2, 32, 32 )
 } ]
 0/z_index = 0
 1/name = "black_noCollision"
