@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/spot.png-ae9055c0ca0ddec11e25f4d36cd7ddcd.stex"
+path="res://.import/spriteColor.png-5c887ee315a8c6bd3d5ba0a189a2680b.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/spot.png"
-dest_files=[ "res://.import/spot.png-ae9055c0ca0ddec11e25f4d36cd7ddcd.stex" ]
+source_file="res://Sprites/Particle/spriteColor.png"
+dest_files=[ "res://.import/spriteColor.png-5c887ee315a8c6bd3d5ba0a189a2680b.stex" ]
 
 [params]
 

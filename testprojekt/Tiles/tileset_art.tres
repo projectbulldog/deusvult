@@ -6,7 +6,8 @@
 [ext_resource path="res://Sprites/HollowKnight/cd_wall_04.png" type="Texture" id=4]
 [ext_resource path="res://Sprites/HollowKnight/white_knight_dead_0005_1.png" type="Texture" id=5]
 [ext_resource path="res://Sprites/HollowKnight/ruin_add_wall.png" type="Texture" id=6]
-[ext_resource path="res://_0006_waterway.png" type="Texture" id=7]
+[ext_resource path="res://Sprites/_0006_waterway.png" type="Texture" id=7]
+
 
 [resource]
 0/name = "Sprite"

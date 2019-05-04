@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/dash_effect_020002.png-93de6ef31099df59f4a15148bcc95354.stex"
+path="res://.import/dash_effect_020002.png-916addb8602ab7b55ca8a4bf43ab6404.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://dash_effect_020002.png"
-dest_files=[ "res://.import/dash_effect_020002.png-93de6ef31099df59f4a15148bcc95354.stex" ]
+source_file="res://Sprites/Particle/dash_effect_020002.png"
+dest_files=[ "res://.import/dash_effect_020002.png-916addb8602ab7b55ca8a4bf43ab6404.stex" ]
 
 [params]
 

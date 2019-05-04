@@ -2,27 +2,27 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/charakter.png-b75d136047a16226276127fe8c57f247.stex"
+path="res://.import/spot.png-387c4d11ec5eb9fa36835768156ffd01.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://charakter.png"
-dest_files=[ "res://.import/charakter.png-b75d136047a16226276127fe8c57f247.stex" ]
+source_file="res://Sprites/Particle/spot.png"
+dest_files=[ "res://.import/spot.png-387c4d11ec5eb9fa36835768156ffd01.stex" ]
 
 [params]
 
-compress/mode=3
+compress/mode=0
 compress/lossy_quality=0.7
 compress/hdr_mode=0
 compress/bptc_ldr=0
 compress/normal_map=0
 flags/repeat=0
-flags/filter=false
-flags/mipmaps=true
-flags/anisotropic=true
+flags/filter=true
+flags/mipmaps=false
+flags/anisotropic=false
 flags/srgb=2
 process/fix_alpha_border=true
 process/premult_alpha=false

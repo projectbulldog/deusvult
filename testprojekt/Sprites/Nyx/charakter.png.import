@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/charakter_3.png-bb13980924a8ee21b22b7239bb4a33d6.stex"
+path="res://.import/charakter.png-e6be19a87c20f6b0eb48ed2998675561.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://charakter_3.png"
-dest_files=[ "res://.import/charakter_3.png-bb13980924a8ee21b22b7239bb4a33d6.stex" ]
+source_file="res://Sprites/Nyx/charakter.png"
+dest_files=[ "res://.import/charakter.png-e6be19a87c20f6b0eb48ed2998675561.stex" ]
 
 [params]
 
@@ -20,7 +20,7 @@ compress/hdr_mode=0
 compress/bptc_ldr=0
 compress/normal_map=0
 flags/repeat=0
-flags/filter=true
+flags/filter=false
 flags/mipmaps=true
 flags/anisotropic=true
 flags/srgb=2
