@@ -32,7 +32,7 @@
 [ext_resource path="res://Sprites/HollowKnight/ash_grass_01_blizzard0001.png" type="Texture" id=30]
 [ext_resource path="res://Scenes/Enemy.tscn" type="PackedScene" id=31]
 [ext_resource path="res://Shaders/NoiseMultiplication.shader" type="Shader" id=32]
-[ext_resource path="res://texture (4).png" type="Texture" id=33]
+[ext_resource path="res://texture (6).png" type="Texture" id=33]
 [ext_resource path="res://Sprites/Particle/light.png" type="Texture" id=34]
 
 [sub_resource type="Environment" id=1]
@@ -430,7 +430,7 @@ extents = Vector2( 54.17, 111.08 )
 [sub_resource type="OpenSimplexNoise" id=47]
 seed = 1
 octaves = 1
-period = 256.0
+period = 170.8
 persistence = 1.0
 lacunarity = 4.0
 
@@ -442,8 +442,8 @@ noise = SubResource( 47 )
 
 [sub_resource type="ShaderMaterial" id=49]
 shader = ExtResource( 32 )
-shader_param/tint = Color( 1, 0.682353, 0.45098, 1 )
-shader_param/speed = 0.1
+shader_param/tint = Color( 1, 0.756863, 0.517647, 1 )
+shader_param/speed = 0.05
 shader_param/noise1 = ExtResource( 33 )
 shader_param/noise2 = SubResource( 48 )
 
@@ -458,6 +458,7 @@ z_index = 2
 [node name="Player" type="KinematicBody2D" parent="Node2D" groups=[
 "Player",
 ]]
+editor/display_folded = true
 position = Vector2( 2304, 3488 )
 scale = Vector2( 0.6, 0.6 )
 z_index = 10
@@ -592,6 +593,7 @@ shape = SubResource( 44 )
 [node name="Butterfly2" type="Area2D" parent="Node2D" groups=[
 "Damageable",
 ]]
+editor/display_folded = true
 position = Vector2( 2400, 3264 )
 collision_layer = 4
 collision_mask = 4

@@ -20,10 +20,3 @@ void fragment()
 	color.a *= tex1.r * tex2.r * 2.0;
 	COLOR = color;
 }
-
-void light()
-{
-	vec4 light = LIGHT;
-	light.r = 1.0;
-	LIGHT = light;
-}
