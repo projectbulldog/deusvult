@@ -1,4 +1,4 @@
-[gd_scene load_steps=78 format=2]
+[gd_scene load_steps=83 format=2]
 
 [ext_resource path="res://default_env.tres" type="Environment" id=1]
 [ext_resource path="res://Scripts/Player.gd" type="Script" id=2]
@@ -32,6 +32,10 @@
 [ext_resource path="res://Scripts/Grass.gd" type="Script" id=30]
 [ext_resource path="res://Sprites/HollowKnight/ash_grass_01_blizzard0001.png" type="Texture" id=31]
 [ext_resource path="res://Scenes/Enemy.tscn" type="PackedScene" id=32]
+[ext_resource path="res://Shaders/NoiseMultiplication.shader" type="Shader" id=33]
+[ext_resource path="res://Sprites/test.png" type="Texture" id=34]
+[ext_resource path="res://Sprites/Particle/test (1).png" type="Texture" id=35]
+[ext_resource path="res://Sprites/Particle/light.png" type="Texture" id=36]
 
 [sub_resource type="StyleBoxFlat" id=1]
 bg_color = Color( 0.478431, 0.858824, 0.321569, 1 )
@@ -421,6 +425,11 @@ tracks/1/keys = {
 [sub_resource type="RectangleShape2D" id=45]
 extents = Vector2( 54.17, 111.08 )
 
+[sub_resource type="ShaderMaterial" id=46]
+shader = ExtResource( 33 )
+shader_param/noise1 = ExtResource( 34 )
+shader_param/noise2 = ExtResource( 35 )
+
 [node name="World" type="Node"]
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
@@ -467,6 +476,7 @@ custom_colors/font_color = Color( 0, 0, 0, 0 )
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer" parent="Node2D/Player/Camera2D"]
 stream = ExtResource( 5 )
+volume_db = -20.0
 autoplay = true
 
 [node name="AudioStreamPlayer2D2" type="AudioStreamPlayer2D" parent="Node2D/Player/Camera2D"]
@@ -625,5 +635,11 @@ texture = ExtResource( 31 )
 position = Vector2( 4849.03, 3872 )
 
 [node name="Enemy" parent="Node2D" instance=ExtResource( 32 )]
+
+[node name="Sprite" type="Sprite" parent="."]
+material = SubResource( 46 )
+position = Vector2( 2592, 3213.58 )
+z_index = -50
+texture = ExtResource( 36 )
 
 [connection signal="on_health_changed" from="Node2D/Player/StateManager" to="Node2D/Player/Camera2D/Interface" method="_on_StateManager_on_health_changed"]
