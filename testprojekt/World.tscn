@@ -443,7 +443,7 @@ noise = SubResource( 47 )
 [sub_resource type="ShaderMaterial" id=49]
 shader = ExtResource( 32 )
 shader_param/tint = Color( 1, 0.662745, 0.462745, 1 )
-shader_param/speed = 0.05
+shader_param/speed = 0.1
 shader_param/noise1 = ExtResource( 33 )
 shader_param/noise2 = SubResource( 48 )
 
@@ -651,8 +651,8 @@ position = Vector2( 4849.03, 3872 )
 
 [node name="Sprite2" type="Sprite" parent="Node2D"]
 material = SubResource( 49 )
-position = Vector2( 3357.87, 7505.92 )
-scale = Vector2( 3.49072, 3.34375 )
+position = Vector2( 3283.91, 8080.21 )
+scale = Vector2( 3.66389, 3.75 )
 z_index = -50
 texture = ExtResource( 34 )
 offset = Vector2( 469.496, -1531.79 )
