@@ -7,6 +7,7 @@ uniform vec4 tint : hint_color;
 uniform sampler2D tintNoise;
 
 uniform float speed = 0.1;
+uniform float glow = 1.0;
 
 uniform bool moveNoise1 = false;
 uniform bool invertNoise1 = false;
@@ -30,7 +31,7 @@ void fragment()
 	vec4 tex3 = texture(noise2, UV * 0.5 + movement2);
 	
 	vec4 t = texture(tintNoise, UV);
-	color.rgb = t.rgb;
-	color.a *= tex1.r * tex2.r * 2.0 * tex3.r * 2.0;
+	color.rgb *= t.rgb * glow;
+	color.a *= tex1.r * 2.0 * tex2.r * 2.0 * tex3.r * 2.0;
 	COLOR = color;
 }

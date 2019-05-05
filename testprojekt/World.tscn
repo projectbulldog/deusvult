@@ -34,7 +34,7 @@
 [ext_resource path="res://Shaders/NoiseMultiplication.shader" type="Shader" id=32]
 [ext_resource path="res://texture (6).png" type="Texture" id=33]
 [ext_resource path="res://tes.tres" type="Texture" id=34]
-[ext_resource path="res://Sprites/Particle/TESET.jpeg" type="Texture" id=35]
+[ext_resource path="res://TESET.jpeg" type="Texture" id=35]
 [ext_resource path="res://Sprites/Particle/light.png" type="Texture" id=36]
 [ext_resource path="res://honey.jpeg" type="Texture" id=37]
 [ext_resource path="res://teset2.jpeg" type="Texture" id=38]
@@ -435,6 +435,7 @@ extents = Vector2( 54.17, 111.08 )
 shader = ExtResource( 32 )
 shader_param/tint = Color( 1, 0.482353, 0.482353, 1 )
 shader_param/speed = 0.05
+shader_param/glow = 1.0
 shader_param/moveNoise1 = true
 shader_param/invertNoise1 = true
 shader_param/noise1 = ExtResource( 33 )
@@ -454,6 +455,7 @@ noise = SubResource( 48 )
 shader = ExtResource( 32 )
 shader_param/tint = Color( 1, 0.372549, 0.372549, 1 )
 shader_param/speed = 0.1
+shader_param/glow = 1.0
 shader_param/moveNoise1 = false
 shader_param/invertNoise1 = true
 shader_param/noise1 = ExtResource( 37 )

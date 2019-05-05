@@ -1,6 +1,32 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://MainMenu.gd" type="Script" id=1]
+[ext_resource path="res://Shaders/NoiseMultiplication.shader" type="Shader" id=2]
+[ext_resource path="res://texture (6).png" type="Texture" id=3]
+[ext_resource path="res://TESET.jpeg" type="Texture" id=4]
+[ext_resource path="res://Sprites/Particle/light.png" type="Texture" id=5]
+[ext_resource path="res://Sprites/Background/Nebula Aqua-Pink.png" type="Texture" id=6]
+
+[sub_resource type="OpenSimplexNoise" id=3]
+octaves = 1
+period = 156.0
+
+[sub_resource type="NoiseTexture" id=4]
+width = 1024
+height = 1024
+seamless = true
+noise = SubResource( 3 )
+
+[sub_resource type="ShaderMaterial" id=5]
+shader = ExtResource( 2 )
+shader_param/tint = Color( 1, 1, 1, 1 )
+shader_param/speed = 0.05
+shader_param/glow = 1.2
+shader_param/moveNoise1 = true
+shader_param/invertNoise1 = true
+shader_param/noise1 = ExtResource( 3 )
+shader_param/noise2 = SubResource( 4 )
+shader_param/tintNoise = ExtResource( 4 )
 
 [node name="Control" type="Control"]
 anchor_right = 1.0
@@ -13,5 +39,17 @@ margin_top = 64.0
 margin_right = 146.0
 margin_bottom = 84.0
 text = "New Game"
+
+[node name="Sprite" type="Sprite" parent="."]
+material = SubResource( 5 )
+position = Vector2( 508, 372 )
+scale = Vector2( 1.25781, 0.898437 )
+z_index = -1
+texture = ExtResource( 5 )
+
+[node name="Nebula Aqua-Pink" type="Sprite" parent="."]
+position = Vector2( 512, 192 )
+z_index = -3
+texture = ExtResource( 6 )
 
 [connection signal="pressed" from="Button" to="." method="_on_NewGame_pressed"]
