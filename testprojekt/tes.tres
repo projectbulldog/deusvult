@@ -3,9 +3,7 @@
 [sub_resource type="OpenSimplexNoise" id=1]
 seed = 1
 octaves = 1
-period = 170.8
-persistence = 1.0
-lacunarity = 4.0
+period = 155.9
 
 [resource]
 width = 2048
