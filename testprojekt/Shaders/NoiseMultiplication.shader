@@ -4,6 +4,7 @@ render_mode blend_add;
 uniform sampler2D noise1;
 uniform sampler2D noise2;
 uniform vec4 tint : hint_color;
+uniform sampler2D tintNoise;
 
 uniform float speed = 0.1;
 
@@ -26,8 +27,10 @@ void fragment()
 		tex1 = vec4(1.0) - tex1;
 	}
 	vec4 tex2 = texture(noise2, UV + movement2);
+	vec4 tex3 = texture(noise2, UV * 0.5 + movement2);
 	
-	color.rgb = tint.rgb;
-	color.a *= tex1.r * tex2.r * 2.0;
+	vec4 t = texture(tintNoise, UV);
+	color.rgb = t.rgb;
+	color.a *= tex1.r * tex2.r * 2.0 * tex3.r * 2.0;
 	COLOR = color;
 }
