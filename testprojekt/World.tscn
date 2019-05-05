@@ -1,4 +1,4 @@
-[gd_scene load_steps=84 format=2]
+[gd_scene load_steps=88 format=2]
 
 [ext_resource path="res://Scripts/Player.gd" type="Script" id=1]
 [ext_resource path="res://Scripts/Camera2D.gd" type="Script" id=2]
@@ -34,6 +34,7 @@
 [ext_resource path="res://Shaders/NoiseMultiplication.shader" type="Shader" id=32]
 [ext_resource path="res://texture (6).png" type="Texture" id=33]
 [ext_resource path="res://Sprites/Particle/light.png" type="Texture" id=34]
+[ext_resource path="res://honey.jpeg" type="Texture" id=35]
 
 [sub_resource type="Environment" id=1]
 background_mode = 4
@@ -444,8 +445,28 @@ noise = SubResource( 47 )
 shader = ExtResource( 32 )
 shader_param/tint = Color( 1, 0.756863, 0.517647, 1 )
 shader_param/speed = 0.05
+shader_param/moveNoise1 = true
+shader_param/invertNoise1 = false
 shader_param/noise1 = ExtResource( 33 )
 shader_param/noise2 = SubResource( 48 )
+
+[sub_resource type="OpenSimplexNoise" id=50]
+octaves = 1
+period = 71.2
+persistence = 1.0
+
+[sub_resource type="NoiseTexture" id=51]
+seamless = true
+noise = SubResource( 50 )
+
+[sub_resource type="ShaderMaterial" id=52]
+shader = ExtResource( 32 )
+shader_param/tint = Color( 1, 0.482353, 0.482353, 1 )
+shader_param/speed = 0.1
+shader_param/moveNoise1 = false
+shader_param/invertNoise1 = true
+shader_param/noise1 = ExtResource( 35 )
+shader_param/noise2 = SubResource( 51 )
 
 [node name="World" type="Node"]
 
@@ -657,5 +678,11 @@ scale = Vector2( 3.65625, 3.71875 )
 z_index = -50
 texture = ExtResource( 34 )
 offset = Vector2( 469.496, -1531.79 )
+
+[node name="honey" type="Sprite" parent="."]
+material = SubResource( 52 )
+position = Vector2( 2368, 3296 )
+z_index = -39
+texture = ExtResource( 34 )
 
 [connection signal="on_health_changed" from="Node2D/Player/StateManager" to="Node2D/Player/Camera2D/Interface" method="_on_StateManager_on_health_changed"]
