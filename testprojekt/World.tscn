@@ -441,7 +441,7 @@ noise = SubResource( 47 )
 
 [sub_resource type="ShaderMaterial" id=49]
 shader = ExtResource( 32 )
-shader_param/tint = Color( 1, 0.831373, 0.545098, 1 )
+shader_param/tint = Color( 1, 0.733333, 0.45098, 1 )
 shader_param/speed = 0.03
 shader_param/noise1 = ExtResource( 33 )
 shader_param/noise2 = SubResource( 48 )
@@ -457,7 +457,7 @@ noise = SubResource( 50 )
 
 [sub_resource type="ShaderMaterial" id=52]
 shader = ExtResource( 32 )
-shader_param/tint = Color( 1, 0.780392, 0.443137, 1 )
+shader_param/tint = Color( 1, 0.717647, 0.388235, 1 )
 shader_param/speed = 0.1
 shader_param/noise1 = ExtResource( 35 )
 shader_param/noise2 = SubResource( 51 )
