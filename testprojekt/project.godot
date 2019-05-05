@@ -16,7 +16,7 @@ _global_script_class_icons={
 [application]
 
 config/name="testprojekt"
-run/main_scene="res://World.tscn"
+run/main_scene="res://Main.tscn"
 config/icon="res://Sprites/icon.png"
 
 [debug]
