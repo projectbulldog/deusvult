@@ -7,25 +7,27 @@
 [ext_resource path="res://Sprites/Particle/light.png" type="Texture" id=5]
 [ext_resource path="res://Sprites/Background/Nebula Aqua-Pink.png" type="Texture" id=6]
 
-[sub_resource type="OpenSimplexNoise" id=3]
+[sub_resource type="OpenSimplexNoise" id=1]
 octaves = 1
-period = 156.0
+period = 86.8
+persistence = 0.0
 
-[sub_resource type="NoiseTexture" id=4]
+[sub_resource type="NoiseTexture" id=2]
 width = 1024
 height = 1024
 seamless = true
-noise = SubResource( 3 )
+noise = SubResource( 1 )
 
-[sub_resource type="ShaderMaterial" id=5]
+[sub_resource type="ShaderMaterial" id=3]
 shader = ExtResource( 2 )
-shader_param/tint = Color( 1, 1, 1, 1 )
+shader_param/tint = Color( 1, 0.878431, 0.509804, 1 )
 shader_param/speed = 0.05
 shader_param/glow = 1.2
 shader_param/moveNoise1 = true
 shader_param/invertNoise1 = true
+shader_param/colorMovement = true
 shader_param/noise1 = ExtResource( 3 )
-shader_param/noise2 = SubResource( 4 )
+shader_param/noise2 = SubResource( 2 )
 shader_param/tintNoise = ExtResource( 4 )
 
 [node name="Control" type="Control"]
@@ -41,7 +43,7 @@ margin_bottom = 84.0
 text = "New Game"
 
 [node name="Sprite" type="Sprite" parent="."]
-material = SubResource( 5 )
+material = SubResource( 3 )
 position = Vector2( 508, 372 )
 scale = Vector2( 1.25781, 0.898437 )
 z_index = -1
