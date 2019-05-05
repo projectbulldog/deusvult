@@ -95,5 +95,5 @@ quality/2d/gles2_use_nvidia_rect_flicker_workaround=true
 quality/intended_usage/framebuffer_allocation=0
 quality/2d/use_pixel_snap=true
 threads/thread_model=2
-environment/default_clear_color=Color( 0.329412, 0.329412, 0.329412, 1 )
+environment/default_clear_color=Color( 0.0745098, 0.0745098, 0.0745098, 1 )
 environment/default_environment="res://default_env.tres"

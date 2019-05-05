@@ -151,7 +151,6 @@ func _process(delta):
 
 func attack():
 #	Alle überlappenden Elemente durchgehen und wenn sie Damageable sind, ihnen Schaden zufügen
-	$Sprite/Slash/Area2D.connect("body_entered", self, "on_body_entered_attack")
 	var bodies = $Sprite/Slash/Area2D.get_overlapping_bodies()
 	for body in bodies:
 		if(body.is_in_group("Damageable")):
@@ -160,6 +159,8 @@ func attack():
 	for area in areas:
 		if(area.is_in_group("Damageable")):
 			area.takeDamage()
+	$Sprite/Slash/Area2D.connect("body_entered", self, "on_body_entered_attack")
+	$Sprite/Slash/Area2D.connect("area_entered", self, "on_body_entered_attack")
 
 func on_body_entered_attack(body):
 #	Animation geht ein paar milisekunden -> In dieser Zeit neue Bodies auch Schaden zufügen
@@ -177,4 +178,6 @@ func attackFinished():
 	isAttacking = false
 	if $Sprite/Slash/Area2D.is_connected("body_entered", self, "on_body_entered_attack"):
 		$Sprite/Slash/Area2D.disconnect("body_entered", self, "on_body_entered_attack")
+	if $Sprite/Slash/Area2D.is_connected("area_entered", self, "on_body_entered_attack"):
+		$Sprite/Slash/Area2D.disconnect("area_entered", self, "on_body_entered_attack")
 
