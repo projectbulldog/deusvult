@@ -1,4 +1,4 @@
-[gd_scene load_steps=88 format=2]
+[gd_scene load_steps=84 format=2]
 
 [ext_resource path="res://Scripts/Player.gd" type="Script" id=1]
 [ext_resource path="res://Scripts/Camera2D.gd" type="Script" id=2]
@@ -32,9 +32,8 @@
 [ext_resource path="res://Sprites/HollowKnight/ash_grass_01_blizzard0001.png" type="Texture" id=30]
 [ext_resource path="res://Scenes/Enemy.tscn" type="PackedScene" id=31]
 [ext_resource path="res://Shaders/NoiseMultiplication.shader" type="Shader" id=32]
-[ext_resource path="res://texture (6).png" type="Texture" id=33]
+[ext_resource path="res://Sprites/test.png" type="Texture" id=33]
 [ext_resource path="res://Sprites/Particle/light.png" type="Texture" id=34]
-[ext_resource path="res://texture (4).png" type="Texture" id=35]
 
 [sub_resource type="Environment" id=1]
 background_mode = 4
@@ -429,9 +428,11 @@ tracks/1/keys = {
 extents = Vector2( 54.17, 111.08 )
 
 [sub_resource type="OpenSimplexNoise" id=47]
+seed = 1
 octaves = 1
-period = 173.3
+period = 256.0
 persistence = 1.0
+lacunarity = 4.0
 
 [sub_resource type="NoiseTexture" id=48]
 width = 2048
@@ -441,26 +442,10 @@ noise = SubResource( 47 )
 
 [sub_resource type="ShaderMaterial" id=49]
 shader = ExtResource( 32 )
-shader_param/tint = Color( 1, 0.733333, 0.45098, 1 )
-shader_param/speed = 0.03
+shader_param/tint = Color( 1, 0.662745, 0.462745, 1 )
+shader_param/speed = 0.05
 shader_param/noise1 = ExtResource( 33 )
 shader_param/noise2 = SubResource( 48 )
-
-[sub_resource type="OpenSimplexNoise" id=50]
-period = 249.1
-
-[sub_resource type="NoiseTexture" id=51]
-width = 1024
-height = 1024
-seamless = true
-noise = SubResource( 50 )
-
-[sub_resource type="ShaderMaterial" id=52]
-shader = ExtResource( 32 )
-shader_param/tint = Color( 1, 0.717647, 0.388235, 1 )
-shader_param/speed = 0.1
-shader_param/noise1 = ExtResource( 35 )
-shader_param/noise2 = SubResource( 51 )
 
 [node name="World" type="Node"]
 
@@ -671,13 +656,6 @@ scale = Vector2( 3.49072, 3.34375 )
 z_index = -50
 texture = ExtResource( 34 )
 offset = Vector2( 469.496, -1531.79 )
-
-[node name="Sprite" type="Sprite" parent="Node2D"]
-material = SubResource( 52 )
-position = Vector2( 1952, 2848 )
-scale = Vector2( 3.491, 3.344 )
-z_index = -50
-texture = ExtResource( 34 )
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
 
