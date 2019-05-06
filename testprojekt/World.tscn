@@ -437,10 +437,10 @@ extents = Vector2( 54.17, 111.08 )
 shader = ExtResource( 32 )
 shader_param/tint = Color( 1, 0.482353, 0.482353, 1 )
 shader_param/speed = 0.05
-shader_param/glow = 1.5
+shader_param/glow = 1.0
 shader_param/moveNoise1 = true
 shader_param/invertNoise1 = true
-shader_param/colorMovement = true
+shader_param/useNoiseColor = true
 shader_param/noise1 = ExtResource( 33 )
 shader_param/noise2 = ExtResource( 34 )
 shader_param/tintNoise = ExtResource( 35 )
@@ -461,30 +461,30 @@ shader_param/speed = 0.1
 shader_param/glow = 1.0
 shader_param/moveNoise1 = false
 shader_param/invertNoise1 = true
-shader_param/colorMovement = false
+shader_param/useNoiseColor = true
 shader_param/noise1 = ExtResource( 37 )
 shader_param/noise2 = SubResource( 49 )
 shader_param/tintNoise = ExtResource( 38 )
 
-[sub_resource type="OpenSimplexNoise" id=52]
+[sub_resource type="OpenSimplexNoise" id=51]
 octaves = 1
 period = 45.5
 lacunarity = 4.0
 
-[sub_resource type="NoiseTexture" id=53]
+[sub_resource type="NoiseTexture" id=52]
 seamless = true
-noise = SubResource( 52 )
+noise = SubResource( 51 )
 
-[sub_resource type="ShaderMaterial" id=51]
+[sub_resource type="ShaderMaterial" id=53]
 shader = ExtResource( 32 )
-shader_param/tint = null
+shader_param/tint = Color( 1, 0.588235, 0.588235, 1 )
 shader_param/speed = 0.1
-shader_param/glow = 2.0
+shader_param/glow = 1.0
 shader_param/moveNoise1 = false
 shader_param/invertNoise1 = false
-shader_param/colorMovement = false
+shader_param/useNoiseColor = false
 shader_param/noise1 = ExtResource( 39 )
-shader_param/noise2 = SubResource( 53 )
+shader_param/noise2 = SubResource( 52 )
 shader_param/tintNoise = ExtResource( 35 )
 
 [node name="World" type="Node"]
@@ -498,6 +498,7 @@ z_index = 2
 [node name="Player" type="KinematicBody2D" parent="Node2D" groups=[
 "Player",
 ]]
+editor/display_folded = true
 position = Vector2( 1856, 3468 )
 scale = Vector2( 0.6, 0.6 )
 z_index = 10
@@ -552,6 +553,7 @@ z_as_relative = false
 shape = SubResource( 4 )
 
 [node name="Sprite" type="Sprite" parent="Node2D/Player"]
+editor/display_folded = true
 scale = Vector2( 0.26, 0.26 )
 texture = ExtResource( 7 )
 
@@ -705,9 +707,8 @@ z_index = 50
 texture = ExtResource( 36 )
 
 [node name="Sprite" type="Sprite" parent="."]
-material = SubResource( 51 )
-position = Vector2( 1088, 3200 )
-scale = Vector2( 9.09, 7.69581 )
+material = SubResource( 53 )
+position = Vector2( 812.75, 3408.4 )
+scale = Vector2( 3.585, 3.5279 )
 texture = ExtResource( 40 )
-
 [connection signal="on_health_changed" from="Node2D/Player/StateManager" to="Node2D/Player/Camera2D/Interface" method="_on_StateManager_on_health_changed"]

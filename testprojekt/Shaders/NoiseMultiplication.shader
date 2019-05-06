@@ -1,5 +1,5 @@
 shader_type canvas_item;
-render_mode blend_mix;
+render_mode blend_add;
 
 uniform sampler2D noise1;
 uniform sampler2D noise2;
@@ -11,7 +11,7 @@ uniform float glow = 1.0;
 
 uniform bool moveNoise1 = false;
 uniform bool invertNoise1 = false;
-uniform bool colorMovement = false;
+uniform bool useNoiseColor = false;
 
 void fragment()
 {
@@ -32,7 +32,14 @@ void fragment()
 	vec4 tex3 = texture(noise2, UV * 2.0 + movement2);
 	
 	vec4 t = texture(tintNoise, UV);
-	color.rgb = t.rgb * glow;
+	if(useNoiseColor)
+	{
+		color.rgb = t.rgb * glow;
+	}
+	else
+	{
+		color.rgb = tint.rgb * glow;
+	}
 	color.a *= tex1.r * 2.0 * tex2.r * 2.0 * tex3.r * 2.0;
 	COLOR = color;
 }
