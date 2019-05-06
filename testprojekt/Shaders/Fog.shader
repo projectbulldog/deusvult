@@ -1,23 +1,13 @@
 shader_type canvas_item;
-render_mode blend_add;
-
-float rand(vec2 co){
-    return fract(sin(dot(co.xy ,vec2(12.9898, 78.233))) * 43758.5453);
-}
+render_mode blend_mix;
 
 void fragment()
 {
-	float test = TIME * 0.05;
-    vec2 motion1 = vec2(0.0, test * 0.2);
-	vec2 motion2 = vec2(TIME * 0.008, test * 0.1);
-	
-	vec2 distort1 = motion1 + motion2 - vec2(0.5);
-	vec2 distort2 = motion1 + motion2 - vec2(0.5);
-	
-	vec2 distort_sum = (distort1 + distort2) * 0.5;
-	
-	vec4 noise =  texture(TEXTURE, UV + distort_sum);
-	noise.rgb *= 0.1;
-	COLOR = texture(SCREEN_TEXTURE, SCREEN_UV);
-	COLOR = mix(COLOR, noise, 0.8) * 0.7;
+	vec4 color = vec4(0.5, 0.5, 0.5, 1.0);
+	vec2 movement = vec2(0.0, TIME * 0.01);
+	vec4 noise = texture(TEXTURE, UV + movement);
+	vec4 noise2 = texture(TEXTURE, UV * 0.5 + movement * 0.5);
+	color.a *= noise.r * noise2.r * 2.0;
+	color.a *= clamp(color.a, 0.0, 1.0);
+	COLOR = color * 0.6;
 }

@@ -38,7 +38,7 @@ void fragment()
 	}
 	else
 	{
-		color.rgb = tint.rgb * glow;
+		color.rgb =  tint.rgb * glow;
 	}
 	color.a *= tex1.r * 2.0 * tex2.r * 2.0 * tex3.r * 2.0;
 	COLOR = color;

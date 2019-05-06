@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/lightning-texture-photoshop.jpg-9d119242046364bba3d1116b085a9ab0.stex"
+path="res://.import/blitzli.png-35fd98d547357df4b6a1113202e60faa.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://lightning-texture-photoshop.jpg"
-dest_files=[ "res://.import/lightning-texture-photoshop.jpg-9d119242046364bba3d1116b085a9ab0.stex" ]
+source_file="res://blitzli.png"
+dest_files=[ "res://.import/blitzli.png-35fd98d547357df4b6a1113202e60faa.stex" ]
 
 [params]
 
