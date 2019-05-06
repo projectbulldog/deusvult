@@ -436,9 +436,8 @@ extents = Vector2( 54.17, 111.08 )
 [sub_resource type="ShaderMaterial" id=47]
 shader = ExtResource( 32 )
 shader_param/tint = Color( 1, 0.482353, 0.482353, 1 )
-shader_param/speed = 0.05
+shader_param/speed = 0.02
 shader_param/glow = 1.0
-shader_param/moveNoise1 = true
 shader_param/invertNoise1 = true
 shader_param/useNoiseColor = true
 shader_param/noise1 = ExtResource( 33 )
@@ -459,8 +458,7 @@ shader = ExtResource( 32 )
 shader_param/tint = Color( 1, 0.372549, 0.372549, 1 )
 shader_param/speed = 0.1
 shader_param/glow = 1.0
-shader_param/moveNoise1 = false
-shader_param/invertNoise1 = true
+shader_param/invertNoise1 = false
 shader_param/useNoiseColor = true
 shader_param/noise1 = ExtResource( 37 )
 shader_param/noise2 = SubResource( 49 )
@@ -477,12 +475,11 @@ noise = SubResource( 51 )
 
 [sub_resource type="ShaderMaterial" id=53]
 shader = ExtResource( 32 )
-shader_param/tint = Color( 1, 0.588235, 0.588235, 1 )
+shader_param/tint = Color( 0.588235, 0.596078, 1, 1 )
 shader_param/speed = 0.1
 shader_param/glow = 1.0
-shader_param/moveNoise1 = false
 shader_param/invertNoise1 = false
-shader_param/useNoiseColor = false
+shader_param/useNoiseColor = true
 shader_param/noise1 = ExtResource( 39 )
 shader_param/noise2 = SubResource( 52 )
 shader_param/tintNoise = ExtResource( 35 )
@@ -707,7 +704,7 @@ texture = ExtResource( 36 )
 
 [node name="Sprite" type="Sprite" parent="."]
 material = SubResource( 53 )
-position = Vector2( 812.75, 3408.4 )
-scale = Vector2( 3.585, 3.5279 )
+position = Vector2( 1024, 3168 )
+scale = Vector2( 8, 8 )
 texture = ExtResource( 40 )
 [connection signal="on_health_changed" from="Node2D/Player/StateManager" to="Node2D/Player/Camera2D/Interface" method="_on_StateManager_on_health_changed"]

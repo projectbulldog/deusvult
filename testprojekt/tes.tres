@@ -3,7 +3,7 @@
 [sub_resource type="OpenSimplexNoise" id=1]
 seed = 1
 octaves = 1
-period = 72.7
+period = 134.8
 persistence = 0.27
 lacunarity = 4.0
 
