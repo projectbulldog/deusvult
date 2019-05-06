@@ -1,4 +1,4 @@
-[gd_scene load_steps=89 format=2]
+[gd_scene load_steps=94 format=2]
 
 [ext_resource path="res://Scripts/Player.gd" type="Script" id=1]
 [ext_resource path="res://Scripts/Camera2D.gd" type="Script" id=2]
@@ -38,6 +38,8 @@
 [ext_resource path="res://Sprites/Particle/light.png" type="Texture" id=36]
 [ext_resource path="res://honey.jpeg" type="Texture" id=37]
 [ext_resource path="res://teset2.jpeg" type="Texture" id=38]
+[ext_resource path="res://vfx.jpg" type="Texture" id=39]
+[ext_resource path="res://Sprites/Particle/spriteColor.png" type="Texture" id=40]
 
 [sub_resource type="Environment" id=1]
 background_mode = 4
@@ -435,7 +437,7 @@ extents = Vector2( 54.17, 111.08 )
 shader = ExtResource( 32 )
 shader_param/tint = Color( 1, 0.482353, 0.482353, 1 )
 shader_param/speed = 0.05
-shader_param/glow = 1.0
+shader_param/glow = 1.5
 shader_param/moveNoise1 = true
 shader_param/invertNoise1 = true
 shader_param/colorMovement = true
@@ -464,6 +466,27 @@ shader_param/noise1 = ExtResource( 37 )
 shader_param/noise2 = SubResource( 49 )
 shader_param/tintNoise = ExtResource( 38 )
 
+[sub_resource type="OpenSimplexNoise" id=52]
+octaves = 1
+period = 45.5
+lacunarity = 4.0
+
+[sub_resource type="NoiseTexture" id=53]
+seamless = true
+noise = SubResource( 52 )
+
+[sub_resource type="ShaderMaterial" id=51]
+shader = ExtResource( 32 )
+shader_param/tint = null
+shader_param/speed = 0.1
+shader_param/glow = 2.0
+shader_param/moveNoise1 = false
+shader_param/invertNoise1 = false
+shader_param/colorMovement = false
+shader_param/noise1 = ExtResource( 39 )
+shader_param/noise2 = SubResource( 53 )
+shader_param/tintNoise = ExtResource( 35 )
+
 [node name="World" type="Node"]
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
@@ -475,7 +498,7 @@ z_index = 2
 [node name="Player" type="KinematicBody2D" parent="Node2D" groups=[
 "Player",
 ]]
-position = Vector2( 1408, 3481.86 )
+position = Vector2( 1856, 3468 )
 scale = Vector2( 0.6, 0.6 )
 z_index = 10
 z_as_relative = false
@@ -669,8 +692,8 @@ position = Vector2( 4849.03, 3872 )
 
 [node name="Sprite2" type="Sprite" parent="Node2D"]
 material = SubResource( 47 )
-position = Vector2( 3296, 8000 )
-scale = Vector2( 3.65625, 3.71875 )
+position = Vector2( 3294.48, 7888.12 )
+scale = Vector2( 3.62051, 3.60904 )
 z_index = -50
 texture = ExtResource( 36 )
 offset = Vector2( 469.496, -1531.79 )
@@ -680,5 +703,11 @@ material = SubResource( 50 )
 position = Vector2( 2464, 3296 )
 z_index = 50
 texture = ExtResource( 36 )
+
+[node name="Sprite" type="Sprite" parent="."]
+material = SubResource( 51 )
+position = Vector2( 1088, 3200 )
+scale = Vector2( 9.09, 7.69581 )
+texture = ExtResource( 40 )
 
 [connection signal="on_health_changed" from="Node2D/Player/StateManager" to="Node2D/Player/Camera2D/Interface" method="_on_StateManager_on_health_changed"]
