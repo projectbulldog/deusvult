@@ -105,7 +105,7 @@ func _physics_process(delta):
 		motion.y = JUMP_SPEED
 		jumpTime = 0.01
 		if(is_on_wall()):
-			motion.x = -direction * 7000;
+			motion.x = -direction * 2000;
 	elif Input.is_action_pressed("jump") && jumpTime < 0.3 && canJump && !is_on_ceiling():
 #		motion.y = max(motion.y + (JUMP_SPEED * delta * 2), MAXJUMP_SPEED)
 #		motion.y = min(motion.y, 0)
@@ -124,8 +124,9 @@ func _physics_process(delta):
 		canJump = false
 		motion.y = delta * GRAVITY
 	
-	if is_on_wall() && $Sprite/HeadRay.is_colliding():
-		motion.y = 200
+#	Wall Jump
+	if is_on_wall() && !Input.is_action_pressed("jump"):
+		motion.y = 0
 		canJump = true
 		jumpTime = 0
 	
