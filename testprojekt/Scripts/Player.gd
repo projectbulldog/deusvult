@@ -1,8 +1,8 @@
 extends KinematicBody2D
 
 const GRAVITY = 3500
-const SPEED = 800
-const JUMP_SPEED = -5000
+const SPEED = 850
+const JUMP_SPEED = -1000
 const MAXJUMP_SPEED = -10000
 const MAXJUMPMOTION = -1100
 
@@ -26,6 +26,10 @@ var isAttacking = false
 var isAttackCooldown = false
 var attackCooldown = 0.3
 var attackCooldownTimer = 0.0
+
+var isOnFloorWithCoyote = false
+var coyoteTime = 0.0
+var maxCoyoteTime = 0.1
 
 func _ready():
 	dashCooldownTimer = Timer.new()
@@ -86,15 +90,31 @@ func _physics_process(delta):
 		isDashing = false
 		dashTimeLength = 0
 	
+	# Coyote Time
+	if !is_on_floor() && coyoteTime <= maxCoyoteTime:
+		coyoteTime += delta
+		isOnFloorWithCoyote = true
+	elif !is_on_floor():
+		isOnFloorWithCoyote = false
+	else:
+		coyoteTime = 0
+		isOnFloorWithCoyote = true
+	
 	# JUMPING
-	if Input.is_action_pressed("jump") && jumpTime < 0.3 && canJump && !is_on_ceiling():
-		motion.y = max(motion.y + (JUMP_SPEED * delta * 2), MAXJUMP_SPEED)
-		motion.y = min(motion.y, 0)
-		motion.y = max(motion.y, MAXJUMPMOTION)
+	if Input.is_action_pressed("jump") && jumpTime <= 0 && canJump && !is_on_ceiling():
+		motion.y = JUMP_SPEED
+		jumpTime = 0.01
+		if(is_on_wall()):
+			motion.x = -direction * 7000;
+	elif Input.is_action_pressed("jump") && jumpTime < 0.3 && canJump && !is_on_ceiling():
+#		motion.y = max(motion.y + (JUMP_SPEED * delta * 2), MAXJUMP_SPEED)
+#		motion.y = min(motion.y, 0)
+#		motion.y = max(motion.y, MAXJUMPMOTION)
+		motion.y += motion.y * delta * 3.3
 		jumpTime += delta
 	elif !Input.is_action_pressed("jump") && jumpTime > 0:
 		canJump = false
-	if !is_on_floor() && jumpTime == 0:
+	if !isOnFloorWithCoyote && jumpTime == 0:
 		canJump = false
 	
 	if is_on_floor():
@@ -104,8 +124,13 @@ func _physics_process(delta):
 		canJump = false
 		motion.y = delta * GRAVITY
 	
+	if is_on_wall() && $Sprite/HeadRay.is_colliding():
+		motion.y = 200
+		canJump = true
+		jumpTime = 0
+	
 #	Wenn Angriff, dann Movement verlangsamen (Nur am Boden)
-	if is_on_floor() && isAttacking:
+	if isOnFloorWithCoyote && isAttacking:
 		motion.x *= 0.6
 	
 #	Das benötigt es, sonst ist die Kamera hackelig, da sie nicht gleichzeitig geupdated wird.
