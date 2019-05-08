@@ -522,6 +522,7 @@ z_index = 2
 [node name="Player" type="KinematicBody2D" parent="Node2D" groups=[
 "Player",
 ]]
+editor/display_folded = true
 position = Vector2( 1856, 3468 )
 scale = Vector2( 0.6, 0.6 )
 z_index = 10
@@ -628,7 +629,6 @@ texture = ExtResource( 25 )
 [node name="Butterfly" type="Area2D" parent="Node2D" groups=[
 "Damageable",
 ]]
-editor/display_folded = true
 position = Vector2( 1888, 3168 )
 collision_layer = 4
 collision_mask = 4
