@@ -1,7 +1,7 @@
 extends KinematicBody2D
 
 const GRAVITY = 3500
-const SPEED = 850
+const SPEED = 800
 const JUMP_SPEED = -1000
 const MAXJUMP_SPEED = -10000
 const MAXJUMPMOTION = -110
@@ -37,6 +37,8 @@ var justWallJumped = false
 var justWallJumpedTime = 0.0
 var justWallJumpedMaxTime = 0.2
 
+var canDoubleJump = true
+
 func _ready():
 	dashCooldownTimer = Timer.new()
 	dashCooldownTimer.one_shot = true
@@ -68,13 +70,13 @@ func _physics_process(delta):
 		$Camera2D.start_shake()
 
 	# LEFT / RIGHT MOVEMENT
-	if Input.is_action_pressed("ui_right") && (!isAttacking || direction == DIRECTION.RIGHT) && !justWallJumped:
+	if Input.is_action_pressed("ui_right") && (!isAttacking || direction == DIRECTION.RIGHT) && !justWallJumped && !isDashing:
 		if direction == DIRECTION.LEFT:
 			$Sprite.scale.x *= -1
 			direction = DIRECTION.RIGHT
 		motion.x = SPEED
 		friction = false
-	elif Input.is_action_pressed("ui_left") && (!isAttacking || direction == DIRECTION.LEFT) && !justWallJumped:
+	elif Input.is_action_pressed("ui_left") && (!isAttacking || direction == DIRECTION.LEFT) && !justWallJumped && !isDashing:
 		if direction == DIRECTION.RIGHT:
 			$Sprite.scale.x *= -1
 			direction = DIRECTION.LEFT
@@ -88,10 +90,13 @@ func _physics_process(delta):
 	# DASH
 	if Input.is_action_just_pressed("dash") && canDash:
 		canDash = false
+		if is_on_wall():
+			print("HIER")
+			$Sprite.scale.x *= -1
+			direction *= -1;
 		isDashing = true
 		dashCooldownTimer.start()
 		$Sprite/DashParticles.emitting = true
-	
 	if isDashing && dashTimeLength <= maxDashTime:
 		motion.y = 0
 		motion.x = direction * SPEED * 5.0
@@ -111,6 +116,10 @@ func _physics_process(delta):
 		isOnFloorWithCoyote = true
 	
 	# JUMPING
+	if !isOnFloorWithCoyote && !canJump && canDoubleJump && Input.is_action_just_pressed("jump"):
+		canDoubleJump = false
+		motion.y = JUMP_SPEED * 1.5
+	
 	if Input.is_action_pressed("jump") && jumpTime <= 0 && canJump && !is_on_ceiling():
 		motion.y = JUMP_SPEED
 		jumpTime = 0.01
@@ -128,6 +137,7 @@ func _physics_process(delta):
 	if is_on_floor():
 		jumpTime = 0
 		canJump = true
+		canDoubleJump = true
 	if is_on_ceiling():
 		canJump = false
 		motion.y = delta * GRAVITY
@@ -135,13 +145,14 @@ func _physics_process(delta):
 #	wenn ich in der Luft bin und kein Links/Rechts input habe -> Verlangsamen in Horizontaler richtung
 	if !isOnFloorWithCoyote:
 		if friction:
-			motion.x = lerp(motion.x, 0, 0.02)
+			motion.x = lerp(motion.x, 0, 0.03)
 	
 #	Wall Jump
 	if is_on_wall() && !Input.is_action_pressed("jump"):
 		motion.y = 400
 		canJump = true
 		jumpTime = 0
+		canDoubleJump = true
 	
 #	Wenn gerade Walljump durchgeführt wurde -> für kurze zeit kein links/rechts laufen
 	if justWallJumped && justWallJumpedTime <= justWallJumpedMaxTime:
@@ -161,7 +172,7 @@ func _physics_process(delta):
 	motion = move_and_slide(motion, Vector2(0, -1))
 	
 #	Camera Shake, wenn gewisse höhe erreicht wird
-	if(lastMotionY - motion.y) > 2500:
+	if(lastMotionY - motion.y) > 8000:
 		$Camera2D.start_shake()
 	
 #	Attack Cooldown
