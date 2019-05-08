@@ -33,14 +33,14 @@
 [ext_resource path="res://Sprites/HollowKnight/ash_grass_01_blizzard0001.png" type="Texture" id=31]
 [ext_resource path="res://Scenes/Enemy.tscn" type="PackedScene" id=32]
 [ext_resource path="res://Shaders/NoiseMultiplication.shader" type="Shader" id=33]
-[ext_resource path="res://texture (6).png" type="Texture" id=34]
-[ext_resource path="res://tes.tres" type="Texture" id=35]
-[ext_resource path="res://teset2.jpeg" type="Texture" id=36]
-[ext_resource path="res://Sprites/Particle/light.png" type="Texture" id=37]
-[ext_resource path="res://honey.jpeg" type="Texture" id=38]
-[ext_resource path="res://vfx.jpg" type="Texture" id=39]
-[ext_resource path="res://TESET.jpeg" type="Texture" id=40]
-[ext_resource path="res://Sprites/Particle/spriteColor.png" type="Texture" id=41]
+[ext_resource path="res://vfx.jpg" type="Texture" id=34]
+[ext_resource path="res://TESET.jpeg" type="Texture" id=35]
+[ext_resource path="res://Sprites/Particle/spriteColor.png" type="Texture" id=36]
+[ext_resource path="res://honey.jpeg" type="Texture" id=37]
+[ext_resource path="res://teset2.jpeg" type="Texture" id=38]
+[ext_resource path="res://Sprites/Particle/light.png" type="Texture" id=39]
+[ext_resource path="res://texture (6).png" type="Texture" id=40]
+[ext_resource path="res://tes.tres" type="Texture" id=41]
 
 [sub_resource type="Environment" id=1]
 background_mode = 4
@@ -461,16 +461,24 @@ tracks/1/keys = {
 [sub_resource type="RectangleShape2D" id=48]
 extents = Vector2( 54.17, 111.08 )
 
-[sub_resource type="ShaderMaterial" id=49]
+[sub_resource type="OpenSimplexNoise" id=53]
+octaves = 1
+period = 144.7
+
+[sub_resource type="NoiseTexture" id=54]
+seamless = true
+noise = SubResource( 53 )
+
+[sub_resource type="ShaderMaterial" id=55]
 shader = ExtResource( 33 )
-shader_param/tint = Color( 0.529412, 0.690196, 0.996078, 1 )
-shader_param/speed = 0.05
+shader_param/tint = Color( 0.588235, 0.596078, 1, 1 )
+shader_param/speed = 0.1
 shader_param/glow = 1.0
-shader_param/invertNoise1 = true
+shader_param/invertNoise1 = false
 shader_param/useNoiseColor = true
 shader_param/noise1 = ExtResource( 34 )
-shader_param/noise2 = ExtResource( 35 )
-shader_param/tintNoise = ExtResource( 36 )
+shader_param/noise2 = SubResource( 54 )
+shader_param/tintNoise = ExtResource( 35 )
 
 [sub_resource type="OpenSimplexNoise" id=50]
 octaves = 1
@@ -488,28 +496,20 @@ shader_param/speed = 0.1
 shader_param/glow = 1.0
 shader_param/invertNoise1 = false
 shader_param/useNoiseColor = true
-shader_param/noise1 = ExtResource( 38 )
+shader_param/noise1 = ExtResource( 37 )
 shader_param/noise2 = SubResource( 51 )
-shader_param/tintNoise = ExtResource( 36 )
+shader_param/tintNoise = ExtResource( 38 )
 
-[sub_resource type="OpenSimplexNoise" id=53]
-octaves = 1
-period = 144.7
-
-[sub_resource type="NoiseTexture" id=54]
-seamless = true
-noise = SubResource( 53 )
-
-[sub_resource type="ShaderMaterial" id=55]
+[sub_resource type="ShaderMaterial" id=49]
 shader = ExtResource( 33 )
-shader_param/tint = Color( 0.588235, 0.596078, 1, 1 )
-shader_param/speed = 0.1
+shader_param/tint = Color( 0.529412, 0.690196, 0.996078, 1 )
+shader_param/speed = 0.05
 shader_param/glow = 1.0
-shader_param/invertNoise1 = false
+shader_param/invertNoise1 = true
 shader_param/useNoiseColor = true
-shader_param/noise1 = ExtResource( 39 )
-shader_param/noise2 = SubResource( 54 )
-shader_param/tintNoise = ExtResource( 40 )
+shader_param/noise1 = ExtResource( 40 )
+shader_param/noise2 = ExtResource( 41 )
+shader_param/tintNoise = ExtResource( 35 )
 
 [node name="World" type="Node"]
 
@@ -522,7 +522,6 @@ z_index = 2
 [node name="Player" type="KinematicBody2D" parent="Node2D" groups=[
 "Player",
 ]]
-editor/display_folded = true
 position = Vector2( 1856, 3468 )
 scale = Vector2( 0.6, 0.6 )
 z_index = 10
@@ -715,23 +714,28 @@ position = Vector2( 4849.03, 3872 )
 
 [node name="Enemy" parent="Node2D" instance=ExtResource( 32 )]
 
-[node name="Sprite2" type="Sprite" parent="Node2D"]
-material = SubResource( 49 )
-position = Vector2( 3294.48, 7888.12 )
-scale = Vector2( 3.62051, 3.60904 )
-z_index = -50
-texture = ExtResource( 37 )
-offset = Vector2( 469.496, -1531.79 )
-
-[node name="honey" type="Sprite" parent="."]
-material = SubResource( 52 )
-position = Vector2( 2464, 3296 )
-z_index = 50
-texture = ExtResource( 37 )
-
 [node name="Sprite" type="Sprite" parent="."]
 material = SubResource( 55 )
 position = Vector2( 992, 3168 )
 scale = Vector2( 8, 8 )
-texture = ExtResource( 41 )
+texture = ExtResource( 36 )
+
+[node name="honey" type="Sprite" parent="."]
+material = SubResource( 52 )
+position = Vector2( 2464, 3296 )
+texture = ExtResource( 39 )
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+
+[node name="ParallaxLayer2" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_scale = Vector2( 0.8, 0.8 )
+motion_offset = Vector2( -800, -600 )
+
+[node name="Sprite2" type="Sprite" parent="ParallaxBackground/ParallaxLayer2"]
+material = SubResource( 49 )
+position = Vector2( 3294.48, 7888.12 )
+scale = Vector2( 3.62051, 3.60904 )
+z_index = -50
+texture = ExtResource( 39 )
+offset = Vector2( 469.496, -1531.79 )
 [connection signal="on_health_changed" from="Node2D/Player/StateManager" to="Node2D/Player/Camera2D/Interface" method="_on_StateManager_on_health_changed"]
