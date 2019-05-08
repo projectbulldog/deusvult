@@ -74,13 +74,13 @@ func _physics_process(delta):
 		if direction == DIRECTION.LEFT:
 			$Sprite.scale.x *= -1
 			direction = DIRECTION.RIGHT
-		motion.x = SPEED
+		motion.x = SPEED * clamp(Input.get_action_strength("ui_right"), 0.3, 1.0)
 		friction = false
 	elif Input.is_action_pressed("ui_left") && (!isAttacking || direction == DIRECTION.LEFT) && !justWallJumped && !isDashing:
 		if direction == DIRECTION.RIGHT:
 			$Sprite.scale.x *= -1
 			direction = DIRECTION.LEFT
-		motion.x = -SPEED
+		motion.x = -SPEED * clamp(Input.get_action_strength("ui_left"), 0.3, 1.0)
 		friction = false
 	else:
 		friction = true
@@ -145,7 +145,7 @@ func _physics_process(delta):
 #	wenn ich in der Luft bin und kein Links/Rechts input habe -> Verlangsamen in Horizontaler richtung
 	if !isOnFloorWithCoyote:
 		if friction:
-			motion.x = lerp(motion.x, 0, 0.03)
+			motion.x = lerp(motion.x, 0, 0.02)
 	
 #	Wall Jump
 	if is_on_wall() && !Input.is_action_pressed("jump"):
