@@ -95,5 +95,5 @@ attack={
 quality/2d/gles2_use_nvidia_rect_flicker_workaround=true
 quality/2d/use_pixel_snap=true
 threads/thread_model=2
-environment/default_clear_color=Color( 0.0941176, 0.0941176, 0.0941176, 1 )
+environment/default_clear_color=Color( 0.152941, 0.152941, 0.152941, 1 )
 environment/default_environment="res://default_env.tres"

@@ -34,13 +34,13 @@
 [ext_resource path="res://Scenes/Enemy.tscn" type="PackedScene" id=32]
 [ext_resource path="res://Shaders/NoiseMultiplication.shader" type="Shader" id=33]
 [ext_resource path="res://vfx.jpg" type="Texture" id=34]
-[ext_resource path="res://TESET.jpeg" type="Texture" id=35]
+[ext_resource path="res://tes.tres" type="Texture" id=35]
 [ext_resource path="res://Sprites/Particle/spriteColor.png" type="Texture" id=36]
 [ext_resource path="res://honey.jpeg" type="Texture" id=37]
 [ext_resource path="res://teset2.jpeg" type="Texture" id=38]
 [ext_resource path="res://Sprites/Particle/light.png" type="Texture" id=39]
 [ext_resource path="res://texture (6).png" type="Texture" id=40]
-[ext_resource path="res://tes.tres" type="Texture" id=41]
+[ext_resource path="res://TESET.jpeg" type="Texture" id=41]
 
 [sub_resource type="Environment" id=1]
 background_mode = 4
@@ -471,7 +471,7 @@ noise = SubResource( 49 )
 
 [sub_resource type="ShaderMaterial" id=51]
 shader = ExtResource( 33 )
-shader_param/tint = Color( 0.588235, 0.596078, 1, 1 )
+shader_param/tint = Color( 0.490196, 0.490196, 0.490196, 1 )
 shader_param/speed = 0.1
 shader_param/glow = 1.0
 shader_param/invertNoise1 = false
@@ -502,14 +502,14 @@ shader_param/tintNoise = ExtResource( 38 )
 
 [sub_resource type="ShaderMaterial" id=55]
 shader = ExtResource( 33 )
-shader_param/tint = Color( 0.529412, 0.690196, 0.996078, 1 )
+shader_param/tint = Color( 1, 0.780392, 0.501961, 1 )
 shader_param/speed = 0.05
 shader_param/glow = 1.0
 shader_param/invertNoise1 = true
 shader_param/useNoiseColor = true
 shader_param/noise1 = ExtResource( 40 )
-shader_param/noise2 = ExtResource( 41 )
-shader_param/tintNoise = ExtResource( 35 )
+shader_param/noise2 = ExtResource( 35 )
+shader_param/tintNoise = ExtResource( 41 )
 
 [node name="World" type="Node"]
 
@@ -723,6 +723,7 @@ texture = ExtResource( 36 )
 [node name="honey" type="Sprite" parent="."]
 material = SubResource( 54 )
 position = Vector2( 2464, 3296 )
+z_index = 50
 texture = ExtResource( 39 )
 
 [node name="ParallaxBackground" type="ParallaxBackground" parent="."]

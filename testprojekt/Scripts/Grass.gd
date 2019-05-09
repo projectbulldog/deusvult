@@ -1,4 +1,4 @@
 extends Area2D
 
 func takeDamage():
-	self.remove_and_skip()
+	get_parent().remove_child(self)

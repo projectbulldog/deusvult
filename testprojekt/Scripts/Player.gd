@@ -123,7 +123,8 @@ func _physics_process(delta):
 	if Input.is_action_pressed("jump") && jumpTime <= 0 && canJump && !is_on_ceiling():
 		motion.y = JUMP_SPEED
 		jumpTime = 0.01
-		if(is_on_wall()):
+		if(is_on_wall() && !isOnFloorWithCoyote):
+			print ("TEST")
 			motion.x += -direction * SPEED * 1.8;
 			justWallJumped = true
 	elif Input.is_action_pressed("jump") && jumpTime < 0.3 && canJump && !is_on_ceiling():
@@ -148,7 +149,7 @@ func _physics_process(delta):
 			motion.x = lerp(motion.x, 0, 0.02)
 	
 #	Wall Jump
-	if is_on_wall() && !Input.is_action_pressed("jump"):
+	if is_on_wall() && !is_on_floor() && !Input.is_action_pressed("jump"):
 		motion.y = 400
 		canJump = true
 		jumpTime = 0
