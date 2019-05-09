@@ -15,8 +15,11 @@ var lerpPlayer = 0.1
 var lerpObject = 0.05
 var currentLerp = lerpPlayer
 
+var lerpOffset
+
 func _ready():
 	randomize()
+	lerpOffset = self.offset
 	curPos = offset
 	set_camera_limits()
 	player = get_parent().find_node("Player")
@@ -32,6 +35,8 @@ func set_camera_limits():
 	self.limit_bottom = map_limits.end.y * map_cellsize.y
 
 func _physics_process(delta):
+	self.offset = lerp(self.offset, lerpOffset, 0.02)
+	$Interface/ColorRect.color.a = pow(lerp($Interface/ColorRect.color.a, 0.0, 0.1), 2)
 	if(objectToFollow != null):
 		currentLerp =  lerp(currentLerp, lerpObject, 0.5)
 #		Falls nicht Spieler angezeigt werden soll: Vector zwischen Spieler und Objekt / 3
@@ -58,6 +63,9 @@ func _process(delta):
 func start_shake():
 	isShake = true
 #	self.rotating = true
+
+func changeDirection():
+	lerpOffset.x *= -1
 
 func shake(delta):
 	if elapsedtime<shake_time:

@@ -69,12 +69,14 @@ func _physics_process(delta):
 		if direction == DIRECTION.LEFT:
 			$Sprite.scale.x *= -1
 			direction = DIRECTION.RIGHT
+			camera.changeDirection()
 		motion.x = SPEED * clamp(Input.get_action_strength("ui_right"), 0.3, 1.0)
 		friction = false
 	elif Input.is_action_pressed("ui_left") && (!isAttacking || direction == DIRECTION.LEFT) && !justWallJumped && !isDashing && !tookDamage:
 		if direction == DIRECTION.RIGHT:
 			$Sprite.scale.x *= -1
 			direction = DIRECTION.LEFT
+			camera.changeDirection()
 		motion.x = -SPEED * clamp(Input.get_action_strength("ui_left"), 0.3, 1.0)
 		friction = false
 	else:
