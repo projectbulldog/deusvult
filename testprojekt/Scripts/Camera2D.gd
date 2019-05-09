@@ -17,9 +17,14 @@ var currentLerp = lerpPlayer
 
 var lerpOffset
 
+var lerpZoom
+var originalZoom
+
 func _ready():
 	randomize()
 	lerpOffset = self.offset
+	originalZoom = self.zoom
+	lerpZoom = self.zoom
 	set_camera_limits()
 	player = get_parent().find_node("Player")
 
@@ -40,9 +45,20 @@ func _physics_process(delta):
 #		Falls nicht Spieler angezeigt werden soll: Vector zwischen Spieler und Objekt / 3
 		var vectorTo = player.global_position - objectToFollow.global_position
 		self.position = lerp(self.global_position, player.global_position - vectorTo / 3, currentLerp)
+		print(self.zoom)
+		print(lerpZoom)
+		self.zoom = lerp(self.zoom, lerpZoom, 0.02)
 	else:
 		currentLerp =  lerp(currentLerp, lerpPlayer, 0.001)
 		self.position = lerp(self.global_position, player.global_position, currentLerp)
+		self.zoom = lerp(self.zoom, lerpZoom, 0.02)
+
+func setObjectToFollow(object, newZoom):
+	self.objectToFollow = object
+	if(newZoom != null):
+		lerpZoom = newZoom
+	else:
+		lerpZoom = originalZoom
 
 func _process(delta):
 	if isShake:

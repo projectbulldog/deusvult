@@ -247,8 +247,8 @@ func attackFinished():
 func _on_DamageStopMovingTimer_timeout():
 	tookDamage = false
 
-func CueSignal(object):
-	camera.objectToFollow = object
+func CueSignal(object, zoom):
+	camera.setObjectToFollow(object, zoom)
 
 func _on_InvincibilityTimer_timeout():
 	invincible = false
