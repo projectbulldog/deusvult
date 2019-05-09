@@ -23,9 +23,15 @@ func _physics_process(delta):
 		motion.x = SPEED * direction
 
 	motion = move_and_slide(motion, Vector2(0, -1))
+
 func takeDamage():
 	self.modulate = ColorN("red")
 	$Timer.start()
 
 func _on_Timer_timeout():
 	self.modulate = ColorN("white")
+
+
+func _on_DamageArea_body_entered(body):
+	if body.is_in_group("Player"):
+		body.takeDamage(1)

@@ -47,10 +47,10 @@ background_mode = 4
 tonemap_mode = 3
 glow_bicubic_upscale = true
 
-[sub_resource type="RectangleShape2D" id=4]
+[sub_resource type="RectangleShape2D" id=2]
 extents = Vector2( 11.04, 10 )
 
-[sub_resource type="Shader" id=5]
+[sub_resource type="Shader" id=3]
 code = "shader_type canvas_item;
 render_mode unshaded;
 
@@ -73,12 +73,12 @@ void fragment()
 	COLOR = color;
 }"
 
-[sub_resource type="ShaderMaterial" id=6]
-shader = SubResource( 5 )
+[sub_resource type="ShaderMaterial" id=4]
+shader = SubResource( 3 )
 shader_param/tint = Color( 1, 0.392157, 0.392157, 1 )
 shader_param/tintButton = Color( 1, 0.890196, 0.180392, 1 )
 
-[sub_resource type="Animation" id=7]
+[sub_resource type="Animation" id=5]
 length = 0.2
 tracks/0/type = "value"
 tracks/0/path = NodePath(".:texture")
@@ -146,7 +146,7 @@ tracks/4/keys = {
 "values": [ 0.0 ]
 }
 
-[sub_resource type="Animation" id=8]
+[sub_resource type="Animation" id=6]
 length = 0.2
 tracks/0/type = "value"
 tracks/0/path = NodePath(".:texture")
@@ -214,7 +214,7 @@ tracks/4/keys = {
 "values": [ -90.0 ]
 }
 
-[sub_resource type="Animation" id=9]
+[sub_resource type="Animation" id=7]
 length = 0.8
 loop = true
 tracks/0/type = "value"
@@ -230,7 +230,7 @@ tracks/0/keys = {
 "values": [ ExtResource( 10 ), ExtResource( 11 ), ExtResource( 12 ), ExtResource( 13 ) ]
 }
 
-[sub_resource type="Animation" id=10]
+[sub_resource type="Animation" id=8]
 tracks/0/type = "value"
 tracks/0/path = NodePath(".:texture")
 tracks/0/interp = 1
@@ -244,7 +244,7 @@ tracks/0/keys = {
 "values": [ ExtResource( 14 ) ]
 }
 
-[sub_resource type="Animation" id=11]
+[sub_resource type="Animation" id=9]
 tracks/0/type = "value"
 tracks/0/path = NodePath(".:texture")
 tracks/0/interp = 1
@@ -258,7 +258,7 @@ tracks/0/keys = {
 "values": [ ExtResource( 15 ) ]
 }
 
-[sub_resource type="Animation" id=12]
+[sub_resource type="Animation" id=10]
 length = 0.8
 loop = true
 tracks/0/type = "value"
@@ -292,23 +292,27 @@ tracks/1/keys = {
 "times": PoolRealArray( 0.2, 0.6 )
 }
 
-[sub_resource type="AnimationNodeAnimation" id=13]
+[sub_resource type="AnimationNodeAnimation" id=11]
 animation = "Attack"
 
-[sub_resource type="AnimationNodeAnimation" id=14]
+[sub_resource type="AnimationNodeAnimation" id=12]
 animation = "Attack_Up"
 
-[sub_resource type="AnimationNodeAnimation" id=15]
+[sub_resource type="AnimationNodeAnimation" id=13]
 animation = "Idle"
 
-[sub_resource type="AnimationNodeAnimation" id=16]
+[sub_resource type="AnimationNodeAnimation" id=14]
 animation = "Jump"
 
-[sub_resource type="AnimationNodeAnimation" id=17]
+[sub_resource type="AnimationNodeAnimation" id=15]
 animation = "JumpDown"
 
-[sub_resource type="AnimationNodeAnimation" id=18]
+[sub_resource type="AnimationNodeAnimation" id=16]
 animation = "Walk"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=17]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=18]
 
 [sub_resource type="AnimationNodeStateMachineTransition" id=19]
 
@@ -346,40 +350,36 @@ animation = "Walk"
 
 [sub_resource type="AnimationNodeStateMachineTransition" id=36]
 
-[sub_resource type="AnimationNodeStateMachineTransition" id=37]
-
-[sub_resource type="AnimationNodeStateMachineTransition" id=38]
-
-[sub_resource type="AnimationNodeStateMachine" id=39]
-states/Attack/node = SubResource( 13 )
+[sub_resource type="AnimationNodeStateMachine" id=37]
+states/Attack/node = SubResource( 11 )
 states/Attack/position = Vector2( 854.934, 132.869 )
-states/Attack_Up/node = SubResource( 14 )
+states/Attack_Up/node = SubResource( 12 )
 states/Attack_Up/position = Vector2( 844.934, 189.869 )
-states/Idle/node = SubResource( 15 )
+states/Idle/node = SubResource( 13 )
 states/Idle/position = Vector2( 206, 33 )
-states/Jump/node = SubResource( 16 )
+states/Jump/node = SubResource( 14 )
 states/Jump/position = Vector2( 206, 248 )
-states/JumpDown/node = SubResource( 17 )
+states/JumpDown/node = SubResource( 15 )
 states/JumpDown/position = Vector2( 705.934, 248 )
-states/Walk/node = SubResource( 18 )
+states/Walk/node = SubResource( 16 )
 states/Walk/position = Vector2( 705.934, 33 )
-transitions = [ "Idle", "Walk", SubResource( 19 ), "Walk", "Idle", SubResource( 20 ), "Idle", "Jump", SubResource( 21 ), "Jump", "Walk", SubResource( 22 ), "Walk", "Jump", SubResource( 23 ), "Jump", "Idle", SubResource( 24 ), "JumpDown", "Walk", SubResource( 25 ), "Walk", "JumpDown", SubResource( 26 ), "JumpDown", "Jump", SubResource( 27 ), "Jump", "JumpDown", SubResource( 28 ), "JumpDown", "Idle", SubResource( 29 ), "Idle", "JumpDown", SubResource( 30 ), "Walk", "Attack", SubResource( 31 ), "Idle", "Attack", SubResource( 32 ), "Attack", "Idle", SubResource( 33 ), "Attack", "Walk", SubResource( 34 ), "Idle", "Attack_Up", SubResource( 35 ), "Attack_Up", "Walk", SubResource( 36 ), "Walk", "Attack_Up", SubResource( 37 ), "Attack_Up", "Idle", SubResource( 38 ) ]
+transitions = [ "Idle", "Walk", SubResource( 17 ), "Walk", "Idle", SubResource( 18 ), "Idle", "Jump", SubResource( 19 ), "Jump", "Walk", SubResource( 20 ), "Walk", "Jump", SubResource( 21 ), "Jump", "Idle", SubResource( 22 ), "JumpDown", "Walk", SubResource( 23 ), "Walk", "JumpDown", SubResource( 24 ), "JumpDown", "Jump", SubResource( 25 ), "Jump", "JumpDown", SubResource( 26 ), "JumpDown", "Idle", SubResource( 27 ), "Idle", "JumpDown", SubResource( 28 ), "Walk", "Attack", SubResource( 29 ), "Idle", "Attack", SubResource( 30 ), "Attack", "Idle", SubResource( 31 ), "Attack", "Walk", SubResource( 32 ), "Idle", "Attack_Up", SubResource( 33 ), "Attack_Up", "Walk", SubResource( 34 ), "Walk", "Attack_Up", SubResource( 35 ), "Attack_Up", "Idle", SubResource( 36 ) ]
 graph_offset = Vector2( -95.066, 53.869 )
 
-[sub_resource type="AnimationNodeStateMachinePlayback" id=40]
+[sub_resource type="AnimationNodeStateMachinePlayback" id=38]
 
-[sub_resource type="CapsuleShape2D" id=41]
+[sub_resource type="CapsuleShape2D" id=39]
 radius = 199.153
 height = 526.966
 
-[sub_resource type="Gradient" id=42]
+[sub_resource type="Gradient" id=40]
 offsets = PoolRealArray( 0, 0.361257, 1 )
 colors = PoolColorArray( 1, 1, 1, 1, 0.960938, 0.435425, 0.435425, 1, 0.71875, 0, 0, 1 )
 
-[sub_resource type="GradientTexture" id=43]
-gradient = SubResource( 42 )
+[sub_resource type="GradientTexture" id=41]
+gradient = SubResource( 40 )
 
-[sub_resource type="ParticlesMaterial" id=44]
+[sub_resource type="ParticlesMaterial" id=42]
 flag_disable_z = true
 spread = 10.0
 gravity = Vector3( 0, 0, 0 )
@@ -388,7 +388,38 @@ angular_velocity = -1.0
 orbit_velocity = 0.0
 orbit_velocity_random = 0.0
 scale = 10.0
-color_ramp = SubResource( 43 )
+color_ramp = SubResource( 41 )
+
+[sub_resource type="Animation" id=43]
+length = 1.1
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0.00815562, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1, 1.1, 1.2 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 11 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:offset")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ), Vector2( 13.06, -23.76 ) ]
+}
+
+[sub_resource type="CircleShape2D" id=44]
+radius = 40.0
 
 [sub_resource type="Animation" id=45]
 length = 1.1
@@ -418,49 +449,18 @@ tracks/1/keys = {
 "values": [ Vector2( 0, 0 ), Vector2( 13.06, -23.76 ) ]
 }
 
-[sub_resource type="CircleShape2D" id=46]
-radius = 40.0
-
-[sub_resource type="Animation" id=47]
-length = 1.1
-loop = true
-tracks/0/type = "value"
-tracks/0/path = NodePath(".:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0.00815562, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1, 1.1, 1.2 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
-"update": 1,
-"values": [ 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 11 ]
-}
-tracks/1/type = "value"
-tracks/1/path = NodePath(".:offset")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/keys = {
-"times": PoolRealArray( 0, 0.5 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 0,
-"values": [ Vector2( 0, 0 ), Vector2( 13.06, -23.76 ) ]
-}
-
-[sub_resource type="RectangleShape2D" id=48]
+[sub_resource type="RectangleShape2D" id=46]
 extents = Vector2( 54.17, 111.08 )
 
-[sub_resource type="OpenSimplexNoise" id=49]
+[sub_resource type="OpenSimplexNoise" id=47]
 octaves = 1
 period = 144.7
 
-[sub_resource type="NoiseTexture" id=50]
+[sub_resource type="NoiseTexture" id=48]
 seamless = true
-noise = SubResource( 49 )
+noise = SubResource( 47 )
 
-[sub_resource type="ShaderMaterial" id=51]
+[sub_resource type="ShaderMaterial" id=49]
 shader = ExtResource( 33 )
 shader_param/tint = Color( 0.490196, 0.490196, 0.490196, 1 )
 shader_param/speed = 0.1
@@ -468,19 +468,19 @@ shader_param/glow = 1.0
 shader_param/invertNoise1 = false
 shader_param/useNoiseColor = true
 shader_param/noise1 = ExtResource( 34 )
-shader_param/noise2 = SubResource( 50 )
+shader_param/noise2 = SubResource( 48 )
 shader_param/tintNoise = ExtResource( 35 )
 
-[sub_resource type="OpenSimplexNoise" id=52]
+[sub_resource type="OpenSimplexNoise" id=50]
 octaves = 1
 period = 86.1
 persistence = 1.0
 
-[sub_resource type="NoiseTexture" id=53]
+[sub_resource type="NoiseTexture" id=51]
 seamless = true
-noise = SubResource( 52 )
+noise = SubResource( 50 )
 
-[sub_resource type="ShaderMaterial" id=54]
+[sub_resource type="ShaderMaterial" id=52]
 shader = ExtResource( 33 )
 shader_param/tint = Color( 0.435294, 0.788235, 1, 1 )
 shader_param/speed = 0.1
@@ -488,10 +488,10 @@ shader_param/glow = 1.0
 shader_param/invertNoise1 = false
 shader_param/useNoiseColor = true
 shader_param/noise1 = ExtResource( 37 )
-shader_param/noise2 = SubResource( 53 )
+shader_param/noise2 = SubResource( 51 )
 shader_param/tintNoise = ExtResource( 38 )
 
-[sub_resource type="ShaderMaterial" id=55]
+[sub_resource type="ShaderMaterial" id=53]
 shader = ExtResource( 33 )
 shader_param/tint = Color( 1, 0.780392, 0.501961, 1 )
 shader_param/speed = 0.05
@@ -562,26 +562,26 @@ position = Vector2( 6.45996, 0 )
 scale = Vector2( 3.87, 14.2 )
 z_index = -1
 z_as_relative = false
-shape = SubResource( 4 )
+shape = SubResource( 2 )
 
 [node name="Sprite" type="Sprite" parent="Node2D/Player"]
-material = SubResource( 6 )
+material = SubResource( 4 )
 scale = Vector2( 0.26, 0.26 )
 texture = ExtResource( 7 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Node2D/Player/Sprite"]
-anims/Attack = SubResource( 7 )
-anims/Attack_Up = SubResource( 8 )
-anims/Idle = SubResource( 9 )
-anims/Jump = SubResource( 10 )
-anims/JumpDown = SubResource( 11 )
-anims/Walk = SubResource( 12 )
+anims/Attack = SubResource( 5 )
+anims/Attack_Up = SubResource( 6 )
+anims/Idle = SubResource( 7 )
+anims/Jump = SubResource( 8 )
+anims/JumpDown = SubResource( 9 )
+anims/Walk = SubResource( 10 )
 
 [node name="AnimationTree" type="AnimationTree" parent="Node2D/Player/Sprite"]
-tree_root = SubResource( 39 )
+tree_root = SubResource( 37 )
 anim_player = NodePath("../AnimationPlayer")
 active = true
-parameters/playback = SubResource( 40 )
+parameters/playback = SubResource( 38 )
 script = ExtResource( 23 )
 
 [node name="Slash" type="Sprite" parent="Node2D/Player/Sprite"]
@@ -601,7 +601,7 @@ collision_mask = 31
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Node2D/Player/Sprite/Slash/Area2D"]
 position = Vector2( 0.0913086, 0 )
 rotation = 1.5708
-shape = SubResource( 41 )
+shape = SubResource( 39 )
 
 [node name="DashParticles" type="Particles2D" parent="Node2D/Player/Sprite"]
 position = Vector2( -307.692, -19.6523 )
@@ -611,7 +611,7 @@ emitting = false
 amount = 20
 lifetime = 0.1
 one_shot = true
-process_material = SubResource( 44 )
+process_material = SubResource( 42 )
 texture = ExtResource( 25 )
 
 [node name="Butterfly" type="Area2D" parent="Node2D" groups=[
@@ -638,10 +638,10 @@ range_layer_min = -2
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Node2D/Butterfly/Sprite"]
 autoplay = "Fly"
 playback_speed = 1.9
-anims/Fly = SubResource( 45 )
+anims/Fly = SubResource( 43 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Node2D/Butterfly"]
-shape = SubResource( 46 )
+shape = SubResource( 44 )
 
 [node name="Butterfly2" type="Area2D" parent="Node2D" groups=[
 "Damageable",
@@ -668,10 +668,10 @@ range_layer_min = -2
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Node2D/Butterfly2/Sprite"]
 autoplay = "Fly"
 playback_speed = 1.9
-anims/Fly = SubResource( 47 )
+anims/Fly = SubResource( 45 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Node2D/Butterfly2"]
-shape = SubResource( 46 )
+shape = SubResource( 44 )
 
 [node name="BlackBox" type="TileMap" parent="Node2D"]
 z_index = -10
@@ -692,7 +692,7 @@ script = ExtResource( 30 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Node2D/Area2D"]
 position = Vector2( -7.82, 0 )
-shape = SubResource( 48 )
+shape = SubResource( 46 )
 
 [node name="ash_grass_01_blizzard0001" type="Sprite" parent="Node2D/Area2D"]
 position = Vector2( 0, -0.000244141 )
@@ -704,13 +704,13 @@ position = Vector2( 4849.03, 3872 )
 [node name="Enemy" parent="Node2D" instance=ExtResource( 32 )]
 
 [node name="Sprite" type="Sprite" parent="."]
-material = SubResource( 51 )
+material = SubResource( 49 )
 position = Vector2( 992, 3168 )
 scale = Vector2( 8, 8 )
 texture = ExtResource( 36 )
 
 [node name="honey" type="Sprite" parent="."]
-material = SubResource( 54 )
+material = SubResource( 52 )
 position = Vector2( 2464, 3296 )
 z_index = 50
 texture = ExtResource( 39 )
@@ -722,7 +722,7 @@ motion_scale = Vector2( 0.8, 0.8 )
 motion_offset = Vector2( -800, -600 )
 
 [node name="Sprite2" type="Sprite" parent="ParallaxBackground/ParallaxLayer2"]
-material = SubResource( 55 )
+material = SubResource( 53 )
 position = Vector2( 3294.48, 7888.12 )
 scale = Vector2( 3.62051, 3.60904 )
 z_index = -50

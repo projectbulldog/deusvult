@@ -1,12 +1,14 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://Scripts/Enemy.gd" type="Script" id=1]
 [ext_resource path="res://Sprites/Nyx/charakter.png" type="Texture" id=2]
 
-
-
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 23.61, 78.07 )
+
+[sub_resource type="CapsuleShape2D" id=2]
+radius = 18.68
+height = 100.0
 
 [node name="Enemy" type="KinematicBody2D" groups=[
 "Damageable",
@@ -37,4 +39,9 @@ rotation = -1.5708
 cast_to = Vector2( 0, 10 )
 collision_mask = 32
 
+[node name="DamageArea" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DamageArea"]
+shape = SubResource( 2 )
 [connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
+[connection signal="body_entered" from="DamageArea" to="." method="_on_DamageArea_body_entered"]
