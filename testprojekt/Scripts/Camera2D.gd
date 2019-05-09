@@ -8,9 +8,26 @@ var elapsedtime = 0
 
 var lookDown = false
 
+var player;
+
 func _ready():
-    randomize()
-    curPos = offset
+	randomize()
+	curPos = offset
+	set_camera_limits()
+	player = get_parent().find_node("Player")
+
+func set_camera_limits():
+#	Camera darf maximal bis zu den Ecken der Blackbox gehen (topleft, topright, bottomleft, bottom right)
+	var blackBoxTileMap = get_parent().find_node("BlackBox")
+	var map_limits = blackBoxTileMap.get_used_rect()
+	var map_cellsize = blackBoxTileMap.cell_size
+	self.limit_left = map_limits.position.x * map_cellsize.x
+	self.limit_right = map_limits.end.x * map_cellsize.x
+	self.limit_top = map_limits.position.y * map_cellsize.y
+	self.limit_bottom = map_limits.end.y * map_cellsize.y
+
+func _physics_process(delta):
+	self.position = player.position
 
 func _process(delta):
 	if isShake:

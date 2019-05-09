@@ -39,26 +39,18 @@ var justWallJumpedMaxTime = 0.2
 
 var canDoubleJump = true
 
+var camera
+
 func _ready():
 	dashCooldownTimer = Timer.new()
 	dashCooldownTimer.one_shot = true
 	dashCooldownTimer.wait_time = dashCooldown
 	self.add_child(dashCooldownTimer)
 	dashCooldownTimer.connect("timeout", self, "on_dashCooldownTimer_timeout")
-	set_camera_limits()
+	camera = get_parent().find_node("Camera2D")
 	
 func on_dashCooldownTimer_timeout():
 	canDash = true
-	
-func set_camera_limits():
-#	Camera darf maximal bis zu den Ecken der Blackbox gehen (topleft, topright, bottomleft, bottom right)
-	var blackBoxTileMap = get_parent().find_node("BlackBox")
-	var map_limits = blackBoxTileMap.get_used_rect()
-	var map_cellsize = blackBoxTileMap.cell_size
-	$Camera2D.limit_left = map_limits.position.x * map_cellsize.x
-	$Camera2D.limit_right = map_limits.end.x * map_cellsize.x
-	$Camera2D.limit_top = map_limits.position.y * map_cellsize.y
-	$Camera2D.limit_bottom = map_limits.end.y * map_cellsize.y
 
 func _physics_process(delta):
 	# GRAVITY
@@ -67,7 +59,7 @@ func _physics_process(delta):
 	
 #	Test CameraShake
 	if Input.is_key_pressed(KEY_Q):
-		$Camera2D.start_shake()
+		camera.start_shake()
 
 	# LEFT / RIGHT MOVEMENT
 	if Input.is_action_pressed("ui_right") && (!isAttacking || direction == DIRECTION.RIGHT) && !justWallJumped && !isDashing:
@@ -124,7 +116,6 @@ func _physics_process(delta):
 		motion.y = JUMP_SPEED
 		jumpTime = 0.01
 		if(is_on_wall() && !isOnFloorWithCoyote):
-			print ("TEST")
 			motion.x += -direction * SPEED * 1.8;
 			justWallJumped = true
 	elif Input.is_action_pressed("jump") && jumpTime < 0.3 && canJump && !is_on_ceiling():
@@ -166,15 +157,12 @@ func _physics_process(delta):
 	if isOnFloorWithCoyote && isAttacking:
 		motion.x *= 0.6
 	
-#	Das benötigt es, sonst ist die Kamera hackelig, da sie nicht gleichzeitig geupdated wird.
-	$Camera2D.align()
-	
 #	Hauptbewegung
 	motion = move_and_slide(motion, Vector2(0, -1))
 	
-#	Camera Shake, wenn gewisse höhe erreicht wird
-	if(lastMotionY - motion.y) > 8000:
-		$Camera2D.start_shake()
+##	Camera Shake, wenn gewisse höhe erreicht wird
+	if(lastMotionY - motion.y) > 5000:
+		camera.start_shake()
 	
 #	Attack Cooldown
 	if(isAttackCooldown):
