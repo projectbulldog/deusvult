@@ -14,6 +14,3 @@ func health_changed(health, isDamage):
 func take_Damage(points):
 	healthPoints -= points;
 	health_changed(healthPoints, true);
-	
-	if(healthPoints <= 0):
-		get_parent().remove_and_skip()

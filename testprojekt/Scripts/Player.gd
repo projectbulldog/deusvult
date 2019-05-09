@@ -55,28 +55,33 @@ func _ready():
 func on_dashCooldownTimer_timeout():
 	canDash = true
 
+func changeDirection():
+	$Sprite.scale.x *= -1
+	direction *= -1
+	camera.changeDirection()
+
 func _physics_process(delta):
-	# GRAVITY
+	if tookDamage:
+		return
+
 	var lastMotionY = motion.y
-	motion.y += delta * GRAVITY
+	# GRAVITY
+	if(!tookDamage):
+		motion.y += delta * GRAVITY
 	
 #	Test CameraShake
 	if Input.is_key_pressed(KEY_Q):
 		camera.start_shake()
 
 	# LEFT / RIGHT MOVEMENT
-	if Input.is_action_pressed("ui_right") && (!isAttacking || direction == DIRECTION.RIGHT) && !justWallJumped && !isDashing && !tookDamage:
+	if Input.is_action_pressed("ui_right") && (!isAttacking || direction == DIRECTION.RIGHT) && !justWallJumped && !isDashing:
 		if direction == DIRECTION.LEFT:
-			$Sprite.scale.x *= -1
-			direction = DIRECTION.RIGHT
-			camera.changeDirection()
+			self.changeDirection()
 		motion.x = SPEED * clamp(Input.get_action_strength("ui_right"), 0.3, 1.0)
 		friction = false
-	elif Input.is_action_pressed("ui_left") && (!isAttacking || direction == DIRECTION.LEFT) && !justWallJumped && !isDashing && !tookDamage:
+	elif Input.is_action_pressed("ui_left") && (!isAttacking || direction == DIRECTION.LEFT) && !justWallJumped && !isDashing:
 		if direction == DIRECTION.RIGHT:
-			$Sprite.scale.x *= -1
-			direction = DIRECTION.LEFT
-			camera.changeDirection()
+			self.changeDirection()
 		motion.x = -SPEED * clamp(Input.get_action_strength("ui_left"), 0.3, 1.0)
 		friction = false
 	else:
@@ -88,9 +93,7 @@ func _physics_process(delta):
 	if Input.is_action_just_pressed("dash") && canDash:
 		canDash = false
 		if is_on_wall():
-			print("HIER")
-			$Sprite.scale.x *= -1
-			direction *= -1;
+			self.changeDirection()
 		isDashing = true
 		dashCooldownTimer.start()
 		$Sprite/DashParticles.emitting = true
@@ -226,6 +229,7 @@ func takeDamage(damage):
 		invincible = true
 		$StateManager/DamageStopMovingTimer.start()
 		$StateManager/InvincibilityTimer.start()
+		motion = Vector2(0.0, 0.0)
 	
 func travelTo(animation):
 	$Sprite/AnimationTree.playback.travel(animation)
