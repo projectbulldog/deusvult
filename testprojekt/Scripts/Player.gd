@@ -41,6 +41,8 @@ var canDoubleJump = true
 
 var camera
 
+var canMove = true
+
 func _ready():
 	dashCooldownTimer = Timer.new()
 	dashCooldownTimer.one_shot = true
@@ -62,13 +64,13 @@ func _physics_process(delta):
 		camera.start_shake()
 
 	# LEFT / RIGHT MOVEMENT
-	if Input.is_action_pressed("ui_right") && (!isAttacking || direction == DIRECTION.RIGHT) && !justWallJumped && !isDashing:
+	if Input.is_action_pressed("ui_right") && (!isAttacking || direction == DIRECTION.RIGHT) && !justWallJumped && !isDashing && canMove:
 		if direction == DIRECTION.LEFT:
 			$Sprite.scale.x *= -1
 			direction = DIRECTION.RIGHT
 		motion.x = SPEED * clamp(Input.get_action_strength("ui_right"), 0.3, 1.0)
 		friction = false
-	elif Input.is_action_pressed("ui_left") && (!isAttacking || direction == DIRECTION.LEFT) && !justWallJumped && !isDashing:
+	elif Input.is_action_pressed("ui_left") && (!isAttacking || direction == DIRECTION.LEFT) && !justWallJumped && !isDashing && canMove:
 		if direction == DIRECTION.RIGHT:
 			$Sprite.scale.x *= -1
 			direction = DIRECTION.LEFT
@@ -216,6 +218,8 @@ func on_body_entered_attack(body):
 	
 func takeDamage(damage):
 	$StateManager.take_Damage(damage)
+	canMove = false
+	$StateManager/DamageStopMovingTimer.start()
 	
 func travelTo(animation):
 	$Sprite/AnimationTree.playback.travel(animation)
@@ -228,3 +232,5 @@ func attackFinished():
 	if $Sprite/Slash/Area2D.is_connected("area_entered", self, "on_body_entered_attack"):
 		$Sprite/Slash/Area2D.disconnect("area_entered", self, "on_body_entered_attack")
 
+func _on_DamageStopMovingTimer_timeout():
+	canMove = true
