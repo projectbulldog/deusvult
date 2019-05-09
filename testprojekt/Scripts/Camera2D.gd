@@ -8,7 +8,12 @@ var elapsedtime = 0
 
 var lookDown = false
 
-var player;
+var player
+var objectToFollow
+
+var lerpPlayer = 0.1
+var lerpObject = 0.05
+var currentLerp = lerpPlayer
 
 func _ready():
 	randomize()
@@ -27,7 +32,14 @@ func set_camera_limits():
 	self.limit_bottom = map_limits.end.y * map_cellsize.y
 
 func _physics_process(delta):
-	self.position = player.position
+	if(objectToFollow != null):
+		currentLerp =  lerp(currentLerp, lerpObject, 0.5)
+#		Falls nicht Spieler angezeigt werden soll: Vector zwischen Spieler und Objekt / 3
+		var vectorTo = player.global_position - objectToFollow.global_position
+		self.position = lerp(self.global_position, player.global_position - vectorTo / 3, currentLerp)
+	else:
+		currentLerp =  lerp(currentLerp, lerpPlayer, 0.001)
+		self.position = lerp(self.global_position, player.global_position, currentLerp)
 
 func _process(delta):
 	if isShake:

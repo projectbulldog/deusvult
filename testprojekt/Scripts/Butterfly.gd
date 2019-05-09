@@ -24,4 +24,4 @@ func random():
     return randf()*601 - 300.0
 
 func takeDamage():
-	get_parent().remove_child(self)
+	self.queue_free()

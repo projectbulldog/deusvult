@@ -1,4 +1,4 @@
-[gd_scene load_steps=100 format=2]
+[gd_scene load_steps=102 format=2]
 
 [ext_resource path="res://Scripts/Camera2D.gd" type="Script" id=1]
 [ext_resource path="res://Scripts/Interface.gd" type="Script" id=2]
@@ -32,16 +32,17 @@
 [ext_resource path="res://Tiles/tileset_blackbox.tres" type="TileSet" id=30]
 [ext_resource path="res://Scripts/Grass.gd" type="Script" id=31]
 [ext_resource path="res://Sprites/HollowKnight/ash_grass_01_blizzard0001.png" type="Texture" id=32]
-[ext_resource path="res://Scenes/Enemy.tscn" type="PackedScene" id=33]
-[ext_resource path="res://Shaders/NoiseMultiplication.shader" type="Shader" id=34]
-[ext_resource path="res://vfx.jpg" type="Texture" id=35]
-[ext_resource path="res://tes.tres" type="Texture" id=36]
-[ext_resource path="res://Sprites/Particle/spriteColor.png" type="Texture" id=37]
-[ext_resource path="res://honey.jpeg" type="Texture" id=38]
-[ext_resource path="res://teset2.jpeg" type="Texture" id=39]
-[ext_resource path="res://Sprites/Particle/light.png" type="Texture" id=40]
-[ext_resource path="res://texture (6).png" type="Texture" id=41]
-[ext_resource path="res://TESET.jpeg" type="Texture" id=42]
+[ext_resource path="res://CameraCue.gd" type="Script" id=33]
+[ext_resource path="res://Scenes/Enemy.tscn" type="PackedScene" id=34]
+[ext_resource path="res://Shaders/NoiseMultiplication.shader" type="Shader" id=35]
+[ext_resource path="res://vfx.jpg" type="Texture" id=36]
+[ext_resource path="res://tes.tres" type="Texture" id=37]
+[ext_resource path="res://Sprites/Particle/spriteColor.png" type="Texture" id=38]
+[ext_resource path="res://honey.jpeg" type="Texture" id=39]
+[ext_resource path="res://teset2.jpeg" type="Texture" id=40]
+[ext_resource path="res://Sprites/Particle/light.png" type="Texture" id=41]
+[ext_resource path="res://texture (6).png" type="Texture" id=42]
+[ext_resource path="res://TESET.jpeg" type="Texture" id=43]
 
 [sub_resource type="Environment" id=1]
 background_mode = 4
@@ -465,6 +466,9 @@ tracks/1/keys = {
 [sub_resource type="RectangleShape2D" id=50]
 extents = Vector2( 54.17, 111.08 )
 
+[sub_resource type="CircleShape2D" id=58]
+radius = 500.0
+
 [sub_resource type="OpenSimplexNoise" id=51]
 octaves = 1
 period = 100.0
@@ -474,15 +478,15 @@ seamless = true
 noise = SubResource( 51 )
 
 [sub_resource type="ShaderMaterial" id=53]
-shader = ExtResource( 34 )
+shader = ExtResource( 35 )
 shader_param/tint = Color( 0.490196, 0.490196, 0.490196, 1 )
 shader_param/speed = 0.1
 shader_param/glow = 1.0
 shader_param/invertNoise1 = false
 shader_param/useNoiseColor = true
-shader_param/noise1 = ExtResource( 35 )
+shader_param/noise1 = ExtResource( 36 )
 shader_param/noise2 = SubResource( 52 )
-shader_param/tintNoise = ExtResource( 36 )
+shader_param/tintNoise = ExtResource( 37 )
 
 [sub_resource type="OpenSimplexNoise" id=54]
 octaves = 1
@@ -494,26 +498,26 @@ seamless = true
 noise = SubResource( 54 )
 
 [sub_resource type="ShaderMaterial" id=56]
-shader = ExtResource( 34 )
+shader = ExtResource( 35 )
 shader_param/tint = Color( 0.435294, 0.788235, 1, 1 )
 shader_param/speed = 0.1
 shader_param/glow = 1.0
 shader_param/invertNoise1 = false
 shader_param/useNoiseColor = true
-shader_param/noise1 = ExtResource( 38 )
+shader_param/noise1 = ExtResource( 39 )
 shader_param/noise2 = SubResource( 55 )
-shader_param/tintNoise = ExtResource( 39 )
+shader_param/tintNoise = ExtResource( 40 )
 
 [sub_resource type="ShaderMaterial" id=57]
-shader = ExtResource( 34 )
+shader = ExtResource( 35 )
 shader_param/tint = Color( 1, 0.780392, 0.501961, 1 )
 shader_param/speed = 0.05
 shader_param/glow = 1.0
 shader_param/invertNoise1 = true
 shader_param/useNoiseColor = true
-shader_param/noise1 = ExtResource( 41 )
-shader_param/noise2 = ExtResource( 36 )
-shader_param/tintNoise = ExtResource( 42 )
+shader_param/noise1 = ExtResource( 42 )
+shader_param/noise2 = ExtResource( 37 )
+shader_param/tintNoise = ExtResource( 43 )
 
 [node name="World" type="Node"]
 
@@ -530,7 +534,7 @@ offset = Vector2( 0, -200 )
 current = true
 zoom = Vector2( 2, 2 )
 drag_margin_v_enabled = false
-smoothing_enabled = true
+smoothing_speed = 3.0
 drag_margin_left = 0.0
 drag_margin_top = 0.0
 drag_margin_right = 0.0
@@ -596,6 +600,9 @@ script = ExtResource( 8 )
 wait_time = 0.3
 one_shot = true
 
+[node name="InvincibilityTimer" type="Timer" parent="Node2D/Player/StateManager"]
+one_shot = true
+
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Node2D/Player"]
 position = Vector2( 6.45996, 0 )
 scale = Vector2( 3.87, 14.2 )
@@ -604,6 +611,7 @@ z_as_relative = false
 shape = SubResource( 6 )
 
 [node name="Sprite" type="Sprite" parent="Node2D/Player"]
+editor/display_folded = true
 material = SubResource( 8 )
 scale = Vector2( 0.26, 0.26 )
 texture = ExtResource( 9 )
@@ -652,7 +660,6 @@ texture = ExtResource( 26 )
 [node name="Butterfly" type="Area2D" parent="Node2D" groups=[
 "Damageable",
 ]]
-editor/display_folded = true
 position = Vector2( 1888, 3168 )
 collision_layer = 4
 collision_mask = 4
@@ -720,8 +727,7 @@ tile_data = PoolIntArray( 65528, 7, 0, 0, 7, 0, 189, 7, 0, 196666, 7, 0, 196674,
 [node name="Area2D" type="Area2D" parent="Node2D" groups=[
 "Damageable",
 ]]
-editor/display_folded = true
-position = Vector2( 3136, 3484.93 )
+position = Vector2( 5184, 3872 )
 collision_layer = 4
 collision_mask = 4
 script = ExtResource( 31 )
@@ -734,22 +740,35 @@ shape = SubResource( 50 )
 position = Vector2( 0, -0.000244141 )
 texture = ExtResource( 32 )
 
-[node name="Enemy2" parent="Node2D" instance=ExtResource( 33 )]
+[node name="Area2D" type="Area2D" parent="Node2D/Area2D/ash_grass_01_blizzard0001"]
+script = ExtResource( 33 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Node2D/Area2D/ash_grass_01_blizzard0001/Area2D"]
+shape = SubResource( 58 )
+
+[node name="Label" type="Label" parent="Node2D/Area2D"]
+margin_left = -96.0
+margin_top = -128.0
+margin_right = 137.0
+margin_bottom = -114.0
+text = "Test mit Attraction Punkt für Kamera"
+
+[node name="Enemy2" parent="Node2D" instance=ExtResource( 34 )]
 position = Vector2( 4849.03, 3872 )
 
-[node name="Enemy" parent="Node2D" instance=ExtResource( 33 )]
+[node name="Enemy" parent="Node2D" instance=ExtResource( 34 )]
 
 [node name="Sprite" type="Sprite" parent="."]
 material = SubResource( 53 )
 position = Vector2( 992, 3168 )
 scale = Vector2( 8, 8 )
-texture = ExtResource( 37 )
+texture = ExtResource( 38 )
 
 [node name="honey" type="Sprite" parent="."]
 material = SubResource( 56 )
 position = Vector2( 2464, 3296 )
 z_index = 50
-texture = ExtResource( 40 )
+texture = ExtResource( 41 )
 
 [node name="ParallaxBackground" type="ParallaxBackground" parent="."]
 
@@ -762,7 +781,8 @@ material = SubResource( 57 )
 position = Vector2( 3294.48, 7888.12 )
 scale = Vector2( 3.62051, 3.60904 )
 z_index = -50
-texture = ExtResource( 40 )
+texture = ExtResource( 41 )
 offset = Vector2( 469.496, -1531.79 )
 [connection signal="on_health_changed" from="Node2D/Player/StateManager" to="Node2D/Camera2D/Interface" method="_on_StateManager_on_health_changed"]
 [connection signal="timeout" from="Node2D/Player/StateManager/DamageStopMovingTimer" to="Node2D/Player" method="_on_DamageStopMovingTimer_timeout"]
+[connection signal="timeout" from="Node2D/Player/StateManager/InvincibilityTimer" to="Node2D/Player" method="_on_InvincibilityTimer_timeout"]

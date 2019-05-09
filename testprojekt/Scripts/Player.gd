@@ -41,7 +41,8 @@ var canDoubleJump = true
 
 var camera
 
-var canMove = true
+var tookDamage = false
+var invincible = false
 
 func _ready():
 	dashCooldownTimer = Timer.new()
@@ -64,13 +65,13 @@ func _physics_process(delta):
 		camera.start_shake()
 
 	# LEFT / RIGHT MOVEMENT
-	if Input.is_action_pressed("ui_right") && (!isAttacking || direction == DIRECTION.RIGHT) && !justWallJumped && !isDashing && canMove:
+	if Input.is_action_pressed("ui_right") && (!isAttacking || direction == DIRECTION.RIGHT) && !justWallJumped && !isDashing && !tookDamage:
 		if direction == DIRECTION.LEFT:
 			$Sprite.scale.x *= -1
 			direction = DIRECTION.RIGHT
 		motion.x = SPEED * clamp(Input.get_action_strength("ui_right"), 0.3, 1.0)
 		friction = false
-	elif Input.is_action_pressed("ui_left") && (!isAttacking || direction == DIRECTION.LEFT) && !justWallJumped && !isDashing && canMove:
+	elif Input.is_action_pressed("ui_left") && (!isAttacking || direction == DIRECTION.LEFT) && !justWallJumped && !isDashing && !tookDamage:
 		if direction == DIRECTION.RIGHT:
 			$Sprite.scale.x *= -1
 			direction = DIRECTION.LEFT
@@ -217,9 +218,12 @@ func on_body_entered_attack(body):
 		body.takeDamage()
 	
 func takeDamage(damage):
-	$StateManager.take_Damage(damage)
-	canMove = false
-	$StateManager/DamageStopMovingTimer.start()
+	if(!invincible):
+		$StateManager.take_Damage(damage)
+		tookDamage = true
+		invincible = true
+		$StateManager/DamageStopMovingTimer.start()
+		$StateManager/InvincibilityTimer.start()
 	
 func travelTo(animation):
 	$Sprite/AnimationTree.playback.travel(animation)
@@ -233,4 +237,10 @@ func attackFinished():
 		$Sprite/Slash/Area2D.disconnect("area_entered", self, "on_body_entered_attack")
 
 func _on_DamageStopMovingTimer_timeout():
-	canMove = true
+	tookDamage = false
+
+func CueSignal(object):
+	camera.objectToFollow = object
+
+func _on_InvincibilityTimer_timeout():
+	invincible = false
