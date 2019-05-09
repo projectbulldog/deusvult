@@ -6,6 +6,8 @@ const JUMP_SPEED = -1000
 const MAXJUMP_SPEED = -10000
 const MAXJUMPMOTION = -110
 
+const cameraShakeMotionThreshold = 3000
+
 var friction = false
 
 var motion = Vector2()
@@ -169,7 +171,7 @@ func _physics_process(delta):
 	motion = move_and_slide(motion, Vector2(0, -1))
 	
 ##	Camera Shake, wenn gewisse höhe erreicht wird
-	if(lastMotionY - motion.y) > 5000:
+	if(lastMotionY - motion.y) > cameraShakeMotionThreshold && canDoubleJump:
 		camera.start_shake()
 	
 #	Attack Cooldown
