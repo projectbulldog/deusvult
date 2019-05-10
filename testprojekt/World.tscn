@@ -1,4 +1,4 @@
-[gd_scene load_steps=95 format=2]
+[gd_scene load_steps=99 format=2]
 
 [ext_resource path="res://Scripts/Camera2D.gd" type="Script" id=1]
 [ext_resource path="res://Scripts/Interface.gd" type="Script" id=2]
@@ -42,6 +42,8 @@
 [ext_resource path="res://Sprites/texture (6).png" type="Texture" id=40]
 [ext_resource path="res://Sprites/tes.tres" type="Texture" id=41]
 [ext_resource path="res://Sprites/TESET.jpeg" type="Texture" id=42]
+[ext_resource path="res://CameraModeOnRailX.gd" type="Script" id=43]
+[ext_resource path="res://CameraModeOnRailY.gd" type="Script" id=44]
 
 [sub_resource type="Environment" id=1]
 background_mode = 4
@@ -430,6 +432,12 @@ shader_param/noise1 = ExtResource( 40 )
 shader_param/noise2 = ExtResource( 41 )
 shader_param/tintNoise = ExtResource( 42 )
 
+[sub_resource type="RectangleShape2D" id=53]
+extents = Vector2( 2560, 800 )
+
+[sub_resource type="RectangleShape2D" id=54]
+extents = Vector2( 935.82, 1760 )
+
 [node name="World" type="Node"]
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
@@ -440,11 +448,11 @@ z_index = 2
 
 [node name="Camera2D" type="Camera2D" parent="Node2D"]
 editor/display_folded = true
-position = Vector2( 646.6, 2433.49 )
+position = Vector2( 6566.6, 947 )
 scale = Vector2( 0.6, 0.6 )
 offset = Vector2( 100, -100 )
 current = true
-zoom = Vector2( 1.3, 1.3 )
+zoom = Vector2( 1.2, 1.2 )
 drag_margin_v_enabled = false
 smoothing_speed = 3.0
 drag_margin_left = 0.0
@@ -486,7 +494,8 @@ attenuation = 0.5
 [node name="Player" type="KinematicBody2D" parent="Node2D" groups=[
 "Player",
 ]]
-position = Vector2( 640, 2382.49 )
+editor/display_folded = true
+position = Vector2( 6560, 896 )
 scale = Vector2( 0.6, 0.6 )
 z_index = 10
 z_as_relative = false
@@ -596,7 +605,7 @@ script = ExtResource( 34 )
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Node2D/Area2D/ash_grass_01_blizzard0001/Area2D"]
 shape = SubResource( 48 )
 
-[node name="Label" type="Label" parent="Node2D/Area2D"]
+[node name="Label" type="Label" parent="Node2D/Area2D/ash_grass_01_blizzard0001"]
 margin_left = -96.0
 margin_top = -128.0
 margin_right = 137.0
@@ -634,7 +643,27 @@ scale = Vector2( 3.62051, 3.60904 )
 z_index = -50
 texture = ExtResource( 39 )
 offset = Vector2( 469.496, -1531.79 )
+
+[node name="Area2D" type="Area2D" parent="."]
+position = Vector2( 7328, 3616 )
+script = ExtResource( 43 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2( 2976, 32 )
+shape = SubResource( 53 )
+
+[node name="Area2D2" type="Area2D" parent="."]
+position = Vector2( 5024, 2240 )
+script = ExtResource( 44 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D2"]
+position = Vector2( 297, 0 )
+shape = SubResource( 54 )
 [connection signal="on_health_changed" from="Node2D/Player/StateManager" to="Node2D/Camera2D/Interface" method="_on_StateManager_on_health_changed"]
 [connection signal="timeout" from="Node2D/Player/StateManager/DamageStopMovingTimer" to="Node2D/Player" method="_on_DamageStopMovingTimer_timeout"]
 [connection signal="timeout" from="Node2D/Player/StateManager/InvincibilityTimer" to="Node2D/Player" method="_on_InvincibilityTimer_timeout"]
 [connection signal="timeout" from="Node2D/Player/StateManager/WallJumpMotionTimer" to="Node2D/Player" method="_on_WallJumpMotionTimer_timeout"]
+[connection signal="body_entered" from="Area2D" to="Area2D" method="_on_Area2D_body_entered"]
+[connection signal="body_exited" from="Area2D" to="Area2D" method="_on_Area2D_body_exited"]
+[connection signal="body_entered" from="Area2D2" to="Area2D2" method="_on_Area2D2_body_entered"]
+[connection signal="body_exited" from="Area2D2" to="Area2D2" method="_on_Area2D2_body_exited"]

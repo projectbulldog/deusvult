@@ -1,0 +1,5 @@
+extends Node
+
+enum DIRECTION { RIGHT = 1, LEFT = -1}
+
+enum CAMERAMODE { DEFAULT, ONRAILX, ONRAILY }

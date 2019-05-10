@@ -35,6 +35,11 @@ var fallingCorrectionY = 500
 var lerpCorrectionY = 1
 var correctionY = 0
 
+var cameraMode = Enums.CAMERAMODE.DEFAULT
+
+var cameraModeRailXHeight = 0
+var cameraModeRailYWidth = 0
+
 func _ready():
 	randomize()
 	lerpOffset = self.offset
@@ -48,6 +53,17 @@ func _ready():
 	noiseX.seed = randi()
 	noiseY.seed = randi()
 
+func SetCameraModeDefault():
+	self.cameraMode = Enums.CAMERAMODE.DEFAULT
+
+func SetCameraModeOnRailX(height = null):
+	self.cameraMode = Enums.CAMERAMODE.ONRAILX
+	cameraModeRailXHeight = height
+	
+func SetCameraModeOnRailY(width = null):
+	self.cameraMode = Enums.CAMERAMODE.ONRAILY
+	cameraModeRailYWidth = width
+
 func set_camera_limits():
 #	Kamera darf maximal bis zu den Ecken der Blackbox gehen (topleft, topright, bottomleft, bottom right)
 	var blackBoxTileMap = get_parent().find_node("BlackBox")
@@ -59,6 +75,14 @@ func set_camera_limits():
 	self.limit_bottom = map_limits.end.y * map_cellsize.y
 
 func _physics_process(delta):
+	if(cameraMode == Enums.CAMERAMODE.DEFAULT):
+		mode_Default(delta)
+	if(cameraMode == Enums.CAMERAMODE.ONRAILX):
+		mode_RailX(delta)
+	if(cameraMode == Enums.CAMERAMODE.ONRAILY):
+		mode_RailY(delta)
+	
+	
 	self.offset = lerp(self.offset, lerpOffset, 0.02)
 	if(objectToFollow != null):
 #		Nicht ruckartig schneller werden, sondern langsam über Zeit
@@ -68,7 +92,23 @@ func _physics_process(delta):
 		var vectorTo = player.global_position - objectToFollow.global_position
 		self.position = lerp(self.global_position, player.global_position - vectorTo / 3, currentLerp)
 		self.zoom = lerp(self.zoom, lerpZoom, 0.02)
-	else:
+
+func mode_RailY(delta):
+		var lerpMotion = Vector2(0,0)
+		lerpMotion.x = lerp(self.global_position.x, cameraModeRailYWidth, currentLerp)
+		lerpMotion.y = lerp(self.global_position.y, player.global_position.y, currentLerp)
+		self.position = lerpMotion
+		self.zoom = lerp(self.zoom, lerpZoom, 0.02)
+
+func mode_RailX(delta):
+		var lerpMotion = Vector2(0,0)
+		lerpMotion.x = lerp(self.global_position.x, player.global_position.x, currentLerp)
+		lerpMotion.y = lerp(self.global_position.y, cameraModeRailXHeight, currentLerp)
+		self.position = lerpMotion
+		self.zoom = lerp(self.zoom, lerpZoom, 0.02)
+
+func mode_Default(delta):
+#	else:
 #		Nicht ruckartig schneller werden, sondern langsam über Zeit
 		currentLerp =  lerp(currentLerp, lerpPlayer, 0.001)
 		
@@ -91,6 +131,7 @@ func _physics_process(delta):
 		lerpMotion.y = lerp(self.global_position.y, player.global_position.y + correctionY, currentLerp * lerpCorrectionY)
 		self.position = lerpMotion
 		self.zoom = lerp(self.zoom, lerpZoom, 0.02)
+
 
 func setObjectToFollow(object, zoomMultiplication):
 	self.objectToFollow = object

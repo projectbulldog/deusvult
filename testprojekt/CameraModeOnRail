@@ -1,0 +1,18 @@
+extends Area2D
+
+export (Enums.CAMERAMODE) var cameraMode = Enums.CAMERAMODE.DEFAULT
+
+var cameraModeBefore
+var camera
+
+func _ready():
+	camera = get_tree().get_root().get_node("World").find_node("Camera2D")
+
+func _on_Area2D_body_entered(body):
+	if(body.is_in_group("Player")):
+		cameraModeBefore = camera.cameraMode
+		camera.switchCameraMode(cameraMode, $CollisionShape2D.global_position.y)
+
+func _on_Area2D_body_exited(body):
+	if(body.is_in_group("Player")):
+		camera.switchCameraMode(cameraModeBefore)

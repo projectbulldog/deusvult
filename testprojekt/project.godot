@@ -19,6 +19,10 @@ config/name="testprojekt"
 run/main_scene="res://World.tscn"
 config/icon="res://Sprites/icon.png"
 
+[autoload]
+
+Enums="*res://Enums.gd"
+
 [debug]
 
 settings/fps/force_fps=144

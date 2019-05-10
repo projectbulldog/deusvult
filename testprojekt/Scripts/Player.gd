@@ -10,7 +10,7 @@ var friction = false
 
 var motion = Vector2()
 
-enum DIRECTION { RIGHT = 1, LEFT = -1}
+var DIRECTION = Enums.DIRECTION
 var direction = DIRECTION.RIGHT
 
 var jumpTime = 0
@@ -157,7 +157,7 @@ func _physics_process(delta):
 	
 #	Wall Jump
 	if is_on_wall() && !is_on_floor() && !Input.is_action_pressed("jump"):
-		motion.y = 400
+		motion.y = 300
 		motion.x = 2 * direction
 		canJump = true
 		jumpTime = 0
