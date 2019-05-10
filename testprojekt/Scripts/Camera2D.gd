@@ -20,6 +20,17 @@ var lerpOffset
 var lerpZoom
 var originalZoom
 
+var noiseX
+var noiseY
+
+var trauma = 0
+var trauma_depletion = 0.8
+var max_camera_offset = 60
+var max_camera_degrees = 10
+
+# normal time is too slow?
+var offset_time_factor = 2.5
+
 func _ready():
 	randomize()
 	lerpOffset = self.offset
@@ -27,6 +38,11 @@ func _ready():
 	lerpZoom = self.zoom
 	set_camera_limits()
 	player = get_parent().find_node("Player")
+	noiseX = OpenSimplexNoise.new()
+	noiseY = OpenSimplexNoise.new()
+	
+	noiseX.seed = randi()
+	noiseY.seed = randi()
 
 func set_camera_limits():
 #	Camera darf maximal bis zu den Ecken der Blackbox gehen (topleft, topright, bottomleft, bottom right)
@@ -76,20 +92,44 @@ func _process(delta):
 	if lookDown:
 		self.offset.y += lerp(self.offset.y, lerpOffset.y + 500, 10) * delta
 
-func start_shake():
+func add_trauma(traumaAdd):
 	isShake = true
+	trauma += traumaAdd
+	trauma = min(trauma, 1)
 #	self.rotating = true
 
 func changeDirection():
 	lerpOffset.x *= -1
 
 func shake(delta):
-	if elapsedtime<shake_time:
-		offset += Vector2(randf() -0.5, randf() - 0.5) * shake_power
-#		self.rotation_degrees += (randf()-0.5)
-		elapsedtime += delta
-	else:
-		isShake = false
-		elapsedtime = 0
-		self.rotation = 0
-#		self.rotating = false
+	
+#	if elapsedtime<shake_time:
+##		var shakeX = shake_power * (noise.get_noise_2d(randf(), 20) - 0.5)
+##		var shakeY = shake_power * (noise.get_noise_2d(randf(), randf()) - 0.5)
+##		offset.x += shakeX
+##		offset.y += shakeY
+###		self.rotation_degrees += (randf()-0.5)
+#		elapsedtime += delta
+#	else:
+#		isShake = false
+#		elapsedtime = 0
+#		self.rotation = 0
+##		self.rotating = false
+
+
+	if trauma > 0:
+		# translation
+		var offset = Vector2()
+		offset.x = noiseX.get_noise_2d(delta * offset_time_factor, randf() -0.5)
+		offset.y = noiseY.get_noise_2d(delta * offset_time_factor, randf() - 0.5)
+		print(offset.x)
+		print(offset.y)
+		offset *= max_camera_offset * shake_power * pow(trauma, 3) # squared or cubed
+		# not global position, this is relative to parent
+		# (normally camera position is 0,0)
+		self.position += offset
+		
+		# trauma decreases linearly over time
+		var new_trauma = trauma - (trauma_depletion * delta)
+		trauma = clamp(new_trauma, 0, 1)
+	else: isShake = false

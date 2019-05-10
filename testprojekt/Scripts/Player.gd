@@ -73,7 +73,7 @@ func _physics_process(delta):
 	
 #	Test CameraShake
 	if Input.is_key_pressed(KEY_Q):
-		camera.start_shake()
+		camera.add_trauma(0.3)
 
 	# LEFT / RIGHT MOVEMENT
 	if Input.is_action_pressed("ui_right") && (!isAttacking || direction == DIRECTION.RIGHT) && !justWallJumped && !isDashing:
@@ -172,7 +172,7 @@ func _physics_process(delta):
 	
 ##	Camera Shake, wenn gewisse höhe erreicht wird
 	if(lastMotionY - motion.y) > cameraShakeMotionThreshold && canDoubleJump:
-		camera.start_shake()
+		camera.add_trauma(0.7)
 	
 #	Attack Cooldown
 	if(isAttackCooldown):
