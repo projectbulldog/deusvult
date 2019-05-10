@@ -63,12 +63,24 @@ func _physics_process(delta):
 		self.position = lerp(self.global_position, player.global_position - vectorTo / 3, currentLerp)
 		self.zoom = lerp(self.zoom, lerpZoom, 0.02)
 	else:
+#		Nicht ruckartig schneller werden, sondern langsam über Zeit
 		currentLerp =  lerp(currentLerp, lerpPlayer, 0.001)
-#		Korrektur vektor, damit beim Fallen die Kamera nach weiter unten geht
+		
+#		Kamera soll nach oben langsamer gehen. Nach unten soll sie schneller sein damit man was sieht
+		var lerpCorrectionY = 0.5
+		if (self.global_position.y - player.global_position.y) <= 0:
+			lerpCorrectionY = 1.5
+			
+#		Kamera soll beim hinunterspringen weiter nach unten schauen
 		var correction =  Vector2(0,0)
 		if(player.motion.y > 2500):
-			correction.y += 600
-		var lerpMotion = lerp(self.global_position, player.global_position + correction, currentLerp)
+			correction.y += 800
+			lerpCorrectionY = 1
+		
+#		Berechnung der Bewegung
+		var lerpMotion = Vector2(0,0)
+		lerpMotion.x = lerp(self.global_position.x, player.global_position.x + correction.x, currentLerp)
+		lerpMotion.y = lerp(self.global_position.y, player.global_position.y + correction.y, currentLerp * lerpCorrectionY)
 		self.position = lerpMotion
 		self.zoom = lerp(self.zoom, lerpZoom, 0.02)
 

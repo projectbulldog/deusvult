@@ -15,8 +15,8 @@ func drawHealth():
 		var sprite = Sprite.new()
 		sprite.name = String(i)
 		sprite.texture = health_texture
-		sprite.get_rect().size = Vector2(50, 50)
-		sprite.position.x += i * 60
+		sprite.scale *= 0.7
+		sprite.position.x += i * 30
 		self.add_child(sprite)
 	
 	self.get_rect().size.x = 1000

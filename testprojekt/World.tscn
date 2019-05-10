@@ -538,13 +538,10 @@ script = ExtResource( 2 )
 shader = SubResource( 2 )
 
 [node name="Container" type="Container" parent="Node2D/Camera2D/Interface"]
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
-margin_left = -20.0
-margin_top = -50.0
-margin_right = 20.0
+margin_left = 20.0
+margin_top = 20.0
+margin_right = 450.0
+margin_bottom = 50.0
 script = ExtResource( 4 )
 health_texture = ExtResource( 5 )
 healthLoss_texture = ExtResource( 6 )
