@@ -47,6 +47,8 @@ var camera
 var tookDamage = false
 var invincible = false
 
+var stopMoving = false
+
 func _ready():
 	dashCooldownTimer = Timer.new()
 	dashCooldownTimer.one_shot = true
@@ -77,12 +79,12 @@ func _physics_process(delta):
 		camera.add_trauma(0.3)
 
 	# LEFT / RIGHT MOVEMENT
-	if Input.is_action_pressed("ui_right") && (!isAttacking || direction == DIRECTION.RIGHT) && !justWallJumped && !isDashing:
+	if Input.is_action_pressed("ui_right") && (!isAttacking || direction == DIRECTION.RIGHT) && !justWallJumped && !isDashing && !stopMoving:
 		if direction == DIRECTION.LEFT:
 			self.changeDirection()
 		motion.x = SPEED * clamp(Input.get_action_strength("ui_right"), 0.5, 1.0)
 		friction = false
-	elif Input.is_action_pressed("ui_left") && (!isAttacking || direction == DIRECTION.LEFT) && !justWallJumped && !isDashing:
+	elif Input.is_action_pressed("ui_left") && (!isAttacking || direction == DIRECTION.LEFT) && !justWallJumped && !isDashing && !stopMoving:
 		if direction == DIRECTION.RIGHT:
 			self.changeDirection()
 		motion.x = -SPEED * clamp(Input.get_action_strength("ui_left"), 0.5, 1.0)
@@ -128,9 +130,12 @@ func _physics_process(delta):
 	if Input.is_action_pressed("jump") && jumpTime <= 0 && canJump && !is_on_ceiling():
 		motion.y = JUMP_SPEED
 		jumpTime = 0.01
+#		WallJump
 		if(is_on_wall() && !isOnFloorWithCoyote):
-			motion.x += -direction * SPEED * 1.8;
+			motion.x = -direction * SPEED;
 			justWallJumped = true
+			stopMoving = true
+			$StateManager/WallJumpMotionTimer.start()
 	elif Input.is_action_pressed("jump") && jumpTime < 0.3 && canJump && !is_on_ceiling():
 		motion.y += motion.y * delta * 3.3
 		jumpTime += delta
@@ -155,6 +160,7 @@ func _physics_process(delta):
 #	Wall Jump
 	if is_on_wall() && !is_on_floor() && !Input.is_action_pressed("jump"):
 		motion.y = 400
+		motion.x = 2 * direction
 		canJump = true
 		jumpTime = 0
 		canDoubleJump = true
@@ -265,3 +271,7 @@ func CueSignal(object, zoom):
 
 func _on_InvincibilityTimer_timeout():
 	invincible = false
+
+
+func _on_WallJumpMotionTimer_timeout():
+	stopMoving = false
