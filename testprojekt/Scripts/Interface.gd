@@ -14,7 +14,7 @@ func _on_StateManager_on_health_changed(health, isDamage):
 	if(isDamage):
 		$ColorRect.material = shader
 		$ColorRect.visible = true
-		get_parent().start_shake()
+		get_parent().add_trauma(0.9)
 		showDamage = true
 		
 func _process(delta):

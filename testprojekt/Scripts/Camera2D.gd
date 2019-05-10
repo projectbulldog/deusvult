@@ -25,8 +25,7 @@ var noiseY
 
 var trauma = 0
 var trauma_depletion = 0.8
-var max_camera_offset = 60
-var max_camera_degrees = 10
+var max_camera_offset = 100
 
 # normal time is too slow?
 var offset_time_factor = 2.5
@@ -102,29 +101,14 @@ func changeDirection():
 	lerpOffset.x *= -1
 
 func shake(delta):
-	
-#	if elapsedtime<shake_time:
-##		var shakeX = shake_power * (noise.get_noise_2d(randf(), 20) - 0.5)
-##		var shakeY = shake_power * (noise.get_noise_2d(randf(), randf()) - 0.5)
-##		offset.x += shakeX
-##		offset.y += shakeY
-###		self.rotation_degrees += (randf()-0.5)
-#		elapsedtime += delta
-#	else:
-#		isShake = false
-#		elapsedtime = 0
-#		self.rotation = 0
-##		self.rotating = false
-
-
+#	Je nach Trauma level (0 - 1) wird ein camera shake ausgelöst.
+#	Je höher Traume, desto stärker der Effekt
 	if trauma > 0:
 		# translation
 		var offset = Vector2()
 		offset.x = noiseX.get_noise_2d(delta * offset_time_factor, randf() -0.5)
 		offset.y = noiseY.get_noise_2d(delta * offset_time_factor, randf() - 0.5)
-		print(offset.x)
-		print(offset.y)
-		offset *= max_camera_offset * shake_power * pow(trauma, 3) # squared or cubed
+		offset *= max_camera_offset * shake_power * pow(trauma, 2) # squared or cubed
 		# not global position, this is relative to parent
 		# (normally camera position is 0,0)
 		self.position += offset
