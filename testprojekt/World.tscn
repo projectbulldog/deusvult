@@ -390,6 +390,7 @@ flag_disable_z = true
 spread = 10.0
 gravity = Vector3( 0, 0, 0 )
 initial_velocity = -50000.0
+angular_velocity = -2.32485e+036
 orbit_velocity = 0.0
 orbit_velocity_random = 0.0
 scale = 10.0
@@ -519,9 +520,10 @@ environment = SubResource( 1 )
 z_index = 2
 
 [node name="Camera2D" type="Camera2D" parent="Node2D"]
+editor/display_folded = true
 position = Vector2( 1862.6, 3519 )
 scale = Vector2( 0.6, 0.6 )
-offset = Vector2( 200, -200 )
+offset = Vector2( 100, -200 )
 current = true
 drag_margin_v_enabled = false
 smoothing_speed = 3.0
