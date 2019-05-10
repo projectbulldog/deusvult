@@ -1,48 +1,51 @@
-[gd_scene load_steps=104 format=2]
+[gd_scene load_steps=105 format=2]
 
 [ext_resource path="res://Scripts/Camera2D.gd" type="Script" id=1]
 [ext_resource path="res://Scripts/Interface.gd" type="Script" id=2]
 [ext_resource path="res://Shaders/chromatic_abberation.shader" type="Shader" id=3]
-[ext_resource path="res://Sounds/Christopher Larkin - Hollow Knight (Original Soundtrack) - 03 Crossroads.wav" type="AudioStream" id=4]
-[ext_resource path="res://Sounds/Footstep.wav" type="AudioStream" id=5]
-[ext_resource path="res://Scripts/Player.gd" type="Script" id=6]
-[ext_resource path="res://Scripts/StateManager.gd" type="Script" id=7]
-[ext_resource path="res://Sprites/Nyx/Attack/nyx-attack.png" type="Texture" id=8]
-[ext_resource path="res://Sprites/Nyx/AttackUp/nyx-attack-up.png" type="Texture" id=9]
-[ext_resource path="res://Sprites/Nyx/Idle/1_nyx-idle.png" type="Texture" id=10]
-[ext_resource path="res://Sprites/Nyx/Idle/2_nyx-idle.png" type="Texture" id=11]
-[ext_resource path="res://Sprites/Nyx/Idle/3_nyx-idle.png" type="Texture" id=12]
-[ext_resource path="res://Sprites/Nyx/Idle/4_nyx-idle.png" type="Texture" id=13]
-[ext_resource path="res://Sprites/Nyx/Jump/nyx-up-jump.png" type="Texture" id=14]
-[ext_resource path="res://Sprites/Nyx/Jump/nyx-down-jump.png" type="Texture" id=15]
-[ext_resource path="res://Sprites/Nyx/charakter.png" type="Texture" id=16]
-[ext_resource path="res://Sprites/Nyx/Walk/1_nyx-walk.png" type="Texture" id=17]
-[ext_resource path="res://Sprites/Nyx/Walk/2_nyx-walk.png" type="Texture" id=18]
-[ext_resource path="res://Sprites/Nyx/Walk/3_nyx-walk.png" type="Texture" id=19]
-[ext_resource path="res://Sprites/Nyx/Walk/4_nyx-walk.png" type="Texture" id=20]
-[ext_resource path="res://Sprites/Nyx/Walk/5_nyx-walk.png" type="Texture" id=21]
-[ext_resource path="res://Sprites/Nyx/Walk/6_nyx-walk.png" type="Texture" id=22]
-[ext_resource path="res://Sprites/Nyx/Walk/7_nyx-walk.png" type="Texture" id=23]
-[ext_resource path="res://Sprites/Nyx/Walk/8_nyx-walk.png" type="Texture" id=24]
-[ext_resource path="res://Scripts/AnimationTree.gd" type="Script" id=25]
-[ext_resource path="res://Sprites/Particle/dash_effect_020002.png" type="Texture" id=26]
-[ext_resource path="res://Scripts/Butterfly.gd" type="Script" id=27]
-[ext_resource path="res://Sprites/HollowKnight/butterfly.png" type="Texture" id=28]
-[ext_resource path="res://Sprites/Particle/Unbenannt.png" type="Texture" id=29]
-[ext_resource path="res://Tiles/tileset_blackbox.tres" type="TileSet" id=30]
-[ext_resource path="res://Scripts/Grass.gd" type="Script" id=31]
-[ext_resource path="res://Sprites/HollowKnight/ash_grass_01_blizzard0001.png" type="Texture" id=32]
-[ext_resource path="res://CameraCue.gd" type="Script" id=33]
-[ext_resource path="res://Scenes/Enemy.tscn" type="PackedScene" id=34]
-[ext_resource path="res://Shaders/NoiseMultiplication.shader" type="Shader" id=35]
-[ext_resource path="res://vfx.jpg" type="Texture" id=36]
-[ext_resource path="res://tes.tres" type="Texture" id=37]
-[ext_resource path="res://Sprites/Particle/spriteColor.png" type="Texture" id=38]
-[ext_resource path="res://honey.jpeg" type="Texture" id=39]
-[ext_resource path="res://teset2.jpeg" type="Texture" id=40]
-[ext_resource path="res://Sprites/Particle/light.png" type="Texture" id=41]
-[ext_resource path="res://texture (6).png" type="Texture" id=42]
-[ext_resource path="res://TESET.jpeg" type="Texture" id=43]
+[ext_resource path="res://LifePoints.gd" type="Script" id=4]
+[ext_resource path="res://leben.png" type="Texture" id=5]
+[ext_resource path="res://leben-verloren.png" type="Texture" id=6]
+[ext_resource path="res://Sounds/Christopher Larkin - Hollow Knight (Original Soundtrack) - 03 Crossroads.wav" type="AudioStream" id=7]
+[ext_resource path="res://Sounds/Footstep.wav" type="AudioStream" id=8]
+[ext_resource path="res://Scripts/Player.gd" type="Script" id=9]
+[ext_resource path="res://Scripts/StateManager.gd" type="Script" id=10]
+[ext_resource path="res://Sprites/Nyx/Attack/nyx-attack.png" type="Texture" id=11]
+[ext_resource path="res://Sprites/Nyx/AttackUp/nyx-attack-up.png" type="Texture" id=12]
+[ext_resource path="res://Sprites/Nyx/Idle/1_nyx-idle.png" type="Texture" id=13]
+[ext_resource path="res://Sprites/Nyx/Idle/2_nyx-idle.png" type="Texture" id=14]
+[ext_resource path="res://Sprites/Nyx/Idle/3_nyx-idle.png" type="Texture" id=15]
+[ext_resource path="res://Sprites/Nyx/Idle/4_nyx-idle.png" type="Texture" id=16]
+[ext_resource path="res://Sprites/Nyx/Jump/nyx-up-jump.png" type="Texture" id=17]
+[ext_resource path="res://Sprites/Nyx/Jump/nyx-down-jump.png" type="Texture" id=18]
+[ext_resource path="res://Sprites/Nyx/charakter.png" type="Texture" id=19]
+[ext_resource path="res://Sprites/Nyx/Walk/1_nyx-walk.png" type="Texture" id=20]
+[ext_resource path="res://Sprites/Nyx/Walk/2_nyx-walk.png" type="Texture" id=21]
+[ext_resource path="res://Sprites/Nyx/Walk/3_nyx-walk.png" type="Texture" id=22]
+[ext_resource path="res://Sprites/Nyx/Walk/4_nyx-walk.png" type="Texture" id=23]
+[ext_resource path="res://Sprites/Nyx/Walk/5_nyx-walk.png" type="Texture" id=24]
+[ext_resource path="res://Sprites/Nyx/Walk/6_nyx-walk.png" type="Texture" id=25]
+[ext_resource path="res://Sprites/Nyx/Walk/7_nyx-walk.png" type="Texture" id=26]
+[ext_resource path="res://Sprites/Nyx/Walk/8_nyx-walk.png" type="Texture" id=27]
+[ext_resource path="res://Scripts/AnimationTree.gd" type="Script" id=28]
+[ext_resource path="res://Sprites/Particle/dash_effect_020002.png" type="Texture" id=29]
+[ext_resource path="res://Scripts/Butterfly.gd" type="Script" id=30]
+[ext_resource path="res://Sprites/HollowKnight/butterfly.png" type="Texture" id=31]
+[ext_resource path="res://Sprites/Particle/Unbenannt.png" type="Texture" id=32]
+[ext_resource path="res://Tiles/tileset_blackbox.tres" type="TileSet" id=33]
+[ext_resource path="res://Scripts/Grass.gd" type="Script" id=34]
+[ext_resource path="res://Sprites/HollowKnight/ash_grass_01_blizzard0001.png" type="Texture" id=35]
+[ext_resource path="res://CameraCue.gd" type="Script" id=36]
+[ext_resource path="res://Scenes/Enemy.tscn" type="PackedScene" id=37]
+[ext_resource path="res://Shaders/NoiseMultiplication.shader" type="Shader" id=38]
+[ext_resource path="res://vfx.jpg" type="Texture" id=39]
+[ext_resource path="res://tes.tres" type="Texture" id=40]
+[ext_resource path="res://Sprites/Particle/spriteColor.png" type="Texture" id=41]
+[ext_resource path="res://honey.jpeg" type="Texture" id=42]
+[ext_resource path="res://teset2.jpeg" type="Texture" id=43]
+[ext_resource path="res://Sprites/Particle/light.png" type="Texture" id=44]
+[ext_resource path="res://texture (6).png" type="Texture" id=45]
+[ext_resource path="res://TESET.jpeg" type="Texture" id=46]
 
 [sub_resource type="Environment" id=1]
 background_mode = 4
@@ -52,16 +55,10 @@ glow_bicubic_upscale = true
 [sub_resource type="ShaderMaterial" id=2]
 shader = ExtResource( 3 )
 
-[sub_resource type="Gradient" id=3]
-
-[sub_resource type="GradientTexture" id=4]
-gradient = SubResource( 3 )
-width = 200
-
-[sub_resource type="RectangleShape2D" id=5]
+[sub_resource type="RectangleShape2D" id=3]
 extents = Vector2( 11.04, 10 )
 
-[sub_resource type="Animation" id=8]
+[sub_resource type="Animation" id=4]
 length = 0.2
 tracks/0/type = "value"
 tracks/0/path = NodePath(".:texture")
@@ -73,7 +70,7 @@ tracks/0/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 1,
-"values": [ ExtResource( 8 ) ]
+"values": [ ExtResource( 11 ) ]
 }
 tracks/1/type = "method"
 tracks/1/path = NodePath("..")
@@ -129,7 +126,7 @@ tracks/4/keys = {
 "values": [ 0.0 ]
 }
 
-[sub_resource type="Animation" id=9]
+[sub_resource type="Animation" id=5]
 length = 0.2
 tracks/0/type = "value"
 tracks/0/path = NodePath(".:texture")
@@ -141,7 +138,7 @@ tracks/0/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 1,
-"values": [ ExtResource( 9 ) ]
+"values": [ ExtResource( 12 ) ]
 }
 tracks/1/type = "method"
 tracks/1/path = NodePath("..")
@@ -197,7 +194,7 @@ tracks/4/keys = {
 "values": [ -90.0 ]
 }
 
-[sub_resource type="Animation" id=10]
+[sub_resource type="Animation" id=6]
 length = 0.8
 loop = true
 tracks/0/type = "value"
@@ -210,10 +207,10 @@ tracks/0/keys = {
 "times": PoolRealArray( 0, 0.2, 0.4, 0.6 ),
 "transitions": PoolRealArray( 1, 1, 1, 1 ),
 "update": 1,
-"values": [ ExtResource( 10 ), ExtResource( 11 ), ExtResource( 12 ), ExtResource( 13 ) ]
+"values": [ ExtResource( 13 ), ExtResource( 14 ), ExtResource( 15 ), ExtResource( 16 ) ]
 }
 
-[sub_resource type="Animation" id=11]
+[sub_resource type="Animation" id=7]
 tracks/0/type = "value"
 tracks/0/path = NodePath(".:texture")
 tracks/0/interp = 1
@@ -224,10 +221,10 @@ tracks/0/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 1,
-"values": [ ExtResource( 14 ) ]
+"values": [ ExtResource( 17 ) ]
 }
 
-[sub_resource type="Animation" id=12]
+[sub_resource type="Animation" id=8]
 tracks/0/type = "value"
 tracks/0/path = NodePath(".:texture")
 tracks/0/interp = 1
@@ -238,10 +235,10 @@ tracks/0/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 1,
-"values": [ ExtResource( 15 ) ]
+"values": [ ExtResource( 18 ) ]
 }
 
-[sub_resource type="Animation" id=58]
+[sub_resource type="Animation" id=9]
 resource_name = "TakeDamage"
 tracks/0/type = "value"
 tracks/0/path = NodePath(".:texture")
@@ -253,10 +250,10 @@ tracks/0/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 1,
-"values": [ ExtResource( 16 ) ]
+"values": [ ExtResource( 19 ) ]
 }
 
-[sub_resource type="Animation" id=13]
+[sub_resource type="Animation" id=10]
 length = 0.8
 loop = true
 tracks/0/type = "value"
@@ -269,7 +266,7 @@ tracks/0/keys = {
 "times": PoolRealArray( 0.001, 0.002, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7 ),
 "transitions": PoolRealArray( 5.85634, 1, 0.732044, 1, 12.5533, 0.999998, 0.999999, 1, 1.68179 ),
 "update": 1,
-"values": [ ExtResource( 17 ), ExtResource( 17 ), ExtResource( 18 ), ExtResource( 19 ), ExtResource( 20 ), ExtResource( 21 ), ExtResource( 22 ), ExtResource( 23 ), ExtResource( 24 ) ]
+"values": [ ExtResource( 20 ), ExtResource( 20 ), ExtResource( 21 ), ExtResource( 22 ), ExtResource( 23 ), ExtResource( 24 ), ExtResource( 25 ), ExtResource( 26 ), ExtResource( 27 ) ]
 }
 tracks/1/type = "audio"
 tracks/1/path = NodePath("../../Camera2D/AudioStreamPlayer2D2")
@@ -281,35 +278,39 @@ tracks/1/keys = {
 "clips": [ {
 "end_offset": 0.0,
 "start_offset": 0.0,
-"stream": ExtResource( 5 )
+"stream": ExtResource( 8 )
 }, {
 "end_offset": 0.0,
 "start_offset": 0.0,
-"stream": ExtResource( 5 )
+"stream": ExtResource( 8 )
 } ],
 "times": PoolRealArray( 0.2, 0.6 )
 }
 
-[sub_resource type="AnimationNodeAnimation" id=14]
+[sub_resource type="AnimationNodeAnimation" id=11]
 animation = "Attack"
 
-[sub_resource type="AnimationNodeAnimation" id=15]
+[sub_resource type="AnimationNodeAnimation" id=12]
 animation = "Attack_Up"
 
-[sub_resource type="AnimationNodeAnimation" id=16]
+[sub_resource type="AnimationNodeAnimation" id=13]
 animation = "Idle"
 
-[sub_resource type="AnimationNodeAnimation" id=17]
+[sub_resource type="AnimationNodeAnimation" id=14]
 animation = "Jump"
 
-[sub_resource type="AnimationNodeAnimation" id=18]
+[sub_resource type="AnimationNodeAnimation" id=15]
 animation = "JumpDown"
 
-[sub_resource type="AnimationNodeAnimation" id=59]
+[sub_resource type="AnimationNodeAnimation" id=16]
 animation = "TakeDamage"
 
-[sub_resource type="AnimationNodeAnimation" id=19]
+[sub_resource type="AnimationNodeAnimation" id=17]
 animation = "Walk"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=18]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=19]
 
 [sub_resource type="AnimationNodeStateMachineTransition" id=20]
 
@@ -351,44 +352,40 @@ animation = "Walk"
 
 [sub_resource type="AnimationNodeStateMachineTransition" id=39]
 
-[sub_resource type="AnimationNodeStateMachineTransition" id=60]
+[sub_resource type="AnimationNodeStateMachineTransition" id=40]
 
-[sub_resource type="AnimationNodeStateMachineTransition" id=61]
-
-[sub_resource type="AnimationNodeStateMachineTransition" id=62]
-
-[sub_resource type="AnimationNodeStateMachine" id=40]
-states/Attack/node = SubResource( 14 )
+[sub_resource type="AnimationNodeStateMachine" id=41]
+states/Attack/node = SubResource( 11 )
 states/Attack/position = Vector2( 854.934, 132.869 )
-states/Attack_Up/node = SubResource( 15 )
+states/Attack_Up/node = SubResource( 12 )
 states/Attack_Up/position = Vector2( 844.934, 189.869 )
-states/Idle/node = SubResource( 16 )
+states/Idle/node = SubResource( 13 )
 states/Idle/position = Vector2( 206, 33 )
-states/Jump/node = SubResource( 17 )
+states/Jump/node = SubResource( 14 )
 states/Jump/position = Vector2( 247, 226 )
-states/JumpDown/node = SubResource( 18 )
+states/JumpDown/node = SubResource( 15 )
 states/JumpDown/position = Vector2( 705.934, 248 )
-states/TakeDamage/node = SubResource( 59 )
+states/TakeDamage/node = SubResource( 16 )
 states/TakeDamage/position = Vector2( 63.934, 109.869 )
-states/Walk/node = SubResource( 19 )
+states/Walk/node = SubResource( 17 )
 states/Walk/position = Vector2( 705.934, 33 )
-transitions = [ "Idle", "Walk", SubResource( 20 ), "Walk", "Idle", SubResource( 21 ), "Idle", "Jump", SubResource( 22 ), "Jump", "Walk", SubResource( 23 ), "Walk", "Jump", SubResource( 24 ), "Jump", "Idle", SubResource( 25 ), "JumpDown", "Walk", SubResource( 26 ), "Walk", "JumpDown", SubResource( 27 ), "JumpDown", "Jump", SubResource( 28 ), "Jump", "JumpDown", SubResource( 29 ), "JumpDown", "Idle", SubResource( 30 ), "Idle", "JumpDown", SubResource( 31 ), "Walk", "Attack", SubResource( 32 ), "Idle", "Attack", SubResource( 33 ), "Attack", "Idle", SubResource( 34 ), "Attack", "Walk", SubResource( 35 ), "Idle", "Attack_Up", SubResource( 36 ), "Attack_Up", "Walk", SubResource( 37 ), "Walk", "Attack_Up", SubResource( 38 ), "Attack_Up", "Idle", SubResource( 39 ), "Jump", "TakeDamage", SubResource( 60 ), "Idle", "TakeDamage", SubResource( 61 ), "JumpDown", "TakeDamage", SubResource( 62 ) ]
+transitions = [ "Idle", "Walk", SubResource( 18 ), "Walk", "Idle", SubResource( 19 ), "Idle", "Jump", SubResource( 20 ), "Jump", "Walk", SubResource( 21 ), "Walk", "Jump", SubResource( 22 ), "Jump", "Idle", SubResource( 23 ), "JumpDown", "Walk", SubResource( 24 ), "Walk", "JumpDown", SubResource( 25 ), "JumpDown", "Jump", SubResource( 26 ), "Jump", "JumpDown", SubResource( 27 ), "JumpDown", "Idle", SubResource( 28 ), "Idle", "JumpDown", SubResource( 29 ), "Walk", "Attack", SubResource( 30 ), "Idle", "Attack", SubResource( 31 ), "Attack", "Idle", SubResource( 32 ), "Attack", "Walk", SubResource( 33 ), "Idle", "Attack_Up", SubResource( 34 ), "Attack_Up", "Walk", SubResource( 35 ), "Walk", "Attack_Up", SubResource( 36 ), "Attack_Up", "Idle", SubResource( 37 ), "Jump", "TakeDamage", SubResource( 38 ), "Idle", "TakeDamage", SubResource( 39 ), "JumpDown", "TakeDamage", SubResource( 40 ) ]
 graph_offset = Vector2( -95.066, -76.1695 )
 
-[sub_resource type="AnimationNodeStateMachinePlayback" id=41]
+[sub_resource type="AnimationNodeStateMachinePlayback" id=42]
 
-[sub_resource type="CapsuleShape2D" id=42]
+[sub_resource type="CapsuleShape2D" id=43]
 radius = 200.0
 height = 300.0
 
-[sub_resource type="Gradient" id=43]
+[sub_resource type="Gradient" id=44]
 offsets = PoolRealArray( 0, 0.361257, 1 )
 colors = PoolColorArray( 1, 1, 1, 1, 0.960938, 0.435425, 0.435425, 1, 0.71875, 0, 0, 1 )
 
-[sub_resource type="GradientTexture" id=44]
-gradient = SubResource( 43 )
+[sub_resource type="GradientTexture" id=45]
+gradient = SubResource( 44 )
 
-[sub_resource type="ParticlesMaterial" id=45]
+[sub_resource type="ParticlesMaterial" id=46]
 flag_disable_z = true
 spread = 10.0
 gravity = Vector3( 0, 0, 0 )
@@ -397,9 +394,9 @@ angular_velocity = -1.0
 orbit_velocity = 0.0
 orbit_velocity_random = 0.0
 scale = 10.0
-color_ramp = SubResource( 44 )
+color_ramp = SubResource( 45 )
 
-[sub_resource type="Animation" id=46]
+[sub_resource type="Animation" id=47]
 length = 1.1
 loop = true
 tracks/0/type = "value"
@@ -427,10 +424,10 @@ tracks/1/keys = {
 "values": [ Vector2( 0, 0 ), Vector2( 13.06, -23.76 ) ]
 }
 
-[sub_resource type="CircleShape2D" id=47]
+[sub_resource type="CircleShape2D" id=48]
 radius = 40.0
 
-[sub_resource type="Animation" id=48]
+[sub_resource type="Animation" id=49]
 length = 1.1
 loop = true
 tracks/0/type = "value"
@@ -458,61 +455,61 @@ tracks/1/keys = {
 "values": [ Vector2( 0, 0 ), Vector2( 13.06, -23.76 ) ]
 }
 
-[sub_resource type="RectangleShape2D" id=49]
+[sub_resource type="RectangleShape2D" id=50]
 extents = Vector2( 54.17, 111.08 )
 
-[sub_resource type="CircleShape2D" id=50]
+[sub_resource type="CircleShape2D" id=51]
 radius = 500.0
 
-[sub_resource type="OpenSimplexNoise" id=51]
+[sub_resource type="OpenSimplexNoise" id=52]
 octaves = 1
 period = 100.0
 
-[sub_resource type="NoiseTexture" id=52]
+[sub_resource type="NoiseTexture" id=53]
 seamless = true
-noise = SubResource( 51 )
+noise = SubResource( 52 )
 
-[sub_resource type="ShaderMaterial" id=53]
-shader = ExtResource( 35 )
+[sub_resource type="ShaderMaterial" id=54]
+shader = ExtResource( 38 )
 shader_param/tint = Color( 0.490196, 0.490196, 0.490196, 1 )
 shader_param/speed = 0.1
 shader_param/glow = 1.0
 shader_param/invertNoise1 = false
 shader_param/useNoiseColor = true
-shader_param/noise1 = ExtResource( 36 )
-shader_param/noise2 = SubResource( 52 )
-shader_param/tintNoise = ExtResource( 37 )
+shader_param/noise1 = ExtResource( 39 )
+shader_param/noise2 = SubResource( 53 )
+shader_param/tintNoise = ExtResource( 40 )
 
-[sub_resource type="OpenSimplexNoise" id=54]
+[sub_resource type="OpenSimplexNoise" id=55]
 octaves = 1
 period = 86.1
 persistence = 1.0
 
-[sub_resource type="NoiseTexture" id=55]
+[sub_resource type="NoiseTexture" id=56]
 seamless = true
-noise = SubResource( 54 )
+noise = SubResource( 55 )
 
-[sub_resource type="ShaderMaterial" id=56]
-shader = ExtResource( 35 )
+[sub_resource type="ShaderMaterial" id=57]
+shader = ExtResource( 38 )
 shader_param/tint = Color( 0.435294, 0.788235, 1, 1 )
 shader_param/speed = 0.1
 shader_param/glow = 1.0
 shader_param/invertNoise1 = false
 shader_param/useNoiseColor = true
-shader_param/noise1 = ExtResource( 39 )
-shader_param/noise2 = SubResource( 55 )
-shader_param/tintNoise = ExtResource( 40 )
+shader_param/noise1 = ExtResource( 42 )
+shader_param/noise2 = SubResource( 56 )
+shader_param/tintNoise = ExtResource( 43 )
 
-[sub_resource type="ShaderMaterial" id=57]
-shader = ExtResource( 35 )
+[sub_resource type="ShaderMaterial" id=58]
+shader = ExtResource( 38 )
 shader_param/tint = Color( 1, 0.780392, 0.501961, 1 )
 shader_param/speed = 0.05
 shader_param/glow = 1.0
 shader_param/invertNoise1 = true
 shader_param/useNoiseColor = true
-shader_param/noise1 = ExtResource( 42 )
-shader_param/noise2 = ExtResource( 37 )
-shader_param/tintNoise = ExtResource( 43 )
+shader_param/noise1 = ExtResource( 45 )
+shader_param/noise2 = ExtResource( 40 )
+shader_param/tintNoise = ExtResource( 46 )
 
 [node name="World" type="Node"]
 
@@ -540,27 +537,19 @@ script = ExtResource( 1 )
 script = ExtResource( 2 )
 shader = SubResource( 2 )
 
-[node name="ProgressBar" type="ProgressBar" parent="Node2D/Camera2D/Interface"]
-margin_left = 16.0
-margin_top = 21.0
-margin_right = 413.0
-margin_bottom = 47.0
-max_value = 5.0
-
-[node name="Tween" type="Tween" parent="Node2D/Camera2D/Interface"]
-
-[node name="TextureProgress" type="TextureProgress" parent="Node2D/Camera2D/Interface"]
+[node name="Container" type="Container" parent="Node2D/Camera2D/Interface"]
 anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-margin_left = -100.0
-margin_top = -15.11
-margin_right = 100.0
-margin_bottom = 4.89001
-max_value = 5.0
-value = 5.0
-texture_progress = SubResource( 4 )
+margin_left = -20.0
+margin_top = -50.0
+margin_right = 20.0
+script = ExtResource( 4 )
+health_texture = ExtResource( 5 )
+healthLoss_texture = ExtResource( 6 )
+
+[node name="Tween" type="Tween" parent="Node2D/Camera2D/Interface"]
 
 [node name="ColorRect" type="ColorRect" parent="Node2D/Camera2D/Interface"]
 visible = false
@@ -569,12 +558,12 @@ margin_bottom = 2000.0
 color = Color( 0, 0, 0, 1 )
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer" parent="Node2D/Camera2D"]
-stream = ExtResource( 4 )
+stream = ExtResource( 7 )
 volume_db = -20.0
 autoplay = true
 
 [node name="AudioStreamPlayer2D2" type="AudioStreamPlayer2D" parent="Node2D/Camera2D"]
-stream = ExtResource( 5 )
+stream = ExtResource( 8 )
 attenuation = 0.5
 
 [node name="Player" type="KinematicBody2D" parent="Node2D" groups=[
@@ -584,10 +573,10 @@ position = Vector2( 1856, 3468 )
 scale = Vector2( 0.6, 0.6 )
 z_index = 10
 z_as_relative = false
-script = ExtResource( 6 )
+script = ExtResource( 9 )
 
 [node name="StateManager" type="Node" parent="Node2D/Player"]
-script = ExtResource( 7 )
+script = ExtResource( 10 )
 
 [node name="DamageStopMovingTimer" type="Timer" parent="Node2D/Player/StateManager"]
 wait_time = 0.3
@@ -602,27 +591,27 @@ position = Vector2( 6.45996, 0 )
 scale = Vector2( 3.87, 14.2 )
 z_index = -1
 z_as_relative = false
-shape = SubResource( 5 )
+shape = SubResource( 3 )
 
 [node name="Sprite" type="Sprite" parent="Node2D/Player"]
 scale = Vector2( 0.26, 0.26 )
-texture = ExtResource( 8 )
+texture = ExtResource( 11 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Node2D/Player/Sprite"]
-anims/Attack = SubResource( 8 )
-anims/Attack_Up = SubResource( 9 )
-anims/Idle = SubResource( 10 )
-anims/Jump = SubResource( 11 )
-anims/JumpDown = SubResource( 12 )
-anims/TakeDamage = SubResource( 58 )
-anims/Walk = SubResource( 13 )
+anims/Attack = SubResource( 4 )
+anims/Attack_Up = SubResource( 5 )
+anims/Idle = SubResource( 6 )
+anims/Jump = SubResource( 7 )
+anims/JumpDown = SubResource( 8 )
+anims/TakeDamage = SubResource( 9 )
+anims/Walk = SubResource( 10 )
 
 [node name="AnimationTree" type="AnimationTree" parent="Node2D/Player/Sprite"]
-tree_root = SubResource( 40 )
+tree_root = SubResource( 41 )
 anim_player = NodePath("../AnimationPlayer")
 active = true
-parameters/playback = SubResource( 41 )
-script = ExtResource( 25 )
+parameters/playback = SubResource( 42 )
+script = ExtResource( 28 )
 
 [node name="Slash" type="Sprite" parent="Node2D/Player/Sprite"]
 position = Vector2( 820.512, -19.6523 )
@@ -637,7 +626,7 @@ collision_mask = 31
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Node2D/Player/Sprite/Slash/Area2D"]
 position = Vector2( -186.879, 0 )
 rotation = 1.5708
-shape = SubResource( 42 )
+shape = SubResource( 43 )
 
 [node name="DashParticles" type="Particles2D" parent="Node2D/Player/Sprite"]
 position = Vector2( -307.692, -19.6523 )
@@ -647,8 +636,8 @@ emitting = false
 amount = 20
 lifetime = 0.1
 one_shot = true
-process_material = SubResource( 45 )
-texture = ExtResource( 26 )
+process_material = SubResource( 46 )
+texture = ExtResource( 29 )
 
 [node name="Butterfly" type="Area2D" parent="Node2D" groups=[
 "Damageable",
@@ -657,17 +646,17 @@ editor/display_folded = true
 position = Vector2( 1888, 3168 )
 collision_layer = 4
 collision_mask = 4
-script = ExtResource( 27 )
+script = ExtResource( 30 )
 
 [node name="Sprite" type="Sprite" parent="Node2D/Butterfly"]
-texture = ExtResource( 28 )
+texture = ExtResource( 31 )
 offset = Vector2( 0.50543, -0.919527 )
 vframes = 3
 hframes = 4
 
 [node name="Light2D" type="Light2D" parent="Node2D/Butterfly/Sprite"]
 light_mask = 3
-texture = ExtResource( 29 )
+texture = ExtResource( 32 )
 texture_scale = 2.0
 color = Color( 0.478431, 0.913725, 1, 1 )
 range_layer_min = -2
@@ -675,10 +664,10 @@ range_layer_min = -2
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Node2D/Butterfly/Sprite"]
 autoplay = "Fly"
 playback_speed = 1.9
-anims/Fly = SubResource( 46 )
+anims/Fly = SubResource( 47 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Node2D/Butterfly"]
-shape = SubResource( 47 )
+shape = SubResource( 48 )
 
 [node name="Butterfly2" type="Area2D" parent="Node2D" groups=[
 "Damageable",
@@ -687,17 +676,17 @@ editor/display_folded = true
 position = Vector2( 2400, 3264 )
 collision_layer = 4
 collision_mask = 4
-script = ExtResource( 27 )
+script = ExtResource( 30 )
 
 [node name="Sprite" type="Sprite" parent="Node2D/Butterfly2"]
-texture = ExtResource( 28 )
+texture = ExtResource( 31 )
 offset = Vector2( 0.50543, -0.919527 )
 vframes = 3
 hframes = 4
 
 [node name="Light2D" type="Light2D" parent="Node2D/Butterfly2/Sprite"]
 light_mask = 3
-texture = ExtResource( 29 )
+texture = ExtResource( 32 )
 texture_scale = 2.0
 color = Color( 0.478431, 0.913725, 1, 1 )
 range_layer_min = -2
@@ -705,14 +694,14 @@ range_layer_min = -2
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Node2D/Butterfly2/Sprite"]
 autoplay = "Fly"
 playback_speed = 1.9
-anims/Fly = SubResource( 48 )
+anims/Fly = SubResource( 49 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Node2D/Butterfly2"]
-shape = SubResource( 47 )
+shape = SubResource( 48 )
 
 [node name="BlackBox" type="TileMap" parent="Node2D"]
 z_index = -10
-tile_set = ExtResource( 30 )
+tile_set = ExtResource( 33 )
 collision_layer = 35
 collision_mask = 35
 format = 1
@@ -724,21 +713,21 @@ tile_data = PoolIntArray( 65528, 7, 0, 0, 7, 0, 189, 7, 0, 196666, 7, 0, 196674,
 position = Vector2( 5184, 3872 )
 collision_layer = 4
 collision_mask = 4
-script = ExtResource( 31 )
+script = ExtResource( 34 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Node2D/Area2D"]
 position = Vector2( -7.82, 0 )
-shape = SubResource( 49 )
+shape = SubResource( 50 )
 
 [node name="ash_grass_01_blizzard0001" type="Sprite" parent="Node2D/Area2D"]
 position = Vector2( 0, -0.000244141 )
-texture = ExtResource( 32 )
+texture = ExtResource( 35 )
 
 [node name="Area2D" type="Area2D" parent="Node2D/Area2D/ash_grass_01_blizzard0001"]
-script = ExtResource( 33 )
+script = ExtResource( 36 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Node2D/Area2D/ash_grass_01_blizzard0001/Area2D"]
-shape = SubResource( 50 )
+shape = SubResource( 51 )
 
 [node name="Label" type="Label" parent="Node2D/Area2D"]
 margin_left = -96.0
@@ -747,22 +736,22 @@ margin_right = 137.0
 margin_bottom = -114.0
 text = "Test mit Attraction Punkt für Kamera"
 
-[node name="Enemy2" parent="Node2D" instance=ExtResource( 34 )]
+[node name="Enemy2" parent="Node2D" instance=ExtResource( 37 )]
 position = Vector2( 4849.03, 3872 )
 
-[node name="Enemy" parent="Node2D" instance=ExtResource( 34 )]
+[node name="Enemy" parent="Node2D" instance=ExtResource( 37 )]
 
 [node name="Sprite" type="Sprite" parent="."]
-material = SubResource( 53 )
+material = SubResource( 54 )
 position = Vector2( 992, 3168 )
 scale = Vector2( 8, 8 )
-texture = ExtResource( 38 )
+texture = ExtResource( 41 )
 
 [node name="honey" type="Sprite" parent="."]
-material = SubResource( 56 )
+material = SubResource( 57 )
 position = Vector2( 2464, 3296 )
 z_index = 50
-texture = ExtResource( 41 )
+texture = ExtResource( 44 )
 
 [node name="ParallaxBackground" type="ParallaxBackground" parent="."]
 
@@ -771,11 +760,11 @@ motion_scale = Vector2( 0.8, 0.8 )
 motion_offset = Vector2( -800, -600 )
 
 [node name="Sprite2" type="Sprite" parent="ParallaxBackground/ParallaxLayer2"]
-material = SubResource( 57 )
+material = SubResource( 58 )
 position = Vector2( 3294.48, 7888.12 )
 scale = Vector2( 3.62051, 3.60904 )
 z_index = -50
-texture = ExtResource( 41 )
+texture = ExtResource( 44 )
 offset = Vector2( 469.496, -1531.79 )
 [connection signal="on_health_changed" from="Node2D/Player/StateManager" to="Node2D/Camera2D/Interface" method="_on_StateManager_on_health_changed"]
 [connection signal="timeout" from="Node2D/Player/StateManager/DamageStopMovingTimer" to="Node2D/Player" method="_on_DamageStopMovingTimer_timeout"]

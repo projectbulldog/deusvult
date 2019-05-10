@@ -7,10 +7,10 @@ var damageTime = 0.0
 var maxDamageTime = 0.3
 
 func _on_StateManager_on_health_changed(health, isDamage):
-	$Tween.interpolate_property($ProgressBar, "value", $ProgressBar.value, health, 0.2, Tween.TRANS_SINE, Tween.EASE_OUT)
-	$Tween.start()
+#	$Tween.interpolate_property($ProgressBar, "value", $ProgressBar.value, health, 0.2, Tween.TRANS_SINE, Tween.EASE_OUT)
+#	$Tween.start()
 	
-	$TextureProgress.value = health
+	$Container.changeHealth(health)
 	if(isDamage):
 		$ColorRect.material = shader
 		$ColorRect.visible = true
