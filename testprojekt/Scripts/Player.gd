@@ -1,10 +1,8 @@
 extends KinematicBody2D
 
-const GRAVITY = 3500
+const GRAVITY = 3000
 const SPEED = 800
-const JUMP_SPEED = -1000
-const MAXJUMP_SPEED = -10000
-const MAXJUMPMOTION = -110
+const JUMP_SPEED = -900
 
 const cameraShakeMotionThreshold = 3000
 
