@@ -79,12 +79,12 @@ func _physics_process(delta):
 	if Input.is_action_pressed("ui_right") && (!isAttacking || direction == DIRECTION.RIGHT) && !justWallJumped && !isDashing:
 		if direction == DIRECTION.LEFT:
 			self.changeDirection()
-		motion.x = SPEED * clamp(Input.get_action_strength("ui_right"), 0.3, 1.0)
+		motion.x = SPEED * clamp(Input.get_action_strength("ui_right"), 0.5, 1.0)
 		friction = false
 	elif Input.is_action_pressed("ui_left") && (!isAttacking || direction == DIRECTION.LEFT) && !justWallJumped && !isDashing:
 		if direction == DIRECTION.RIGHT:
 			self.changeDirection()
-		motion.x = -SPEED * clamp(Input.get_action_strength("ui_left"), 0.3, 1.0)
+		motion.x = -SPEED * clamp(Input.get_action_strength("ui_left"), 0.5, 1.0)
 		friction = false
 	else:
 		friction = true
@@ -171,7 +171,7 @@ func _physics_process(delta):
 	motion = move_and_slide(motion, Vector2(0, -1))
 	
 ##	Camera Shake, wenn gewisse höhe erreicht wird
-	if(lastMotionY - motion.y) > cameraShakeMotionThreshold && canDoubleJump:
+	if(lastMotionY - motion.y) > cameraShakeMotionThreshold:
 		camera.add_trauma(0.7)
 	
 #	Attack Cooldown
@@ -189,6 +189,9 @@ func _physics_process(delta):
 
 func _process(delta):
 #	Entscheidung, welche Animation gespielt werden soll.
+	if tookDamage:
+		travelTo("TakeDamage")
+		return
 	if isAttacking && !("Attack" in $Sprite/AnimationTree.playback.get_current_node()):
 		if Input.is_action_pressed("ui_up") && Input.get_action_strength("ui_up") > 0.8:
 			travelTo("Attack_Up")

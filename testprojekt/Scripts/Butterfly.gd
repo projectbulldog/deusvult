@@ -1,7 +1,5 @@
 extends Area2D
 
-var direction = Vector2(0, 0)
-
 var target = Vector2(0, 0)
 
 func _ready():
