@@ -74,9 +74,9 @@ func _physics_process(delta):
 		
 #		Kamera soll nach oben langsamer gehen. Nach unten soll sie schneller sein damit man was sieht
 		if (player.motion.y > 0):
-			lerpCorrectionY = lerp(lerpCorrectionY, 3, 0.02)
+			lerpCorrectionY = lerp(lerpCorrectionY, 3, 0.03)
 			if(player.motion.y > 2000):
-				correctionY = lerp(correctionY, 500, 0.02)
+				correctionY = lerp(correctionY, 600, 0.01)
 		else:
 			lerpCorrectionY = lerp(lerpCorrectionY, 0.6, 0.2)
 			correctionY = lerp(correctionY, 0, 0.1)
