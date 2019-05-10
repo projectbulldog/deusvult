@@ -30,6 +30,8 @@ var max_camera_offset = 100
 # normal time is too slow?
 var offset_time_factor = 2
 
+var fallingCorrectionY = 500
+
 func _ready():
 	randomize()
 	lerpOffset = self.offset
@@ -69,25 +71,27 @@ func _physics_process(delta):
 #		Kamera soll nach oben langsamer gehen. Nach unten soll sie schneller sein damit man was sieht
 		var lerpCorrectionY = 0.5
 		if (self.global_position.y - player.global_position.y) <= 0:
-			lerpCorrectionY = 1.5
-			
-#		Kamera soll beim hinunterspringen weiter nach unten schauen
-		var correction =  Vector2(0,0)
-		if(player.motion.y > 2500):
-			correction.y += 800
-			lerpCorrectionY = 1
-		
+			lerpCorrectionY = 2
+			 
 #		Berechnung der Bewegung
 		var lerpMotion = Vector2(0,0)
-		lerpMotion.x = lerp(self.global_position.x, player.global_position.x + correction.x, currentLerp)
-		lerpMotion.y = lerp(self.global_position.y, player.global_position.y + correction.y, currentLerp * lerpCorrectionY)
+		
+#		Kamera soll beim hinunterspringen weiter nach unten schau
+		var correctionY = 0
+		if(player.motion.y > 2500):
+			lerpCorrectionY =  1 + pow(lerp(currentLerp, 2 + (player.motion.y - 2500) * 0.001, 0.1), 2)
+			correctionY = 500
+			
+		lerpMotion.x = lerp(self.global_position.x, player.global_position.x, currentLerp)
+		lerpMotion.y = lerp(self.global_position.y, player.global_position.y + correctionY, currentLerp * lerpCorrectionY)
+		
 		self.position = lerpMotion
 		self.zoom = lerp(self.zoom, lerpZoom, 0.02)
 
-func setObjectToFollow(object, newZoom):
+func setObjectToFollow(object, zoomMultiplication):
 	self.objectToFollow = object
-	if(newZoom != null):
-		lerpZoom = newZoom
+	if(zoomMultiplication != null):
+		lerpZoom *= zoomMultiplication
 	else:
 		lerpZoom = originalZoom
 

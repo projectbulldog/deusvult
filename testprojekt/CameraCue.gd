@@ -1,6 +1,6 @@
 extends Area2D
 
-export var zoom = 1.8
+export var zoomMultiplication = 0.9
 
 func _ready():
 	self.connect("body_entered", self, "on_body_entered")
@@ -8,7 +8,7 @@ func _ready():
 	
 func on_body_entered(body):
 	if(body.is_in_group("Player")):
-		body.CueSignal(self, Vector2(zoom, zoom))
+		body.CueSignal(self, Vector2(zoomMultiplication, zoomMultiplication))
 
 func on_body_exit(body):
 	if(body.is_in_group("Player")):

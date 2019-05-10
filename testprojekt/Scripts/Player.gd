@@ -28,7 +28,7 @@ var dashCooldownTimer
 
 var isAttacking = false
 var isAttackCooldown = false
-var attackCooldown = 0.3
+var attackCooldown = 0.5
 var attackCooldownTimer = 0.0
 
 var isOnFloorWithCoyote = false
@@ -106,6 +106,7 @@ func _physics_process(delta):
 	if isDashing && dashTimeLength > maxDashTime:
 		isDashing = false
 		dashTimeLength = 0
+		motion.x = 0
 	
 	# Coyote Time
 	if !is_on_floor() && coyoteTime <= maxCoyoteTime:
@@ -214,7 +215,12 @@ func attack():
 	var bodies = $Sprite/Slash/Area2D.get_overlapping_bodies()
 	for body in bodies:
 		if(body.is_in_group("Damageable")):
-			body.takeDamage()
+			var direction = body.global_position.x - self.global_position.x 
+			if(direction <= 0):
+				direction = -1
+			else:
+				direction = 1
+			body.takeDamage(Vector2(1500 * direction, -200))
 	var areas = $Sprite/Slash/Area2D.get_overlapping_areas()
 	for area in areas:
 		if(area.is_in_group("Damageable")):

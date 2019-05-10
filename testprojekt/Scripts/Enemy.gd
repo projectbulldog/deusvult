@@ -9,6 +9,12 @@ var motion = Vector2()
 enum MODE { IDLE, AGGRO }
 var mode = MODE.IDLE
 
+var health = 4
+var max_health = 4
+
+var impulse = Vector2(0, 0)
+var impulseDamp = 0.8
+
 func _physics_process(delta):
 	# GRAVITY
 	motion.y += delta * GRAVITY
@@ -22,11 +28,19 @@ func _physics_process(delta):
 			self.scale.x *= -1
 		motion.x = SPEED * direction
 
+	if impulse != Vector2(0, 0):
+		motion += impulse
+		impulse *= impulseDamp
 	motion = move_and_slide(motion, Vector2(0, -1))
+	
 
-func takeDamage():
+func takeDamage(forceFrom = Vector2(0, 0)):
 	self.modulate = ColorN("red")
 	$Timer.start()
+	health -= 1
+	if(health <= 0):
+		self.queue_free()
+	impulse = forceFrom
 
 func _on_Timer_timeout():
 	self.modulate = ColorN("white")
