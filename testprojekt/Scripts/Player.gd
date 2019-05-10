@@ -40,6 +40,7 @@ var justWallJumpedTime = 0.0
 var justWallJumpedMaxTime = 0.2
 
 var canDoubleJump = true
+var justDoubleJumped = false
 
 var camera
 
@@ -121,6 +122,7 @@ func _physics_process(delta):
 	# JUMPING
 	if !isOnFloorWithCoyote && !canJump && canDoubleJump && Input.is_action_just_pressed("jump"):
 		canDoubleJump = false
+		justDoubleJumped = true
 		motion.y = JUMP_SPEED * 1.5
 	
 	if Input.is_action_pressed("jump") && jumpTime <= 0 && canJump && !is_on_ceiling():
@@ -172,8 +174,10 @@ func _physics_process(delta):
 	motion = move_and_slide(motion, Vector2(0, -1))
 	
 ##	Camera Shake, wenn gewisse höhe erreicht wird
-	if(lastMotionY - motion.y) > cameraShakeMotionThreshold:
-		camera.add_trauma(0.7)
+	if(lastMotionY - motion.y) > cameraShakeMotionThreshold && !justDoubleJumped:
+		camera.add_trauma(0.8)
+	
+	justDoubleJumped = false
 	
 #	Attack Cooldown
 	if(isAttackCooldown):

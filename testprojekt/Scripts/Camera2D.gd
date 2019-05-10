@@ -46,7 +46,7 @@ func _ready():
 	noiseY.seed = randi()
 
 func set_camera_limits():
-#	Camera darf maximal bis zu den Ecken der Blackbox gehen (topleft, topright, bottomleft, bottom right)
+#	Kamera darf maximal bis zu den Ecken der Blackbox gehen (topleft, topright, bottomleft, bottom right)
 	var blackBoxTileMap = get_parent().find_node("BlackBox")
 	var map_limits = blackBoxTileMap.get_used_rect()
 	var map_cellsize = blackBoxTileMap.cell_size
@@ -70,9 +70,9 @@ func _physics_process(delta):
 		currentLerp =  lerp(currentLerp, lerpPlayer, 0.001)
 		
 #		Kamera soll nach oben langsamer gehen. Nach unten soll sie schneller sein damit man was sieht
-		var lerpCorrectionY = 0.5
+		var lerpCorrectionY = 0.8
 		if (self.global_position.y - player.global_position.y) <= 0:
-			lerpCorrectionY = 2
+			lerpCorrectionY = 3
 			 
 #		Berechnung der Bewegung
 		var lerpMotion = Vector2(0,0)
@@ -81,7 +81,7 @@ func _physics_process(delta):
 #		ToDo noch keine schöne lösung
 		var correctionY = 0
 		if(player.motion.y > 2000):
-			lerpCorrectionY =  1 + pow(lerp(currentLerp, 2 + (player.motion.y - 2000) * 0.005, 0.1), 2)
+			lerpCorrectionY =  1 + pow(lerp(currentLerp, 2 + (player.motion.y - 2000) * 0.004, 0.1), 2)
 			correctionY = 500
 			
 		lerpMotion.x = lerp(self.global_position.x, player.global_position.x, currentLerp)
