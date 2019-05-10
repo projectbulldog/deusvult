@@ -43,14 +43,18 @@ func _physics_process(delta):
 	if(objectToFollow != null):
 		currentLerp =  lerp(currentLerp, lerpObject, 1)
 #		Falls nicht Spieler angezeigt werden soll: Vector zwischen Spieler und Objekt / 3
+#		Somit wird nicht voll auf das Objekt gezoomt, sonder nur in die Richtung
 		var vectorTo = player.global_position - objectToFollow.global_position
 		self.position = lerp(self.global_position, player.global_position - vectorTo / 3, currentLerp)
-		print(self.zoom)
-		print(lerpZoom)
 		self.zoom = lerp(self.zoom, lerpZoom, 0.02)
 	else:
 		currentLerp =  lerp(currentLerp, lerpPlayer, 0.001)
-		self.position = lerp(self.global_position, player.global_position, currentLerp)
+#		Korrektur vektor, damit beim Fallen die Kamera nach weiter unten geht
+		var correction =  Vector2(0,0)
+		if(player.motion.y > 2500):
+			correction.y += 600
+		var lerpMotion = lerp(self.global_position, player.global_position + correction, currentLerp)
+		self.position = lerpMotion
 		self.zoom = lerp(self.zoom, lerpZoom, 0.02)
 
 func setObjectToFollow(object, newZoom):
