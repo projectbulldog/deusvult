@@ -24,11 +24,11 @@ var noiseX
 var noiseY
 
 var trauma = 0
-var trauma_depletion = 0.8
+var trauma_depletion = 0.9
 var max_camera_offset = 100
 
 # normal time is too slow?
-var offset_time_factor = 2.5
+var offset_time_factor = 2
 
 func _ready():
 	randomize()
@@ -107,7 +107,7 @@ func shake(delta):
 		# translation
 		var offset = Vector2()
 		offset.x = noiseX.get_noise_2d(delta * offset_time_factor, randf() -0.5)
-		offset.y = noiseY.get_noise_2d(delta * offset_time_factor, randf() - 0.5)
+		offset.y = noiseY.get_noise_2d(randf() - 0.5, delta * offset_time_factor) * 2
 		offset *= max_camera_offset * shake_power * pow(trauma, 2) # squared or cubed
 		# not global position, this is relative to parent
 		# (normally camera position is 0,0)
