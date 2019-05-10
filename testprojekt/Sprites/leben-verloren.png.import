@@ -2,27 +2,27 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/vfx.jpg-84d939019ec77220d84b8c8a4552114d.stex"
+path="res://.import/leben-verloren.png-e42adf50303f4522a5c79c64f07c2218.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://vfx.jpg"
-dest_files=[ "res://.import/vfx.jpg-84d939019ec77220d84b8c8a4552114d.stex" ]
+source_file="res://Sprites/leben-verloren.png"
+dest_files=[ "res://.import/leben-verloren.png-e42adf50303f4522a5c79c64f07c2218.stex" ]
 
 [params]
 
-compress/mode=0
+compress/mode=3
 compress/lossy_quality=0.7
 compress/hdr_mode=0
 compress/bptc_ldr=0
 compress/normal_map=0
 flags/repeat=0
 flags/filter=true
-flags/mipmaps=false
-flags/anisotropic=false
+flags/mipmaps=true
+flags/anisotropic=true
 flags/srgb=2
 process/fix_alpha_border=true
 process/premult_alpha=false

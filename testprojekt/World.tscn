@@ -3,9 +3,9 @@
 [ext_resource path="res://Scripts/Camera2D.gd" type="Script" id=1]
 [ext_resource path="res://Scripts/Interface.gd" type="Script" id=2]
 [ext_resource path="res://Shaders/chromatic_abberation.shader" type="Shader" id=3]
-[ext_resource path="res://LifePoints.gd" type="Script" id=4]
-[ext_resource path="res://leben.png" type="Texture" id=5]
-[ext_resource path="res://leben-verloren.png" type="Texture" id=6]
+[ext_resource path="res://Scripts/LifePoints.gd" type="Script" id=4]
+[ext_resource path="res://Sprites/leben.png" type="Texture" id=5]
+[ext_resource path="res://Sprites/leben-verloren.png" type="Texture" id=6]
 [ext_resource path="res://Sounds/Christopher Larkin - Hollow Knight (Original Soundtrack) - 03 Crossroads.wav" type="AudioStream" id=7]
 [ext_resource path="res://Sounds/Footstep.wav" type="AudioStream" id=8]
 [ext_resource path="res://Scripts/Player.gd" type="Script" id=9]
@@ -35,17 +35,17 @@
 [ext_resource path="res://Tiles/tileset_blackbox.tres" type="TileSet" id=33]
 [ext_resource path="res://Scripts/Grass.gd" type="Script" id=34]
 [ext_resource path="res://Sprites/HollowKnight/ash_grass_01_blizzard0001.png" type="Texture" id=35]
-[ext_resource path="res://CameraCue.gd" type="Script" id=36]
+[ext_resource path="res://Scripts/CameraCue.gd" type="Script" id=36]
 [ext_resource path="res://Scenes/Enemy.tscn" type="PackedScene" id=37]
 [ext_resource path="res://Shaders/NoiseMultiplication.shader" type="Shader" id=38]
-[ext_resource path="res://vfx.jpg" type="Texture" id=39]
-[ext_resource path="res://tes.tres" type="Texture" id=40]
+[ext_resource path="res://Sprites/vfx.jpg" type="Texture" id=39]
+[ext_resource path="res://Sprites/tes.tres" type="Texture" id=40]
 [ext_resource path="res://Sprites/Particle/spriteColor.png" type="Texture" id=41]
-[ext_resource path="res://honey.jpeg" type="Texture" id=42]
-[ext_resource path="res://teset2.jpeg" type="Texture" id=43]
+[ext_resource path="res://Sprites/honey.jpeg" type="Texture" id=42]
+[ext_resource path="res://Sprites/teset2.jpeg" type="Texture" id=43]
 [ext_resource path="res://Sprites/Particle/light.png" type="Texture" id=44]
-[ext_resource path="res://texture (6).png" type="Texture" id=45]
-[ext_resource path="res://TESET.jpeg" type="Texture" id=46]
+[ext_resource path="res://Sprites/texture (6).png" type="Texture" id=45]
+[ext_resource path="res://Sprites/TESET.jpeg" type="Texture" id=46]
 
 [sub_resource type="Environment" id=1]
 background_mode = 4
@@ -390,7 +390,6 @@ flag_disable_z = true
 spread = 10.0
 gravity = Vector3( 0, 0, 0 )
 initial_velocity = -50000.0
-angular_velocity = -1.0
 orbit_velocity = 0.0
 orbit_velocity_random = 0.0
 scale = 10.0
@@ -565,6 +564,7 @@ attenuation = 0.5
 [node name="Player" type="KinematicBody2D" parent="Node2D" groups=[
 "Player",
 ]]
+editor/display_folded = true
 position = Vector2( 1856, 3468 )
 scale = Vector2( 0.6, 0.6 )
 z_index = 10
@@ -748,6 +748,12 @@ material = SubResource( 57 )
 position = Vector2( 2464, 3296 )
 z_index = 50
 texture = ExtResource( 44 )
+
+[node name="Area2D2" type="Area2D" parent="honey"]
+script = ExtResource( 36 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="honey/Area2D2"]
+shape = SubResource( 51 )
 
 [node name="ParallaxBackground" type="ParallaxBackground" parent="."]
 

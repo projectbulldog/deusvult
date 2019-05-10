@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/honey.jpeg-94d5a6ac7d9630207dae2c62fde4e0e8.stex"
+path="res://.import/TESET.jpeg-8ad2a2bad50f630fa0113d1a44deb66f.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://honey.jpeg"
-dest_files=[ "res://.import/honey.jpeg-94d5a6ac7d9630207dae2c62fde4e0e8.stex" ]
+source_file="res://Sprites/TESET.jpeg"
+dest_files=[ "res://.import/TESET.jpeg-8ad2a2bad50f630fa0113d1a44deb66f.stex" ]
 
 [params]
 
@@ -19,8 +19,8 @@ compress/lossy_quality=0.7
 compress/hdr_mode=0
 compress/bptc_ldr=0
 compress/normal_map=0
-flags/repeat=1
-flags/filter=true
+flags/repeat=0
+flags/filter=false
 flags/mipmaps=false
 flags/anisotropic=false
 flags/srgb=2

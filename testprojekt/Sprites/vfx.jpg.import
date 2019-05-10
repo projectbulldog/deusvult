@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/TESET3.jpeg-c01a3a293f010595c8986da60700f32d.stex"
+path="res://.import/vfx.jpg-5a59358eba1424020b661346ba767701.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://TESET3.jpeg"
-dest_files=[ "res://.import/TESET3.jpeg-c01a3a293f010595c8986da60700f32d.stex" ]
+source_file="res://Sprites/vfx.jpg"
+dest_files=[ "res://.import/vfx.jpg-5a59358eba1424020b661346ba767701.stex" ]
 
 [params]
 

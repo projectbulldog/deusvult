@@ -1,11 +1,13 @@
 [gd_scene load_steps=10 format=2]
 
-[ext_resource path="res://MainMenu.gd" type="Script" id=1]
+[ext_resource path="res://Scripts/MainMenu.gd" type="Script" id=1]
 [ext_resource path="res://Shaders/NoiseMultiplication.shader" type="Shader" id=2]
-[ext_resource path="res://texture (6).png" type="Texture" id=3]
-[ext_resource path="res://TESET.jpeg" type="Texture" id=4]
+[ext_resource path="res://Sprites/texture (6).png" type="Texture" id=3]
+[ext_resource path="res://Sprites/TESET.jpeg" type="Texture" id=4]
 [ext_resource path="res://Sprites/Particle/light.png" type="Texture" id=5]
 [ext_resource path="res://Sprites/Background/Nebula Aqua-Pink.png" type="Texture" id=6]
+
+
 
 [sub_resource type="OpenSimplexNoise" id=1]
 octaves = 1

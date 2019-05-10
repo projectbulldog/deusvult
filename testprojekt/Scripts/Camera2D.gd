@@ -58,6 +58,7 @@ func set_camera_limits():
 func _physics_process(delta):
 	self.offset = lerp(self.offset, lerpOffset, 0.02)
 	if(objectToFollow != null):
+#		Nicht ruckartig schneller werden, sondern langsam über Zeit
 		currentLerp =  lerp(currentLerp, lerpObject, 1)
 #		Falls nicht Spieler angezeigt werden soll: Vector zwischen Spieler und Objekt / 3
 #		Somit wird nicht voll auf das Objekt gezoomt, sonder nur in die Richtung
@@ -77,16 +78,17 @@ func _physics_process(delta):
 		var lerpMotion = Vector2(0,0)
 		
 #		Kamera soll beim hinunterspringen weiter nach unten schau
+#		ToDo noch keine schöne lösung
 		var correctionY = 0
-		if(player.motion.y > 2500):
-			lerpCorrectionY =  1 + pow(lerp(currentLerp, 2 + (player.motion.y - 2500) * 0.001, 0.1), 2)
+		if(player.motion.y > 2000):
+			lerpCorrectionY =  1 + pow(lerp(currentLerp, 2 + (player.motion.y - 2000) * 0.005, 0.1), 2)
 			correctionY = 500
 			
 		lerpMotion.x = lerp(self.global_position.x, player.global_position.x, currentLerp)
 		lerpMotion.y = lerp(self.global_position.y, player.global_position.y + correctionY, currentLerp * lerpCorrectionY)
 		
 		self.position = lerpMotion
-		self.zoom = lerp(self.zoom, lerpZoom, 0.02)
+		self.zoom = lerp(self.zoom, lerpZoom, 0.01)
 
 func setObjectToFollow(object, zoomMultiplication):
 	self.objectToFollow = object

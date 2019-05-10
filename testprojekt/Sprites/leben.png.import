@@ -2,27 +2,27 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/blitzli.png-35fd98d547357df4b6a1113202e60faa.stex"
+path="res://.import/leben.png-4cd396f02acc6f667181994684abc3dc.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://blitzli.png"
-dest_files=[ "res://.import/blitzli.png-35fd98d547357df4b6a1113202e60faa.stex" ]
+source_file="res://Sprites/leben.png"
+dest_files=[ "res://.import/leben.png-4cd396f02acc6f667181994684abc3dc.stex" ]
 
 [params]
 
-compress/mode=0
+compress/mode=3
 compress/lossy_quality=0.7
 compress/hdr_mode=0
 compress/bptc_ldr=0
 compress/normal_map=0
 flags/repeat=0
 flags/filter=true
-flags/mipmaps=false
-flags/anisotropic=false
+flags/mipmaps=true
+flags/anisotropic=true
 flags/srgb=2
 process/fix_alpha_border=true
 process/premult_alpha=false
