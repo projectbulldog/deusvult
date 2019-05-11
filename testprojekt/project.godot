@@ -22,6 +22,7 @@ config/icon="res://Sprites/icon.png"
 [autoload]
 
 Enums="*res://Enums.gd"
+GameState="*res://GameState.gd"
 
 [debug]
 

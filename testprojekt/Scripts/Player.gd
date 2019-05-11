@@ -258,6 +258,7 @@ func takeDamage(damage):
 		$StateManager.take_Damage(damage)
 		tookDamage = true
 		invincible = true
+		GameState.stopMovingEnemies = true
 		$StateManager/DamageStopMovingTimer.start()
 		$StateManager/InvincibilityTimer.start()
 		motion = Vector2(0.0, 0.0)
@@ -275,6 +276,7 @@ func attackFinished():
 
 func _on_DamageStopMovingTimer_timeout():
 	tookDamage = false
+	GameState.stopMovingEnemies = false
 
 func CueSignal(object, zoom):
 	camera.setObjectToFollow(object, zoom)

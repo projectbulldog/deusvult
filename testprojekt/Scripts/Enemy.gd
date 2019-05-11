@@ -16,6 +16,10 @@ var impulse = Vector2(0, 0)
 var impulseDamp = 0.8
 
 func _physics_process(delta):
+	if (GameState.stopMovingEnemies):
+		motion = Vector2(0, 0)
+		return
+	
 	# GRAVITY
 	motion.y += delta * GRAVITY
 	
