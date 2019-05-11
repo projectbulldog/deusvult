@@ -465,7 +465,7 @@ shader_param/tintNoise = ExtResource( 43 )
 extents = Vector2( 2560, 800 )
 
 [sub_resource type="RectangleShape2D" id=60]
-extents = Vector2( 661.566, 1760 )
+extents = Vector2( 564.368, 1760 )
 
 [node name="World" type="Node"]
 
@@ -479,7 +479,7 @@ z_index = 2
 editor/display_folded = true
 position = Vector2( 6455.98, 926.886 )
 scale = Vector2( 0.6, 0.6 )
-offset = Vector2( 100, -100 )
+offset = Vector2( 100, 0 )
 current = true
 zoom = Vector2( 1.2, 1.2 )
 drag_margin_v_enabled = false
@@ -688,7 +688,7 @@ position = Vector2( 6789.51, 2146.82 )
 script = ExtResource( 45 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D2"]
-position = Vector2( 297, 0 )
+position = Vector2( 399.96, 0 )
 shape = SubResource( 60 )
 [connection signal="on_health_changed" from="Node2D/Player/StateManager" to="Node2D/Camera2D/Interface" method="_on_StateManager_on_health_changed"]
 [connection signal="timeout" from="Node2D/Player/StateManager/DamageStopMovingTimer" to="Node2D/Player" method="_on_DamageStopMovingTimer_timeout"]
