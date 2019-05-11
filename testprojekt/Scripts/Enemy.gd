@@ -1,7 +1,7 @@
 extends KinematicBody2D
 
 const GRAVITY = 3500
-const SPEED = 150
+const SPEED = 500
 var direction = 1;
 
 var motion = Vector2()
@@ -27,7 +27,7 @@ func _physics_process(delta):
 		if(is_on_floor()):
 			$RayCastGround.enabled = true
 			$RayCastWall.enabled = true
-		if(!$RayCastGround.is_colliding() || $RayCastWall.is_colliding()):
+		if(!$RayCastGround.is_colliding() || $RayCastWall.is_colliding()) && is_on_floor():
 			direction *= -1
 			self.scale.x *= -1
 		motion.x = SPEED * direction

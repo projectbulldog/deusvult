@@ -586,12 +586,14 @@ autoplay = true
 [node name="Player" type="KinematicBody2D" parent="GameplayObjects/PlayerNode" groups=[
 "Player",
 ]]
+editor/display_folded = true
 scale = Vector2( 0.6, 0.6 )
 z_index = 10
 z_as_relative = false
 script = ExtResource( 9 )
 
 [node name="StateManager" type="Node" parent="GameplayObjects/PlayerNode/Player"]
+editor/display_folded = true
 script = ExtResource( 10 )
 
 [node name="DamageStopMovingTimer" type="Timer" parent="GameplayObjects/PlayerNode/Player/StateManager"]
@@ -613,6 +615,7 @@ z_as_relative = false
 shape = SubResource( 6 )
 
 [node name="Sprite" type="Sprite" parent="GameplayObjects/PlayerNode/Player"]
+editor/display_folded = true
 scale = Vector2( 0.26, 0.26 )
 texture = ExtResource( 11 )
 
@@ -678,7 +681,6 @@ stream = ExtResource( 34 )
 stream = ExtResource( 35 )
 
 [node name="Enemies" type="Node" parent="GameplayObjects"]
-editor/display_folded = true
 
 [node name="Enemy2" parent="GameplayObjects/Enemies" instance=ExtResource( 36 )]
 position = Vector2( 4849.03, 3872 )
@@ -686,6 +688,7 @@ position = Vector2( 4849.03, 3872 )
 [node name="Enemy" parent="GameplayObjects/Enemies" instance=ExtResource( 36 )]
 
 [node name="LevelDesign" type="Node" parent="."]
+editor/display_folded = true
 
 [node name="BlackBox" type="TileMap" parent="LevelDesign"]
 z_index = -10
