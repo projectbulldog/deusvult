@@ -56,14 +56,17 @@ func _ready():
 func SetCameraModeDefault(cameraModeFrom):
 	if(cameraModeFrom == cameraMode):
 		self.cameraMode = Enums.CAMERAMODE.DEFAULT
+		currentLerp = 0.02
 
 func SetCameraModeOnRailX(height = null):
 	self.cameraMode = Enums.CAMERAMODE.ONRAILX
 	cameraModeRailXHeight = height
+	currentLerp = 0
 	
 func SetCameraModeOnRailY(width = null):
 	self.cameraMode = Enums.CAMERAMODE.ONRAILY
 	cameraModeRailYWidth = width
+	currentLerp = 0
 
 func set_camera_limits():
 #	Kamera darf maximal bis zu den Ecken der Blackbox gehen (topleft, topright, bottomleft, bottom right)
@@ -96,15 +99,17 @@ func _physics_process(delta):
 
 func mode_RailY(delta):
 		var lerpMotion = Vector2(0,0)
-		lerpMotion.x = lerp(self.global_position.x, cameraModeRailYWidth, 0.05)
+		currentLerp =  lerp(currentLerp, lerpPlayer * 2, 1)
+		lerpMotion.x = lerp(self.global_position.x, cameraModeRailYWidth, 0.02)
 		lerpMotion.y = lerp(self.global_position.y, player.global_position.y, currentLerp)
 		self.position = lerpMotion
 		self.zoom = lerp(self.zoom, lerpZoom, 0.02)
 
 func mode_RailX(delta):
 		var lerpMotion = Vector2(0,0)
+		currentLerp = lerp(currentLerp, lerpPlayer, 0.01)
 		lerpMotion.x = lerp(self.global_position.x, player.global_position.x, currentLerp)
-		lerpMotion.y = lerp(self.global_position.y, cameraModeRailXHeight, 0.05)
+		lerpMotion.y = lerp(self.global_position.y, cameraModeRailXHeight, 0.01)
 		self.position = lerpMotion
 		self.zoom = lerp(self.zoom, lerpZoom, 0.02)
 
