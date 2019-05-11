@@ -72,6 +72,7 @@ func changeDirection():
 func _physics_process(delta):
 	if tookDamage:
 		return
+	print(is_on_wall())
 
 	var lastMotionY = motion.y
 	# GRAVITY
@@ -170,7 +171,7 @@ func _physics_process(delta):
 	onWall = false
 	if is_on_wall() && !is_on_floor() && !Input.is_action_pressed("jump") && hasWallSlideAbility:
 		motion.y = 300
-		motion.x = 2 * direction
+		motion.x = 500 * direction
 		onWall = true
 		canJump = true
 		jumpTime = 0
