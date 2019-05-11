@@ -20,4 +20,3 @@ Button/styles/focus = null
 Button/styles/hover = null
 Button/styles/normal = SubResource( 1 )
 Button/styles/pressed = null
-

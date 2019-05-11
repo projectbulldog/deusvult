@@ -49,6 +49,10 @@ var onWall = false
 
 var stopMoving = false
 
+var hasDashAbility = false
+var hasDoubleJumpAbility = false
+var hasWallSlideAbility = false
+
 func _ready():
 	dashCooldownTimer = Timer.new()
 	dashCooldownTimer.one_shot = true
@@ -95,21 +99,22 @@ func _physics_process(delta):
 			motion.x = 0
 		
 	# DASH
-	if Input.is_action_just_pressed("dash") && canDash:
-		canDash = false
-		if is_on_wall():
-			self.changeDirection()
-		isDashing = true
-		dashCooldownTimer.start()
-		$Sprite/DashParticles.emitting = true
-	if isDashing && dashTimeLength <= maxDashTime:
-		motion.y = 0
-		motion.x = direction * SPEED * 5.0
-		dashTimeLength += delta
-	if isDashing && dashTimeLength > maxDashTime:
-		isDashing = false
-		dashTimeLength = 0
-		motion.x = 0
+	if(hasDashAbility):
+		if Input.is_action_just_pressed("dash") && canDash:
+			canDash = false
+			if is_on_wall():
+				self.changeDirection()
+			isDashing = true
+			dashCooldownTimer.start()
+			$Sprite/DashParticles.emitting = true
+		if isDashing && dashTimeLength <= maxDashTime:
+			motion.y = 0
+			motion.x = direction * SPEED * 5.0
+			dashTimeLength += delta
+		if isDashing && dashTimeLength > maxDashTime:
+			isDashing = false
+			dashTimeLength = 0
+			motion.x = 0
 	
 	# Coyote Time
 	if !is_on_floor() && coyoteTime <= maxCoyoteTime:
@@ -122,7 +127,7 @@ func _physics_process(delta):
 		isOnFloorWithCoyote = true
 	
 	# JUMPING
-	if !isOnFloorWithCoyote && !canJump && canDoubleJump && Input.is_action_just_pressed("jump"):
+	if !isOnFloorWithCoyote && !canJump && canDoubleJump && Input.is_action_just_pressed("jump") && hasDoubleJumpAbility:
 		canDoubleJump = false
 		justDoubleJumped = true
 		motion.y = JUMP_SPEED * 1.5
@@ -160,7 +165,7 @@ func _physics_process(delta):
 	
 #	Wall Jump
 	onWall = false
-	if is_on_wall() && !is_on_floor() && !Input.is_action_pressed("jump"):
+	if is_on_wall() && !is_on_floor() && !Input.is_action_pressed("jump") && hasWallSlideAbility:
 		motion.y = 300
 		motion.x = 2 * direction
 		onWall = true
@@ -280,3 +285,15 @@ func _on_InvincibilityTimer_timeout():
 
 func _on_WallJumpMotionTimer_timeout():
 	stopMoving = false
+
+
+func _on_CheckBox_toggled(button_pressed):
+	self.hasDashAbility = button_pressed
+
+
+func _on_CheckBox2_toggled(button_pressed):
+	self.hasDoubleJumpAbility = button_pressed
+
+
+func _on_CheckBox3_toggled(button_pressed):
+	self.hasWallSlideAbility = button_pressed
