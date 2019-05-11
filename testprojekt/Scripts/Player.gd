@@ -72,7 +72,6 @@ func changeDirection():
 func _physics_process(delta):
 	if tookDamage:
 		return
-	print(is_on_wall())
 
 	var lastMotionY = motion.y
 	# GRAVITY
@@ -237,8 +236,10 @@ func _process(delta):
 func attack():	
 #	Alle überlappenden Elemente durchgehen und wenn sie Damageable sind, ihnen Schaden zufügen
 	var bodies = $Sprite/Slash/SlashArea.get_overlapping_bodies()
+	var anyOneHit = false
 	for body in bodies:
 		if(body.is_in_group("Damageable")):
+			anyOneHit = true
 			var direction = body.global_position.x - self.global_position.x 
 			if(direction <= 0):
 				direction = -1
@@ -246,6 +247,10 @@ func attack():
 				direction = 1
 			body.takeDamage(Vector2(1500 * direction, -200))
 			camera.add_trauma(0.5)
+	if anyOneHit:
+		$Sprite/SwordSlashHit.play()
+	else:
+		$Sprite/SwordSlash.play()
 	var areas = $Sprite/Slash/SlashArea.get_overlapping_areas()
 	for area in areas:
 		if(area.is_in_group("Damageable")):
