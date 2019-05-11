@@ -86,8 +86,7 @@ func _physics_process(delta):
 		mode_RailX(delta)
 	if(cameraMode == Enums.CAMERAMODE.ONRAILY):
 		mode_RailY(delta)
-	
-	
+
 	self.offset = lerp(self.offset, lerpOffset, 0.02)
 	if(objectToFollow != null):
 #		Nicht ruckartig schneller werden, sondern langsam über Zeit
@@ -95,15 +94,18 @@ func _physics_process(delta):
 #		Falls nicht Spieler angezeigt werden soll: Vector zwischen Spieler und Objekt / 3
 #		Somit wird nicht voll auf das Objekt gezoomt, sonder nur in die Richtung
 		var vectorTo = player.global_position - objectToFollow.global_position
-		self.position = lerp(self.global_position, player.global_position - vectorTo / 3, currentLerp)
+		self.global_position = lerp(self.global_position, player.global_position - vectorTo / 3, currentLerp)
 		self.zoom = lerp(self.zoom, lerpZoom, 0.02)
+
+	if lookDown:
+		self.offset.y = lerp(self.offset.y, lerpOffset.y + 500, 0.1)
 
 func mode_RailY(delta):
 		var lerpMotion = Vector2(0,0)
 		currentLerp =  lerp(currentLerp, lerpPlayer * 2, 0.01)
 		lerpMotion.x = lerp(self.global_position.x, cameraModeRailYWidth, 0.02)
 		lerpMotion.y = lerp(self.global_position.y, player.global_position.y, currentLerp)
-		self.position = lerpMotion
+		self.global_position = lerpMotion
 		self.zoom = lerp(self.zoom, lerpZoom, 0.02)
 
 func mode_RailX(delta):
@@ -111,33 +113,31 @@ func mode_RailX(delta):
 		currentLerp = lerp(currentLerp, lerpPlayer, 0.01)
 		lerpMotion.x = lerp(self.global_position.x, player.global_position.x, currentLerp)
 		lerpMotion.y = lerp(self.global_position.y, cameraModeRailXHeight, 0.01)
-		self.position = lerpMotion
+		self.global_position = lerpMotion
 		self.zoom = lerp(self.zoom, lerpZoom, 0.02)
 
 func mode_Default(delta):
-#	else:
-#		Nicht ruckartig schneller werden, sondern langsam über Zeit
-		currentLerp =  lerp(currentLerp, lerpPlayer, 0.001)
-		
-#		Kamera soll nach oben langsamer gehen. Nach unten soll sie schneller sein damit man was sieht
-		if (player.motion.y > 0):
-			lerpCorrectionY = lerp(lerpCorrectionY, 3, 0.03)
-			if(player.motion.y > 2000):
-				correctionY = lerp(correctionY, 600, 0.01)
-		else:
-			lerpCorrectionY = lerp(lerpCorrectionY, 0.6, 0.2)
-			correctionY = lerp(correctionY, 0, 0.1)
-		
-#		Berechnung der Bewegung
-		var lerpMotion = Vector2(0,0)
-		
-#		Kamera soll beim hinunterspringen weiter nach unten schau
-#		ToDo noch keine schöne lösung
-			
-		lerpMotion.x = lerp(self.global_position.x, player.global_position.x, currentLerp)
-		lerpMotion.y = lerp(self.global_position.y, player.global_position.y + correctionY, currentLerp * lerpCorrectionY)
-		self.position = lerpMotion
-		self.zoom = lerp(self.zoom, lerpZoom, 0.02)
+#	Nicht ruckartig schneller werden, sondern langsam über Zeit
+	currentLerp =  lerp(currentLerp, lerpPlayer, 0.001)
+
+#	Kamera soll nach oben langsamer gehen. Nach unten soll sie schneller sein damit man was sieht
+	if (player.motion.y > 0):
+		lerpCorrectionY = lerp(lerpCorrectionY, 3, 0.03)
+		if(player.motion.y > 2000):
+			correctionY = lerp(correctionY, 600, 0.01)
+	else:
+		lerpCorrectionY = lerp(lerpCorrectionY, 0.6, 0.2)
+		correctionY = lerp(correctionY, 0, 0.1)
+
+#	Berechnung der Bewegung
+	var lerpMotion = Vector2(0,0)
+
+#	Kamera soll beim hinunterspringen weiter nach unten schau
+#	ToDo noch keine schöne lösung
+	lerpMotion.x = lerp(self.global_position.x, player.global_position.x, currentLerp)
+	lerpMotion.y = lerp(self.global_position.y, player.global_position.y + correctionY, currentLerp * lerpCorrectionY)
+	self.global_position = lerpMotion
+	self.zoom = lerp(self.zoom, lerpZoom, 0.02)
 
 
 func setObjectToFollow(object, zoomMultiplication):
@@ -155,9 +155,6 @@ func _process(delta):
 		lookDown = true
 	if lookDown && !Input.is_action_pressed("lookDown"):
 		lookDown = false
-	
-	if lookDown:
-		self.offset.y += lerp(self.offset.y, lerpOffset.y + 500, 10) * delta
 
 func add_trauma(traumaAdd):
 	isShake = true
@@ -179,7 +176,7 @@ func shake(delta):
 		offset *= max_camera_offset * shake_power * pow(trauma, 2) # squared or cubed
 		# not global position, this is relative to parent
 		# (normally camera position is 0,0)
-		self.position += offset
+		self.global_position += offset
 		
 		# trauma decreases linearly over time
 		var new_trauma = trauma - (trauma_depletion * delta)
