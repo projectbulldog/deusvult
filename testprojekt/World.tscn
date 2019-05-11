@@ -18,7 +18,7 @@
 [ext_resource path="res://Sprites/Nyx/Idle/3_nyx-idle.png" type="Texture" id=16]
 [ext_resource path="res://Sprites/Nyx/Jump/nyx-up-jump.png" type="Texture" id=17]
 [ext_resource path="res://Sprites/Nyx/Jump/nyx-down-jump.png" type="Texture" id=18]
-[ext_resource path="res://Sprites/Nyx/charakter.png" type="Texture" id=19]
+[ext_resource path="res://Sprites/Nyx/TakeDamage/nyx-hit.png" type="Texture" id=19]
 [ext_resource path="res://Sprites/Nyx/Walk/1_nyx-walk.png" type="Texture" id=20]
 [ext_resource path="res://Sprites/Nyx/Walk/2_nyx-walk.png" type="Texture" id=21]
 [ext_resource path="res://Sprites/Nyx/Walk/3_nyx-walk.png" type="Texture" id=22]
@@ -223,6 +223,20 @@ tracks/4/keys = {
 "update": 0,
 "values": [ -90.0 ]
 }
+tracks/5/type = "method"
+tracks/5/path = NodePath("SwordSlash")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [ 0.0 ],
+"method": "play"
+} ]
+}
 
 [sub_resource type="Animation" id=9]
 length = 0.8
@@ -269,6 +283,7 @@ tracks/0/keys = {
 }
 
 [sub_resource type="Animation" id=12]
+length = 0.5
 tracks/0/type = "value"
 tracks/0/path = NodePath(".:texture")
 tracks/0/interp = 1

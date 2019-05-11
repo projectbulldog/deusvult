@@ -102,7 +102,7 @@ func _physics_process(delta):
 
 func mode_RailY(delta):
 		var lerpMotion = Vector2(0,0)
-		currentLerp =  lerp(currentLerp, lerpPlayer * 2, 0.01)
+		currentLerp =  lerp(currentLerp, lerpPlayer * 2, 0.02)
 		lerpMotion.x = lerp(self.global_position.x, cameraModeRailYWidth, 0.02)
 		lerpMotion.y = lerp(self.global_position.y, player.global_position.y, currentLerp)
 		self.global_position = lerpMotion
