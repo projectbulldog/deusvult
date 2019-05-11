@@ -70,7 +70,8 @@ func SetCameraModeOnRailY(width = null):
 
 func set_camera_limits():
 #	Kamera darf maximal bis zu den Ecken der Blackbox gehen (topleft, topright, bottomleft, bottom right)
-	var blackBoxTileMap = get_parent().find_node("BlackBox")
+	var blackBoxTileMap = get_tree().get_root().get_node("World").find_node("BlackBox")
+	print(blackBoxTileMap)
 	var map_limits = blackBoxTileMap.get_used_rect()
 	var map_cellsize = blackBoxTileMap.cell_size
 	self.limit_left = map_limits.position.x * map_cellsize.x

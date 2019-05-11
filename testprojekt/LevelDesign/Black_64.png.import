@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Black_64.png-d814586cb9e16cdf3798ac87979b9d9b.stex"
+path="res://.import/Black_64.png-e0e0ab5a970aba90523cc9c70e9d34f5.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Tiles/Black_64.png"
-dest_files=[ "res://.import/Black_64.png-d814586cb9e16cdf3798ac87979b9d9b.stex" ]
+source_file="res://LevelDesign/Black_64.png"
+dest_files=[ "res://.import/Black_64.png-e0e0ab5a970aba90523cc9c70e9d34f5.stex" ]
 
 [params]
 
