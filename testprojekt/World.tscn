@@ -1,4 +1,4 @@
-[gd_scene load_steps=110 format=2]
+[gd_scene load_steps=112 format=2]
 
 [ext_resource path="res://Scripts/Camera2D.gd" type="Script" id=1]
 [ext_resource path="res://Scripts/Interface.gd" type="Script" id=2]
@@ -8,44 +8,46 @@
 [ext_resource path="res://Sprites/leben-verloren.png" type="Texture" id=6]
 [ext_resource path="res://OpenSans-Regular.ttf" type="DynamicFontData" id=7]
 [ext_resource path="res://Sounds/Christopher Larkin - Hollow Knight (Original Soundtrack) - 03 Crossroads.wav" type="AudioStream" id=8]
-[ext_resource path="res://Sounds/Footstep.wav" type="AudioStream" id=9]
-[ext_resource path="res://Scripts/Player.gd" type="Script" id=10]
-[ext_resource path="res://Scripts/StateManager.gd" type="Script" id=11]
-[ext_resource path="res://Sprites/Nyx/Idle/4_nyx-idle.png" type="Texture" id=12]
-[ext_resource path="res://Sprites/Nyx/Attack/nyx-attack.png" type="Texture" id=13]
-[ext_resource path="res://Sprites/Nyx/AttackUp/nyx-attack-up.png" type="Texture" id=14]
-[ext_resource path="res://Sprites/Nyx/Idle/1_nyx-idle.png" type="Texture" id=15]
-[ext_resource path="res://Sprites/Nyx/Idle/2_nyx-idle.png" type="Texture" id=16]
-[ext_resource path="res://Sprites/Nyx/Idle/3_nyx-idle.png" type="Texture" id=17]
-[ext_resource path="res://Sprites/Nyx/Jump/nyx-up-jump.png" type="Texture" id=18]
-[ext_resource path="res://Sprites/Nyx/Jump/nyx-down-jump.png" type="Texture" id=19]
-[ext_resource path="res://Sprites/Nyx/charakter.png" type="Texture" id=20]
-[ext_resource path="res://Sprites/Nyx/Walk/1_nyx-walk.png" type="Texture" id=21]
-[ext_resource path="res://Sprites/Nyx/Walk/2_nyx-walk.png" type="Texture" id=22]
-[ext_resource path="res://Sprites/Nyx/Walk/3_nyx-walk.png" type="Texture" id=23]
-[ext_resource path="res://Sprites/Nyx/Walk/4_nyx-walk.png" type="Texture" id=24]
-[ext_resource path="res://Sprites/Nyx/Walk/5_nyx-walk.png" type="Texture" id=25]
-[ext_resource path="res://Sprites/Nyx/Walk/6_nyx-walk.png" type="Texture" id=26]
-[ext_resource path="res://Sprites/Nyx/Walk/7_nyx-walk.png" type="Texture" id=27]
-[ext_resource path="res://Sprites/Nyx/Walk/8_nyx-walk.png" type="Texture" id=28]
-[ext_resource path="res://Sprites/Nyx/WallJump/nyx_wall-jump.png" type="Texture" id=29]
-[ext_resource path="res://Scripts/AnimationTree.gd" type="Script" id=30]
-[ext_resource path="res://Sprites/Particle/dash_effect_020002.png" type="Texture" id=31]
-[ext_resource path="res://Scenes/Enemy.tscn" type="PackedScene" id=32]
-[ext_resource path="res://LevelDesign/tileset_blackbox.tres" type="TileSet" id=33]
-[ext_resource path="res://Scripts/CameraModeOnRailX.gd" type="Script" id=34]
-[ext_resource path="res://Scripts/CameraModeOnRailY.gd" type="Script" id=35]
-[ext_resource path="res://Shaders/NoiseMultiplication.shader" type="Shader" id=36]
-[ext_resource path="res://Sprites/texture (6).png" type="Texture" id=37]
-[ext_resource path="res://Sprites/tes.tres" type="Texture" id=38]
-[ext_resource path="res://Sprites/TESET.jpeg" type="Texture" id=39]
-[ext_resource path="res://Sprites/Particle/light.png" type="Texture" id=40]
-[ext_resource path="res://Scenes/Butterfly.tscn" type="PackedScene" id=41]
-[ext_resource path="res://Sprites/honey.jpeg" type="Texture" id=42]
-[ext_resource path="res://Sprites/teset2.jpeg" type="Texture" id=43]
-[ext_resource path="res://Scripts/CameraCue.gd" type="Script" id=44]
-[ext_resource path="res://Scripts/Grass.gd" type="Script" id=45]
-[ext_resource path="res://Sprites/HollowKnight/ash_grass_01_blizzard0001.png" type="Texture" id=46]
+[ext_resource path="res://Scripts/Player.gd" type="Script" id=9]
+[ext_resource path="res://Scripts/StateManager.gd" type="Script" id=10]
+[ext_resource path="res://Sprites/Nyx/Idle/4_nyx-idle.png" type="Texture" id=11]
+[ext_resource path="res://Sprites/Nyx/Attack/nyx-attack.png" type="Texture" id=12]
+[ext_resource path="res://Sprites/Nyx/AttackUp/nyx-attack-up.png" type="Texture" id=13]
+[ext_resource path="res://Sprites/Nyx/Idle/1_nyx-idle.png" type="Texture" id=14]
+[ext_resource path="res://Sprites/Nyx/Idle/2_nyx-idle.png" type="Texture" id=15]
+[ext_resource path="res://Sprites/Nyx/Idle/3_nyx-idle.png" type="Texture" id=16]
+[ext_resource path="res://Sprites/Nyx/Jump/nyx-up-jump.png" type="Texture" id=17]
+[ext_resource path="res://Sprites/Nyx/Jump/nyx-down-jump.png" type="Texture" id=18]
+[ext_resource path="res://Sprites/Nyx/charakter.png" type="Texture" id=19]
+[ext_resource path="res://Sprites/Nyx/Walk/1_nyx-walk.png" type="Texture" id=20]
+[ext_resource path="res://Sprites/Nyx/Walk/2_nyx-walk.png" type="Texture" id=21]
+[ext_resource path="res://Sprites/Nyx/Walk/3_nyx-walk.png" type="Texture" id=22]
+[ext_resource path="res://Sprites/Nyx/Walk/4_nyx-walk.png" type="Texture" id=23]
+[ext_resource path="res://Sprites/Nyx/Walk/5_nyx-walk.png" type="Texture" id=24]
+[ext_resource path="res://Sprites/Nyx/Walk/6_nyx-walk.png" type="Texture" id=25]
+[ext_resource path="res://Sprites/Nyx/Walk/7_nyx-walk.png" type="Texture" id=26]
+[ext_resource path="res://Sprites/Nyx/Walk/8_nyx-walk.png" type="Texture" id=27]
+[ext_resource path="res://Sprites/Nyx/WallJump/nyx_wall-jump.png" type="Texture" id=28]
+[ext_resource path="res://Scripts/AnimationTree.gd" type="Script" id=29]
+[ext_resource path="res://Sprites/Particle/dash_effect_020002.png" type="Texture" id=30]
+[ext_resource path="res://Sounds/Jump.wav" type="AudioStream" id=31]
+[ext_resource path="res://feedback.wav" type="AudioStream" id=32]
+[ext_resource path="res://Sounds/Footstep.wav" type="AudioStream" id=33]
+[ext_resource path="res://Scenes/Enemy.tscn" type="PackedScene" id=34]
+[ext_resource path="res://LevelDesign/tileset_blackbox.tres" type="TileSet" id=35]
+[ext_resource path="res://Scripts/CameraModeOnRailX.gd" type="Script" id=36]
+[ext_resource path="res://Scripts/CameraModeOnRailY.gd" type="Script" id=37]
+[ext_resource path="res://Shaders/NoiseMultiplication.shader" type="Shader" id=38]
+[ext_resource path="res://Sprites/texture (6).png" type="Texture" id=39]
+[ext_resource path="res://Sprites/tes.tres" type="Texture" id=40]
+[ext_resource path="res://Sprites/TESET.jpeg" type="Texture" id=41]
+[ext_resource path="res://Sprites/Particle/light.png" type="Texture" id=42]
+[ext_resource path="res://Scenes/Butterfly.tscn" type="PackedScene" id=43]
+[ext_resource path="res://Sprites/honey.jpeg" type="Texture" id=44]
+[ext_resource path="res://Sprites/teset2.jpeg" type="Texture" id=45]
+[ext_resource path="res://Scripts/CameraCue.gd" type="Script" id=46]
+[ext_resource path="res://Scripts/Grass.gd" type="Script" id=47]
+[ext_resource path="res://Sprites/HollowKnight/ash_grass_01_blizzard0001.png" type="Texture" id=48]
 
 [sub_resource type="Environment" id=1]
 background_mode = 4
@@ -83,7 +85,7 @@ tracks/0/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 1,
-"values": [ ExtResource( 13 ) ]
+"values": [ ExtResource( 12 ) ]
 }
 tracks/1/type = "method"
 tracks/1/path = NodePath("..")
@@ -151,7 +153,7 @@ tracks/0/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 1,
-"values": [ ExtResource( 14 ) ]
+"values": [ ExtResource( 13 ) ]
 }
 tracks/1/type = "method"
 tracks/1/path = NodePath("..")
@@ -220,7 +222,7 @@ tracks/0/keys = {
 "times": PoolRealArray( 0, 0.2, 0.4, 0.6 ),
 "transitions": PoolRealArray( 1, 1, 1, 1 ),
 "update": 1,
-"values": [ ExtResource( 15 ), ExtResource( 16 ), ExtResource( 17 ), ExtResource( 12 ) ]
+"values": [ ExtResource( 14 ), ExtResource( 15 ), ExtResource( 16 ), ExtResource( 11 ) ]
 }
 
 [sub_resource type="Animation" id=10]
@@ -234,7 +236,7 @@ tracks/0/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 1,
-"values": [ ExtResource( 18 ) ]
+"values": [ ExtResource( 17 ) ]
 }
 
 [sub_resource type="Animation" id=11]
@@ -248,7 +250,7 @@ tracks/0/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 1,
-"values": [ ExtResource( 19 ) ]
+"values": [ ExtResource( 18 ) ]
 }
 
 [sub_resource type="Animation" id=12]
@@ -262,7 +264,21 @@ tracks/0/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 1,
-"values": [ ExtResource( 20 ) ]
+"values": [ ExtResource( 19 ) ]
+}
+tracks/1/type = "method"
+tracks/1/path = NodePath("TakeDamage")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [ 0.0 ],
+"method": "play"
+} ]
 }
 
 [sub_resource type="Animation" id=13]
@@ -278,25 +294,24 @@ tracks/0/keys = {
 "times": PoolRealArray( 0.001, 0.002, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7 ),
 "transitions": PoolRealArray( 5.85634, 1, 0.732044, 1, 12.5533, 0.999998, 0.999999, 1, 1.68179 ),
 "update": 1,
-"values": [ ExtResource( 21 ), ExtResource( 21 ), ExtResource( 22 ), ExtResource( 23 ), ExtResource( 24 ), ExtResource( 25 ), ExtResource( 26 ), ExtResource( 27 ), ExtResource( 28 ) ]
+"values": [ ExtResource( 20 ), ExtResource( 20 ), ExtResource( 21 ), ExtResource( 22 ), ExtResource( 23 ), ExtResource( 24 ), ExtResource( 25 ), ExtResource( 26 ), ExtResource( 27 ) ]
 }
-tracks/1/type = "audio"
-tracks/1/path = NodePath("../../Camera2D/AudioStreamPlayer2D2")
+tracks/1/type = "method"
+tracks/1/path = NodePath("Walk")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"clips": [ {
-"end_offset": 0.0,
-"start_offset": 0.0,
-"stream": ExtResource( 9 )
+"times": PoolRealArray( 0.1, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"values": [ {
+"args": [ 0.0 ],
+"method": "play"
 }, {
-"end_offset": 0.0,
-"start_offset": 0.0,
-"stream": ExtResource( 9 )
-} ],
-"times": PoolRealArray( 0.1, 0.5 )
+"args": [ 0.0 ],
+"method": "play"
+} ]
 }
 
 [sub_resource type="Animation" id=14]
@@ -310,7 +325,7 @@ tracks/0/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 1,
-"values": [ ExtResource( 29 ) ]
+"values": [ ExtResource( 28 ) ]
 }
 
 [sub_resource type="AnimationNodeAnimation" id=15]
@@ -442,15 +457,15 @@ extents = Vector2( 2560, 800 )
 extents = Vector2( 564.368, 1760 )
 
 [sub_resource type="ShaderMaterial" id=58]
-shader = ExtResource( 36 )
+shader = ExtResource( 38 )
 shader_param/tint = Color( 1, 0.780392, 0.501961, 1 )
 shader_param/speed = 0.05
 shader_param/glow = 1.0
 shader_param/invertNoise1 = true
 shader_param/useNoiseColor = true
-shader_param/noise1 = ExtResource( 37 )
-shader_param/noise2 = ExtResource( 38 )
-shader_param/tintNoise = ExtResource( 39 )
+shader_param/noise1 = ExtResource( 39 )
+shader_param/noise2 = ExtResource( 40 )
+shader_param/tintNoise = ExtResource( 41 )
 
 [sub_resource type="OpenSimplexNoise" id=59]
 octaves = 1
@@ -462,15 +477,15 @@ seamless = true
 noise = SubResource( 59 )
 
 [sub_resource type="ShaderMaterial" id=61]
-shader = ExtResource( 36 )
+shader = ExtResource( 38 )
 shader_param/tint = Color( 0.435294, 0.788235, 1, 1 )
 shader_param/speed = 0.1
 shader_param/glow = 1.0
 shader_param/invertNoise1 = false
 shader_param/useNoiseColor = true
-shader_param/noise1 = ExtResource( 42 )
+shader_param/noise1 = ExtResource( 44 )
 shader_param/noise2 = SubResource( 60 )
-shader_param/tintNoise = ExtResource( 43 )
+shader_param/tintNoise = ExtResource( 45 )
 
 [sub_resource type="CircleShape2D" id=62]
 radius = 500.0
@@ -487,10 +502,9 @@ environment = SubResource( 1 )
 z_index = 2
 
 [node name="PlayerNode" type="Node2D" parent="GameplayObjects"]
-position = Vector2( 576, 2146.82 )
+position = Vector2( 640, 2400 )
 
 [node name="Camera2D" type="Camera2D" parent="GameplayObjects/PlayerNode"]
-editor/display_folded = true
 scale = Vector2( 0.6, 0.6 )
 offset = Vector2( 100, 0 )
 current = true
@@ -562,14 +576,10 @@ custom_fonts/font = SubResource( 5 )
 enabled_focus_mode = 0
 text = "WallSlide"
 
-[node name="AudioStreamPlayer2D" type="AudioStreamPlayer" parent="GameplayObjects/PlayerNode/Camera2D"]
+[node name="Background" type="AudioStreamPlayer" parent="GameplayObjects/PlayerNode/Camera2D"]
 stream = ExtResource( 8 )
 volume_db = -10.0
 autoplay = true
-
-[node name="AudioStreamPlayer2D2" type="AudioStreamPlayer" parent="GameplayObjects/PlayerNode/Camera2D"]
-stream = ExtResource( 9 )
-volume_db = -25.384
 
 [node name="Player" type="KinematicBody2D" parent="GameplayObjects/PlayerNode" groups=[
 "Player",
@@ -577,11 +587,11 @@ volume_db = -25.384
 scale = Vector2( 0.6, 0.6 )
 z_index = 10
 z_as_relative = false
-script = ExtResource( 10 )
+script = ExtResource( 9 )
 
 [node name="StateManager" type="Node" parent="GameplayObjects/PlayerNode/Player"]
 editor/display_folded = true
-script = ExtResource( 11 )
+script = ExtResource( 10 )
 
 [node name="DamageStopMovingTimer" type="Timer" parent="GameplayObjects/PlayerNode/Player/StateManager"]
 wait_time = 0.3
@@ -602,8 +612,9 @@ z_as_relative = false
 shape = SubResource( 6 )
 
 [node name="Sprite" type="Sprite" parent="GameplayObjects/PlayerNode/Player"]
+editor/display_folded = true
 scale = Vector2( 0.26, 0.26 )
-texture = ExtResource( 12 )
+texture = ExtResource( 11 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="GameplayObjects/PlayerNode/Player/Sprite"]
 anims/Attack = SubResource( 7 )
@@ -620,7 +631,7 @@ tree_root = SubResource( 50 )
 anim_player = NodePath("../AnimationPlayer")
 active = true
 parameters/playback = SubResource( 51 )
-script = ExtResource( 30 )
+script = ExtResource( 29 )
 
 [node name="Slash" type="Sprite" parent="GameplayObjects/PlayerNode/Player/Sprite"]
 editor/display_folded = true
@@ -628,13 +639,12 @@ position = Vector2( 820.512, -19.6523 )
 scale = Vector2( 2.26, 2.06 )
 z_index = 1
 
-[node name="Area2D" type="Area2D" parent="GameplayObjects/PlayerNode/Player/Sprite/Slash"]
-editor/display_folded = true
+[node name="SlashArea" type="Area2D" parent="GameplayObjects/PlayerNode/Player/Sprite/Slash"]
 position = Vector2( -0.000976563, 9.54004 )
 collision_layer = 31
 collision_mask = 31
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="GameplayObjects/PlayerNode/Player/Sprite/Slash/Area2D"]
+[node name="SlashShape" type="CollisionShape2D" parent="GameplayObjects/PlayerNode/Player/Sprite/Slash/SlashArea"]
 position = Vector2( -186.879, 0 )
 rotation = 1.5708
 shape = SubResource( 52 )
@@ -648,22 +658,33 @@ amount = 20
 lifetime = 0.07
 one_shot = true
 process_material = SubResource( 55 )
-texture = ExtResource( 31 )
+texture = ExtResource( 30 )
+
+[node name="Jump" type="AudioStreamPlayer" parent="GameplayObjects/PlayerNode/Player/Sprite"]
+stream = ExtResource( 31 )
+volume_db = -20.0
+
+[node name="TakeDamage" type="AudioStreamPlayer" parent="GameplayObjects/PlayerNode/Player/Sprite"]
+stream = ExtResource( 32 )
+
+[node name="Walk" type="AudioStreamPlayer" parent="GameplayObjects/PlayerNode/Player/Sprite"]
+stream = ExtResource( 33 )
+volume_db = -10.0
 
 [node name="Enemies" type="Node" parent="GameplayObjects"]
 editor/display_folded = true
 
-[node name="Enemy2" parent="GameplayObjects/Enemies" instance=ExtResource( 32 )]
+[node name="Enemy2" parent="GameplayObjects/Enemies" instance=ExtResource( 34 )]
 position = Vector2( 4849.03, 3872 )
 
-[node name="Enemy" parent="GameplayObjects/Enemies" instance=ExtResource( 32 )]
+[node name="Enemy" parent="GameplayObjects/Enemies" instance=ExtResource( 34 )]
 
 [node name="LevelDesign" type="Node" parent="."]
 editor/display_folded = true
 
 [node name="BlackBox" type="TileMap" parent="LevelDesign"]
 z_index = -10
-tile_set = ExtResource( 33 )
+tile_set = ExtResource( 35 )
 collision_layer = 35
 collision_mask = 35
 format = 1
@@ -672,7 +693,7 @@ tile_data = PoolIntArray( 65528, 7, 0, 0, 7, 0, 189, 7, 0, 196666, 7, 0, 196674,
 [node name="Area2D" type="Area2D" parent="LevelDesign"]
 editor/display_folded = true
 position = Vector2( 7328, 3616 )
-script = ExtResource( 34 )
+script = ExtResource( 36 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="LevelDesign/Area2D"]
 position = Vector2( 2976, 32 )
@@ -681,7 +702,7 @@ shape = SubResource( 56 )
 [node name="Area2D2" type="Area2D" parent="LevelDesign"]
 editor/display_folded = true
 position = Vector2( 6789.51, 2146.82 )
-script = ExtResource( 35 )
+script = ExtResource( 37 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="LevelDesign/Area2D2"]
 position = Vector2( 399.96, 0 )
@@ -698,23 +719,23 @@ material = SubResource( 58 )
 position = Vector2( 3294.48, 7888.12 )
 scale = Vector2( 3.62051, 3.60904 )
 z_index = -50
-texture = ExtResource( 40 )
+texture = ExtResource( 42 )
 offset = Vector2( 469.496, -1531.79 )
 
 [node name="InteractiveObjects" type="Node" parent="."]
 editor/display_folded = true
 
-[node name="Butterfly" parent="InteractiveObjects" instance=ExtResource( 41 )]
+[node name="Butterfly" parent="InteractiveObjects" instance=ExtResource( 43 )]
 
 [node name="honey" type="Sprite" parent="InteractiveObjects"]
 editor/display_folded = true
 material = SubResource( 61 )
 position = Vector2( 2464, 3296 )
 z_index = 50
-texture = ExtResource( 40 )
+texture = ExtResource( 42 )
 
 [node name="Area2D2" type="Area2D" parent="InteractiveObjects/honey"]
-script = ExtResource( 44 )
+script = ExtResource( 46 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="InteractiveObjects/honey/Area2D2"]
 shape = SubResource( 62 )
@@ -726,7 +747,7 @@ editor/display_folded = true
 position = Vector2( 5184, 3872 )
 collision_layer = 4
 collision_mask = 4
-script = ExtResource( 45 )
+script = ExtResource( 47 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="InteractiveObjects/Area2D"]
 position = Vector2( -7.82, 0 )
@@ -735,11 +756,11 @@ shape = SubResource( 63 )
 [node name="ash_grass_01_blizzard0001" type="Sprite" parent="InteractiveObjects/Area2D"]
 editor/display_folded = true
 position = Vector2( 0, -0.000244141 )
-texture = ExtResource( 46 )
+texture = ExtResource( 48 )
 
 [node name="Area2D" type="Area2D" parent="InteractiveObjects/Area2D/ash_grass_01_blizzard0001"]
 editor/display_folded = true
-script = ExtResource( 44 )
+script = ExtResource( 46 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="InteractiveObjects/Area2D/ash_grass_01_blizzard0001/Area2D"]
 shape = SubResource( 62 )

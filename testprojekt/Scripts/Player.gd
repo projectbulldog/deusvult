@@ -135,6 +135,9 @@ func _physics_process(delta):
 	if Input.is_action_pressed("jump") && jumpTime <= 0 && canJump && !is_on_ceiling():
 		motion.y = JUMP_SPEED
 		jumpTime = 0.01
+		if(!$Sprite/Jump.playing):
+			$Sprite/Jump.volume_db = -20
+			$Sprite/Jump.play()
 #		WallJump
 		if(is_on_wall() && !isOnFloorWithCoyote):
 			motion.x = -direction * SPEED;
@@ -232,7 +235,7 @@ func _process(delta):
 
 func attack():
 #	Alle überlappenden Elemente durchgehen und wenn sie Damageable sind, ihnen Schaden zufügen
-	var bodies = $Sprite/Slash/Area2D.get_overlapping_bodies()
+	var bodies = $Sprite/Slash/SlashArea.get_overlapping_bodies()
 	for body in bodies:
 		if(body.is_in_group("Damageable")):
 			var direction = body.global_position.x - self.global_position.x 
@@ -241,12 +244,12 @@ func attack():
 			else:
 				direction = 1
 			body.takeDamage(Vector2(1500 * direction, -200))
-	var areas = $Sprite/Slash/Area2D.get_overlapping_areas()
+	var areas = $Sprite/Slash/SlashArea.get_overlapping_areas()
 	for area in areas:
 		if(area.is_in_group("Damageable")):
 			area.takeDamage()
-	$Sprite/Slash/Area2D.connect("body_entered", self, "on_body_entered_attack")
-	$Sprite/Slash/Area2D.connect("area_entered", self, "on_body_entered_attack")
+	$Sprite/Slash/SlashArea.connect("body_entered", self, "on_body_entered_attack")
+	$Sprite/Slash/SlashArea.connect("area_entered", self, "on_body_entered_attack")
 
 func on_body_entered_attack(body):
 #	Animation geht ein paar milisekunden -> In dieser Zeit neue Bodies auch Schaden zufügen
@@ -269,10 +272,10 @@ func travelTo(animation):
 func attackFinished():
 #	Nach Animation soll nicht mehr jeder Neue Body Schaden bekommen
 	isAttacking = false
-	if $Sprite/Slash/Area2D.is_connected("body_entered", self, "on_body_entered_attack"):
-		$Sprite/Slash/Area2D.disconnect("body_entered", self, "on_body_entered_attack")
-	if $Sprite/Slash/Area2D.is_connected("area_entered", self, "on_body_entered_attack"):
-		$Sprite/Slash/Area2D.disconnect("area_entered", self, "on_body_entered_attack")
+	if $Sprite/Slash/SlashArea.is_connected("body_entered", self, "on_body_entered_attack"):
+		$Sprite/Slash/SlashArea.disconnect("body_entered", self, "on_body_entered_attack")
+	if $Sprite/Slash/SlashArea.is_connected("area_entered", self, "on_body_entered_attack"):
+		$Sprite/Slash/SlashArea.disconnect("area_entered", self, "on_body_entered_attack")
 
 func _on_DamageStopMovingTimer_timeout():
 	tookDamage = false
