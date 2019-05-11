@@ -483,7 +483,7 @@ color_ramp = SubResource( 54 )
 extents = Vector2( 2560, 800 )
 
 [sub_resource type="RectangleShape2D" id=57]
-extents = Vector2( 564.368, 1760 )
+extents = Vector2( 656.04, 1760 )
 
 [sub_resource type="ShaderMaterial" id=58]
 shader = ExtResource( 39 )
@@ -722,7 +722,7 @@ tile_data = PoolIntArray( -131016, 3, 0, -131008, 3, 0, -131000, 3, 0, -130992, 
 
 [node name="Area2D" type="Area2D" parent="LevelDesign"]
 editor/display_folded = true
-position = Vector2( 7328, 3616 )
+position = Vector2( 7328, 3496.58 )
 script = ExtResource( 37 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="LevelDesign/Area2D"]
@@ -730,12 +730,11 @@ position = Vector2( 2976, 32 )
 shape = SubResource( 56 )
 
 [node name="Area2D2" type="Area2D" parent="LevelDesign"]
-editor/display_folded = true
-position = Vector2( 6789.51, 2146.82 )
+position = Vector2( 6784, 2144 )
 script = ExtResource( 38 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="LevelDesign/Area2D2"]
-position = Vector2( 399.96, 0 )
+position = Vector2( 320, 0 )
 shape = SubResource( 57 )
 
 [node name="ParallaxBackground" type="ParallaxBackground" parent="LevelDesign"]
