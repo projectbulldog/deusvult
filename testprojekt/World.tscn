@@ -586,7 +586,6 @@ autoplay = true
 [node name="Player" type="KinematicBody2D" parent="GameplayObjects/PlayerNode" groups=[
 "Player",
 ]]
-editor/display_folded = true
 scale = Vector2( 0.6, 0.6 )
 z_index = 10
 z_as_relative = false
@@ -615,7 +614,6 @@ z_as_relative = false
 shape = SubResource( 6 )
 
 [node name="Sprite" type="Sprite" parent="GameplayObjects/PlayerNode/Player"]
-editor/display_folded = true
 scale = Vector2( 0.26, 0.26 )
 texture = ExtResource( 11 )
 
@@ -676,9 +674,11 @@ volume_db = -10.0
 
 [node name="SwordSlash" type="AudioStreamPlayer" parent="GameplayObjects/PlayerNode/Player/Sprite"]
 stream = ExtResource( 34 )
+bus = "LowFreq"
 
 [node name="SwordSlashHit" type="AudioStreamPlayer" parent="GameplayObjects/PlayerNode/Player/Sprite"]
 stream = ExtResource( 35 )
+bus = "LowFreq"
 
 [node name="Enemies" type="Node" parent="GameplayObjects"]
 

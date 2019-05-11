@@ -30,12 +30,12 @@ texture = ExtResource( 2 )
 shape = SubResource( 1 )
 
 [node name="RayCastGround" type="RayCast2D" parent="."]
-position = Vector2( 26.5056, 40.5786 )
+position = Vector2( 17.1064, 39.9143 )
 cast_to = Vector2( 0, 150 )
 collision_mask = 32
 
 [node name="RayCastWall" type="RayCast2D" parent="."]
-position = Vector2( 26.5056, 40.5786 )
+position = Vector2( 17.1064, 39.9143 )
 rotation = -1.5708
 cast_to = Vector2( 0, 10 )
 collision_mask = 32

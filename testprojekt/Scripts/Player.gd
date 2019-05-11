@@ -248,6 +248,7 @@ func attack():
 			body.takeDamage(Vector2(1500 * direction, -200))
 			camera.add_trauma(0.5)
 	if anyOneHit:
+		$Sprite/SwordSlash.play()
 		$Sprite/SwordSlashHit.play()
 	else:
 		$Sprite/SwordSlash.play()
