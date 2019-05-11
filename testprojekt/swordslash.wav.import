@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/swordslash.wav-dc91e771e5195be66eb423db833b99d4.sample"
+
+[deps]
+
+source_file="res://swordslash.wav"
+dest_files=[ "res://.import/swordslash.wav-dc91e771e5195be66eb423db833b99d4.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=true
+edit/normalize=true
+edit/loop=false
+compress/mode=0

@@ -1,4 +1,4 @@
-[gd_scene load_steps=112 format=2]
+[gd_scene load_steps=113 format=2]
 
 [ext_resource path="res://Scripts/Camera2D.gd" type="Script" id=1]
 [ext_resource path="res://Scripts/Interface.gd" type="Script" id=2]
@@ -33,21 +33,22 @@
 [ext_resource path="res://Sounds/Jump.wav" type="AudioStream" id=31]
 [ext_resource path="res://feedback.wav" type="AudioStream" id=32]
 [ext_resource path="res://Sounds/Footstep.wav" type="AudioStream" id=33]
-[ext_resource path="res://Scenes/Enemy.tscn" type="PackedScene" id=34]
-[ext_resource path="res://LevelDesign/tileset_blackbox.tres" type="TileSet" id=35]
-[ext_resource path="res://Scripts/CameraModeOnRailX.gd" type="Script" id=36]
-[ext_resource path="res://Scripts/CameraModeOnRailY.gd" type="Script" id=37]
-[ext_resource path="res://Shaders/NoiseMultiplication.shader" type="Shader" id=38]
-[ext_resource path="res://Sprites/texture (6).png" type="Texture" id=39]
-[ext_resource path="res://Sprites/tes.tres" type="Texture" id=40]
-[ext_resource path="res://Sprites/TESET.jpeg" type="Texture" id=41]
-[ext_resource path="res://Sprites/Particle/light.png" type="Texture" id=42]
-[ext_resource path="res://Scenes/Butterfly.tscn" type="PackedScene" id=43]
-[ext_resource path="res://Sprites/honey.jpeg" type="Texture" id=44]
-[ext_resource path="res://Sprites/teset2.jpeg" type="Texture" id=45]
-[ext_resource path="res://Scripts/CameraCue.gd" type="Script" id=46]
-[ext_resource path="res://Scripts/Grass.gd" type="Script" id=47]
-[ext_resource path="res://Sprites/HollowKnight/ash_grass_01_blizzard0001.png" type="Texture" id=48]
+[ext_resource path="res://swordslash.wav" type="AudioStream" id=34]
+[ext_resource path="res://Scenes/Enemy.tscn" type="PackedScene" id=35]
+[ext_resource path="res://LevelDesign/tileset_blackbox.tres" type="TileSet" id=36]
+[ext_resource path="res://Scripts/CameraModeOnRailX.gd" type="Script" id=37]
+[ext_resource path="res://Scripts/CameraModeOnRailY.gd" type="Script" id=38]
+[ext_resource path="res://Shaders/NoiseMultiplication.shader" type="Shader" id=39]
+[ext_resource path="res://Sprites/texture (6).png" type="Texture" id=40]
+[ext_resource path="res://Sprites/tes.tres" type="Texture" id=41]
+[ext_resource path="res://Sprites/TESET.jpeg" type="Texture" id=42]
+[ext_resource path="res://Sprites/Particle/light.png" type="Texture" id=43]
+[ext_resource path="res://Scenes/Butterfly.tscn" type="PackedScene" id=44]
+[ext_resource path="res://Sprites/honey.jpeg" type="Texture" id=45]
+[ext_resource path="res://Sprites/teset2.jpeg" type="Texture" id=46]
+[ext_resource path="res://Scripts/CameraCue.gd" type="Script" id=47]
+[ext_resource path="res://Scripts/Grass.gd" type="Script" id=48]
+[ext_resource path="res://Sprites/HollowKnight/ash_grass_01_blizzard0001.png" type="Texture" id=49]
 
 [sub_resource type="Environment" id=1]
 background_mode = 4
@@ -139,6 +140,20 @@ tracks/4/keys = {
 "transitions": PoolRealArray( 1 ),
 "update": 0,
 "values": [ 0.0 ]
+}
+tracks/5/type = "method"
+tracks/5/path = NodePath("SwordSlash")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [ 0.0 ],
+"method": "play"
+} ]
 }
 
 [sub_resource type="Animation" id=8]
@@ -457,15 +472,15 @@ extents = Vector2( 2560, 800 )
 extents = Vector2( 564.368, 1760 )
 
 [sub_resource type="ShaderMaterial" id=58]
-shader = ExtResource( 38 )
+shader = ExtResource( 39 )
 shader_param/tint = Color( 1, 0.780392, 0.501961, 1 )
 shader_param/speed = 0.05
 shader_param/glow = 1.0
 shader_param/invertNoise1 = true
 shader_param/useNoiseColor = true
-shader_param/noise1 = ExtResource( 39 )
-shader_param/noise2 = ExtResource( 40 )
-shader_param/tintNoise = ExtResource( 41 )
+shader_param/noise1 = ExtResource( 40 )
+shader_param/noise2 = ExtResource( 41 )
+shader_param/tintNoise = ExtResource( 42 )
 
 [sub_resource type="OpenSimplexNoise" id=59]
 octaves = 1
@@ -477,15 +492,15 @@ seamless = true
 noise = SubResource( 59 )
 
 [sub_resource type="ShaderMaterial" id=61]
-shader = ExtResource( 38 )
+shader = ExtResource( 39 )
 shader_param/tint = Color( 0.435294, 0.788235, 1, 1 )
 shader_param/speed = 0.1
 shader_param/glow = 1.0
 shader_param/invertNoise1 = false
 shader_param/useNoiseColor = true
-shader_param/noise1 = ExtResource( 44 )
+shader_param/noise1 = ExtResource( 45 )
 shader_param/noise2 = SubResource( 60 )
-shader_param/tintNoise = ExtResource( 45 )
+shader_param/tintNoise = ExtResource( 46 )
 
 [sub_resource type="CircleShape2D" id=62]
 radius = 500.0
@@ -612,7 +627,6 @@ z_as_relative = false
 shape = SubResource( 6 )
 
 [node name="Sprite" type="Sprite" parent="GameplayObjects/PlayerNode/Player"]
-editor/display_folded = true
 scale = Vector2( 0.26, 0.26 )
 texture = ExtResource( 11 )
 
@@ -671,20 +685,23 @@ stream = ExtResource( 32 )
 stream = ExtResource( 33 )
 volume_db = -10.0
 
+[node name="SwordSlash" type="AudioStreamPlayer" parent="GameplayObjects/PlayerNode/Player/Sprite"]
+stream = ExtResource( 34 )
+
 [node name="Enemies" type="Node" parent="GameplayObjects"]
 editor/display_folded = true
 
-[node name="Enemy2" parent="GameplayObjects/Enemies" instance=ExtResource( 34 )]
+[node name="Enemy2" parent="GameplayObjects/Enemies" instance=ExtResource( 35 )]
 position = Vector2( 4849.03, 3872 )
 
-[node name="Enemy" parent="GameplayObjects/Enemies" instance=ExtResource( 34 )]
+[node name="Enemy" parent="GameplayObjects/Enemies" instance=ExtResource( 35 )]
 
 [node name="LevelDesign" type="Node" parent="."]
 editor/display_folded = true
 
 [node name="BlackBox" type="TileMap" parent="LevelDesign"]
 z_index = -10
-tile_set = ExtResource( 35 )
+tile_set = ExtResource( 36 )
 collision_layer = 35
 collision_mask = 35
 format = 1
@@ -693,7 +710,7 @@ tile_data = PoolIntArray( 65528, 7, 0, 0, 7, 0, 189, 7, 0, 196666, 7, 0, 196674,
 [node name="Area2D" type="Area2D" parent="LevelDesign"]
 editor/display_folded = true
 position = Vector2( 7328, 3616 )
-script = ExtResource( 36 )
+script = ExtResource( 37 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="LevelDesign/Area2D"]
 position = Vector2( 2976, 32 )
@@ -702,7 +719,7 @@ shape = SubResource( 56 )
 [node name="Area2D2" type="Area2D" parent="LevelDesign"]
 editor/display_folded = true
 position = Vector2( 6789.51, 2146.82 )
-script = ExtResource( 37 )
+script = ExtResource( 38 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="LevelDesign/Area2D2"]
 position = Vector2( 399.96, 0 )
@@ -719,23 +736,23 @@ material = SubResource( 58 )
 position = Vector2( 3294.48, 7888.12 )
 scale = Vector2( 3.62051, 3.60904 )
 z_index = -50
-texture = ExtResource( 42 )
+texture = ExtResource( 43 )
 offset = Vector2( 469.496, -1531.79 )
 
 [node name="InteractiveObjects" type="Node" parent="."]
 editor/display_folded = true
 
-[node name="Butterfly" parent="InteractiveObjects" instance=ExtResource( 43 )]
+[node name="Butterfly" parent="InteractiveObjects" instance=ExtResource( 44 )]
 
 [node name="honey" type="Sprite" parent="InteractiveObjects"]
 editor/display_folded = true
 material = SubResource( 61 )
 position = Vector2( 2464, 3296 )
 z_index = 50
-texture = ExtResource( 42 )
+texture = ExtResource( 43 )
 
 [node name="Area2D2" type="Area2D" parent="InteractiveObjects/honey"]
-script = ExtResource( 46 )
+script = ExtResource( 47 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="InteractiveObjects/honey/Area2D2"]
 shape = SubResource( 62 )
@@ -747,7 +764,7 @@ editor/display_folded = true
 position = Vector2( 5184, 3872 )
 collision_layer = 4
 collision_mask = 4
-script = ExtResource( 47 )
+script = ExtResource( 48 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="InteractiveObjects/Area2D"]
 position = Vector2( -7.82, 0 )
@@ -756,11 +773,11 @@ shape = SubResource( 63 )
 [node name="ash_grass_01_blizzard0001" type="Sprite" parent="InteractiveObjects/Area2D"]
 editor/display_folded = true
 position = Vector2( 0, -0.000244141 )
-texture = ExtResource( 48 )
+texture = ExtResource( 49 )
 
 [node name="Area2D" type="Area2D" parent="InteractiveObjects/Area2D/ash_grass_01_blizzard0001"]
 editor/display_folded = true
-script = ExtResource( 46 )
+script = ExtResource( 47 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="InteractiveObjects/Area2D/ash_grass_01_blizzard0001/Area2D"]
 shape = SubResource( 62 )
