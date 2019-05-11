@@ -70,7 +70,7 @@ font_data = ExtResource( 7 )
 size = 30
 font_data = ExtResource( 7 )
 
-[sub_resource type="RectangleShape2D" id=64]
+[sub_resource type="RectangleShape2D" id=6]
 extents = Vector2( 40, 140 )
 
 [sub_resource type="Animation" id=7]
@@ -637,7 +637,7 @@ one_shot = true
 position = Vector2( 6.45996, 0 )
 z_index = -1
 z_as_relative = false
-shape = SubResource( 64 )
+shape = SubResource( 6 )
 
 [node name="Sprite" type="Sprite" parent="GameplayObjects/PlayerNode/Player"]
 editor/display_folded = true

@@ -234,7 +234,7 @@ func _process(delta):
 			else:
 				travelTo("Idle")
 
-func attack():
+func attack():	
 #	Alle überlappenden Elemente durchgehen und wenn sie Damageable sind, ihnen Schaden zufügen
 	var bodies = $Sprite/Slash/SlashArea.get_overlapping_bodies()
 	for body in bodies:
@@ -245,6 +245,7 @@ func attack():
 			else:
 				direction = 1
 			body.takeDamage(Vector2(1500 * direction, -200))
+			camera.add_trauma(0.5)
 	var areas = $Sprite/Slash/SlashArea.get_overlapping_areas()
 	for area in areas:
 		if(area.is_in_group("Damageable")):
