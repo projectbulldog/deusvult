@@ -620,11 +620,10 @@ z_as_relative = false
 script = ExtResource( 9 )
 
 [node name="StateManager" type="Node" parent="GameplayObjects/PlayerNode/Player"]
-editor/display_folded = true
 script = ExtResource( 10 )
 
 [node name="DamageStopMovingTimer" type="Timer" parent="GameplayObjects/PlayerNode/Player/StateManager"]
-wait_time = 0.3
+wait_time = 0.5
 one_shot = true
 
 [node name="InvincibilityTimer" type="Timer" parent="GameplayObjects/PlayerNode/Player/StateManager"]
@@ -642,6 +641,7 @@ z_as_relative = false
 shape = SubResource( 6 )
 
 [node name="Sprite" type="Sprite" parent="GameplayObjects/PlayerNode/Player"]
+editor/display_folded = true
 scale = Vector2( 0.26, 0.26 )
 texture = ExtResource( 11 )
 

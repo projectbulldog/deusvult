@@ -118,7 +118,7 @@ func mode_RailX(delta):
 
 func mode_Default(delta):
 #	Nicht ruckartig schneller werden, sondern langsam über Zeit
-	currentLerp =  lerp(currentLerp, lerpPlayer, 0.001)
+	currentLerp =  lerp(currentLerp, lerpPlayer, 0.002)
 
 #	Kamera soll nach oben langsamer gehen. Nach unten soll sie schneller sein damit man was sieht
 	if (player.motion.y > 0):
