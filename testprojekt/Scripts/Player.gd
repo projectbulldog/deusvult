@@ -45,6 +45,8 @@ var camera
 var tookDamage = false
 var invincible = false
 
+var onWall = false
+
 var stopMoving = false
 
 func _ready():
@@ -133,6 +135,7 @@ func _physics_process(delta):
 			motion.x = -direction * SPEED;
 			justWallJumped = true
 			stopMoving = true
+			self.changeDirection()
 			$StateManager/WallJumpMotionTimer.start()
 	elif Input.is_action_pressed("jump") && jumpTime < 0.3 && canJump && !is_on_ceiling():
 		motion.y += motion.y * delta * 3.3
@@ -156,9 +159,11 @@ func _physics_process(delta):
 			motion.x = lerp(motion.x, 0, 0.02)
 	
 #	Wall Jump
+	onWall = false
 	if is_on_wall() && !is_on_floor() && !Input.is_action_pressed("jump"):
 		motion.y = 300
 		motion.x = 2 * direction
+		onWall = true
 		canJump = true
 		jumpTime = 0
 		canDoubleJump = true
@@ -208,7 +213,9 @@ func _process(delta):
 			travelTo("Attack")
 	elif( !("Attack" in $Sprite/AnimationTree.playback.get_current_node())) || !isAttacking:
 		if(!is_on_floor()):
-			if(motion.y > 0):
+			if(onWall):
+				travelTo("WallCling")
+			elif(motion.y > 0):
 				travelTo("JumpDown")
 			elif(motion.y < 0):
 				travelTo("Jump")

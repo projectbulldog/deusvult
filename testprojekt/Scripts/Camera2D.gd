@@ -53,8 +53,9 @@ func _ready():
 	noiseX.seed = randi()
 	noiseY.seed = randi()
 
-func SetCameraModeDefault():
-	self.cameraMode = Enums.CAMERAMODE.DEFAULT
+func SetCameraModeDefault(cameraModeFrom):
+	if(cameraModeFrom == cameraMode):
+		self.cameraMode = Enums.CAMERAMODE.DEFAULT
 
 func SetCameraModeOnRailX(height = null):
 	self.cameraMode = Enums.CAMERAMODE.ONRAILX
@@ -95,7 +96,7 @@ func _physics_process(delta):
 
 func mode_RailY(delta):
 		var lerpMotion = Vector2(0,0)
-		lerpMotion.x = lerp(self.global_position.x, cameraModeRailYWidth, currentLerp)
+		lerpMotion.x = lerp(self.global_position.x, cameraModeRailYWidth, 0.05)
 		lerpMotion.y = lerp(self.global_position.y, player.global_position.y, currentLerp)
 		self.position = lerpMotion
 		self.zoom = lerp(self.zoom, lerpZoom, 0.02)
@@ -103,7 +104,7 @@ func mode_RailY(delta):
 func mode_RailX(delta):
 		var lerpMotion = Vector2(0,0)
 		lerpMotion.x = lerp(self.global_position.x, player.global_position.x, currentLerp)
-		lerpMotion.y = lerp(self.global_position.y, cameraModeRailXHeight, currentLerp)
+		lerpMotion.y = lerp(self.global_position.y, cameraModeRailXHeight, 0.05)
 		self.position = lerpMotion
 		self.zoom = lerp(self.zoom, lerpZoom, 0.02)
 

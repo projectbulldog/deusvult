@@ -1,4 +1,4 @@
-[gd_scene load_steps=99 format=2]
+[gd_scene load_steps=106 format=2]
 
 [ext_resource path="res://Scripts/Camera2D.gd" type="Script" id=1]
 [ext_resource path="res://Scripts/Interface.gd" type="Script" id=2]
@@ -27,23 +27,24 @@
 [ext_resource path="res://Sprites/Nyx/Walk/6_nyx-walk.png" type="Texture" id=25]
 [ext_resource path="res://Sprites/Nyx/Walk/7_nyx-walk.png" type="Texture" id=26]
 [ext_resource path="res://Sprites/Nyx/Walk/8_nyx-walk.png" type="Texture" id=27]
-[ext_resource path="res://Scripts/AnimationTree.gd" type="Script" id=28]
-[ext_resource path="res://Sprites/Particle/dash_effect_020002.png" type="Texture" id=29]
-[ext_resource path="res://Scenes/Butterfly.tscn" type="PackedScene" id=30]
-[ext_resource path="res://Tiles/tileset_blackbox.tres" type="TileSet" id=31]
-[ext_resource path="res://Scripts/Grass.gd" type="Script" id=32]
-[ext_resource path="res://Sprites/HollowKnight/ash_grass_01_blizzard0001.png" type="Texture" id=33]
-[ext_resource path="res://Scripts/CameraCue.gd" type="Script" id=34]
-[ext_resource path="res://Scenes/Enemy.tscn" type="PackedScene" id=35]
-[ext_resource path="res://Shaders/NoiseMultiplication.shader" type="Shader" id=36]
-[ext_resource path="res://Sprites/honey.jpeg" type="Texture" id=37]
-[ext_resource path="res://Sprites/teset2.jpeg" type="Texture" id=38]
-[ext_resource path="res://Sprites/Particle/light.png" type="Texture" id=39]
-[ext_resource path="res://Sprites/texture (6).png" type="Texture" id=40]
-[ext_resource path="res://Sprites/tes.tres" type="Texture" id=41]
-[ext_resource path="res://Sprites/TESET.jpeg" type="Texture" id=42]
-[ext_resource path="res://CameraModeOnRailX.gd" type="Script" id=43]
-[ext_resource path="res://CameraModeOnRailY.gd" type="Script" id=44]
+[ext_resource path="res://Sprites/Nyx/WallJump/nyx_wall-jump.png" type="Texture" id=28]
+[ext_resource path="res://Scripts/AnimationTree.gd" type="Script" id=29]
+[ext_resource path="res://Sprites/Particle/dash_effect_020002.png" type="Texture" id=30]
+[ext_resource path="res://Scenes/Butterfly.tscn" type="PackedScene" id=31]
+[ext_resource path="res://Tiles/tileset_blackbox.tres" type="TileSet" id=32]
+[ext_resource path="res://Scripts/Grass.gd" type="Script" id=33]
+[ext_resource path="res://Sprites/HollowKnight/ash_grass_01_blizzard0001.png" type="Texture" id=34]
+[ext_resource path="res://Scripts/CameraCue.gd" type="Script" id=35]
+[ext_resource path="res://Scenes/Enemy.tscn" type="PackedScene" id=36]
+[ext_resource path="res://Shaders/NoiseMultiplication.shader" type="Shader" id=37]
+[ext_resource path="res://Sprites/honey.jpeg" type="Texture" id=38]
+[ext_resource path="res://Sprites/teset2.jpeg" type="Texture" id=39]
+[ext_resource path="res://Sprites/Particle/light.png" type="Texture" id=40]
+[ext_resource path="res://Sprites/texture (6).png" type="Texture" id=41]
+[ext_resource path="res://Sprites/tes.tres" type="Texture" id=42]
+[ext_resource path="res://Sprites/TESET.jpeg" type="Texture" id=43]
+[ext_resource path="res://CameraModeOnRailX.gd" type="Script" id=44]
+[ext_resource path="res://CameraModeOnRailY.gd" type="Script" id=45]
 
 [sub_resource type="Environment" id=1]
 background_mode = 4
@@ -286,6 +287,21 @@ tracks/1/keys = {
 "times": PoolRealArray( 0.2, 0.6 )
 }
 
+[sub_resource type="Animation" id=55]
+resource_name = "WallCling"
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ ExtResource( 28 ) ]
+}
+
 [sub_resource type="AnimationNodeAnimation" id=11]
 animation = "Attack"
 
@@ -306,6 +322,9 @@ animation = "TakeDamage"
 
 [sub_resource type="AnimationNodeAnimation" id=17]
 animation = "Walk"
+
+[sub_resource type="AnimationNodeAnimation" id=56]
+animation = "WallCling"
 
 [sub_resource type="AnimationNodeStateMachineTransition" id=18]
 
@@ -353,6 +372,14 @@ animation = "Walk"
 
 [sub_resource type="AnimationNodeStateMachineTransition" id=40]
 
+[sub_resource type="AnimationNodeStateMachineTransition" id=57]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=58]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=59]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=60]
+
 [sub_resource type="AnimationNodeStateMachine" id=41]
 states/Attack/node = SubResource( 11 )
 states/Attack/position = Vector2( 854.934, 132.869 )
@@ -368,8 +395,10 @@ states/TakeDamage/node = SubResource( 16 )
 states/TakeDamage/position = Vector2( 63.934, 109.869 )
 states/Walk/node = SubResource( 17 )
 states/Walk/position = Vector2( 705.934, 33 )
-transitions = [ "Idle", "Walk", SubResource( 18 ), "Walk", "Idle", SubResource( 19 ), "Idle", "Jump", SubResource( 20 ), "Jump", "Walk", SubResource( 21 ), "Walk", "Jump", SubResource( 22 ), "Jump", "Idle", SubResource( 23 ), "JumpDown", "Walk", SubResource( 24 ), "Walk", "JumpDown", SubResource( 25 ), "JumpDown", "Jump", SubResource( 26 ), "Jump", "JumpDown", SubResource( 27 ), "JumpDown", "Idle", SubResource( 28 ), "Idle", "JumpDown", SubResource( 29 ), "Walk", "Attack", SubResource( 30 ), "Idle", "Attack", SubResource( 31 ), "Attack", "Idle", SubResource( 32 ), "Attack", "Walk", SubResource( 33 ), "Idle", "Attack_Up", SubResource( 34 ), "Attack_Up", "Walk", SubResource( 35 ), "Walk", "Attack_Up", SubResource( 36 ), "Attack_Up", "Idle", SubResource( 37 ), "Jump", "TakeDamage", SubResource( 38 ), "Idle", "TakeDamage", SubResource( 39 ), "JumpDown", "TakeDamage", SubResource( 40 ) ]
-graph_offset = Vector2( -95.066, -76.1695 )
+states/WallCling/node = SubResource( 56 )
+states/WallCling/position = Vector2( 488.934, 318.831 )
+transitions = [ "Idle", "Walk", SubResource( 18 ), "Walk", "Idle", SubResource( 19 ), "Idle", "Jump", SubResource( 20 ), "Jump", "Walk", SubResource( 21 ), "Walk", "Jump", SubResource( 22 ), "Jump", "Idle", SubResource( 23 ), "JumpDown", "Walk", SubResource( 24 ), "Walk", "JumpDown", SubResource( 25 ), "JumpDown", "Jump", SubResource( 26 ), "Jump", "JumpDown", SubResource( 27 ), "JumpDown", "Idle", SubResource( 28 ), "Idle", "JumpDown", SubResource( 29 ), "Walk", "Attack", SubResource( 30 ), "Idle", "Attack", SubResource( 31 ), "Attack", "Idle", SubResource( 32 ), "Attack", "Walk", SubResource( 33 ), "Idle", "Attack_Up", SubResource( 34 ), "Attack_Up", "Walk", SubResource( 35 ), "Walk", "Attack_Up", SubResource( 36 ), "Attack_Up", "Idle", SubResource( 37 ), "Jump", "TakeDamage", SubResource( 38 ), "Idle", "TakeDamage", SubResource( 39 ), "JumpDown", "TakeDamage", SubResource( 40 ), "Jump", "WallCling", SubResource( 57 ), "WallCling", "Jump", SubResource( 58 ), "WallCling", "JumpDown", SubResource( 59 ), "JumpDown", "WallCling", SubResource( 60 ) ]
+graph_offset = Vector2( -95.066, 86.0105 )
 
 [sub_resource type="AnimationNodeStateMachinePlayback" id=42]
 
@@ -411,32 +440,32 @@ seamless = true
 noise = SubResource( 49 )
 
 [sub_resource type="ShaderMaterial" id=51]
-shader = ExtResource( 36 )
+shader = ExtResource( 37 )
 shader_param/tint = Color( 0.435294, 0.788235, 1, 1 )
 shader_param/speed = 0.1
 shader_param/glow = 1.0
 shader_param/invertNoise1 = false
 shader_param/useNoiseColor = true
-shader_param/noise1 = ExtResource( 37 )
+shader_param/noise1 = ExtResource( 38 )
 shader_param/noise2 = SubResource( 50 )
-shader_param/tintNoise = ExtResource( 38 )
+shader_param/tintNoise = ExtResource( 39 )
 
 [sub_resource type="ShaderMaterial" id=52]
-shader = ExtResource( 36 )
+shader = ExtResource( 37 )
 shader_param/tint = Color( 1, 0.780392, 0.501961, 1 )
 shader_param/speed = 0.05
 shader_param/glow = 1.0
 shader_param/invertNoise1 = true
 shader_param/useNoiseColor = true
-shader_param/noise1 = ExtResource( 40 )
-shader_param/noise2 = ExtResource( 41 )
-shader_param/tintNoise = ExtResource( 42 )
+shader_param/noise1 = ExtResource( 41 )
+shader_param/noise2 = ExtResource( 42 )
+shader_param/tintNoise = ExtResource( 43 )
 
 [sub_resource type="RectangleShape2D" id=53]
 extents = Vector2( 2560, 800 )
 
 [sub_resource type="RectangleShape2D" id=54]
-extents = Vector2( 935.82, 1760 )
+extents = Vector2( 661.566, 1760 )
 
 [node name="World" type="Node"]
 
@@ -494,7 +523,6 @@ attenuation = 0.5
 [node name="Player" type="KinematicBody2D" parent="Node2D" groups=[
 "Player",
 ]]
-editor/display_folded = true
 position = Vector2( 6560, 896 )
 scale = Vector2( 0.6, 0.6 )
 z_index = 10
@@ -523,7 +551,6 @@ z_as_relative = false
 shape = SubResource( 3 )
 
 [node name="Sprite" type="Sprite" parent="Node2D/Player"]
-editor/display_folded = true
 scale = Vector2( 0.26, 0.26 )
 texture = ExtResource( 11 )
 
@@ -535,13 +562,14 @@ anims/Jump = SubResource( 7 )
 anims/JumpDown = SubResource( 8 )
 anims/TakeDamage = SubResource( 9 )
 anims/Walk = SubResource( 10 )
+anims/WallCling = SubResource( 55 )
 
 [node name="AnimationTree" type="AnimationTree" parent="Node2D/Player/Sprite"]
 tree_root = SubResource( 41 )
 anim_player = NodePath("../AnimationPlayer")
 active = true
 parameters/playback = SubResource( 42 )
-script = ExtResource( 28 )
+script = ExtResource( 29 )
 
 [node name="Slash" type="Sprite" parent="Node2D/Player/Sprite"]
 editor/display_folded = true
@@ -569,13 +597,13 @@ amount = 20
 lifetime = 0.07
 one_shot = true
 process_material = SubResource( 46 )
-texture = ExtResource( 29 )
+texture = ExtResource( 30 )
 
-[node name="Butterfly" parent="Node2D" instance=ExtResource( 30 )]
+[node name="Butterfly" parent="Node2D" instance=ExtResource( 31 )]
 
 [node name="BlackBox" type="TileMap" parent="Node2D"]
 z_index = -10
-tile_set = ExtResource( 31 )
+tile_set = ExtResource( 32 )
 collision_layer = 35
 collision_mask = 35
 format = 1
@@ -584,10 +612,11 @@ tile_data = PoolIntArray( 65528, 7, 0, 0, 7, 0, 189, 7, 0, 196666, 7, 0, 196674,
 [node name="Area2D" type="Area2D" parent="Node2D" groups=[
 "Damageable",
 ]]
+editor/display_folded = true
 position = Vector2( 5184, 3872 )
 collision_layer = 4
 collision_mask = 4
-script = ExtResource( 32 )
+script = ExtResource( 33 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Node2D/Area2D"]
 position = Vector2( -7.82, 0 )
@@ -596,11 +625,11 @@ shape = SubResource( 47 )
 [node name="ash_grass_01_blizzard0001" type="Sprite" parent="Node2D/Area2D"]
 editor/display_folded = true
 position = Vector2( 0, -0.000244141 )
-texture = ExtResource( 33 )
+texture = ExtResource( 34 )
 
 [node name="Area2D" type="Area2D" parent="Node2D/Area2D/ash_grass_01_blizzard0001"]
 editor/display_folded = true
-script = ExtResource( 34 )
+script = ExtResource( 35 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Node2D/Area2D/ash_grass_01_blizzard0001/Area2D"]
 shape = SubResource( 48 )
@@ -612,19 +641,20 @@ margin_right = 137.0
 margin_bottom = -114.0
 text = "Test mit Attraction Punkt für Kamera"
 
-[node name="Enemy2" parent="Node2D" instance=ExtResource( 35 )]
+[node name="Enemy2" parent="Node2D" instance=ExtResource( 36 )]
 position = Vector2( 4849.03, 3872 )
 
-[node name="Enemy" parent="Node2D" instance=ExtResource( 35 )]
+[node name="Enemy" parent="Node2D" instance=ExtResource( 36 )]
 
 [node name="honey" type="Sprite" parent="."]
+editor/display_folded = true
 material = SubResource( 51 )
 position = Vector2( 2464, 3296 )
 z_index = 50
-texture = ExtResource( 39 )
+texture = ExtResource( 40 )
 
 [node name="Area2D2" type="Area2D" parent="honey"]
-script = ExtResource( 34 )
+script = ExtResource( 35 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="honey/Area2D2"]
 shape = SubResource( 48 )
@@ -641,20 +671,21 @@ material = SubResource( 52 )
 position = Vector2( 3294.48, 7888.12 )
 scale = Vector2( 3.62051, 3.60904 )
 z_index = -50
-texture = ExtResource( 39 )
+texture = ExtResource( 40 )
 offset = Vector2( 469.496, -1531.79 )
 
 [node name="Area2D" type="Area2D" parent="."]
+editor/display_folded = true
 position = Vector2( 7328, 3616 )
-script = ExtResource( 43 )
+script = ExtResource( 44 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 position = Vector2( 2976, 32 )
 shape = SubResource( 53 )
 
 [node name="Area2D2" type="Area2D" parent="."]
-position = Vector2( 5024, 2240 )
-script = ExtResource( 44 )
+position = Vector2( 6789.51, 2146.82 )
+script = ExtResource( 45 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D2"]
 position = Vector2( 297, 0 )
