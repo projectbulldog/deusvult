@@ -1,4 +1,4 @@
-[gd_scene load_steps=114 format=2]
+[gd_scene load_steps=119 format=2]
 
 [ext_resource path="res://Scripts/Camera2D.gd" type="Script" id=1]
 [ext_resource path="res://Scripts/Interface.gd" type="Script" id=2]
@@ -10,46 +10,47 @@
 [ext_resource path="res://Sounds/Christopher Larkin - Hollow Knight (Original Soundtrack) - 03 Crossroads.wav" type="AudioStream" id=8]
 [ext_resource path="res://Scripts/Player.gd" type="Script" id=9]
 [ext_resource path="res://Scripts/StateManager.gd" type="Script" id=10]
-[ext_resource path="res://Sprites/Nyx/Idle/4_nyx-idle.png" type="Texture" id=11]
-[ext_resource path="res://Sprites/Nyx/Attack/nyx-attack.png" type="Texture" id=12]
-[ext_resource path="res://Sprites/Nyx/AttackUp/nyx-attack-up.png" type="Texture" id=13]
-[ext_resource path="res://Sprites/Nyx/Idle/1_nyx-idle.png" type="Texture" id=14]
-[ext_resource path="res://Sprites/Nyx/Idle/2_nyx-idle.png" type="Texture" id=15]
-[ext_resource path="res://Sprites/Nyx/Idle/3_nyx-idle.png" type="Texture" id=16]
+[ext_resource path="res://Sprites/Nyx/Attack/nyx-attack.png" type="Texture" id=11]
+[ext_resource path="res://Sprites/Nyx/AttackUp/nyx-attack-up.png" type="Texture" id=12]
+[ext_resource path="res://Sprites/Nyx/Idle/1_nyx-idle.png" type="Texture" id=13]
+[ext_resource path="res://Sprites/Nyx/Idle/2_nyx-idle.png" type="Texture" id=14]
+[ext_resource path="res://Sprites/Nyx/Idle/3_nyx-idle.png" type="Texture" id=15]
+[ext_resource path="res://Sprites/Nyx/Idle/4_nyx-idle.png" type="Texture" id=16]
 [ext_resource path="res://Sprites/Nyx/Jump/nyx-up-jump.png" type="Texture" id=17]
 [ext_resource path="res://Sprites/Nyx/Jump/nyx-down-jump.png" type="Texture" id=18]
 [ext_resource path="res://Sprites/Nyx/TakeDamage/nyx-hit.png" type="Texture" id=19]
-[ext_resource path="res://Sprites/Nyx/Walk/1_nyx-walk.png" type="Texture" id=20]
-[ext_resource path="res://Sprites/Nyx/Walk/2_nyx-walk.png" type="Texture" id=21]
-[ext_resource path="res://Sprites/Nyx/Walk/3_nyx-walk.png" type="Texture" id=22]
-[ext_resource path="res://Sprites/Nyx/Walk/4_nyx-walk.png" type="Texture" id=23]
-[ext_resource path="res://Sprites/Nyx/Walk/5_nyx-walk.png" type="Texture" id=24]
-[ext_resource path="res://Sprites/Nyx/Walk/6_nyx-walk.png" type="Texture" id=25]
-[ext_resource path="res://Sprites/Nyx/Walk/7_nyx-walk.png" type="Texture" id=26]
-[ext_resource path="res://Sprites/Nyx/Walk/8_nyx-walk.png" type="Texture" id=27]
-[ext_resource path="res://Sprites/Nyx/WallJump/nyx_wall-jump.png" type="Texture" id=28]
-[ext_resource path="res://Scripts/AnimationTree.gd" type="Script" id=29]
-[ext_resource path="res://Sprites/Particle/dash_effect_020002.png" type="Texture" id=30]
-[ext_resource path="res://Sounds/Jump.wav" type="AudioStream" id=31]
-[ext_resource path="res://feedback.wav" type="AudioStream" id=32]
-[ext_resource path="res://Sounds/Footstep.wav" type="AudioStream" id=33]
-[ext_resource path="res://swordslash.wav" type="AudioStream" id=34]
-[ext_resource path="res://Sounds/swordslash_hit.wav" type="AudioStream" id=35]
-[ext_resource path="res://Scenes/Enemy.tscn" type="PackedScene" id=36]
-[ext_resource path="res://LevelDesign/tileset_blackbox.tres" type="TileSet" id=37]
-[ext_resource path="res://Scripts/CameraModeOnRailX.gd" type="Script" id=38]
-[ext_resource path="res://Scripts/CameraModeOnRailY.gd" type="Script" id=39]
-[ext_resource path="res://Shaders/NoiseMultiplication.shader" type="Shader" id=40]
-[ext_resource path="res://Sprites/texture (6).png" type="Texture" id=41]
-[ext_resource path="res://Sprites/tes.tres" type="Texture" id=42]
-[ext_resource path="res://Sprites/TESET.jpeg" type="Texture" id=43]
-[ext_resource path="res://Sprites/Particle/light.png" type="Texture" id=44]
-[ext_resource path="res://Scenes/Butterfly.tscn" type="PackedScene" id=45]
-[ext_resource path="res://Sprites/honey.jpeg" type="Texture" id=46]
-[ext_resource path="res://Sprites/teset2.jpeg" type="Texture" id=47]
-[ext_resource path="res://Scripts/CameraCue.gd" type="Script" id=48]
-[ext_resource path="res://Scripts/Grass.gd" type="Script" id=49]
-[ext_resource path="res://Sprites/HollowKnight/ash_grass_01_blizzard0001.png" type="Texture" id=50]
+[ext_resource path="res://Sprites/Nyx/charakter.png" type="Texture" id=20]
+[ext_resource path="res://Sprites/Nyx/Walk/1_nyx-walk.png" type="Texture" id=21]
+[ext_resource path="res://Sprites/Nyx/Walk/2_nyx-walk.png" type="Texture" id=22]
+[ext_resource path="res://Sprites/Nyx/Walk/3_nyx-walk.png" type="Texture" id=23]
+[ext_resource path="res://Sprites/Nyx/Walk/4_nyx-walk.png" type="Texture" id=24]
+[ext_resource path="res://Sprites/Nyx/Walk/5_nyx-walk.png" type="Texture" id=25]
+[ext_resource path="res://Sprites/Nyx/Walk/6_nyx-walk.png" type="Texture" id=26]
+[ext_resource path="res://Sprites/Nyx/Walk/7_nyx-walk.png" type="Texture" id=27]
+[ext_resource path="res://Sprites/Nyx/Walk/8_nyx-walk.png" type="Texture" id=28]
+[ext_resource path="res://Sprites/Nyx/WallJump/nyx_wall-jump.png" type="Texture" id=29]
+[ext_resource path="res://Scripts/AnimationTree.gd" type="Script" id=30]
+[ext_resource path="res://Sprites/Particle/dash_effect_020002.png" type="Texture" id=31]
+[ext_resource path="res://Sounds/Jump.wav" type="AudioStream" id=32]
+[ext_resource path="res://feedback.wav" type="AudioStream" id=33]
+[ext_resource path="res://Sounds/Footstep.wav" type="AudioStream" id=34]
+[ext_resource path="res://swordslash.wav" type="AudioStream" id=35]
+[ext_resource path="res://Sounds/swordslash_hit.wav" type="AudioStream" id=36]
+[ext_resource path="res://Scenes/Enemy.tscn" type="PackedScene" id=37]
+[ext_resource path="res://LevelDesign/tileset_blackbox.tres" type="TileSet" id=38]
+[ext_resource path="res://Scripts/CameraModeOnRailX.gd" type="Script" id=39]
+[ext_resource path="res://Scripts/CameraModeOnRailY.gd" type="Script" id=40]
+[ext_resource path="res://Shaders/NoiseMultiplication.shader" type="Shader" id=41]
+[ext_resource path="res://Sprites/texture (6).png" type="Texture" id=42]
+[ext_resource path="res://Sprites/tes.tres" type="Texture" id=43]
+[ext_resource path="res://Sprites/TESET.jpeg" type="Texture" id=44]
+[ext_resource path="res://Sprites/Particle/light.png" type="Texture" id=45]
+[ext_resource path="res://Scenes/Butterfly.tscn" type="PackedScene" id=46]
+[ext_resource path="res://Sprites/honey.jpeg" type="Texture" id=47]
+[ext_resource path="res://Sprites/teset2.jpeg" type="Texture" id=48]
+[ext_resource path="res://Scripts/CameraCue.gd" type="Script" id=49]
+[ext_resource path="res://Scripts/Grass.gd" type="Script" id=50]
+[ext_resource path="res://Sprites/HollowKnight/ash_grass_01_blizzard0001.png" type="Texture" id=51]
 
 [sub_resource type="Environment" id=1]
 background_mode = 4
@@ -86,7 +87,7 @@ tracks/0/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 1,
-"values": [ ExtResource( 12 ) ]
+"values": [ ExtResource( 11 ) ]
 }
 tracks/1/type = "method"
 tracks/1/path = NodePath("..")
@@ -154,7 +155,7 @@ tracks/0/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 1,
-"values": [ ExtResource( 13 ) ]
+"values": [ ExtResource( 12 ) ]
 }
 tracks/1/type = "method"
 tracks/1/path = NodePath("..")
@@ -223,7 +224,7 @@ tracks/0/keys = {
 "times": PoolRealArray( 0, 0.2, 0.4, 0.6 ),
 "transitions": PoolRealArray( 1, 1, 1, 1 ),
 "update": 1,
-"values": [ ExtResource( 14 ), ExtResource( 15 ), ExtResource( 16 ), ExtResource( 11 ) ]
+"values": [ ExtResource( 13 ), ExtResource( 14 ), ExtResource( 15 ), ExtResource( 16 ) ]
 }
 
 [sub_resource type="Animation" id=10]
@@ -284,6 +285,22 @@ tracks/1/keys = {
 }
 
 [sub_resource type="Animation" id=13]
+resource_name = "Turn"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ ExtResource( 20 ) ]
+}
+
+[sub_resource type="Animation" id=14]
 length = 0.8
 loop = true
 tracks/0/type = "value"
@@ -296,7 +313,7 @@ tracks/0/keys = {
 "times": PoolRealArray( 0.001, 0.002, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7 ),
 "transitions": PoolRealArray( 5.85634, 1, 0.732044, 1, 12.5533, 0.999998, 0.999999, 1, 1.68179 ),
 "update": 1,
-"values": [ ExtResource( 20 ), ExtResource( 20 ), ExtResource( 21 ), ExtResource( 22 ), ExtResource( 23 ), ExtResource( 24 ), ExtResource( 25 ), ExtResource( 26 ), ExtResource( 27 ) ]
+"values": [ ExtResource( 21 ), ExtResource( 21 ), ExtResource( 22 ), ExtResource( 23 ), ExtResource( 24 ), ExtResource( 25 ), ExtResource( 26 ), ExtResource( 27 ), ExtResource( 28 ) ]
 }
 tracks/1/type = "method"
 tracks/1/path = NodePath("Walk")
@@ -316,7 +333,7 @@ tracks/1/keys = {
 } ]
 }
 
-[sub_resource type="Animation" id=14]
+[sub_resource type="Animation" id=15]
 tracks/0/type = "value"
 tracks/0/path = NodePath(".:texture")
 tracks/0/interp = 1
@@ -327,36 +344,35 @@ tracks/0/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 1,
-"values": [ ExtResource( 28 ) ]
+"values": [ ExtResource( 29 ) ]
 }
 
-[sub_resource type="AnimationNodeAnimation" id=15]
+[sub_resource type="AnimationNodeAnimation" id=16]
 animation = "Attack"
 
-[sub_resource type="AnimationNodeAnimation" id=16]
+[sub_resource type="AnimationNodeAnimation" id=17]
 animation = "Attack_Up"
 
-[sub_resource type="AnimationNodeAnimation" id=17]
+[sub_resource type="AnimationNodeAnimation" id=18]
 animation = "Idle"
 
-[sub_resource type="AnimationNodeAnimation" id=18]
+[sub_resource type="AnimationNodeAnimation" id=19]
 animation = "Jump"
 
-[sub_resource type="AnimationNodeAnimation" id=19]
+[sub_resource type="AnimationNodeAnimation" id=20]
 animation = "JumpDown"
 
-[sub_resource type="AnimationNodeAnimation" id=20]
+[sub_resource type="AnimationNodeAnimation" id=21]
 animation = "TakeDamage"
 
-[sub_resource type="AnimationNodeAnimation" id=21]
+[sub_resource type="AnimationNodeAnimation" id=22]
+animation = "Turn"
+
+[sub_resource type="AnimationNodeAnimation" id=23]
 animation = "Walk"
 
-[sub_resource type="AnimationNodeAnimation" id=22]
+[sub_resource type="AnimationNodeAnimation" id=24]
 animation = "WallCling"
-
-[sub_resource type="AnimationNodeStateMachineTransition" id=23]
-
-[sub_resource type="AnimationNodeStateMachineTransition" id=24]
 
 [sub_resource type="AnimationNodeStateMachineTransition" id=25]
 
@@ -408,40 +424,51 @@ animation = "WallCling"
 
 [sub_resource type="AnimationNodeStateMachineTransition" id=49]
 
-[sub_resource type="AnimationNodeStateMachine" id=50]
-states/Attack/node = SubResource( 15 )
-states/Attack/position = Vector2( 854.934, 132.869 )
-states/Attack_Up/node = SubResource( 16 )
-states/Attack_Up/position = Vector2( 844.934, 189.869 )
-states/Idle/node = SubResource( 17 )
-states/Idle/position = Vector2( 206, 33 )
-states/Jump/node = SubResource( 18 )
-states/Jump/position = Vector2( 247, 226 )
-states/JumpDown/node = SubResource( 19 )
-states/JumpDown/position = Vector2( 705.934, 248 )
-states/TakeDamage/node = SubResource( 20 )
-states/TakeDamage/position = Vector2( 63.934, 109.869 )
-states/Walk/node = SubResource( 21 )
-states/Walk/position = Vector2( 705.934, 33 )
-states/WallCling/node = SubResource( 22 )
-states/WallCling/position = Vector2( 488.934, 318.831 )
-transitions = [ "Idle", "Walk", SubResource( 23 ), "Walk", "Idle", SubResource( 24 ), "Idle", "Jump", SubResource( 25 ), "Jump", "Walk", SubResource( 26 ), "Walk", "Jump", SubResource( 27 ), "Jump", "Idle", SubResource( 28 ), "JumpDown", "Walk", SubResource( 29 ), "Walk", "JumpDown", SubResource( 30 ), "JumpDown", "Jump", SubResource( 31 ), "Jump", "JumpDown", SubResource( 32 ), "JumpDown", "Idle", SubResource( 33 ), "Idle", "JumpDown", SubResource( 34 ), "Walk", "Attack", SubResource( 35 ), "Idle", "Attack", SubResource( 36 ), "Attack", "Idle", SubResource( 37 ), "Attack", "Walk", SubResource( 38 ), "Idle", "Attack_Up", SubResource( 39 ), "Attack_Up", "Walk", SubResource( 40 ), "Walk", "Attack_Up", SubResource( 41 ), "Attack_Up", "Idle", SubResource( 42 ), "Jump", "TakeDamage", SubResource( 43 ), "Idle", "TakeDamage", SubResource( 44 ), "JumpDown", "TakeDamage", SubResource( 45 ), "Jump", "WallCling", SubResource( 46 ), "WallCling", "Jump", SubResource( 47 ), "WallCling", "JumpDown", SubResource( 48 ), "JumpDown", "WallCling", SubResource( 49 ) ]
-graph_offset = Vector2( -95.066, 86.0105 )
+[sub_resource type="AnimationNodeStateMachineTransition" id=50]
 
-[sub_resource type="AnimationNodeStateMachinePlayback" id=51]
+[sub_resource type="AnimationNodeStateMachineTransition" id=51]
 
-[sub_resource type="CapsuleShape2D" id=52]
+[sub_resource type="AnimationNodeStateMachineTransition" id=52]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=53]
+switch_mode = 2
+
+[sub_resource type="AnimationNodeStateMachine" id=54]
+states/Attack/node = SubResource( 16 )
+states/Attack/position = Vector2( 405, -45.131 )
+states/Attack_Up/node = SubResource( 17 )
+states/Attack_Up/position = Vector2( 799.934, -45.131 )
+states/Idle/node = SubResource( 18 )
+states/Idle/position = Vector2( 405, 48 )
+states/Jump/node = SubResource( 19 )
+states/Jump/position = Vector2( 405, 240 )
+states/JumpDown/node = SubResource( 20 )
+states/JumpDown/position = Vector2( 799.934, 240 )
+states/TakeDamage/node = SubResource( 21 )
+states/TakeDamage/position = Vector2( 628.934, -93.131 )
+states/Turn/node = SubResource( 22 )
+states/Turn/position = Vector2( 989.934, 55 )
+states/Walk/node = SubResource( 23 )
+states/Walk/position = Vector2( 799.934, 55 )
+states/WallCling/node = SubResource( 24 )
+states/WallCling/position = Vector2( 604.934, 364.831 )
+transitions = [ "Idle", "Walk", SubResource( 25 ), "Walk", "Idle", SubResource( 26 ), "Idle", "Jump", SubResource( 27 ), "Jump", "Walk", SubResource( 28 ), "Walk", "Jump", SubResource( 29 ), "Jump", "Idle", SubResource( 30 ), "JumpDown", "Walk", SubResource( 31 ), "Walk", "JumpDown", SubResource( 32 ), "JumpDown", "Jump", SubResource( 33 ), "Jump", "JumpDown", SubResource( 34 ), "JumpDown", "Idle", SubResource( 35 ), "Idle", "JumpDown", SubResource( 36 ), "Walk", "Attack", SubResource( 37 ), "Idle", "Attack", SubResource( 38 ), "Attack", "Idle", SubResource( 39 ), "Attack", "Walk", SubResource( 40 ), "Idle", "Attack_Up", SubResource( 41 ), "Attack_Up", "Walk", SubResource( 42 ), "Walk", "Attack_Up", SubResource( 43 ), "Attack_Up", "Idle", SubResource( 44 ), "Jump", "TakeDamage", SubResource( 45 ), "Idle", "TakeDamage", SubResource( 46 ), "JumpDown", "TakeDamage", SubResource( 47 ), "Jump", "WallCling", SubResource( 48 ), "WallCling", "Jump", SubResource( 49 ), "WallCling", "JumpDown", SubResource( 50 ), "JumpDown", "WallCling", SubResource( 51 ), "Walk", "Turn", SubResource( 52 ), "Turn", "Walk", SubResource( 53 ) ]
+graph_offset = Vector2( -76.066, -223.99 )
+
+[sub_resource type="AnimationNodeStateMachinePlayback" id=55]
+
+[sub_resource type="CapsuleShape2D" id=56]
 radius = 200.0
 height = 300.0
 
-[sub_resource type="Gradient" id=53]
+[sub_resource type="Gradient" id=57]
 offsets = PoolRealArray( 0, 0.361257, 1 )
 colors = PoolColorArray( 1, 1, 1, 1, 0.960938, 0.435425, 0.435425, 1, 0.71875, 0, 0, 1 )
 
-[sub_resource type="GradientTexture" id=54]
-gradient = SubResource( 53 )
+[sub_resource type="GradientTexture" id=58]
+gradient = SubResource( 57 )
 
-[sub_resource type="ParticlesMaterial" id=55]
+[sub_resource type="ParticlesMaterial" id=59]
 flag_disable_z = true
 spread = 10.0
 gravity = Vector3( 0, 0, 0 )
@@ -450,49 +477,49 @@ angular_velocity = -2.32485e+036
 orbit_velocity = 0.0
 orbit_velocity_random = 0.0
 scale = 10.0
-color_ramp = SubResource( 54 )
+color_ramp = SubResource( 58 )
 
-[sub_resource type="RectangleShape2D" id=56]
+[sub_resource type="RectangleShape2D" id=60]
 extents = Vector2( 2560, 800 )
 
-[sub_resource type="RectangleShape2D" id=57]
+[sub_resource type="RectangleShape2D" id=61]
 extents = Vector2( 656.04, 1760 )
 
-[sub_resource type="ShaderMaterial" id=58]
-shader = ExtResource( 40 )
+[sub_resource type="ShaderMaterial" id=62]
+shader = ExtResource( 41 )
 shader_param/tint = Color( 1, 0.780392, 0.501961, 1 )
 shader_param/speed = 0.05
 shader_param/glow = 1.0
 shader_param/invertNoise1 = true
 shader_param/useNoiseColor = true
-shader_param/noise1 = ExtResource( 41 )
-shader_param/noise2 = ExtResource( 42 )
-shader_param/tintNoise = ExtResource( 43 )
+shader_param/noise1 = ExtResource( 42 )
+shader_param/noise2 = ExtResource( 43 )
+shader_param/tintNoise = ExtResource( 44 )
 
-[sub_resource type="OpenSimplexNoise" id=59]
+[sub_resource type="OpenSimplexNoise" id=63]
 octaves = 1
 period = 86.1
 persistence = 1.0
 
-[sub_resource type="NoiseTexture" id=60]
+[sub_resource type="NoiseTexture" id=64]
 seamless = true
-noise = SubResource( 59 )
+noise = SubResource( 63 )
 
-[sub_resource type="ShaderMaterial" id=61]
-shader = ExtResource( 40 )
+[sub_resource type="ShaderMaterial" id=65]
+shader = ExtResource( 41 )
 shader_param/tint = Color( 0.435294, 0.788235, 1, 1 )
 shader_param/speed = 0.1
 shader_param/glow = 1.0
 shader_param/invertNoise1 = false
 shader_param/useNoiseColor = true
-shader_param/noise1 = ExtResource( 46 )
-shader_param/noise2 = SubResource( 60 )
-shader_param/tintNoise = ExtResource( 47 )
+shader_param/noise1 = ExtResource( 47 )
+shader_param/noise2 = SubResource( 64 )
+shader_param/tintNoise = ExtResource( 48 )
 
-[sub_resource type="CircleShape2D" id=62]
+[sub_resource type="CircleShape2D" id=66]
 radius = 500.0
 
-[sub_resource type="RectangleShape2D" id=63]
+[sub_resource type="RectangleShape2D" id=67]
 extents = Vector2( 54.17, 111.08 )
 
 [node name="World" type="Node"]
@@ -592,7 +619,6 @@ z_as_relative = false
 script = ExtResource( 9 )
 
 [node name="StateManager" type="Node" parent="GameplayObjects/PlayerNode/Player"]
-editor/display_folded = true
 script = ExtResource( 10 )
 
 [node name="DamageStopMovingTimer" type="Timer" parent="GameplayObjects/PlayerNode/Player/StateManager"]
@@ -614,7 +640,6 @@ z_as_relative = false
 shape = SubResource( 6 )
 
 [node name="Sprite" type="Sprite" parent="GameplayObjects/PlayerNode/Player"]
-editor/display_folded = true
 scale = Vector2( 0.26, 0.26 )
 texture = ExtResource( 11 )
 
@@ -625,18 +650,20 @@ anims/Idle = SubResource( 9 )
 anims/Jump = SubResource( 10 )
 anims/JumpDown = SubResource( 11 )
 anims/TakeDamage = SubResource( 12 )
-anims/Walk = SubResource( 13 )
-anims/WallCling = SubResource( 14 )
+anims/Turn = SubResource( 13 )
+anims/Walk = SubResource( 14 )
+anims/WallCling = SubResource( 15 )
 
 [node name="AnimationTree" type="AnimationTree" parent="GameplayObjects/PlayerNode/Player/Sprite"]
-tree_root = SubResource( 50 )
+tree_root = SubResource( 54 )
 anim_player = NodePath("../AnimationPlayer")
 active = true
-parameters/playback = SubResource( 51 )
-script = ExtResource( 29 )
+parameters/playback = SubResource( 55 )
+script = ExtResource( 30 )
 
 [node name="Slash" type="Sprite" parent="GameplayObjects/PlayerNode/Player/Sprite"]
 editor/display_folded = true
+visible = false
 position = Vector2( 820.512, -19.6523 )
 scale = Vector2( 2.26, 2.06 )
 z_index = 1
@@ -649,7 +676,7 @@ collision_mask = 31
 [node name="SlashShape" type="CollisionShape2D" parent="GameplayObjects/PlayerNode/Player/Sprite/Slash/SlashArea"]
 position = Vector2( -186.879, 0 )
 rotation = 1.5708
-shape = SubResource( 52 )
+shape = SubResource( 56 )
 
 [node name="DashParticles" type="Particles2D" parent="GameplayObjects/PlayerNode/Player/Sprite"]
 position = Vector2( -307.692, -19.6523 )
@@ -659,40 +686,40 @@ emitting = false
 amount = 20
 lifetime = 0.07
 one_shot = true
-process_material = SubResource( 55 )
-texture = ExtResource( 30 )
+process_material = SubResource( 59 )
+texture = ExtResource( 31 )
 
 [node name="Jump" type="AudioStreamPlayer" parent="GameplayObjects/PlayerNode/Player/Sprite"]
-stream = ExtResource( 31 )
+stream = ExtResource( 32 )
 volume_db = -20.0
 
 [node name="TakeDamage" type="AudioStreamPlayer" parent="GameplayObjects/PlayerNode/Player/Sprite"]
-stream = ExtResource( 32 )
+stream = ExtResource( 33 )
 
 [node name="Walk" type="AudioStreamPlayer" parent="GameplayObjects/PlayerNode/Player/Sprite"]
-stream = ExtResource( 33 )
+stream = ExtResource( 34 )
 volume_db = -10.0
 
 [node name="SwordSlash" type="AudioStreamPlayer" parent="GameplayObjects/PlayerNode/Player/Sprite"]
-stream = ExtResource( 34 )
+stream = ExtResource( 35 )
 bus = "LowFreq"
 
 [node name="SwordSlashHit" type="AudioStreamPlayer" parent="GameplayObjects/PlayerNode/Player/Sprite"]
-stream = ExtResource( 35 )
+stream = ExtResource( 36 )
 bus = "LowFreq"
 
 [node name="Enemies" type="Node" parent="GameplayObjects"]
 
-[node name="Enemy2" parent="GameplayObjects/Enemies" instance=ExtResource( 36 )]
+[node name="Enemy2" parent="GameplayObjects/Enemies" instance=ExtResource( 37 )]
 position = Vector2( 4849.03, 3872 )
 
-[node name="Enemy" parent="GameplayObjects/Enemies" instance=ExtResource( 36 )]
+[node name="Enemy" parent="GameplayObjects/Enemies" instance=ExtResource( 37 )]
 
 [node name="LevelDesign" type="Node" parent="."]
 
 [node name="BlackBox" type="TileMap" parent="LevelDesign"]
 z_index = -10
-tile_set = ExtResource( 37 )
+tile_set = ExtResource( 38 )
 collision_layer = 35
 collision_mask = 35
 format = 1
@@ -701,76 +728,76 @@ tile_data = PoolIntArray( -131016, 3, 0, -131008, 3, 0, -131000, 3, 0, -130992, 
 [node name="Area2D" type="Area2D" parent="LevelDesign"]
 editor/display_folded = true
 position = Vector2( 7328, 3496.58 )
-script = ExtResource( 38 )
+script = ExtResource( 39 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="LevelDesign/Area2D"]
 position = Vector2( 2976, 32 )
-shape = SubResource( 56 )
+shape = SubResource( 60 )
 
 [node name="Area2D2" type="Area2D" parent="LevelDesign"]
+editor/display_folded = true
 position = Vector2( 6784, 2144 )
-script = ExtResource( 39 )
+script = ExtResource( 40 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="LevelDesign/Area2D2"]
 position = Vector2( 320, 0 )
-shape = SubResource( 57 )
+shape = SubResource( 61 )
 
 [node name="ParallaxBackground" type="ParallaxBackground" parent="LevelDesign"]
+editor/display_folded = true
 
 [node name="ParallaxLayer2" type="ParallaxLayer" parent="LevelDesign/ParallaxBackground"]
 motion_scale = Vector2( 0.8, 0.8 )
 motion_offset = Vector2( -800, -600 )
 
 [node name="Sprite2" type="Sprite" parent="LevelDesign/ParallaxBackground/ParallaxLayer2"]
-material = SubResource( 58 )
+material = SubResource( 62 )
 position = Vector2( 3296, 7904 )
 scale = Vector2( 3.62051, 3.60904 )
 z_index = -50
-texture = ExtResource( 44 )
+texture = ExtResource( 45 )
 offset = Vector2( 469.496, -1531.79 )
 
 [node name="InteractiveObjects" type="Node" parent="."]
-editor/display_folded = true
 
-[node name="Butterfly" parent="InteractiveObjects" instance=ExtResource( 45 )]
+[node name="Butterfly" parent="InteractiveObjects" instance=ExtResource( 46 )]
 
 [node name="honey" type="Sprite" parent="InteractiveObjects"]
 editor/display_folded = true
-material = SubResource( 61 )
+material = SubResource( 65 )
 position = Vector2( 2464, 3296 )
 z_index = 50
-texture = ExtResource( 44 )
+texture = ExtResource( 45 )
 
 [node name="Area2D2" type="Area2D" parent="InteractiveObjects/honey"]
-script = ExtResource( 48 )
+script = ExtResource( 49 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="InteractiveObjects/honey/Area2D2"]
-shape = SubResource( 62 )
+shape = SubResource( 66 )
 
 [node name="Area2D" type="Area2D" parent="InteractiveObjects" groups=[
 "Damageable",
 ]]
-editor/display_folded = true
 position = Vector2( 5184, 3872 )
 collision_layer = 4
 collision_mask = 4
-script = ExtResource( 49 )
+script = ExtResource( 50 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="InteractiveObjects/Area2D"]
 position = Vector2( -7.82, 0 )
-shape = SubResource( 63 )
+shape = SubResource( 67 )
 
 [node name="ash_grass_01_blizzard0001" type="Sprite" parent="InteractiveObjects/Area2D"]
 editor/display_folded = true
 position = Vector2( 0, -0.000244141 )
-texture = ExtResource( 50 )
+texture = ExtResource( 51 )
 
 [node name="Area2D" type="Area2D" parent="InteractiveObjects/Area2D/ash_grass_01_blizzard0001"]
 editor/display_folded = true
-script = ExtResource( 48 )
+script = ExtResource( 49 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="InteractiveObjects/Area2D/ash_grass_01_blizzard0001/Area2D"]
-shape = SubResource( 62 )
+shape = SubResource( 66 )
 
 [node name="Label" type="Label" parent="InteractiveObjects/Area2D/ash_grass_01_blizzard0001"]
 margin_left = -96.0

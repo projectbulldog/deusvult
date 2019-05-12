@@ -15,6 +15,8 @@ var max_health = 4
 var impulse = Vector2(0, 0)
 var impulseDamp = 0.8
 
+var invincible = false
+
 func _physics_process(delta):
 	if (GameState.stopMovingEnemies):
 		motion = Vector2(0, 0)
@@ -39,18 +41,21 @@ func _physics_process(delta):
 	
 
 func takeDamage(damageFrom = Vector2(0, 0)):
-	var direction = self.global_position - damageFrom
-	print(damageFrom.angle_to_point(self.global_position))
-	direction = direction.normalized()
-	self.modulate = ColorN("red")
-	$Timer.start()
-	health -= 1
-	if(health <= 0):
-		self.queue_free()
-	impulse = -motion + Vector2(direction.x * 2000, -200)
+	if !invincible:
+		self.invincible = true
+		var direction = self.global_position - damageFrom
+		print(damageFrom.angle_to_point(self.global_position))
+		direction = direction.normalized()
+		self.modulate = ColorN("red")
+		$Timer.start()
+		health -= 1
+		if(health <= 0):
+			self.queue_free()
+		impulse = Vector2(direction.x * 2000, -200)
 
 func _on_Timer_timeout():
 	self.modulate = ColorN("white")
+	invincible = false
 
 
 func _on_DamageArea_body_entered(body):

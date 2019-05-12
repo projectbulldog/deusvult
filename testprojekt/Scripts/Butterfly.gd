@@ -21,5 +21,5 @@ func random():
     randomize()
     return randf()*601 - 300.0
 
-func takeDamage():
+func takeDamage(damageFrom = Vector2(0,0)):
 	self.queue_free()

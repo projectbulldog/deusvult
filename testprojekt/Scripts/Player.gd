@@ -26,7 +26,7 @@ var dashCooldownTimer
 
 var isAttacking = false
 var isAttackCooldown = false
-var attackCooldown = 0.5
+var attackCooldown = 0.4
 var attackCooldownTimer = 0.0
 
 var isOnFloorWithCoyote = false
@@ -86,11 +86,13 @@ func _physics_process(delta):
 	if Input.is_action_pressed("ui_right") && (!isAttacking || direction == DIRECTION.RIGHT) && !justWallJumped && !isDashing && !stopMoving:
 		if direction == DIRECTION.LEFT:
 			self.changeDirection()
+			$Sprite/AnimationTree.playback.start("Turn")
 		motion.x = SPEED * clamp(Input.get_action_strength("ui_right"), 0.5, 1.0)
 		friction = false
 	elif Input.is_action_pressed("ui_left") && (!isAttacking || direction == DIRECTION.LEFT) && !justWallJumped && !isDashing && !stopMoving:
 		if direction == DIRECTION.RIGHT:
 			self.changeDirection()
+			$Sprite/AnimationTree.playback.start("Turn")
 		motion.x = -SPEED * clamp(Input.get_action_strength("ui_left"), 0.5, 1.0)
 		friction = false
 	else:
@@ -260,7 +262,7 @@ func on_body_entered_attack(body):
 		body.takeDamage(self.global_position)
 		if(!$Sprite/SwordSlashHit.playing):
 			$Sprite/SwordSlashHit.play()
-	
+
 func takeDamage(damage):
 	if(!invincible):
 		$StateManager.take_Damage(damage)
@@ -297,6 +299,7 @@ func _on_WallJumpMotionTimer_timeout():
 	stopMoving = false
 
 
+# DEBUG STUFF
 func _on_CheckBox_toggled(button_pressed):
 	self.hasDashAbility = button_pressed
 
