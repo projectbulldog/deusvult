@@ -33,10 +33,13 @@ func _ready():
 	self.changeCurrentInput(0)
 
 func changeCurrentInput(newId):
-	if currentInputId != null: inputs[currentInputId].self_modulate = ColorN("white")
+	if currentInputId != null:
+		inputs[currentInputId].self_modulate = ColorN("white")
+		inputs[currentInputId].get_font("font").size = 70
 	if(newId != null):
 		currentInputId = newId
 		inputs[currentInputId].self_modulate = ColorN("red")
+		inputs[currentInputId].get_font("font").size = 100
 	else: currentInputId = null
 
 func newGame_input(event):
