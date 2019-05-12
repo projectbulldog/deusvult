@@ -38,13 +38,16 @@ func _physics_process(delta):
 	motion = move_and_slide(motion, Vector2(0, -1))
 	
 
-func takeDamage(forceFrom = Vector2(0, 0)):
+func takeDamage(damageFrom = Vector2(0, 0)):
+	var direction = self.global_position - damageFrom
+	print(damageFrom.angle_to_point(self.global_position))
+	direction = direction.normalized()
 	self.modulate = ColorN("red")
 	$Timer.start()
 	health -= 1
 	if(health <= 0):
 		self.queue_free()
-	impulse = forceFrom
+	impulse = -motion + Vector2(direction.x * 2000, -200)
 
 func _on_Timer_timeout():
 	self.modulate = ColorN("white")

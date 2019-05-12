@@ -240,12 +240,7 @@ func attack():
 	for body in bodies:
 		if(body.is_in_group("Damageable")):
 			anyOneHit = true
-			var direction = body.global_position.x - self.global_position.x 
-			if(direction <= 0):
-				direction = -1
-			else:
-				direction = 1
-			body.takeDamage(Vector2(1500 * direction, -200))
+			body.takeDamage(self.global_position - Vector2(0, 100))
 			camera.add_trauma(0.5)
 	if anyOneHit:
 		$Sprite/SwordSlash.play()
@@ -262,7 +257,9 @@ func attack():
 func on_body_entered_attack(body):
 #	Animation geht ein paar milisekunden -> In dieser Zeit neue Bodies auch Schaden zufügen
 	if(body.is_in_group("Damageable")):
-		body.takeDamage()
+		body.takeDamage(self.global_position)
+		if(!$Sprite/SwordSlashHit.playing):
+			$Sprite/SwordSlashHit.play()
 	
 func takeDamage(damage):
 	if(!invincible):

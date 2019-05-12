@@ -614,6 +614,7 @@ z_as_relative = false
 shape = SubResource( 6 )
 
 [node name="Sprite" type="Sprite" parent="GameplayObjects/PlayerNode/Player"]
+editor/display_folded = true
 scale = Vector2( 0.26, 0.26 )
 texture = ExtResource( 11 )
 
@@ -688,7 +689,6 @@ position = Vector2( 4849.03, 3872 )
 [node name="Enemy" parent="GameplayObjects/Enemies" instance=ExtResource( 36 )]
 
 [node name="LevelDesign" type="Node" parent="."]
-editor/display_folded = true
 
 [node name="BlackBox" type="TileMap" parent="LevelDesign"]
 z_index = -10
@@ -716,7 +716,6 @@ position = Vector2( 320, 0 )
 shape = SubResource( 57 )
 
 [node name="ParallaxBackground" type="ParallaxBackground" parent="LevelDesign"]
-editor/display_folded = true
 
 [node name="ParallaxLayer2" type="ParallaxLayer" parent="LevelDesign/ParallaxBackground"]
 motion_scale = Vector2( 0.8, 0.8 )
@@ -724,7 +723,7 @@ motion_offset = Vector2( -800, -600 )
 
 [node name="Sprite2" type="Sprite" parent="LevelDesign/ParallaxBackground/ParallaxLayer2"]
 material = SubResource( 58 )
-position = Vector2( 3294.48, 7888.12 )
+position = Vector2( 3296, 7904 )
 scale = Vector2( 3.62051, 3.60904 )
 z_index = -50
 texture = ExtResource( 44 )
