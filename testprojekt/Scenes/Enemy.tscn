@@ -1,14 +1,110 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=29 format=2]
 
 [ext_resource path="res://Scripts/Enemy.gd" type="Script" id=1]
-[ext_resource path="res://Sprites/Nyx/charakter.png" type="Texture" id=2]
+[ext_resource path="res://Sprites/Enemies/Blobo/Walk/9_blob-jump.png" type="Texture" id=2]
+[ext_resource path="res://Sprites/Enemies/Blobo/Idle/1_blob-idle.png" type="Texture" id=3]
+[ext_resource path="res://Sprites/Enemies/Blobo/Idle/2_blob-idle.png" type="Texture" id=4]
+[ext_resource path="res://Sprites/Enemies/Blobo/Idle/3_blob-idle.png" type="Texture" id=5]
+[ext_resource path="res://Sprites/Enemies/Blobo/Idle/4_blob-idle.png" type="Texture" id=6]
+[ext_resource path="res://Sprites/Enemies/Blobo/Walk/1_blob-jump.png" type="Texture" id=7]
+[ext_resource path="res://Sprites/Enemies/Blobo/Walk/2_blob-jump.png" type="Texture" id=8]
+[ext_resource path="res://Sprites/Enemies/Blobo/Walk/3_blob-jump.png" type="Texture" id=9]
+[ext_resource path="res://Sprites/Enemies/Blobo/Walk/4_blob-jump.png" type="Texture" id=10]
+[ext_resource path="res://Sprites/Enemies/Blobo/Walk/5_blob-jump.png" type="Texture" id=11]
+[ext_resource path="res://Sprites/Enemies/Blobo/Walk/6_blob-jump.png" type="Texture" id=12]
+[ext_resource path="res://Sprites/Enemies/Blobo/Walk/7_blob-jump.png" type="Texture" id=13]
+[ext_resource path="res://Sprites/Enemies/Blobo/Walk/8_blob-jump.png" type="Texture" id=14]
+[ext_resource path="res://Sprites/Enemies/Blobo/Walk/10_blob-jump.png" type="Texture" id=15]
+[ext_resource path="res://Sprites/Enemies/Blobo/Walk/11_blob-jump.png" type="Texture" id=16]
+[ext_resource path="res://Scenes/Blobo.gd" type="Script" id=17]
 
-[sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 23.61, 78.07 )
+[sub_resource type="RectangleShape2D" id=4]
+extents = Vector2( 50, 34.82 )
 
-[sub_resource type="CapsuleShape2D" id=2]
-radius = 18.68
-height = 100.0
+[sub_resource type="RectangleShape2D" id=14]
+extents = Vector2( 1078.33, 223.321 )
+
+[sub_resource type="Animation" id=6]
+resource_name = "Idle"
+length = 0.4
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3 ),
+"transitions": PoolRealArray( 5.27803, 1, 1, 1 ),
+"update": 1,
+"values": [ ExtResource( 3 ), ExtResource( 4 ), ExtResource( 5 ), ExtResource( 6 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ) ]
+}
+
+[sub_resource type="Animation" id=7]
+resource_name = "Jump"
+length = 1.2
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.9, 1, 1.1, 1.2 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ ExtResource( 7 ), ExtResource( 8 ), ExtResource( 9 ), ExtResource( 10 ), ExtResource( 11 ), ExtResource( 12 ), ExtResource( 13 ), ExtResource( 14 ), ExtResource( 2 ), ExtResource( 15 ), ExtResource( 16 ), ExtResource( 7 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 0, -45 ) ]
+}
+
+[sub_resource type="AnimationNodeAnimation" id=8]
+animation = "Idle"
+
+[sub_resource type="AnimationNodeAnimation" id=9]
+animation = "Jump"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=10]
+switch_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=11]
+switch_mode = 2
+
+[sub_resource type="AnimationNodeStateMachine" id=12]
+states/Idle/node = SubResource( 8 )
+states/Idle/position = Vector2( 356, 56 )
+states/Jump/node = SubResource( 9 )
+states/Jump/position = Vector2( 637, 56 )
+transitions = [ "Idle", "Jump", SubResource( 10 ), "Jump", "Idle", SubResource( 11 ) ]
+
+[sub_resource type="AnimationNodeStateMachinePlayback" id=13]
+
+[sub_resource type="RectangleShape2D" id=5]
+extents = Vector2( 100, 75 )
 
 [node name="Enemy" type="KinematicBody2D" groups=[
 "Damageable",
@@ -22,27 +118,36 @@ script = ExtResource( 1 )
 wait_time = 0.4
 one_shot = true
 
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource( 4 )
+
+[node name="SeePlayer" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SeePlayer"]
+position = Vector2( 0.855957, -140.483 )
+shape = SubResource( 14 )
+
 [node name="Sprite" type="Sprite" parent="."]
-scale = Vector2( 0.15, 0.15 )
+position = Vector2( 0, -45 )
+scale = Vector2( 0.5, 0.5 )
 texture = ExtResource( 2 )
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource( 1 )
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Sprite"]
+anims/Idle = SubResource( 6 )
+anims/Jump = SubResource( 7 )
 
-[node name="RayCastGround" type="RayCast2D" parent="."]
-position = Vector2( 17.1064, 39.9143 )
-cast_to = Vector2( 0, 150 )
-collision_mask = 32
+[node name="AnimationTree" type="AnimationTree" parent="Sprite"]
+tree_root = SubResource( 12 )
+anim_player = NodePath("../AnimationPlayer")
+parameters/playback = SubResource( 13 )
+script = ExtResource( 17 )
 
-[node name="RayCastWall" type="RayCast2D" parent="."]
-position = Vector2( 17.1064, 39.9143 )
-rotation = -1.5708
-cast_to = Vector2( 0, 10 )
-collision_mask = 32
+[node name="DamageArea" type="Area2D" parent="Sprite"]
 
-[node name="DamageArea" type="Area2D" parent="."]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="DamageArea"]
-shape = SubResource( 2 )
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite/DamageArea"]
+shape = SubResource( 5 )
 [connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
-[connection signal="body_entered" from="DamageArea" to="." method="_on_DamageArea_body_entered"]
+[connection signal="body_entered" from="SeePlayer" to="." method="_on_SeePlayer_body_entered"]
+[connection signal="body_exited" from="SeePlayer" to="." method="_on_SeePlayer_body_exited"]
+[connection signal="body_entered" from="Sprite/DamageArea" to="." method="_on_DamageArea_body_entered"]
+[connection signal="body_exited" from="Sprite/DamageArea" to="." method="_on_DamageArea_body_exited"]

@@ -5,7 +5,7 @@
 [ext_resource path="res://Sprites/Background/Nebula Aqua-Pink.png" type="Texture" id=3]
 [ext_resource path="res://vitruvian_grub.png" type="Texture" id=4]
 
-[sub_resource type="DynamicFont" id=5]
+[sub_resource type="DynamicFont" id=1]
 size = 70
 outline_size = 2
 outline_color = Color( 0, 0, 0, 1 )
@@ -21,7 +21,7 @@ use_mipmaps = true
 use_filter = true
 font_data = ExtResource( 2 )
 
-[sub_resource type="DynamicFont" id=4]
+[sub_resource type="DynamicFont" id=3]
 size = 70
 outline_size = 2
 outline_color = Color( 0, 0, 0, 1 )
@@ -29,7 +29,7 @@ use_mipmaps = true
 use_filter = true
 font_data = ExtResource( 2 )
 
-[sub_resource type="CanvasItemMaterial" id=1]
+[sub_resource type="CanvasItemMaterial" id=4]
 blend_mode = 1
 
 [node name="Control" type="Control"]
@@ -61,7 +61,7 @@ margin_right = 379.0
 margin_bottom = 123.0
 mouse_filter = 1
 mouse_default_cursor_shape = 2
-custom_fonts/font = SubResource( 5 )
+custom_fonts/font = SubResource( 1 )
 text = "New Game"
 align = 1
 valign = 1
@@ -97,7 +97,7 @@ margin_right = 259.0
 margin_bottom = 123.0
 mouse_filter = 1
 mouse_default_cursor_shape = 2
-custom_fonts/font = SubResource( 4 )
+custom_fonts/font = SubResource( 3 )
 text = "Exit"
 align = 1
 valign = 1
@@ -109,7 +109,7 @@ texture = ExtResource( 3 )
 
 [node name="vitruvian_grub" type="Sprite" parent="."]
 modulate = Color( 0.376471, 0.509804, 0.678431, 1 )
-material = SubResource( 1 )
+material = SubResource( 4 )
 position = Vector2( 960, 544 )
 scale = Vector2( 1.5, 1.5 )
 z_index = -1

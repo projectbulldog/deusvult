@@ -253,15 +253,15 @@ func attack():
 	for area in areas:
 		if(area.is_in_group("Damageable")):
 			area.takeDamage()
-	$Sprite/Slash/SlashArea.connect("body_entered", self, "on_body_entered_attack")
-	$Sprite/Slash/SlashArea.connect("area_entered", self, "on_body_entered_attack")
+#	$Sprite/Slash/SlashArea.connect("body_entered", self, "on_body_entered_attack")
+#	$Sprite/Slash/SlashArea.connect("area_entered", self, "on_body_entered_attack")
 
-func on_body_entered_attack(body):
-#	Animation geht ein paar milisekunden -> In dieser Zeit neue Bodies auch Schaden zufügen
-	if(body.is_in_group("Damageable")):
-		body.takeDamage(self.global_position)
-		if(!$Sprite/SwordSlashHit.playing):
-			$Sprite/SwordSlashHit.play()
+#func on_body_entered_attack(body):
+##	Animation geht ein paar milisekunden -> In dieser Zeit neue Bodies auch Schaden zufügen
+#	if(body.is_in_group("Damageable")):
+#		body.takeDamage(self.global_position)
+#		if(!$Sprite/SwordSlashHit.playing):
+#			$Sprite/SwordSlashHit.play()
 
 func takeDamage(damage):
 	if(!invincible):
@@ -279,10 +279,10 @@ func travelTo(animation):
 func attackFinished():
 #	Nach Animation soll nicht mehr jeder Neue Body Schaden bekommen
 	isAttacking = false
-	if $Sprite/Slash/SlashArea.is_connected("body_entered", self, "on_body_entered_attack"):
-		$Sprite/Slash/SlashArea.disconnect("body_entered", self, "on_body_entered_attack")
-	if $Sprite/Slash/SlashArea.is_connected("area_entered", self, "on_body_entered_attack"):
-		$Sprite/Slash/SlashArea.disconnect("area_entered", self, "on_body_entered_attack")
+#	if $Sprite/Slash/SlashArea.is_connected("body_entered", self, "on_body_entered_attack"):
+#		$Sprite/Slash/SlashArea.disconnect("body_entered", self, "on_body_entered_attack")
+#	if $Sprite/Slash/SlashArea.is_connected("area_entered", self, "on_body_entered_attack"):
+#		$Sprite/Slash/SlashArea.disconnect("area_entered", self, "on_body_entered_attack")
 
 func _on_DamageStopMovingTimer_timeout():
 	tookDamage = false
@@ -293,7 +293,6 @@ func CueSignal(object, zoom):
 
 func _on_InvincibilityTimer_timeout():
 	invincible = false
-
 
 func _on_WallJumpMotionTimer_timeout():
 	stopMoving = false
