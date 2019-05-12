@@ -478,10 +478,10 @@ extents = Vector2( 2560, 800 )
 [sub_resource type="RectangleShape2D" id=61]
 extents = Vector2( 656.04, 1760 )
 
-[sub_resource type="RectangleShape2D" id=67]
+[sub_resource type="RectangleShape2D" id=62]
 extents = Vector2( 54.17, 111.08 )
 
-[sub_resource type="CircleShape2D" id=66]
+[sub_resource type="CircleShape2D" id=63]
 radius = 500.0
 
 [node name="World" type="Node"]
@@ -691,23 +691,21 @@ tile_data = PoolIntArray( -131016, 3, 0, -131008, 3, 0, -131000, 3, 0, -130992, 
 
 [node name="Area2D" type="Area2D" parent="LevelDesign"]
 editor/display_folded = true
-position = Vector2( 7328, 3496.58 )
+position = Vector2( 10240, 3537.38 )
 script = ExtResource( 39 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="LevelDesign/Area2D"]
-position = Vector2( 2976, 32 )
 shape = SubResource( 60 )
 
 [node name="Area2D2" type="Area2D" parent="LevelDesign"]
-editor/display_folded = true
-position = Vector2( 6784, 2144 )
+position = Vector2( 7052.75, 2144 )
 script = ExtResource( 40 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="LevelDesign/Area2D2"]
-position = Vector2( 320, 0 )
 shape = SubResource( 61 )
 
 [node name="InteractiveObjects" type="Node" parent="."]
+editor/display_folded = true
 
 [node name="Butterfly" parent="InteractiveObjects" instance=ExtResource( 41 )]
 
@@ -721,7 +719,7 @@ script = ExtResource( 42 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="InteractiveObjects/Area2D"]
 position = Vector2( -7.82, 0 )
-shape = SubResource( 67 )
+shape = SubResource( 62 )
 
 [node name="ash_grass_01_blizzard0001" type="Sprite" parent="InteractiveObjects/Area2D"]
 editor/display_folded = true
@@ -733,7 +731,7 @@ editor/display_folded = true
 script = ExtResource( 44 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="InteractiveObjects/Area2D/ash_grass_01_blizzard0001/Area2D"]
-shape = SubResource( 66 )
+shape = SubResource( 63 )
 
 [node name="Label" type="Label" parent="InteractiveObjects/Area2D/ash_grass_01_blizzard0001"]
 margin_left = -96.0
