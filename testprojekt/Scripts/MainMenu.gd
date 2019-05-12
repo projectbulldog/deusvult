@@ -7,12 +7,14 @@ func _input(event):
 	if event.is_action_pressed("ui_accept") && currentInputId != null:
 		print("HIER")
 		inputs[currentInputId].emit_signal("gui_input", event)
-	if Input.is_action_just_pressed("ui_down") && currentInputId < inputs.size() - 1:
+	if Input.is_action_just_pressed("ui_down") && currentInputId != null && currentInputId < inputs.size() - 1:
 		if currentInputId != null:	self.changeCurrentInput(currentInputId + 1)
 		else: self.changeCurrentInput(0)
-	if Input.is_action_just_pressed("ui_up") && currentInputId > 0:
+	if Input.is_action_just_pressed("ui_up") && currentInputId != null && currentInputId > 0:
 		if currentInputId != null:	self.changeCurrentInput(currentInputId - 1)
 		else: self.changeCurrentInput(inputs.size() - 1)
+	if (Input.is_action_just_pressed("ui_up") || Input.is_action_just_pressed("ui_down")) && currentInputId == null:
+		self.changeCurrentInput(0)
 
 func _ready():
 	$GridContainer/VBoxContainer/HBoxContainer/NewGame.connect("gui_input", self, "newGame_input")
