@@ -1,58 +1,87 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://Scripts/MainMenu.gd" type="Script" id=1]
-[ext_resource path="res://Shaders/NoiseMultiplication.shader" type="Shader" id=2]
-[ext_resource path="res://Sprites/texture (6).png" type="Texture" id=3]
-[ext_resource path="res://Sprites/TESET.jpeg" type="Texture" id=4]
-[ext_resource path="res://Sprites/Particle/light.png" type="Texture" id=5]
-[ext_resource path="res://Sprites/Background/Nebula Aqua-Pink.png" type="Texture" id=6]
+[ext_resource path="res://Font.tres" type="DynamicFont" id=2]
+[ext_resource path="res://Sprites/Background/Nebula Aqua-Pink.png" type="Texture" id=3]
+[ext_resource path="res://vitruvian_grub.png" type="Texture" id=4]
 
-
-
-[sub_resource type="OpenSimplexNoise" id=1]
-octaves = 1
-period = 162.5
-persistence = 0.0
-
-[sub_resource type="NoiseTexture" id=2]
-width = 1024
-height = 1024
-seamless = true
-noise = SubResource( 1 )
-
-[sub_resource type="ShaderMaterial" id=3]
-shader = ExtResource( 2 )
-shader_param/tint = Color( 0.486275, 0.533333, 0.752941, 1 )
-shader_param/speed = 0.05
-shader_param/glow = 1.0
-shader_param/moveNoise1 = true
-shader_param/invertNoise1 = true
-shader_param/useNoiseColor = false
-shader_param/noise1 = ExtResource( 3 )
-shader_param/noise2 = SubResource( 2 )
-shader_param/tintNoise = ExtResource( 4 )
+[sub_resource type="CanvasItemMaterial" id=1]
+blend_mode = 1
 
 [node name="Control" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 script = ExtResource( 1 )
 
-[node name="Button" type="Button" parent="."]
-margin_left = 64.0
-margin_top = 64.0
-margin_right = 146.0
-margin_bottom = 84.0
-text = "New Game"
+[node name="GridContainer" type="CenterContainer" parent="."]
+margin_right = 1920.0
+margin_bottom = 1080.0
 
-[node name="Sprite" type="Sprite" parent="."]
-material = SubResource( 3 )
-position = Vector2( 508, 372 )
-scale = Vector2( 1.25781, 0.898437 )
-z_index = -1
-texture = ExtResource( 5 )
+[node name="VBoxContainer" type="VBoxContainer" parent="GridContainer"]
+margin_left = 781.0
+margin_top = 392.0
+margin_right = 1139.0
+margin_bottom = 688.0
+alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="GridContainer/VBoxContainer"]
+margin_right = 358.0
+margin_bottom = 96.0
+alignment = 1
+
+[node name="NewGame" type="Label" parent="GridContainer/VBoxContainer/HBoxContainer"]
+margin_right = 358.0
+margin_bottom = 96.0
+mouse_filter = 1
+mouse_default_cursor_shape = 2
+custom_fonts/font = ExtResource( 2 )
+text = "New Game"
+align = 1
+valign = 1
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="GridContainer/VBoxContainer"]
+margin_top = 100.0
+margin_right = 358.0
+margin_bottom = 196.0
+alignment = 1
+
+[node name="Options" type="Label" parent="GridContainer/VBoxContainer/HBoxContainer2"]
+margin_left = 49.0
+margin_right = 308.0
+margin_bottom = 96.0
+mouse_filter = 1
+mouse_default_cursor_shape = 2
+custom_fonts/font = ExtResource( 2 )
+text = "Options"
+align = 1
+valign = 1
+
+[node name="HBoxContainer3" type="HBoxContainer" parent="GridContainer/VBoxContainer"]
+margin_top = 200.0
+margin_right = 358.0
+margin_bottom = 296.0
+alignment = 1
+
+[node name="Exit" type="Label" parent="GridContainer/VBoxContainer/HBoxContainer3"]
+margin_left = 119.0
+margin_right = 238.0
+margin_bottom = 96.0
+mouse_filter = 1
+mouse_default_cursor_shape = 2
+custom_fonts/font = ExtResource( 2 )
+text = "Exit"
+align = 1
+valign = 1
 
 [node name="Nebula Aqua-Pink" type="Sprite" parent="."]
-position = Vector2( 512, 192 )
+position = Vector2( 992, 480 )
 z_index = -3
-texture = ExtResource( 6 )
-[connection signal="pressed" from="Button" to="." method="_on_NewGame_pressed"]
+texture = ExtResource( 3 )
+
+[node name="vitruvian_grub" type="Sprite" parent="."]
+modulate = Color( 0.376471, 0.509804, 0.678431, 1 )
+material = SubResource( 1 )
+position = Vector2( 960, 544 )
+scale = Vector2( 1.5, 1.5 )
+z_index = -1
+texture = ExtResource( 4 )
